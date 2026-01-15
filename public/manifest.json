@@ -1,0 +1,15 @@
+{
+  "short_name": "Patricio Albornoz",
+  "name": "Patricio Albornoz",
+  "icons": [
+    {
+      "src": "https://pbs.twimg.com/profile_images/2010743613538353152/sPZTaIV1_400x400.jpg",
+      "sizes": "400x400",
+      "type": "image/jpg"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
