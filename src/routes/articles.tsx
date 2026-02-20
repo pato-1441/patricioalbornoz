@@ -18,7 +18,7 @@ const navItems: NavItem[] = [
 
 function ArticlesPage() {
   return (
-    <main className="relative min-h-screen selection:bg-white/20 selection:text-white">
+    <main className="relative min-h-screen selection:bg-amber-200/60 selection:text-neutral-900">
       <div aria-hidden className="noise-overlay" />
 
       <div className="mx-auto grid max-w-[1600px] grid-cols-1 gap-12 px-6 py-10 lg:grid-cols-12 lg:gap-20 lg:px-12 lg:py-16">
@@ -35,7 +35,7 @@ function ArticlesPage() {
                   href="https://neto.substack.com/p/mystery-shopping-guia-para-espiar"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-neutral-500 hover:text-neutral-200"
+                  className="group inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-neutral-500 hover:text-neutral-900"
                 >
                   Substack Tone
                   <ArrowUpRight className="size-3 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
@@ -44,19 +44,19 @@ function ArticlesPage() {
             />
 
             <article className="content-card article-card p-6 md:p-10">
-              <p className="text-xs uppercase tracking-[0.2em] text-neutral-600">
+              <p className="text-xs uppercase tracking-[0.2em] text-neutral-500">
                 Editorial Notes
               </p>
-              <h2 className="article-title mt-4 max-w-4xl text-4xl leading-tight text-white md:text-5xl">
+              <h2 className="article-title mt-4 max-w-4xl text-3xl leading-tight text-neutral-900 md:text-4xl">
                 Essays about product craft and engineering decisions that scale.
               </h2>
-              <p className="mt-5 max-w-3xl text-base leading-relaxed text-neutral-400">
+              <p className="mt-5 max-w-3xl text-sm leading-relaxed text-neutral-700">
                 This archive collects writing on interface systems, product clarity,
                 and the execution details that make teams ship better software.
               </p>
               <a
                 href="/#articles"
-                className="mt-6 inline-flex items-center gap-2 text-xs uppercase tracking-[0.14em] text-neutral-400 transition-colors hover:text-white"
+                className="mt-6 inline-flex items-center gap-2 text-xs uppercase tracking-[0.14em] text-neutral-600 transition-colors hover:text-neutral-900"
               >
                 Back to portfolio section
                 <ArrowUpRight className="size-3" />

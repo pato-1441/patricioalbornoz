@@ -17,7 +17,7 @@ const sectionNavItems: NavItem[] = [
 
 function App() {
   return (
-    <main className="relative min-h-screen selection:bg-white/20 selection:text-white">
+    <main className="relative min-h-screen selection:bg-amber-200/60 selection:text-neutral-900">
       <div aria-hidden className="noise-overlay" />
 
       <div className="mx-auto grid max-w-[1600px] grid-cols-1 gap-12 px-6 py-10 lg:grid-cols-12 lg:gap-20 lg:px-12 lg:py-16">

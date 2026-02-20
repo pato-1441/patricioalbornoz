@@ -1,5 +1,6 @@
 import { createFileRoute, Link, notFound } from '@tanstack/react-router'
 import { ArrowLeft, ArrowUpRight } from 'lucide-react'
+import { ArticleContent } from '@/components/portfolio/article-content'
 import { SectionPills, type NavItem } from '@/components/portfolio/section-pills'
 import { Sidebar } from '@/components/portfolio/sidebar'
 import { getArticleBySlug } from '@/data/articles'
@@ -27,7 +28,7 @@ function ArticlePage() {
   const { article } = Route.useLoaderData()
 
   return (
-    <main className="relative min-h-screen selection:bg-white/20 selection:text-white">
+    <main className="relative min-h-screen selection:bg-amber-200/60 selection:text-neutral-900">
       <div aria-hidden className="noise-overlay" />
 
       <div className="mx-auto grid max-w-[1600px] grid-cols-1 gap-12 px-6 py-10 lg:grid-cols-12 lg:gap-20 lg:px-12 lg:py-16">
@@ -39,19 +40,19 @@ function ArticlePage() {
           <div className="content-card article-card p-6 md:p-10">
             <Link
               to="/articles"
-              className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.14em] text-neutral-500 transition-colors hover:text-white"
+              className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.14em] text-neutral-600 transition-colors hover:text-neutral-900"
             >
               <ArrowLeft className="size-3" />
               Back to all articles
             </Link>
 
-            <p className="mt-8 text-xs uppercase tracking-[0.2em] text-neutral-600">
+            <p className="mt-8 text-xs uppercase tracking-[0.2em] text-neutral-500">
               {article.date} · {article.readTime}
             </p>
-            <h1 className="article-title mt-4 max-w-4xl text-4xl leading-tight text-white md:text-6xl">
+            <h1 className="article-title mt-4 max-w-4xl text-3xl leading-tight text-neutral-900 md:text-5xl">
               {article.title}
             </h1>
-            <p className="mt-5 max-w-3xl text-lg leading-relaxed text-neutral-300">
+            <p className="mt-5 max-w-3xl text-base leading-relaxed text-neutral-700">
               {article.excerpt}
             </p>
 
@@ -59,7 +60,7 @@ function ArticlePage() {
               href="https://neto.substack.com/p/mystery-shopping-guia-para-espiar"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-8 inline-flex items-center gap-2 text-xs uppercase tracking-[0.14em] text-neutral-500 transition-colors hover:text-white"
+              className="mt-8 inline-flex items-center gap-2 text-xs uppercase tracking-[0.14em] text-neutral-600 transition-colors hover:text-neutral-900"
             >
               Read reference style
               <ArrowUpRight className="size-3" />
@@ -67,11 +68,7 @@ function ArticlePage() {
           </div>
 
           <div className="reading-surface content-card article-card p-6 md:p-10">
-            <div className="prose-flow mx-auto max-w-3xl space-y-5 text-base leading-relaxed text-neutral-300 md:text-[1.05rem]">
-              {article.body.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
-              ))}
-            </div>
+            <ArticleContent blocks={article.blocks} />
           </div>
         </article>
       </div>

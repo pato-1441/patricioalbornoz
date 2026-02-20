@@ -6,7 +6,7 @@ export function HomeSection() {
       <SectionHeader
         title="Home"
         rightContent={
-          <p className="text-xs uppercase tracking-[0.2em] text-neutral-600">
+          <p className="text-xs uppercase tracking-[0.2em] text-neutral-500">
             Profile
           </p>
         }
@@ -22,11 +22,11 @@ export function HomeSection() {
             />
           </div>
           <div className="space-y-3 p-6">
-            <p className="text-xs uppercase tracking-[0.2em] text-neutral-600">Home</p>
-            <h3 className="text-2xl font-medium tracking-tight text-white">
+            <p className="text-xs uppercase tracking-[0.2em] text-neutral-500">Home</p>
+            <h3 className="text-xl font-medium tracking-tight text-neutral-900">
               Design engineer focused on product clarity and polished interaction.
             </h3>
-            <p className="max-w-2xl text-sm leading-relaxed text-neutral-400">
+            <p className="max-w-2xl text-sm leading-relaxed text-neutral-700">
               I build fast, resilient interfaces for product teams that care
               about craft. Most recently: growth surfaces, observability UX, and
               reusable design-system building blocks.
@@ -35,9 +35,9 @@ export function HomeSection() {
         </article>
 
         <article className="content-card p-6">
-          <p className="text-xs uppercase tracking-[0.2em] text-neutral-600">Focus</p>
-          <h3 className="mt-3 text-lg font-medium text-white">What I bring</h3>
-          <ul className="mt-4 space-y-3 text-sm text-neutral-400">
+          <p className="text-xs uppercase tracking-[0.2em] text-neutral-500">Focus</p>
+          <h3 className="mt-3 text-base font-medium text-neutral-900">What I bring</h3>
+          <ul className="mt-4 space-y-3 text-sm text-neutral-700">
             <li>High-fidelity interface implementation.</li>
             <li>Systems thinking for scalable UI patterns.</li>
             <li>Hands-on collaboration with product teams.</li>
