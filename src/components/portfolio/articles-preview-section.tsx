@@ -10,15 +10,13 @@ export function ArticlesPreviewSection() {
       <SectionHeader
         title="Articles"
         rightContent={
-          <a
-            href="https://neto.substack.com/p/mystery-shopping-guia-para-espiar"
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            to="/articles"
             className="group inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-neutral-500 hover:text-neutral-900"
           >
-            Substack Style Reference
+            Open Archive
             <ArrowUpRight className="size-3 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-          </a>
+          </Link>
         }
       />
 
@@ -26,14 +24,13 @@ export function ArticlesPreviewSection() {
         <p className="text-xs uppercase tracking-[0.2em] text-neutral-500">
           Featured Essay
         </p>
-        <h3 className="article-title mt-4 text-2xl leading-tight text-neutral-900 md:text-3xl">
+        <h3 className="article-title mt-4 text-3xl leading-tight text-neutral-900 md:text-4xl">
           Writing about product craft, creative engineering, and interface
           systems.
         </h3>
-        <p className="mt-4 max-w-3xl text-sm leading-relaxed text-neutral-700">
-          This section mirrors a Substack reading experience: editorial cadence,
-          tighter typography, and strong hierarchy around title, date, and
-          excerpt.
+        <p className="mt-4 max-w-3xl text-base leading-relaxed text-neutral-700">
+          Thoughts on product craft, systems design, and front-end execution.
+          Every card below opens directly to the full article page.
         </p>
         <Link
           to="/articles"

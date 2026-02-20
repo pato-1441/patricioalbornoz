@@ -22,7 +22,7 @@ function ArticlesPage() {
       <div aria-hidden className="noise-overlay" />
 
       <div className="mx-auto grid max-w-[1600px] grid-cols-1 gap-12 px-6 py-10 lg:grid-cols-12 lg:gap-20 lg:px-12 lg:py-16">
-        <SectionPills items={navItems} className="sticky top-3 z-40 -mb-3 lg:hidden" />
+        <SectionPills items={navItems} className="mb-2 lg:hidden" />
 
         <Sidebar navItems={navItems} />
 
@@ -31,15 +31,9 @@ function ArticlesPage() {
             <SectionHeader
               title="Articles"
               rightContent={
-                <a
-                  href="https://neto.substack.com/p/mystery-shopping-guia-para-espiar"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-neutral-500 hover:text-neutral-900"
-                >
-                  Substack Tone
-                  <ArrowUpRight className="size-3 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                </a>
+                <p className="text-xs uppercase tracking-[0.2em] text-neutral-500">
+                  Archive
+                </p>
               }
             />
 
@@ -47,10 +41,10 @@ function ArticlesPage() {
               <p className="text-xs uppercase tracking-[0.2em] text-neutral-500">
                 Editorial Notes
               </p>
-              <h2 className="article-title mt-4 max-w-4xl text-3xl leading-tight text-neutral-900 md:text-4xl">
+              <h2 className="article-title mt-4 max-w-4xl text-4xl leading-tight text-neutral-900 md:text-5xl">
                 Essays about product craft and engineering decisions that scale.
               </h2>
-              <p className="mt-5 max-w-3xl text-sm leading-relaxed text-neutral-700">
+              <p className="mt-5 max-w-3xl text-base leading-relaxed text-neutral-700">
                 This archive collects writing on interface systems, product clarity,
                 and the execution details that make teams ship better software.
               </p>

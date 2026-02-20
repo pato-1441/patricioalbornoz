@@ -16,7 +16,6 @@
 }
 
 html {
-  font-size: 15px;
   scroll-behavior: smooth;
   background: var(--bg);
 }
@@ -53,30 +52,36 @@ body {
 }
 
 .section-title {
-  font-size: clamp(1.25rem, 1.7vw, 1.55rem);
+  font-size: clamp(1.55rem, 2vw, 1.95rem);
   letter-spacing: -0.02em;
-  font-weight: 510;
+  font-weight: 520;
   color: #25221d;
 }
 
+.section-nav {
+  scrollbar-width: none;
+}
+
+.section-nav::-webkit-scrollbar {
+  display: none;
+}
+
 .nav-pill {
-  border: 1px solid #cdc2af;
-  border-radius: 999px;
-  padding: 0.4rem 0.9rem;
-  font-size: 0.72rem;
-  letter-spacing: 0.12em;
+  border-bottom: 1.5px solid transparent;
+  padding-bottom: 0.25rem;
+  font-size: 0.76rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: #6f6658;
   transition:
     color 180ms ease,
-    border-color 180ms ease,
-    background-color 180ms ease;
+    border-color 180ms ease;
 }
 
 .nav-pill:hover {
   color: #231f19;
-  border-color: #b9ab94;
-  background: rgba(255, 255, 255, 0.7);
+  border-color: #8f7a5c;
 }
 
 .content-card {
@@ -119,7 +124,7 @@ body {
   float: left;
   margin: 0.18em 0.45rem 0 0;
   font-family: 'Newsreader', Georgia, serif;
-  font-size: 2.75rem;
+  font-size: 3.1rem;
   line-height: 0.8;
   color: #2c251c;
 }

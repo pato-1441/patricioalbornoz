@@ -78,7 +78,7 @@ function renderInlineMarkdown(text: string): ReactNode[] {
 
 export function ArticleContent({ blocks }: ArticleContentProps) {
   return (
-    <div className="prose-flow mx-auto max-w-3xl space-y-5 text-[0.98rem] leading-relaxed text-neutral-700 md:text-[1.02rem]">
+    <div className="prose-flow mx-auto max-w-3xl space-y-5 text-base leading-relaxed text-neutral-700 md:text-[1.05rem]">
       {blocks.map((block, index) => {
         const key = `${block.type}-${index}`
 

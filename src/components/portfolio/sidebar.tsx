@@ -14,21 +14,21 @@ export function Sidebar({ navItems }: SidebarProps) {
           <p className="text-[11px] uppercase tracking-[0.18em] text-neutral-500">
             Patricio Albornoz
           </p>
-          <h1 className="text-3xl font-medium leading-[1.04] tracking-tight text-neutral-900 sm:text-4xl">
+          <h1 className="text-4xl font-medium leading-[1.02] tracking-tight text-neutral-900 sm:text-5xl">
             Patricio
             <br />
             Albornoz
             <br />
             <span className="text-neutral-500">Design Engineer</span>
           </h1>
-          <p className="max-w-md text-base leading-relaxed text-neutral-700">
+          <p className="max-w-md text-lg leading-relaxed text-neutral-700">
             Building <span className="display-serif italic text-neutral-900">polished</span>{' '}
             interfaces and{' '}
             <span className="display-serif italic text-neutral-900">fluid</span>{' '}
             interactions at the intersection of design systems and creative
             coding.
           </p>
-          <p className="max-w-md text-sm leading-relaxed text-neutral-600">
+          <p className="max-w-md text-base leading-relaxed text-neutral-600">
             Currently crafting next-gen tools at{' '}
             <a
               href="https://vercel.com"
@@ -42,7 +42,7 @@ export function Sidebar({ navItems }: SidebarProps) {
           </p>
         </div>
 
-        <SectionPills items={navItems} className="hidden lg:flex" />
+        <SectionPills items={navItems} className="hidden lg:flex lg:py-1" />
 
         <div className="flex items-center gap-5 text-neutral-500">
           <a
@@ -81,8 +81,8 @@ export function Sidebar({ navItems }: SidebarProps) {
           </a>
         </div>
 
-        <div className="inline-flex rounded-full border border-stone-300 bg-stone-100 px-3 py-1.5 text-xs tracking-[0.08em] text-neutral-600">
-          <span className="mr-2 inline-flex size-2 animate-pulse rounded-full bg-emerald-500/80" />
+        <div className="inline-flex h-10 items-center justify-center gap-2 rounded-full border border-stone-300 bg-stone-100 px-5 text-sm tracking-[0.08em] text-neutral-600 leading-none">
+          <span className="inline-flex size-2 animate-pulse rounded-full bg-emerald-500/80" />
           OPEN TO ADVISORY
         </div>
       </div>

@@ -21,7 +21,7 @@ function App() {
       <div aria-hidden className="noise-overlay" />
 
       <div className="mx-auto grid max-w-[1600px] grid-cols-1 gap-12 px-6 py-10 lg:grid-cols-12 lg:gap-20 lg:px-12 lg:py-16">
-        <SectionPills items={sectionNavItems} className="sticky top-3 z-40 -mb-3 lg:hidden" />
+        <SectionPills items={sectionNavItems} className="mb-2 lg:hidden" />
 
         <Sidebar navItems={sectionNavItems} />
 
