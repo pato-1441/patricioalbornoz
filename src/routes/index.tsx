@@ -1,71 +1,36 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { Github, Linkedin } from 'lucide-react'
-import { X } from '@/components/icons/x'
-import { Card } from '@/components/ui/card'
-
+import { ArticlesPreviewSection } from '@/components/portfolio/articles-preview-section'
+import { HomeSection } from '@/components/portfolio/home-section'
+import { SectionPills, type NavItem } from '@/components/portfolio/section-pills'
+import { Sidebar } from '@/components/portfolio/sidebar'
+import { WorkSection } from '@/components/portfolio/work-section'
 
 export const Route = createFileRoute('/')({
   component: App,
 })
 
+const sectionNavItems: NavItem[] = [
+  { label: 'Home', href: '#home' },
+  { label: 'Work', href: '#work' },
+  { label: 'Articles', href: '#articles' },
+]
+
 function App() {
   return (
-    <main className="flex flex-col items-center justify-center h-screen text-amber-950 bg-amber-50">
-      <section className="h-2/3 w-4/5 grid grid-cols-4 gap-4">
-        <Card className="flex flex-col gap-2 items-start">
-          <a href="https://twitter.com/patoalbornozz" target="_blank" rel="noopener noreferrer" className='group w-full'>
-            <img
-              src={'https://pbs.twimg.com/profile_images/2010743613538353152/sPZTaIV1_400x400.jpg'}
-              className="h-52 w-full object-cover rounded-lg group-hover:opacity-90 transition-all duration-200 border-amber-50 border"
-              alt="patricio albornoz picture"
-            />
-          </a>
-          <div className="flex flex-col items-start justify-between h-full gap-4 px-1">
-            <div className="flex flex-col items-start justify-center gap-0">
-              <h1 className="text-4xl font-bold">Patricio Albornoz</h1>
-              <p className="text-xl">Doer</p>
-            </div>
-            <div className="flex flex-col items-start justify-center gap-1">
-              <a href="https://x.com/patoalbornozz" target="_blank" rel="noopener noreferrer" className='group flex items-center justify-center gap-1.5'>
-                <X />
-                <span className="text-base font-medium">Twitter</span>
-              </a>
-              <a href="https://github.com/pato-1441" target="_blank" rel="noopener noreferrer" className='group flex items-center justify-center gap-1.5'>
-                <Github className="size-4" />
-                <span className="text-base font-medium">GitHub</span>
-              </a>
-              <a href="https://www.linkedin.com/in/patoalbornoz/" target="_blank" rel="noopener noreferrer" className='group flex items-center justify-center gap-1.5'>
-                <Linkedin className="size-4" />
-                <span className="text-base font-medium">LinkedIn</span>
-              </a>
-            </div>
-          </div>
-        </Card>
-        <div className="flex flex-col gap-4 items-center justify-between">
-          <p className="text-lg">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio quaerat assumenda mollitia obcaecati ullam fugiat, veniam iusto nesciunt tempora quae pariatur earum sint in perspiciatis odio maxime consectetur asperiores possimus voluptates molestiae quia, repellendus quam! Obcaecati modi dicta a velit ratione error eos iure eligendi accusantium. Ipsa dolorem quo quisquam.
-          </p>
-          <p className="text-lg">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio quaerat assumenda mollitia obcaecati ullam fugiat, veniam iusto nesciunt tempora quae pariatur earum sint in perspiciatis odio maxime consectetur asperiores possimus voluptates molestiae quia, repellendus quam! Obcaecati modi dicta a velit ratione error eos iure eligendi accusantium. Ipsa dolorem quo quisquam.
-          </p>
+    <main className="relative min-h-screen selection:bg-white/20 selection:text-white">
+      <div aria-hidden className="noise-overlay" />
+
+      <div className="mx-auto grid max-w-[1600px] grid-cols-1 gap-12 px-6 py-10 lg:grid-cols-12 lg:gap-20 lg:px-12 lg:py-16">
+        <SectionPills items={sectionNavItems} className="sticky top-3 z-40 -mb-3 lg:hidden" />
+
+        <Sidebar navItems={sectionNavItems} />
+
+        <div className="space-y-14 lg:col-span-8 lg:space-y-20 xl:col-span-9">
+          <HomeSection />
+          <WorkSection />
+          <ArticlesPreviewSection />
         </div>
-        <div className="flex flex-col gap-4 items-center justify-between">
-          <p className="text-lg">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio quaerat assumenda mollitia obcaecati ullam fugiat, veniam iusto nesciunt tempora quae pariatur earum sint in perspiciatis odio maxime consectetur asperiores possimus voluptates molestiae quia, repellendus quam! Obcaecati modi dicta a velit ratione error eos iure eligendi accusantium. Ipsa dolorem quo quisquam.
-          </p>
-          <p className="text-lg">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio quaerat assumenda mollitia obcaecati ullam fugiat, veniam iusto nesciunt tempora quae pariatur earum sint in perspiciatis odio maxime consectetur asperiores possimus voluptates molestiae quia, repellendus quam! Obcaecati modi dicta a velit ratione error eos iure eligendi accusantium. Ipsa dolorem quo quisquam.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 items-center justify-between">
-          <p className="text-lg">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio quaerat assumenda mollitia obcaecati ullam fugiat, veniam iusto nesciunt tempora quae pariatur earum sint in perspiciatis odio maxime consectetur asperiores possimus voluptates molestiae quia, repellendus quam! Obcaecati modi dicta a velit ratione error eos iure eligendi accusantium. Ipsa dolorem quo quisquam.
-          </p>
-          <p className="text-lg">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio quaerat assumenda mollitia obcaecati ullam fugiat, veniam iusto nesciunt tempora quae pariatur earum sint in perspiciatis odio maxime consectetur asperiores possimus voluptates molestiae quia, repellendus quam! Obcaecati modi dicta a velit ratione error eos iure eligendi accusantium. Ipsa dolorem quo quisquam.
-          </p>
-        </div>
-      </section>
+      </div>
     </main>
   )
 }
