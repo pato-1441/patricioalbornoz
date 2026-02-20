@@ -32,7 +32,7 @@ function ArticlePage() {
       <div aria-hidden className="noise-overlay" />
 
       <div className="mx-auto grid max-w-[1600px] grid-cols-1 gap-12 px-6 py-10 lg:grid-cols-12 lg:gap-20 lg:px-12 lg:py-16">
-        <SectionPills items={navItems} className="mb-2 lg:hidden" />
+        <SectionPills items={navItems} className="mb-3 lg:hidden" />
 
         <Sidebar navItems={navItems} />
 
@@ -49,10 +49,10 @@ function ArticlePage() {
             <p className="mt-8 text-xs uppercase tracking-[0.2em] text-neutral-500">
               {article.date} · {article.readTime}
             </p>
-            <h1 className="article-title mt-4 max-w-4xl text-4xl leading-tight text-neutral-900 md:text-6xl">
+            <h1 className="mt-4 max-w-4xl text-5xl font-semibold leading-[0.92] tracking-tight text-neutral-900 md:text-7xl">
               {article.title}
             </h1>
-            <p className="mt-5 max-w-3xl text-base leading-relaxed text-neutral-700">
+            <p className="mt-5 max-w-3xl text-lg leading-relaxed text-neutral-700">
               {article.excerpt}
             </p>
           </div>

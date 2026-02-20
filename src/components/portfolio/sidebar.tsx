@@ -4,30 +4,36 @@ import { SectionPills, type NavItem } from '@/components/portfolio/section-pills
 
 type SidebarProps = {
   navItems: NavItem[]
+  className?: string
 }
 
-export function Sidebar({ navItems }: SidebarProps) {
+export function Sidebar({ navItems, className }: SidebarProps) {
   return (
-    <aside className="lg:col-span-4 xl:col-span-3 lg:sticky lg:top-16 lg:h-[calc(100vh-8rem)] lg:flex lg:flex-col lg:justify-between">
-      <div className="space-y-8">
+    <aside
+      className={`lg:col-span-4 xl:col-span-3 lg:sticky lg:top-16 lg:h-[calc(100vh-8rem)] lg:flex lg:flex-col lg:justify-between ${className ?? ''}`}
+    >
+      <div className="space-y-10">
         <div className="space-y-6">
-          <p className="text-[11px] uppercase tracking-[0.18em] text-neutral-500">
-            Patricio Albornoz
+          <p className="text-[11px] uppercase tracking-[0.2em] text-neutral-500">
+            Design Systems · Product Craft
           </p>
-          <h1 className="text-4xl font-medium leading-[1.02] tracking-tight text-neutral-900 sm:text-5xl">
+
+          <h1 className="text-4xl font-semibold leading-[0.98] tracking-[-0.02em] text-neutral-900 sm:text-5xl">
             Patricio
             <br />
             Albornoz
             <br />
-            <span className="text-neutral-500">Design Engineer</span>
+            <span className="display-serif text-[0.92em] font-medium italic text-neutral-600">
+              Design Engineer
+            </span>
           </h1>
+
           <p className="max-w-md text-lg leading-relaxed text-neutral-700">
-            Building <span className="display-serif italic text-neutral-900">polished</span>{' '}
-            interfaces and{' '}
-            <span className="display-serif italic text-neutral-900">fluid</span>{' '}
-            interactions at the intersection of design systems and creative
-            coding.
+            Building <span className="display-serif text-[1.04em] italic text-neutral-900">polished</span>{' '}
+            interfaces and <span className="display-serif text-[1.04em] italic text-neutral-900">fluid</span>{' '}
+            interaction systems with a strong editorial eye and production rigor.
           </p>
+
           <p className="max-w-md text-base leading-relaxed text-neutral-600">
             Currently crafting next-gen tools at{' '}
             <a
@@ -44,13 +50,13 @@ export function Sidebar({ navItems }: SidebarProps) {
 
         <SectionPills items={navItems} className="hidden lg:flex lg:py-1" />
 
-        <div className="flex items-center gap-5 text-neutral-500">
+        <div className="flex items-center gap-3">
           <a
             href="https://x.com/patoalbornozz"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="X profile"
-            className="transition-colors hover:text-neutral-900"
+            className="icon-link"
           >
             <X />
           </a>
@@ -59,40 +65,40 @@ export function Sidebar({ navItems }: SidebarProps) {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub profile"
-            className="transition-colors hover:text-neutral-900"
+            className="icon-link"
           >
-            <Github className="size-5" />
+            <Github className="size-4" />
           </a>
           <a
             href="https://www.linkedin.com/in/patoalbornoz/"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn profile"
-            className="transition-colors hover:text-neutral-900"
+            className="icon-link"
           >
-            <Linkedin className="size-5" />
+            <Linkedin className="size-4" />
           </a>
           <a
             href="mailto:pato@patricioalbornoz.com"
             aria-label="Email Patricio"
-            className="transition-colors hover:text-neutral-900"
+            className="icon-link"
           >
-            <Mail className="size-5" />
+            <Mail className="size-4" />
           </a>
         </div>
 
-        <div className="inline-flex h-10 items-center justify-center gap-2 rounded-full border border-stone-300 bg-stone-100 px-5 text-sm tracking-[0.08em] text-neutral-600 leading-none">
-          <span className="inline-flex size-2 animate-pulse rounded-full bg-emerald-500/80" />
-          OPEN TO ADVISORY
+        <div className="availability-tag">
+          <span className="dot" />
+          Open to advisory
         </div>
       </div>
 
-      <footer className="mt-12 border-t border-stone-300 pt-8 text-xs leading-relaxed text-neutral-500">
+      <footer className="mt-14 border-t border-[var(--line)] pt-8 text-xs leading-relaxed text-neutral-500">
         © {new Date().getFullYear()} Patricio Albornoz.
         <br />
         Crafted with intention in San Francisco.
         <br />
-        Typeset in Geist &amp; Newsreader.
+        Typeset in Manrope &amp; Cormorant Garamond.
       </footer>
     </aside>
   )

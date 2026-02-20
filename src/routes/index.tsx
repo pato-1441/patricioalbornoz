@@ -21,14 +21,20 @@ function App() {
       <div aria-hidden className="noise-overlay" />
 
       <div className="mx-auto grid max-w-[1600px] grid-cols-1 gap-12 px-6 py-10 lg:grid-cols-12 lg:gap-20 lg:px-12 lg:py-16">
-        <SectionPills items={sectionNavItems} className="mb-2 lg:hidden" />
+        <SectionPills items={sectionNavItems} className="reveal delay-1 mb-3 lg:hidden" />
 
-        <Sidebar navItems={sectionNavItems} />
+        <Sidebar navItems={sectionNavItems} className="reveal delay-1" />
 
         <div className="space-y-14 lg:col-span-8 lg:space-y-20 xl:col-span-9">
-          <HomeSection />
-          <WorkSection />
-          <ArticlesPreviewSection />
+          <div className="reveal delay-2">
+            <HomeSection />
+          </div>
+          <div className="reveal delay-3">
+            <WorkSection />
+          </div>
+          <div className="reveal delay-4">
+            <ArticlesPreviewSection />
+          </div>
         </div>
       </div>
     </main>
