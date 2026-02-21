@@ -255,6 +255,52 @@ body {
   color: color-mix(in oklch, var(--text), oklch(0.45 0.03 66) 18%);
 }
 
+.end-reading-note {
+  margin-top: 3.25rem;
+  display: grid;
+  justify-items: center;
+  gap: 0.8rem;
+  border-top: 1px solid var(--line);
+  padding-top: 2rem;
+  text-align: center;
+}
+
+.end-reading-faces {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--paper-soft);
+  padding: 0.44rem 0.72rem;
+  color: color-mix(in oklch, var(--accent), black 28%);
+}
+
+.end-reading-faces svg:nth-child(1) {
+  animation: faceBob 1.4s ease-in-out infinite;
+}
+
+.end-reading-faces svg:nth-child(2) {
+  animation: faceBob 1.4s ease-in-out 160ms infinite;
+}
+
+.end-reading-copy {
+  margin: 0;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  color: var(--muted);
+}
+
+@keyframes faceBob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-1.5px);
+  }
+}
+
 .x-shot-image {
   object-fit: cover;
   filter: saturate(90%) contrast(94%);

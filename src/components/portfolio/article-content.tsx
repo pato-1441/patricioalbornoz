@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import { Smile } from 'lucide-react'
 import type { ArticleBlock } from '@/data/articles'
 
 type ArticleContentProps = {
@@ -131,6 +132,14 @@ export function ArticleContent({ blocks }: ArticleContentProps) {
 
         return <p key={key}>{renderInlineMarkdown(block.text)}</p>
       })}
+
+      <footer className="end-reading-note" aria-label="End of article">
+        <div className="end-reading-faces" aria-hidden>
+          <Smile className="size-4" />
+          <Smile className="size-4" />
+        </div>
+        <p className="end-reading-copy">Thanks for reading. You made it to the end!</p>
+      </footer>
     </div>
   )
 }
