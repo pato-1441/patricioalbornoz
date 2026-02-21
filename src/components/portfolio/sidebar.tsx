@@ -5,12 +5,13 @@ import { SectionPills, type NavItem } from '@/components/portfolio/section-pills
 type SidebarProps = {
   navItems: NavItem[]
   className?: string
+  layout?: 'default' | 'article'
 }
 
-export function Sidebar({ navItems, className }: SidebarProps) {
+export function Sidebar({ navItems, className, layout = 'default' }: SidebarProps) {
   return (
     <aside
-      className={`lg:col-span-4 xl:col-span-3 lg:sticky lg:top-16 lg:h-[calc(100vh-8rem)] lg:flex lg:flex-col lg:justify-between ${className ?? ''}`}
+      className={`lg:col-span-4 xl:col-span-3 lg:sticky lg:top-16 lg:h-[calc(100vh-8rem)] lg:flex lg:flex-col lg:justify-between ${layout === 'article' ? 'lg:-translate-x-5 xl:-translate-x-10' : ''} ${className ?? ''}`}
     >
       <div className="space-y-10">
         <div className="space-y-6">
@@ -29,8 +30,8 @@ export function Sidebar({ navItems, className }: SidebarProps) {
           </h1>
 
           <p className="max-w-md text-lg leading-relaxed text-neutral-700">
-            Building <span className="display-serif text-[1.04em] italic text-neutral-900">polished</span>{' '}
-            interfaces and <span className="display-serif text-[1.04em] italic text-neutral-900">fluid</span>{' '}
+            Building <span className="display-serif text-[1.28em] italic text-neutral-900">polished</span>{' '}
+            interfaces and <span className="display-serif text-[1.28em] italic text-neutral-900">fluid</span>{' '}
             interaction systems with a strong editorial eye and production rigor.
           </p>
 

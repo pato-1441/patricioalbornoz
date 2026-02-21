@@ -20,17 +20,6 @@ export function ArticlesPreviewSection() {
         }
       />
 
-      <article className="content-card article-card p-6 md:p-8">
-        <p className="text-xs uppercase tracking-[0.2em] text-neutral-500">Editorial Line</p>
-        <h3 className="mt-3 text-4xl font-semibold leading-tight tracking-tight text-neutral-900 md:text-5xl">
-          Writing on product clarity, interface behavior, and frontend craft.
-        </h3>
-        <p className="mt-4 max-w-3xl text-base leading-relaxed text-neutral-700">
-          Short essays from real shipping work: structure, language, and interaction
-          decisions that make software easier to trust.
-        </p>
-      </article>
-
       <div className="article-list">
         {articles.slice(0, 4).map((article) => (
           <ArticleCard key={article.slug} article={article} />

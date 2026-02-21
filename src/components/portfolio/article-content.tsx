@@ -78,13 +78,13 @@ function renderInlineMarkdown(text: string): ReactNode[] {
 
 export function ArticleContent({ blocks }: ArticleContentProps) {
   return (
-    <div className="prose-flow mx-auto max-w-3xl space-y-5 text-base leading-relaxed text-neutral-700 md:text-[1.08rem]">
+    <div className="prose-flow mx-auto max-w-[42rem] space-y-6 text-[1.06rem] leading-[1.8] text-neutral-700 md:text-[1.12rem]">
       {blocks.map((block, index) => {
         const key = `${block.type}-${index}`
 
         if (block.type === 'h2') {
           return (
-            <h2 key={key} className="mt-10 text-4xl font-semibold leading-[0.95] tracking-tight text-neutral-900">
+            <h2 key={key} className="mt-12 text-4xl font-semibold leading-[0.98] tracking-tight text-neutral-900">
               {renderInlineMarkdown(block.text)}
             </h2>
           )
@@ -92,7 +92,7 @@ export function ArticleContent({ blocks }: ArticleContentProps) {
 
         if (block.type === 'h3') {
           return (
-            <h3 key={key} className="mt-7 text-2xl font-semibold text-neutral-900">
+            <h3 key={key} className="mt-8 text-[1.9rem] font-semibold text-neutral-900">
               {renderInlineMarkdown(block.text)}
             </h3>
           )
@@ -102,7 +102,7 @@ export function ArticleContent({ blocks }: ArticleContentProps) {
           return (
             <blockquote
               key={key}
-              className="border-l-2 border-stone-300 pl-4 display-serif italic text-neutral-700"
+              className="border-l-2 border-stone-300 pl-4 display-serif text-[1.26em] italic text-neutral-700"
             >
               {renderInlineMarkdown(block.text)}
             </blockquote>

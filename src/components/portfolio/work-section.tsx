@@ -27,7 +27,7 @@ export function WorkSection() {
           <div className="grid gap-6 md:grid-cols-[minmax(0,1.3fr)_minmax(0,0.9fr)] md:items-end">
             <div className="space-y-4">
               <p className="text-xs uppercase tracking-[0.18em] text-neutral-500">Featured Collaboration</p>
-              <h3 className="article-title text-4xl leading-[0.96] text-neutral-900 md:text-5xl">
+              <h3 className="text-4xl font-semibold leading-[0.94] tracking-tight text-neutral-900 md:text-5xl">
                 {featuredWork.title}
               </h3>
               <p className="text-base leading-relaxed text-neutral-700">
@@ -61,12 +61,8 @@ export function WorkSection() {
       ) : null}
 
       <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-        {otherWork.map(({ title, description, tags, href, icon: Icon }) => (
+        {otherWork.map(({ title, description, tags, href }) => (
           <article key={title} className="content-card card-stack p-6">
-            <div className="mb-5 flex size-10 items-center justify-center rounded-lg border border-[var(--line)] bg-white/75 text-neutral-700">
-              <Icon className="size-5" />
-            </div>
-
             <div className="mb-3 flex items-center justify-between">
               <h3 className="text-xl font-semibold text-neutral-900">{title}</h3>
               <span className="rounded-full border border-[var(--line)] bg-white/70 px-2.5 py-1 text-[10px] uppercase tracking-[0.12em] text-neutral-500">
