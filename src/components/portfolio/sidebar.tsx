@@ -25,7 +25,7 @@ export function Sidebar({ navItems, className, layout = 'default' }: SidebarProp
             Albornoz
             <br />
             <span className="display-serif text-[0.92em] font-medium italic text-neutral-600">
-              Design Engineer
+              Product Engineer
             </span>
           </h1>
 
@@ -36,16 +36,16 @@ export function Sidebar({ navItems, className, layout = 'default' }: SidebarProp
           </p>
 
           <p className="max-w-md text-base leading-relaxed text-neutral-600">
-            Currently crafting next-gen tools at{' '}
+            Currently crafting delightful experiences with next-gen tools at{' '}
             <a
-              href="https://vercel.com"
+              href="https://getautonoma.com"
               target="_blank"
               rel="noopener noreferrer"
               className="link-underline text-neutral-800"
             >
-              Vercel
+              Autonoma
             </a>
-            . Previously reshaping payments at Stripe.
+            . Previously reshaping the way of finding cool clothes at Sirvana (now {' '}<a href="https://www.melian.com" target="_blank" rel="noopener noreferrer" className="link-underline text-neutral-800">Melian</a>).
           </p>
         </div>
 
@@ -80,7 +80,7 @@ export function Sidebar({ navItems, className, layout = 'default' }: SidebarProp
             <Linkedin className="size-4" />
           </a>
           <a
-            href="mailto:pato@patricioalbornoz.com"
+            href="mailto:pwalbornoz@gmail.com"
             aria-label="Email Patricio"
             className="icon-link"
           >
@@ -94,12 +94,11 @@ export function Sidebar({ navItems, className, layout = 'default' }: SidebarProp
         </div>
       </div>
 
-      <footer className="mt-14 border-t border-[var(--line)] pt-8 text-xs leading-relaxed text-neutral-500">
+      <footer className="mt-14 border-t border-(--line) pt-8 text-xs leading-relaxed text-neutral-500">
         © {new Date().getFullYear()} Patricio Albornoz.
         <br />
-        Crafted with intention in San Francisco.
+        Crafted with intention in Buenos Aires.
         <br />
-        Typeset in Manrope &amp; Cormorant Garamond.
       </footer>
     </aside>
   )
