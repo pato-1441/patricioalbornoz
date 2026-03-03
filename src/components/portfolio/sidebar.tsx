@@ -30,22 +30,30 @@ export function Sidebar({ navItems, className, layout = 'default' }: SidebarProp
           </h1>
 
           <p className="max-w-md text-lg leading-relaxed text-neutral-700">
-            Building <span className="display-serif text-[1.28em] italic text-neutral-900">polished</span>{' '}
-            interfaces and <span className="display-serif text-[1.28em] italic text-neutral-900">fluid</span>{' '}
-            interaction systems with a strong editorial eye and production rigor.
-          </p>
-
-          <p className="max-w-md text-base leading-relaxed text-neutral-600">
-            Currently crafting delightful experiences with next-gen tools at{' '}
-            <a
-              href="https://getautonoma.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="link-underline text-neutral-800"
-            >
-              Autonoma
-            </a>
-            . Previously reshaping the way of finding cool clothes at Sirvana (now {' '}<a href="https://www.melian.com" target="_blank" rel="noopener noreferrer" className="link-underline text-neutral-800">Melian</a>).
+            <span className="block">
+              Building autonomous AI testing at{' '}
+              <a
+                href="https://getautonoma.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="display-serif text-[1.28em] font-bold italic text-neutral-800 link-underline"
+              >
+                Autonoma
+              </a>
+              , an agent that find bugs, heals them, and manages tests by itself.
+            </span>
+            <span className="mt-3 block">
+              Previously reimagined product discovery at Sirvana (now{' '}
+              <a
+                href="https://www.melian.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="display-serif text-[1.28em] font-bold italic text-neutral-800 link-underline"
+              >
+                Melian
+              </a>
+              ), where every online product lives in one AI-driven feed.
+            </span>
           </p>
         </div>
 

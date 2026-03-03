@@ -301,14 +301,114 @@ body {
   }
 }
 
-.x-shot-image {
+.showcase-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.showcase-tile {
+  padding: 0;
+  width: 100%;
+  appearance: none;
+  text-align: inherit;
+  color: inherit;
+  cursor: zoom-in;
+  margin-bottom: 0;
+}
+
+.showcase-media-shell {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at 18% 14%,
+      color-mix(in oklch, var(--accent-soft), white 32%),
+      transparent 56%
+    ),
+    color-mix(in oklch, var(--paper-soft), white 48%);
+  aspect-ratio: 4 / 3;
+}
+
+.showcase-media {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   filter: saturate(90%) contrast(94%);
   transition: transform 480ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.group:hover .x-shot-image {
+.group:hover .showcase-media {
   transform: scale(1.04);
+}
+
+.showcase-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: oklch(0.18 0.02 68 / 0.86);
+  backdrop-filter: blur(4px);
+}
+
+.showcase-lightbox-frame {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: color-mix(in oklch, var(--text), black 14%);
+}
+
+.showcase-lightbox-media {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: color-mix(in oklch, var(--text), black 14%);
+}
+
+.showcase-close {
+  position: absolute;
+  right: 0.8rem;
+  top: 0.8rem;
+  z-index: 1;
+  border: 1px solid color-mix(in oklch, var(--line), black 10%);
+  border-radius: 999px;
+  background: color-mix(in oklch, var(--paper), white 28%);
+  padding: 0.42rem 0.85rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: color-mix(in oklch, var(--text), oklch(0.52 0.03 70) 24%);
+  cursor: pointer;
+}
+
+@media (min-width: 780px) {
+  .showcase-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.2rem;
+  }
+
+  .showcase-featured {
+    grid-column: span 2;
+  }
+
+  .showcase-featured .showcase-media-shell {
+    aspect-ratio: 16 / 7;
+  }
+}
+
+@media (min-width: 1280px) {
+  .showcase-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .showcase-featured {
+    grid-column: span 2;
+  }
 }
 
 .link-underline {
