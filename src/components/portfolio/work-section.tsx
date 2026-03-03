@@ -41,9 +41,8 @@ export function WorkSection() {
             key={item.src}
             type="button"
             onClick={() => setActiveIndex(index)}
-            className={`content-card card-stack showcase-tile group block overflow-hidden ${
-              index === 0 ? 'showcase-featured' : ''
-            }`}
+            className={`content-card card-stack showcase-tile group block overflow-hidden`}
+            style={{ backgroundColor: item.bgColor }}
             aria-label={`Open ${item.title}`}
           >
             <div className="showcase-media-shell">

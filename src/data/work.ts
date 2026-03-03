@@ -3,6 +3,7 @@ export type WorkShowcaseItem = {
   src: string
   type: 'image' | 'video'
   note?: string
+  bgColor?: string
 }
 
 export const workShowcase: WorkShowcaseItem[] = [
@@ -10,6 +11,12 @@ export const workShowcase: WorkShowcaseItem[] = [
     title: 'Profile',
     src: '/profile.jpeg',
     type: 'image',
+  },
+  {
+    title: 'Heatmap',
+    src: '/heatmap.mov',
+    type: 'video',
+    bgColor: '#000000',
   },
   {
     title: 'Session Timeout',
@@ -29,6 +36,12 @@ export const workShowcase: WorkShowcaseItem[] = [
     note: 'Documentation experience preview',
   },
   {
+    title: 'Vercel Marketplace',
+    src: '/vercel-mkt-3.png',
+    type: 'image',
+    note: 'Vercel Marketplace preview',
+  },
+  {
     title: 'Run Information',
     src: '/run-information.jpeg',
     type: 'image',
@@ -40,7 +53,12 @@ export const workShowcase: WorkShowcaseItem[] = [
     type: 'image',
     note: 'Navigation and secondary controls',
   },
-  
+  {
+    title: 'View plan',
+    src: '/view-plan.mov',
+    type: 'video',
+    note: 'View plan preview',
+  },
   {
     title: 'Review',
     src: '/review.jpeg',
