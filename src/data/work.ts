@@ -8,9 +8,16 @@ export type WorkShowcaseItem = {
 
 export const workShowcase: WorkShowcaseItem[] = [
   {
+    title: 'Blacklight Logos',
+    src: '/blacklight-logos.mov',
+    type: 'video',
+    note: 'Blacklight logos animation',
+  },
+  {
     title: 'Profile',
     src: '/profile.jpeg',
     type: 'image',
+    note: 'Profile page',
   },
   {
     title: 'Heatmap',
@@ -22,6 +29,7 @@ export const workShowcase: WorkShowcaseItem[] = [
     title: 'Session Timeout',
     src: '/session-timeout.png',
     type: 'image',
+    note: 'Session timeout indicator',
   },
   {
     title: 'Switch Interaction',
@@ -42,10 +50,22 @@ export const workShowcase: WorkShowcaseItem[] = [
     note: 'Vercel Marketplace preview',
   },
   {
+    title: 'Tooltip',
+    src: '/tooltip.mov',
+    type: 'video',
+    note: 'Tooltip animation',
+  },
+  {
     title: 'Run Information',
     src: '/run-information.jpeg',
     type: 'image',
     note: 'Run dashboard details and context',
+  },
+  {
+    title: 'Glow button',
+    src: '/glow.mov',
+    type: 'video',
+    note: 'Glow button animation',
   },
   {
     title: 'Sidebar',
