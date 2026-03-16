@@ -13,12 +13,8 @@ export function Sidebar({ navItems, className, layout = 'default' }: SidebarProp
     <aside
       className={`lg:col-span-4 xl:col-span-3 lg:sticky lg:top-16 lg:h-[calc(100vh-8rem)] lg:flex lg:flex-col lg:justify-between ${layout === 'article' ? 'lg:-translate-x-5 xl:-translate-x-10' : ''} ${className ?? ''}`}
     >
-      <div className="space-y-10">
+      <div className="space-y-8">
         <div className="space-y-6">
-          <p className="text-[11px] uppercase tracking-[0.2em] text-neutral-500">
-            Design Systems · Product Craft
-          </p>
-
           <h1 className="text-4xl font-semibold leading-[0.98] tracking-[-0.02em] text-neutral-900 sm:text-5xl">
             Patricio
             <br />
@@ -31,9 +27,6 @@ export function Sidebar({ navItems, className, layout = 'default' }: SidebarProp
 
           <p className="max-w-md text-lg leading-relaxed text-neutral-700">
             <span className="block">
-              Working at the intersection of AI, product, and developer tools.
-            </span>
-            <span className="mt-3 block">
               Currently building autonomous testing agents at{' '}
               <a
                 href="https://getautonoma.com"
@@ -126,7 +119,7 @@ export function Sidebar({ navItems, className, layout = 'default' }: SidebarProp
         </div>
       </div>
 
-      <footer className="mt-14 border-t border-(--line) pt-8 text-xs leading-relaxed text-neutral-500">
+      <footer className="mt-8 border-t border-(--line) pt-8 text-xs leading-relaxed text-neutral-500">
         © {new Date().getFullYear()} Patricio Albornoz.
         <br />
         Crafted with intention in Buenos Aires.
