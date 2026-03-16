@@ -25,13 +25,16 @@ export function Sidebar({ navItems, className, layout = 'default' }: SidebarProp
             Albornoz
             <br />
             <span className="display-serif text-[0.92em] font-medium italic text-neutral-600">
-              Product Engineer
+              Doer
             </span>
           </h1>
 
           <p className="max-w-md text-lg leading-relaxed text-neutral-700">
             <span className="block">
-              Building autonomous AI testing at{' '}
+              Working at the intersection of AI, product, and developer tools.
+            </span>
+            <span className="mt-3 block">
+              Currently building autonomous testing agents at{' '}
               <a
                 href="https://getautonoma.com"
                 target="_blank"
@@ -40,10 +43,10 @@ export function Sidebar({ navItems, className, layout = 'default' }: SidebarProp
               >
                 Autonoma
               </a>
-              , an agent that find bugs, heals them, and manages tests by itself.
+              , capable of understanding codebases, finding bugs, and maintaining tests independently.
             </span>
             <span className="mt-3 block">
-              Previously reimagined product discovery at Sirvana (now{' '}
+              Previously helped reimagine product discovery at Sirvana (now{' '}
               <a
                 href="https://www.melian.com"
                 target="_blank"
@@ -52,7 +55,28 @@ export function Sidebar({ navItems, className, layout = 'default' }: SidebarProp
               >
                 Melian
               </a>
-              ), where every online product lives in one AI-driven feed.
+              ) through an AI-driven product feed.
+            </span>
+            <span className="mt-3 block">
+              Earlier led the development of{' '}
+              <a
+                href="https://www.embluemail.com/producto/whatsapp-universal-inbox/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-neutral-800 link-underline"
+              >
+                Universal Inbox
+              </a>{' '}
+              at{' '}
+              <a
+                href="https://www.embluemail.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="display-serif font-semibold italic text-[1.28em] text-neutral-800 link-underline"
+              >
+                emBlue
+              </a>
+              , a platform that unified customer conversations, WhatsApp campaigns, and CRM workflows.
             </span>
           </p>
         </div>
