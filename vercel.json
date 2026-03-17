@@ -3,7 +3,7 @@
   "buildCommand": "pnpm build",
   "functions": {
     "api/index.mjs": {
-      "runtime": "nodejs20.x"
+      "includeFiles": "dist/**"
     }
   },
   "rewrites": [
