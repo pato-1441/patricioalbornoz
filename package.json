@@ -4,8 +4,9 @@
   "type": "module",
   "scripts": {
     "seo:generate": "node scripts/generate-seo-files.mjs",
+    "seo:prerender": "node scripts/prerender-routes.mjs",
     "dev": "vite",
-    "build": "pnpm seo:generate && vite build && tsc",
+    "build": "pnpm seo:generate && vite build && pnpm seo:prerender && tsc",
     "preview": "vite preview",
     "start": "vite preview",
     "test": "vitest run",
