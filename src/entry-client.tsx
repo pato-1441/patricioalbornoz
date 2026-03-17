@@ -1,5 +1,5 @@
-import { hydrateRoot } from 'react-dom/client'
-import { RouterClient } from '@tanstack/react-router/ssr/client'
+import { createRoot } from 'react-dom/client'
+import { RouterProvider } from '@tanstack/react-router'
 import reportWebVitals from './reportWebVitals'
 import { createAppRouter } from './router'
 import './styles.css'
@@ -11,6 +11,12 @@ const router = createAppRouter({
   },
 })
 
-hydrateRoot(document, <RouterClient router={router} />)
+const appElement = document.getElementById('app')
+
+if (!appElement) {
+  throw new Error('Missing #app root element')
+}
+
+createRoot(appElement).render(<RouterProvider router={router} />)
 
 reportWebVitals()

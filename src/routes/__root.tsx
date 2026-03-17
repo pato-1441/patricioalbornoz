@@ -3,19 +3,9 @@ import {
   Outlet,
   Scripts,
   createRootRouteWithContext,
-  useLocation,
 } from '@tanstack/react-router'
 import type { AppRouterContext } from '@/router-context'
-import { defaultLocale, getLocaleFromPathname } from '@/lib/locale'
 import { siteName } from '@/lib/site'
-
-const devReactRefreshPreamble = `
-  import RefreshRuntime from "/@react-refresh"
-  RefreshRuntime.injectIntoGlobalHook(window)
-  window.$RefreshReg$ = () => {}
-  window.$RefreshSig$ = () => (type) => type
-  window.__vite_plugin_react_preamble_installed__ = true
-`
 
 export const Route = createRootRouteWithContext<AppRouterContext>()({
   loader: ({ context }) => context.documentAssets,
@@ -31,14 +21,6 @@ export const Route = createRootRouteWithContext<AppRouterContext>()({
       { rel: 'manifest', href: '/manifest.json' },
     ],
     scripts: [
-      ...(import.meta.env.DEV
-        ? [
-            {
-              type: 'module',
-              children: devReactRefreshPreamble,
-            },
-          ]
-        : []),
       {
         defer: true,
         src: 'https://cloud.umami.is/script.js',
@@ -55,22 +37,11 @@ export const Route = createRootRouteWithContext<AppRouterContext>()({
 })
 
 function RootDocument() {
-  const pathname = useLocation({
-    select: (location) => location.pathname,
-  })
-  const locale = getLocaleFromPathname(pathname) ?? defaultLocale
-
   return (
-    <html lang={locale} suppressHydrationWarning>
-      <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <HeadContent />
-      </head>
-      <body>
-        <Outlet />
-        <Scripts />
-      </body>
-    </html>
+    <>
+      <HeadContent />
+      <Outlet />
+      <Scripts />
+    </>
   )
 }
