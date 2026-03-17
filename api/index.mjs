@@ -5,7 +5,11 @@ import { fileURLToPath, pathToFileURL } from 'node:url'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
-const rootDir = path.resolve(__dirname, '..')
+const rootDirCandidates = [path.resolve(__dirname, '..'), __dirname]
+const rootDir =
+  rootDirCandidates.find((candidate) =>
+    existsSync(path.join(candidate, 'dist', 'client', '.vite', 'manifest.json')),
+  ) ?? path.resolve(__dirname, '..')
 const distClientDir = path.join(rootDir, 'dist', 'client')
 const distServerEntry = path.join(rootDir, 'dist', 'server', 'entry-server.js')
 const manifestPath = path.join(distClientDir, '.vite', 'manifest.json')
@@ -19,6 +23,7 @@ const mimeTypes = {
   '.jpeg': 'image/jpeg',
   '.jpg': 'image/jpeg',
   '.js': 'text/javascript; charset=utf-8',
+  '.mjs': 'text/javascript; charset=utf-8',
   '.json': 'application/json; charset=utf-8',
   '.mov': 'video/quicktime',
   '.mp4': 'video/mp4',
@@ -235,7 +240,8 @@ export default async function handler(req, res) {
   try {
     const origin = `https://${req.headers.host ?? 'localhost'}`
     const url = new URL(req.url ?? '/', origin)
-    const pathname = url.pathname
+    const rewrittenPathname = url.searchParams.get('pathname')
+    const pathname = rewrittenPathname && rewrittenPathname.startsWith('/') ? rewrittenPathname : url.pathname
     const method = req.method ?? 'GET'
 
     if (isPageRequest(method, pathname) && !getLocaleFromPathname(pathname)) {

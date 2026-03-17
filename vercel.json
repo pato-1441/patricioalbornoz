@@ -3,7 +3,7 @@
   "buildCommand": "pnpm build",
   "functions": {
     "api/index.mjs": {
-      "includeFiles": "dist/**"
+      "includeFiles": "../dist/**"
     }
   },
   "rewrites": [
@@ -13,7 +13,7 @@
     },
     {
       "source": "/:path*",
-      "destination": "/api/index"
+      "destination": "/api/index?pathname=/:path*"
     }
   ]
 }
