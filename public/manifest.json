@@ -1,15 +1,16 @@
 {
-  "short_name": "Patricio Albornoz",
-  "name": "Patricio Albornoz",
+  "short_name": "Patricio",
+  "name": "Patricio Albornoz Portfolio",
+  "description": "Portfolio of Patricio Albornoz about product interfaces, frontend craft, and autonomous testing.",
   "icons": [
     {
-      "src": "https://pbs.twimg.com/profile_images/2010743613538353152/sPZTaIV1_400x400.jpg",
-      "sizes": "400x400",
-      "type": "image/jpg"
+      "src": "/profile.jpeg",
+      "sizes": "2400x1350",
+      "type": "image/jpeg"
     }
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#f5efe5",
+  "background_color": "#f5efe5"
 }

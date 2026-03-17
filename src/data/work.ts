@@ -6,7 +6,13 @@ export type WorkShowcaseItem = {
   bgColor?: string
 }
 
-export const workShowcase: WorkShowcaseItem[] = [
+export const workShowcase: Array<WorkShowcaseItem> = [
+  {
+    title: 'Tambo',
+    src: '/tambo.png',
+    type: 'image',
+    note: 'Latest Tambo product surface',
+  },
   {
     title: 'Blacklight Logos',
     src: '/blacklight-logos.mov',

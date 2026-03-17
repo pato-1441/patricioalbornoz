@@ -1,0 +1,15 @@
+# Patricio Albornoz
+
+> Portfolio of Patricio Albornoz about product interfaces, frontend craft, autonomous testing, and design systems.
+
+## Primary pages
+
+- [Home (EN)](https://patricioalbornoz.com/en): Personal portfolio homepage with work, writing, and profile information.
+- [Inicio (ES)](https://patricioalbornoz.com/es): Version en espanol del portfolio personal, con trabajo, escritos y perfil.
+- [Articles (EN)](https://patricioalbornoz.com/en/articles): Writing archive covering frontend systems, product interfaces, and autonomous testing.
+- [Articulos (ES)](https://patricioalbornoz.com/es/articles): Archivo de escritos sobre interfaces de producto, frontend y testing autonomo.
+
+## Articles
+
+- [Two leaps into the unknown](https://patricioalbornoz.com/en/articles/two-leaps-into-the-unknown): A year of difficult calls, double leaps into the unknown, and starting over from inside Autonoma. (EN)
+- [Dos saltos al vacío](https://patricioalbornoz.com/es/articles/two-leaps-into-the-unknown): Un año de decisiones difíciles, saltos al vacío y volver a empezar desde adentro de Autonoma. (ES)

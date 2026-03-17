@@ -1,9 +1,11 @@
 import { useEffect, useMemo, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { SectionHeader } from '@/components/portfolio/section-header'
+import { useLocale } from '@/context/locale-context'
 import { workShowcase } from '@/data/work'
 
 export function WorkSection() {
+  const { t } = useLocale()
   const [activeIndex, setActiveIndex] = useState<number | null>(null)
   const activeItem = useMemo(
     () => (activeIndex === null ? null : workShowcase[activeIndex]),
@@ -33,7 +35,7 @@ export function WorkSection() {
 
   return (
     <section id="work" className="scroll-mt-24 space-y-7">
-      <SectionHeader title="Work" />
+      <SectionHeader title={t.work.title} />
 
       <div className="showcase-grid">
         {workShowcase.map((item, index) => (
@@ -43,7 +45,7 @@ export function WorkSection() {
             onClick={() => setActiveIndex(index)}
             className={`content-card card-stack showcase-tile group block overflow-hidden`}
             style={{ backgroundColor: item.bgColor }}
-            aria-label={`Open ${item.title}`}
+            aria-label={t.work.openItem(item.title)}
           >
             <div className="showcase-media-shell">
               {item.type === 'video' ? (
@@ -75,7 +77,7 @@ export function WorkSection() {
               className="showcase-lightbox"
               role="dialog"
               aria-modal="true"
-              aria-label={`${activeItem.title} preview`}
+              aria-label={t.work.previewItem(activeItem.title)}
               onClick={() => setActiveIndex(null)}
             >
               <div className="showcase-lightbox-frame" onClick={(event) => event.stopPropagation()}>
@@ -83,9 +85,9 @@ export function WorkSection() {
                   type="button"
                   className="showcase-close"
                   onClick={() => setActiveIndex(null)}
-                  aria-label="Close media preview"
+                  aria-label={t.work.closePreview}
                 >
-                  Close
+                  {t.work.close}
                 </button>
 
                 {activeItem.type === 'video' ? (

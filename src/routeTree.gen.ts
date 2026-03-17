@@ -9,14 +9,16 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as ArticlesRouteImport } from './routes/articles'
+import { Route as LocaleRouteImport } from './routes/$locale'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ArticlesIndexRouteImport } from './routes/articles.index'
-import { Route as ArticlesSlugRouteImport } from './routes/articles.$slug'
+import { Route as LocaleIndexRouteImport } from './routes/$locale/index'
+import { Route as LocaleArticlesRouteImport } from './routes/$locale/articles'
+import { Route as LocaleArticlesIndexRouteImport } from './routes/$locale/articles.index'
+import { Route as LocaleArticlesSlugRouteImport } from './routes/$locale/articles.$slug'
 
-const ArticlesRoute = ArticlesRouteImport.update({
-  id: '/articles',
-  path: '/articles',
+const LocaleRoute = LocaleRouteImport.update({
+  id: '/$locale',
+  path: '/$locale',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -24,55 +26,83 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ArticlesIndexRoute = ArticlesIndexRouteImport.update({
+const LocaleIndexRoute = LocaleIndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => ArticlesRoute,
+  getParentRoute: () => LocaleRoute,
 } as any)
-const ArticlesSlugRoute = ArticlesSlugRouteImport.update({
+const LocaleArticlesRoute = LocaleArticlesRouteImport.update({
+  id: '/articles',
+  path: '/articles',
+  getParentRoute: () => LocaleRoute,
+} as any)
+const LocaleArticlesIndexRoute = LocaleArticlesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => LocaleArticlesRoute,
+} as any)
+const LocaleArticlesSlugRoute = LocaleArticlesSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
-  getParentRoute: () => ArticlesRoute,
+  getParentRoute: () => LocaleArticlesRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/articles': typeof ArticlesRouteWithChildren
-  '/articles/$slug': typeof ArticlesSlugRoute
-  '/articles/': typeof ArticlesIndexRoute
+  '/$locale': typeof LocaleRouteWithChildren
+  '/$locale/articles': typeof LocaleArticlesRouteWithChildren
+  '/$locale/': typeof LocaleIndexRoute
+  '/$locale/articles/$slug': typeof LocaleArticlesSlugRoute
+  '/$locale/articles/': typeof LocaleArticlesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/articles/$slug': typeof ArticlesSlugRoute
-  '/articles': typeof ArticlesIndexRoute
+  '/$locale': typeof LocaleIndexRoute
+  '/$locale/articles/$slug': typeof LocaleArticlesSlugRoute
+  '/$locale/articles': typeof LocaleArticlesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/articles': typeof ArticlesRouteWithChildren
-  '/articles/$slug': typeof ArticlesSlugRoute
-  '/articles/': typeof ArticlesIndexRoute
+  '/$locale': typeof LocaleRouteWithChildren
+  '/$locale/articles': typeof LocaleArticlesRouteWithChildren
+  '/$locale/': typeof LocaleIndexRoute
+  '/$locale/articles/$slug': typeof LocaleArticlesSlugRoute
+  '/$locale/articles/': typeof LocaleArticlesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/articles' | '/articles/$slug' | '/articles/'
+  fullPaths:
+    | '/'
+    | '/$locale'
+    | '/$locale/articles'
+    | '/$locale/'
+    | '/$locale/articles/$slug'
+    | '/$locale/articles/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/articles/$slug' | '/articles'
-  id: '__root__' | '/' | '/articles' | '/articles/$slug' | '/articles/'
+  to: '/' | '/$locale' | '/$locale/articles/$slug' | '/$locale/articles'
+  id:
+    | '__root__'
+    | '/'
+    | '/$locale'
+    | '/$locale/articles'
+    | '/$locale/'
+    | '/$locale/articles/$slug'
+    | '/$locale/articles/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  ArticlesRoute: typeof ArticlesRouteWithChildren
+  LocaleRoute: typeof LocaleRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/articles': {
-      id: '/articles'
-      path: '/articles'
-      fullPath: '/articles'
-      preLoaderRoute: typeof ArticlesRouteImport
+    '/$locale': {
+      id: '/$locale'
+      path: '/$locale'
+      fullPath: '/$locale'
+      preLoaderRoute: typeof LocaleRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -82,40 +112,67 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/articles/': {
-      id: '/articles/'
+    '/$locale/': {
+      id: '/$locale/'
       path: '/'
-      fullPath: '/articles/'
-      preLoaderRoute: typeof ArticlesIndexRouteImport
-      parentRoute: typeof ArticlesRoute
+      fullPath: '/$locale/'
+      preLoaderRoute: typeof LocaleIndexRouteImport
+      parentRoute: typeof LocaleRoute
     }
-    '/articles/$slug': {
-      id: '/articles/$slug'
+    '/$locale/articles': {
+      id: '/$locale/articles'
+      path: '/articles'
+      fullPath: '/$locale/articles'
+      preLoaderRoute: typeof LocaleArticlesRouteImport
+      parentRoute: typeof LocaleRoute
+    }
+    '/$locale/articles/': {
+      id: '/$locale/articles/'
+      path: '/'
+      fullPath: '/$locale/articles/'
+      preLoaderRoute: typeof LocaleArticlesIndexRouteImport
+      parentRoute: typeof LocaleArticlesRoute
+    }
+    '/$locale/articles/$slug': {
+      id: '/$locale/articles/$slug'
       path: '/$slug'
-      fullPath: '/articles/$slug'
-      preLoaderRoute: typeof ArticlesSlugRouteImport
-      parentRoute: typeof ArticlesRoute
+      fullPath: '/$locale/articles/$slug'
+      preLoaderRoute: typeof LocaleArticlesSlugRouteImport
+      parentRoute: typeof LocaleArticlesRoute
     }
   }
 }
 
-interface ArticlesRouteChildren {
-  ArticlesSlugRoute: typeof ArticlesSlugRoute
-  ArticlesIndexRoute: typeof ArticlesIndexRoute
+interface LocaleArticlesRouteChildren {
+  LocaleArticlesSlugRoute: typeof LocaleArticlesSlugRoute
+  LocaleArticlesIndexRoute: typeof LocaleArticlesIndexRoute
 }
 
-const ArticlesRouteChildren: ArticlesRouteChildren = {
-  ArticlesSlugRoute: ArticlesSlugRoute,
-  ArticlesIndexRoute: ArticlesIndexRoute,
+const LocaleArticlesRouteChildren: LocaleArticlesRouteChildren = {
+  LocaleArticlesSlugRoute: LocaleArticlesSlugRoute,
+  LocaleArticlesIndexRoute: LocaleArticlesIndexRoute,
 }
 
-const ArticlesRouteWithChildren = ArticlesRoute._addFileChildren(
-  ArticlesRouteChildren,
+const LocaleArticlesRouteWithChildren = LocaleArticlesRoute._addFileChildren(
+  LocaleArticlesRouteChildren,
 )
+
+interface LocaleRouteChildren {
+  LocaleArticlesRoute: typeof LocaleArticlesRouteWithChildren
+  LocaleIndexRoute: typeof LocaleIndexRoute
+}
+
+const LocaleRouteChildren: LocaleRouteChildren = {
+  LocaleArticlesRoute: LocaleArticlesRouteWithChildren,
+  LocaleIndexRoute: LocaleIndexRoute,
+}
+
+const LocaleRouteWithChildren =
+  LocaleRoute._addFileChildren(LocaleRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  ArticlesRoute: ArticlesRouteWithChildren,
+  LocaleRoute: LocaleRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

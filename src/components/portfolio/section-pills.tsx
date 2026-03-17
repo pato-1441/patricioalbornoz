@@ -4,7 +4,7 @@ export type NavItem = {
 }
 
 type SectionPillsProps = {
-  items: NavItem[]
+  items: Array<NavItem>
   className?: string
 }
 

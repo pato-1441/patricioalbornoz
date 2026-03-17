@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://patricioalbornoz.com/en</loc>
+    <lastmod>2026-03-17T00:00:00.000Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://patricioalbornoz.com/en" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://patricioalbornoz.com/es" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://patricioalbornoz.com/" />
+  </url>
+  <url>
+    <loc>https://patricioalbornoz.com/es</loc>
+    <lastmod>2026-03-17T00:00:00.000Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://patricioalbornoz.com/en" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://patricioalbornoz.com/es" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://patricioalbornoz.com/" />
+  </url>
+  <url>
+    <loc>https://patricioalbornoz.com/en/articles</loc>
+    <lastmod>2026-03-17T00:00:00.000Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://patricioalbornoz.com/en/articles" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://patricioalbornoz.com/es/articles" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://patricioalbornoz.com/articles" />
+  </url>
+  <url>
+    <loc>https://patricioalbornoz.com/es/articles</loc>
+    <lastmod>2026-03-17T00:00:00.000Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://patricioalbornoz.com/en/articles" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://patricioalbornoz.com/es/articles" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://patricioalbornoz.com/articles" />
+  </url>
+  
+  <url>
+    <loc>https://patricioalbornoz.com/en/articles/two-leaps-into-the-unknown</loc>
+    <lastmod>2026-03-17T00:00:00.000Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://patricioalbornoz.com/en/articles/two-leaps-into-the-unknown" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://patricioalbornoz.com/es/articles/two-leaps-into-the-unknown" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://patricioalbornoz.com/articles/two-leaps-into-the-unknown" />
+  </url>
+  <url>
+    <loc>https://patricioalbornoz.com/es/articles/two-leaps-into-the-unknown</loc>
+    <lastmod>2026-03-17T00:00:00.000Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://patricioalbornoz.com/en/articles/two-leaps-into-the-unknown" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://patricioalbornoz.com/es/articles/two-leaps-into-the-unknown" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://patricioalbornoz.com/articles/two-leaps-into-the-unknown" />
+  </url>
+</urlset>
