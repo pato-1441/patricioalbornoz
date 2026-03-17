@@ -1,4 +1,4 @@
-import { createFileRoute, Link, notFound } from '@tanstack/react-router'
+import { Link, createFileRoute, notFound } from '@tanstack/react-router'
 import { ArrowLeft } from 'lucide-react'
 import { ArticleContent } from '@/components/portfolio/article-content'
 import { getArticleBySlug } from '@/data/articles'
@@ -33,9 +33,23 @@ function ArticlePage() {
             Back to all articles
           </Link>
 
-          <p className="text-xs uppercase tracking-[0.2em] text-neutral-500">
-            {article.date}
-          </p>
+          {article.coverImage ? (
+            <div className="overflow-hidden rounded-[1.25rem] border border-[var(--line)] bg-[var(--paper-soft)]">
+              <img
+                src={article.coverImage}
+                alt={article.coverAlt ?? article.title}
+                className="aspect-[16/9] w-full object-cover"
+                loading="eager"
+                decoding="async"
+              />
+            </div>
+          ) : null}
+
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-xs uppercase tracking-[0.2em] text-neutral-500">
+            <span>{article.date}</span>
+            <span aria-hidden className="h-1 w-1 rounded-full bg-[var(--line-strong)]" />
+            <span>{article.readTime}</span>
+          </div>
           <h1 className="max-w-4xl text-4xl font-semibold leading-[0.95] tracking-tight text-neutral-900 md:text-5xl">
             {article.title}
           </h1>

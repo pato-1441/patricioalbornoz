@@ -3,6 +3,9 @@ title: The Cost of Inconsistent UI Copy
 date: Oct 15, 2025
 readTime: 6 min read
 excerpt: Small wording differences create hidden cognitive tax across complex products.
+coverImage: /sidebar.jpeg
+coverAlt: Sidebar interface with concise navigation labels and structured copy.
+pinned: false
 ---
 When labels drift between teams, users have to constantly translate meaning. That translation cost compounds across sessions.
 

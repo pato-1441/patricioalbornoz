@@ -2,7 +2,7 @@ import { Link } from '@tanstack/react-router'
 import { ArrowUpRight } from 'lucide-react'
 import { ArticleCard } from '@/components/portfolio/article-card'
 import { SectionHeader } from '@/components/portfolio/section-header'
-import { articles } from '@/data/articles'
+import { articlePreviewArticles } from '@/data/articles'
 
 export function ArticlesPreviewSection() {
   return (
@@ -21,7 +21,7 @@ export function ArticlesPreviewSection() {
       />
 
       <div className="article-list">
-        {articles.slice(0, 4).map((article) => (
+        {articlePreviewArticles.map((article) => (
           <ArticleCard key={article.slug} article={article} />
         ))}
       </div>

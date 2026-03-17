@@ -3,6 +3,9 @@ title: Designing Product Surfaces That Explain Themselves
 date: Jan 12, 2026
 readTime: 8 min read
 excerpt: A practical system for reducing support load by making states, empty cases, and handoffs self-explanatory.
+coverImage: /run-information.jpeg
+coverAlt: Product information interface with warm editorial framing.
+pinned: true
 ---
 Most product friction does not come from feature gaps. It comes from unclear interfaces where users have to infer state, intent, or outcome.
 

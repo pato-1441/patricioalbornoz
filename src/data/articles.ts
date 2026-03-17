@@ -3,8 +3,8 @@ export type ArticleBlock =
   | { type: 'h2'; text: string }
   | { type: 'h3'; text: string }
   | { type: 'quote'; text: string }
-  | { type: 'ul'; items: string[] }
-  | { type: 'ol'; items: string[] }
+  | { type: 'ul'; items: Array<string> }
+  | { type: 'ol'; items: Array<string> }
 
 export type Article = {
   slug: string
@@ -12,7 +12,10 @@ export type Article = {
   readTime: string
   title: string
   excerpt: string
-  blocks: ArticleBlock[]
+  coverImage?: string
+  coverAlt?: string
+  pinned: boolean
+  blocks: Array<ArticleBlock>
 }
 
 type Frontmatter = {
@@ -20,13 +23,16 @@ type Frontmatter = {
   date: string
   readTime: string
   excerpt: string
+  coverImage?: string
+  coverAlt?: string
+  pinned: boolean
 }
 
-const articleFiles = import.meta.glob('../content/articles/*.md', {
+const articleFiles = import.meta.glob<string>('../content/articles/*.md', {
   eager: true,
   import: 'default',
   query: '?raw',
-}) as Record<string, string>
+})
 
 function parseFrontmatter(rawFile: string): { meta: Frontmatter; body: string } {
   const raw = rawFile.replace(/\r\n/g, '\n')
@@ -47,7 +53,10 @@ function parseFrontmatter(rawFile: string): { meta: Frontmatter; body: string } 
     if (separator < 0) continue
 
     const key = trimmed.slice(0, separator).trim()
-    const value = trimmed.slice(separator + 1).trim()
+    const value = trimmed
+      .slice(separator + 1)
+      .trim()
+      .replace(/^(['"])(.*)\1$/, '$2')
 
     map.set(key, value)
   }
@@ -58,13 +67,16 @@ function parseFrontmatter(rawFile: string): { meta: Frontmatter; body: string } 
       date: map.get('date') ?? 'Unknown date',
       readTime: map.get('readTime') ?? '5 min read',
       excerpt: map.get('excerpt') ?? '',
+      coverImage: map.get('coverImage') || undefined,
+      coverAlt: map.get('coverAlt') || undefined,
+      pinned: map.get('pinned')?.toLowerCase() === 'true',
     },
     body: body.trim(),
   }
 }
 
-function parseMarkdownBlocks(markdown: string): ArticleBlock[] {
-  const blocks: ArticleBlock[] = []
+function parseMarkdownBlocks(markdown: string): Array<ArticleBlock> {
+  const blocks: Array<ArticleBlock> = []
   const lines = markdown.split('\n')
 
   let index = 0
@@ -90,7 +102,7 @@ function parseMarkdownBlocks(markdown: string): ArticleBlock[] {
     }
 
     if (current.startsWith('> ')) {
-      const quoteLines: string[] = []
+      const quoteLines: Array<string> = []
       while (index < lines.length) {
         const line = (lines[index] ?? '').trim()
         if (!line.startsWith('> ')) break
@@ -102,7 +114,7 @@ function parseMarkdownBlocks(markdown: string): ArticleBlock[] {
     }
 
     if (current.startsWith('- ')) {
-      const items: string[] = []
+      const items: Array<string> = []
       while (index < lines.length) {
         const line = (lines[index] ?? '').trim()
         if (!line.startsWith('- ')) break
@@ -114,7 +126,7 @@ function parseMarkdownBlocks(markdown: string): ArticleBlock[] {
     }
 
     if (/^\d+\.\s+/.test(current)) {
-      const items: string[] = []
+      const items: Array<string> = []
       while (index < lines.length) {
         const line = (lines[index] ?? '').trim()
         if (!/^\d+\.\s+/.test(line)) break
@@ -125,7 +137,7 @@ function parseMarkdownBlocks(markdown: string): ArticleBlock[] {
       continue
     }
 
-    const paragraphLines: string[] = []
+    const paragraphLines: Array<string> = []
     while (index < lines.length) {
       const line = (lines[index] ?? '').trim()
 
@@ -150,7 +162,7 @@ function parseMarkdownBlocks(markdown: string): ArticleBlock[] {
   return blocks
 }
 
-export const articles: Article[] = Object.entries(articleFiles)
+export const articles: Array<Article> = Object.entries(articleFiles)
   .map(([filePath, raw]) => {
     const slug = filePath.split('/').pop()?.replace(/\.md$/, '') ?? 'untitled'
     const { meta, body } = parseFrontmatter(raw)
@@ -161,6 +173,9 @@ export const articles: Article[] = Object.entries(articleFiles)
       readTime: meta.readTime,
       title: meta.title,
       excerpt: meta.excerpt,
+      coverImage: meta.coverImage,
+      coverAlt: meta.coverAlt,
+      pinned: meta.pinned,
       blocks: parseMarkdownBlocks(body),
     }
   })
@@ -169,6 +184,34 @@ export const articles: Article[] = Object.entries(articleFiles)
     const bTime = new Date(b.date).getTime()
     return bTime - aTime
   })
+
+function takeArticles(primary: Array<Article>, fallback: Array<Article>, limit: number) {
+  const selected: Array<Article> = []
+  const seen = new Set<string>()
+
+  for (const article of [...primary, ...fallback]) {
+    if (seen.has(article.slug)) continue
+
+    selected.push(article)
+    seen.add(article.slug)
+
+    if (selected.length === limit) {
+      break
+    }
+  }
+
+  return selected
+}
+
+export const pinnedArticles = articles.filter((article) => article.pinned)
+
+export const homeFeaturedArticles = takeArticles(pinnedArticles, articles, 3)
+
+export const articlePreviewArticles = takeArticles(
+  articles.filter((article) => !article.pinned),
+  articles,
+  4,
+)
 
 export function getArticleBySlug(slug: string) {
   return articles.find((article) => article.slug === slug)

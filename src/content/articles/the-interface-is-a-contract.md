@@ -3,6 +3,9 @@ title: The Interface Is a Contract
 date: Sep 21, 2025
 readTime: 10 min read
 excerpt: A framework for aligning PM, design, and engineering around predictable UI behavior.
+coverImage: /review.jpeg
+coverAlt: Review interface illustrating explicit checks before a decision is confirmed.
+pinned: false
 ---
 Every interface promises behavior. Buttons, labels, and page structure become implicit contracts users rely on.
 

@@ -3,6 +3,9 @@ title: Building a Personal Design-Engineering Rhythm
 date: Feb 01, 2026
 readTime: 7 min read
 excerpt: A repeatable weekly cadence for balancing exploration, delivery, and technical debt.
+coverImage: /recording.jpeg
+coverAlt: Recording workflow interface used as the cover for the design-engineering rhythm article.
+pinned: true
 ---
 Creative work breaks when every week is pure execution. Product work breaks when every week is pure exploration.
 

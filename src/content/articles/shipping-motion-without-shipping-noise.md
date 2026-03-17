@@ -3,6 +3,9 @@ title: Shipping Motion Without Shipping Noise
 date: Nov 02, 2025
 readTime: 6 min read
 excerpt: How to use animation as product communication rather than decoration.
+coverImage: /multiple-choice.jpeg
+coverAlt: Selection interface used as the thumbnail for the motion systems article.
+pinned: false
 ---
 Motion should communicate a state change. If it does not communicate anything, it is visual debt.
 

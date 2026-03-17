@@ -3,6 +3,9 @@ title: Writing Better Empty States
 date: Dec 08, 2025
 readTime: 5 min read
 excerpt: Empty states should teach users what to do next, not only explain what is missing.
+coverImage: /session-timeout.png
+coverAlt: Timeout state with a clear next step, used as the cover for the empty states article.
+pinned: true
 ---
 An empty state is not a dead end. It is the first onboarding touchpoint for a feature.
 
