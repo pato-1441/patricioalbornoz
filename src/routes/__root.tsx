@@ -2,20 +2,17 @@ import {
   HeadContent,
   Outlet,
   Scripts,
-  createRootRouteWithContext,
+  createRootRoute,
 } from '@tanstack/react-router'
-import type { AppRouterContext } from '@/router-context'
 import { siteName } from '@/lib/site'
 
-export const Route = createRootRouteWithContext<AppRouterContext>()({
-  loader: ({ context }) => context.documentAssets,
-  head: ({ loaderData }) => ({
+export const Route = createRootRoute({
+  head: () => ({
     meta: [
       { name: 'theme-color', content: '#f5efe5' },
       { name: 'author', content: siteName },
     ],
     links: [
-      ...(loaderData?.styles ?? []).map((href) => ({ rel: 'stylesheet', href })),
       { rel: 'icon', href: '/patoalbornoz.jpg' },
       { rel: 'apple-touch-icon', href: '/patoalbornoz.jpg' },
       { rel: 'manifest', href: '/manifest.json' },
@@ -28,11 +25,6 @@ export const Route = createRootRouteWithContext<AppRouterContext>()({
       },
     ],
   }),
-  scripts: ({ loaderData }) =>
-    (loaderData?.scripts ?? []).map((src) => ({
-      type: 'module',
-      src,
-    })),
   component: RootDocument,
 })
 

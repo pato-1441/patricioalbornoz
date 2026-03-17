@@ -4,12 +4,7 @@ import reportWebVitals from './reportWebVitals'
 import { createAppRouter } from './router'
 import './styles.css'
 
-const router = createAppRouter({
-  documentAssets: {
-    scripts: [],
-    styles: [],
-  },
-})
+const router = createAppRouter()
 
 const appElement = document.getElementById('app')
 
