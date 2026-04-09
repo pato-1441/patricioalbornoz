@@ -14,10 +14,10 @@ export const workShowcase: Array<WorkShowcaseItem> = [
     note: 'Latest Tambo product surface',
   },
   {
-    title: 'Blacklight Logos',
-    src: '/blacklight-logos.mov',
-    type: 'video',
-    note: 'Blacklight logos animation',
+    title: 'Autonoma Blacklight Dashboard',
+    src: '/agent-tw-2.png',
+    type: 'image',
+    note: 'Autonoma Blacklight dashboard preview',
   },
   {
     title: 'Profile',
