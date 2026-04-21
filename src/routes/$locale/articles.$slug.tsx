@@ -112,45 +112,46 @@ function ArticlePage() {
   }
 
   return (
-    <main className="article-page relative min-h-screen selection:bg-amber-200/60 selection:text-neutral-900">
+    <main className="xp-desktop article-desktop">
       <div className="article-page-wrap">
-        <article className="article-shell">
-          <Link
-            to="/$locale/articles"
-            params={{ locale }}
-            className="article-backlink"
-          >
-            <ArrowLeft className="size-3" />
-            {t.articles.backToAll}
-          </Link>
-
-          {article.coverImage ? (
-            <div className="article-cover">
-              <img
-                src={article.coverImage}
-                alt={article.coverAlt ?? article.title}
-                className="article-cover-image"
-                loading="eager"
-                decoding="async"
-              />
-            </div>
-          ) : null}
-
-          <div className="article-meta">
-            <span>{formatArticleDate(article.publishedAt, locale)}</span>
-            <span aria-hidden className="article-meta-dot" />
-            <span>{formatReadTime(article.readTimeMinutes, locale)}</span>
-            <span aria-hidden className="article-meta-dot" />
-            <span>{`${t.articles.byAuthor} ${siteAuthorName}`}</span>
+        <article className="window article-window">
+          <div className="title-bar">
+            <div className="title-bar-text">{article.title}</div>
           </div>
-          <header className="article-header">
-            <h1 className="article-title">{article.title}</h1>
-            <p className="article-excerpt">{article.excerpt}</p>
-          </header>
 
-          <div className="article-divider" />
+          <div className="window-body">
+            <Link to="/$locale/articles" params={{ locale }} className="article-backlink">
+              <ArrowLeft size={13} />
+              {t.articles.backToAll}
+            </Link>
 
-          <ArticleContent blocks={article.blocks} />
+            {article.coverImage ? (
+              <div className="article-cover">
+                <img
+                  src={article.coverImage}
+                  alt={article.coverAlt ?? article.title}
+                  className="article-cover-image"
+                  loading="eager"
+                  decoding="async"
+                />
+              </div>
+            ) : null}
+
+            <div className="article-meta">
+              <span>{formatArticleDate(article.publishedAt, locale)}</span>
+              <span>{formatReadTime(article.readTimeMinutes, locale)}</span>
+              <span>{`${t.articles.byAuthor} ${siteAuthorName}`}</span>
+            </div>
+
+            <header className="article-header">
+              <h1 className="article-title">{article.title}</h1>
+              <p className="article-excerpt">{article.excerpt}</p>
+            </header>
+
+            <div className="article-divider" />
+
+            <ArticleContent blocks={article.blocks} />
+          </div>
         </article>
       </div>
     </main>

@@ -11,33 +11,33 @@ export function ArticleCard({ article }: ArticleCardProps) {
   const { locale, t } = useLocale()
 
   return (
-    <Link
-      to="/$locale/articles/$slug"
-      params={{ locale, slug: article.slug }}
-      className={`article-row ${article.coverImage ? 'article-row-with-cover' : ''}`}
-    >
-      {article.coverImage ? (
-        <div className="article-row-cover">
-          <img
-            src={article.coverImage}
-            alt={article.coverAlt ?? article.title}
-            className="article-row-cover-image"
-            loading="lazy"
-            decoding="async"
-          />
-        </div>
-      ) : null}
+    <Link to="/$locale/articles/$slug" params={{ locale, slug: article.slug }} className="window article-row">
+      <div className="title-bar">
+        <div className="title-bar-text">{article.pinned ? t.articles.featured : t.articles.article}</div>
+      </div>
 
-      <div className="article-row-content">
-        <div className="article-row-kicker">
-          <span>{article.pinned ? t.articles.featured : t.articles.article}</span>
-          <span>{formatReadTime(article.readTimeMinutes, locale)}</span>
-        </div>
-        <h3 className="article-row-title">{article.title}</h3>
-        <div className="article-row-meta">
+      <div className={`window-body article-row-body ${article.coverImage ? 'article-row-with-cover' : ''}`.trim()}>
+        {article.coverImage ? (
+          <div className="article-row-cover">
+            <img
+              src={article.coverImage}
+              alt={article.coverAlt ?? article.title}
+              className="article-row-cover-image"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        ) : null}
+
+        <div className="article-row-content">
+          <h3 className="article-row-title">{article.title}</h3>
           <p className="article-row-subtitle">{article.excerpt}</p>
-          <p className="article-row-date">{formatArticleDate(article.publishedAt, locale)}</p>
         </div>
+      </div>
+
+      <div className="status-bar article-row-status">
+        <p className="status-bar-field">{formatArticleDate(article.publishedAt, locale)}</p>
+        <p className="status-bar-field">{formatReadTime(article.readTimeMinutes, locale)}</p>
       </div>
     </Link>
   )

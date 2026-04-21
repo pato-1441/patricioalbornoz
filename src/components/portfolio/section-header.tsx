@@ -7,9 +7,9 @@ type SectionHeaderProps = {
 
 export function SectionHeader({ title, rightContent }: SectionHeaderProps) {
   return (
-    <div className="flex items-center justify-between gap-4">
-      <h2 className="section-title">{title}</h2>
-      {rightContent}
+    <div className="title-bar section-titlebar">
+      <div className="title-bar-text">{title}</div>
+      {rightContent ? <div className="section-titlebar-right">{rightContent}</div> : null}
     </div>
   )
 }

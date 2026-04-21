@@ -9,7 +9,7 @@ import { siteName } from '@/lib/site'
 export const Route = createRootRoute({
   head: () => ({
     meta: [
-      { name: 'theme-color', content: '#f5efe5' },
+      { name: 'theme-color', content: '#245edb' },
       { name: 'author', content: siteName },
     ],
     links: [

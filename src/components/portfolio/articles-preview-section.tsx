@@ -10,17 +10,13 @@ export function ArticlesPreviewSection() {
   const articlePreviewArticles = getArticlePreviewArticles(locale)
 
   return (
-    <section id="articles" className="scroll-mt-24 space-y-7">
+    <section id="articles" className="xp-section">
       <SectionHeader
         title={t.articles.title}
         rightContent={
-          <Link
-            to="/$locale/articles"
-            params={{ locale }}
-            className="group inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-neutral-500 hover:text-neutral-900"
-          >
+          <Link to="/$locale/articles" params={{ locale }} className="section-action-link">
             {t.articles.openArchive}
-            <ArrowUpRight className="size-3 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+            <ArrowUpRight size={13} />
           </Link>
         }
       />
@@ -31,10 +27,14 @@ export function ArticlesPreviewSection() {
         ))}
       </div>
 
-      <div className="articles-soon-note">
-        <p className="articles-soon-label">{t.home.archiveLabel}</p>
-        <h3 className="articles-soon-title">{t.articles.comingSoonTitle}</h3>
-        <p className="articles-soon-description">{t.articles.comingSoonDescription}</p>
+      <div className="window articles-soon-window">
+        <div className="title-bar">
+          <div className="title-bar-text">{t.home.archiveLabel}</div>
+        </div>
+        <div className="window-body">
+          <h3 className="articles-soon-title">{t.articles.comingSoonTitle}</h3>
+          <p className="articles-soon-description">{t.articles.comingSoonDescription}</p>
+        </div>
       </div>
     </section>
   )

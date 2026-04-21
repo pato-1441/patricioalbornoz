@@ -15,117 +15,96 @@ export function Sidebar({ navItems, className, layout = 'default' }: SidebarProp
   const { t } = useLocale()
 
   return (
-    <aside
-      className={`lg:col-span-4 xl:col-span-3 lg:sticky lg:top-16 lg:h-[calc(100vh-8rem)] lg:flex lg:flex-col lg:justify-between ${layout === 'article' ? 'lg:-translate-x-5 xl:-translate-x-10' : ''} ${className ?? ''}`}
-    >
-      <div className="space-y-6">
-        <div className="space-y-6">
-          <h1 className="text-4xl font-semibold leading-[0.98] tracking-[-0.02em] text-neutral-900 sm:text-5xl">
-            Patricio
-            <br />
-            Albornoz
-            <br />
-            <span className="display-serif text-[0.92em] font-medium italic text-neutral-600">
-              {t.sidebar.role}
-            </span>
-          </h1>
+    <aside className={`sidebar-slot ${layout === 'article' ? 'sidebar-slot-article' : ''} ${className ?? ''}`.trim()}>
+      <div className="window sidebar-window">
+        <div className="title-bar">
+          <div className="title-bar-text">Profile Panel</div>
+        </div>
 
-          <p className="max-w-md text-lg leading-relaxed text-neutral-700">
-            <span className="block">
+        <div className="window-body sidebar-body">
+          <div className="sidebar-copy-block">
+            <h1 className="sidebar-name">
+              Patricio Albornoz
+              <span>{t.sidebar.role}</span>
+            </h1>
+
+            <p className="sidebar-copy">
               {t.sidebar.introLead}{' '}
-              <a
-                href="https://getautonoma.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="display-serif text-[1.28em] font-bold italic text-neutral-800 link-underline"
-              >
+              <a href="https://getautonoma.com" target="_blank" rel="noopener noreferrer">
                 {t.sidebar.introCurrent}
               </a>
               {t.sidebar.introCurrentTail}
-            </span>
-            <span className="mt-3 block">
+            </p>
+            <p className="sidebar-copy">
               {t.sidebar.introPrevious}{' '}
-              <a
-                href="https://www.melian.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="display-serif text-[1.28em] font-bold italic text-neutral-800 link-underline"
-              >
+              <a href="https://www.melian.com" target="_blank" rel="noopener noreferrer">
                 {t.sidebar.introPreviousLink}
               </a>
               {t.sidebar.introPreviousTail}
-            </span>
-            <span className="mt-3 block">
+            </p>
+            <p className="sidebar-copy">
               {t.sidebar.introEarlier}{' '}
               <a
                 href="https://www.embluemail.com/producto/whatsapp-universal-inbox/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-semibold text-neutral-800 link-underline"
               >
                 {t.sidebar.introEarlierProduct}
               </a>{' '}
               {t.sidebar.introEarlierMiddle}{' '}
-              <a
-                href="https://www.embluemail.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="display-serif font-semibold italic text-[1.28em] text-neutral-800 link-underline"
-              >
+              <a href="https://www.embluemail.com/" target="_blank" rel="noopener noreferrer">
                 {t.sidebar.introEarlierCompany}
               </a>
               {t.sidebar.introEarlierTail}
-            </span>
-          </p>
+            </p>
+          </div>
+
+          <fieldset className="sidebar-nav-group">
+            <legend>{t.nav.home}</legend>
+            <SectionPills items={navItems} />
+          </fieldset>
+
+          <LanguageToggle />
+
+          <div className="field-row sidebar-links">
+            <a
+              href="https://x.com/patoalbornozz"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={t.sidebar.xLabel}
+              className="icon-link"
+            >
+              <X />
+            </a>
+            <a
+              href="https://github.com/pato-1441"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={t.sidebar.githubLabel}
+              className="icon-link"
+            >
+              <Github size={16} />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/patoalbornoz/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={t.sidebar.linkedinLabel}
+              className="icon-link"
+            >
+              <Linkedin size={16} />
+            </a>
+            <a href="mailto:pwalbornoz@gmail.com" aria-label={t.sidebar.emailLabel} className="icon-link">
+              <Mail size={16} />
+            </a>
+          </div>
         </div>
 
-        <SectionPills items={navItems} className="hidden lg:flex lg:py-1" />
-        <LanguageToggle />
-
-        <div className="flex items-center gap-3">
-          <a
-            href="https://x.com/patoalbornozz"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={t.sidebar.xLabel}
-            className="icon-link"
-          >
-            <X />
-          </a>
-          <a
-            href="https://github.com/pato-1441"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={t.sidebar.githubLabel}
-            className="icon-link"
-          >
-            <Github className="size-4" />
-          </a>
-          <a
-            href="https://www.linkedin.com/in/patoalbornoz/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={t.sidebar.linkedinLabel}
-            className="icon-link"
-          >
-            <Linkedin className="size-4" />
-          </a>
-          <a
-            href="mailto:pwalbornoz@gmail.com"
-            aria-label={t.sidebar.emailLabel}
-            className="icon-link"
-          >
-            <Mail className="size-4" />
-          </a>
+        <div className="status-bar sidebar-footer">
+          <p className="status-bar-field">© {new Date().getFullYear()} Patricio Albornoz</p>
+          <p className="status-bar-field">{t.sidebar.crafted}</p>
         </div>
       </div>
-
-      <footer className="pt-8 text-xs leading-relaxed text-neutral-500">
-        © {new Date().getFullYear()} Patricio Albornoz.
-        <br />
-        {t.sidebar.crafted}
-        <br />
-      </footer>
     </aside>
   )
 }

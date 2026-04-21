@@ -10,12 +10,14 @@ type SectionPillsProps = {
 
 export function SectionPills({ items, className }: SectionPillsProps) {
   return (
-    <nav className={`section-nav flex items-center gap-5 overflow-auto ${className ?? ''}`}>
+    <menu role="tablist" className={`section-nav ${className ?? ''}`.trim()}>
       {items.map((item) => (
-        <a key={item.href} href={item.href} className="nav-pill">
-          {item.label}
-        </a>
+        <li key={item.href}>
+          <a href={item.href} className="section-nav-button">
+            {item.label}
+          </a>
+        </li>
       ))}
-    </nav>
+    </menu>
   )
 }

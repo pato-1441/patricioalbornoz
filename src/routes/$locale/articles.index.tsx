@@ -52,48 +52,36 @@ function ArticlesPage() {
   const articles = getArticles(locale)
 
   return (
-    <main className="relative min-h-screen selection:bg-amber-200/60 selection:text-neutral-900">
-      <div aria-hidden className="noise-overlay" />
-
-      <div className="mx-auto grid max-w-[1640px] grid-cols-1 gap-12 px-6 py-10 lg:grid-cols-12 lg:gap-16 lg:px-12 lg:py-16">
-        <SectionPills items={navItems} className="mb-3 lg:hidden" />
+    <main className="xp-desktop">
+      <div className="desktop-shell articles-shell">
+        <SectionPills items={navItems} className="mobile-nav" />
 
         <Sidebar navItems={navItems} layout="article" />
 
-        <div className="space-y-9 lg:col-span-8 lg:flex lg:justify-center xl:col-span-9">
-          <div className="w-full max-w-5xl space-y-9">
-            <section className="space-y-5">
-              <SectionHeader
-                title={t.articles.title}
-                rightContent={
-                  <p className="text-xs uppercase tracking-[0.2em] text-neutral-500">
-                    {t.articles.archive}
-                  </p>
-                }
-              />
+        <div className="main-stack">
+          <section className="xp-section">
+            <SectionHeader title={t.articles.title} rightContent={<p>{t.articles.archive}</p>} />
 
-              <Link
-                to="/$locale"
-                params={{ locale }}
-                hash="articles"
-                className="inline-flex items-center text-xs uppercase tracking-[0.14em] text-neutral-600 transition-colors hover:text-neutral-900"
-              >
-                {t.articles.backToPortfolio}
-              </Link>
-            </section>
+            <Link to="/$locale" params={{ locale }} hash="articles" className="section-action-link">
+              {t.articles.backToPortfolio}
+            </Link>
+          </section>
 
-            <section className="article-list">
-              {articles.map((article) => (
-                <ArticleCard key={article.slug} article={article} />
-              ))}
-            </section>
+          <section className="article-list">
+            {articles.map((article) => (
+              <ArticleCard key={article.slug} article={article} />
+            ))}
+          </section>
 
-            <section className="articles-soon-note">
-              <p className="articles-soon-label">{t.home.archiveLabel}</p>
+          <section className="window articles-soon-window">
+            <div className="title-bar">
+              <div className="title-bar-text">{t.home.archiveLabel}</div>
+            </div>
+            <div className="window-body">
               <h3 className="articles-soon-title">{t.articles.comingSoonTitle}</h3>
               <p className="articles-soon-description">{t.articles.comingSoonDescription}</p>
-            </section>
-          </div>
+            </div>
+          </section>
         </div>
       </div>
     </main>

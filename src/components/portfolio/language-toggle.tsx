@@ -27,11 +27,9 @@ export function LanguageToggle() {
   }
 
   return (
-    <div className="space-y-2">
-      <p className="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-neutral-500">
-        {t.locale.label}
-      </p>
-      <div className="language-toggle" role="group" aria-label={t.locale.label}>
+    <fieldset className="language-group">
+      <legend>{t.locale.label}</legend>
+      <div className="field-row language-row" role="group" aria-label={t.locale.label}>
         {localeOptions.map((option) => {
           const isActive = locale === option.value
 
@@ -40,7 +38,7 @@ export function LanguageToggle() {
               key={option.value}
               type="button"
               onClick={() => handleChange(option.value)}
-              className={`language-toggle-option ${isActive ? 'language-toggle-option-active' : ''}`}
+              className={`language-toggle-button ${isActive ? 'language-toggle-button-active' : ''}`}
               aria-pressed={isActive}
             >
               {t.locale[option.labelKey]}
@@ -48,6 +46,6 @@ export function LanguageToggle() {
           )
         })}
       </div>
-    </div>
+    </fieldset>
   )
 }

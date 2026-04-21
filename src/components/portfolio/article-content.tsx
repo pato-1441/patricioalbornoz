@@ -56,14 +56,14 @@ function renderInlineTokens(text: string, keyPrefix: string): Array<ReactNode> {
       key += 1
     } else if (token.startsWith('**')) {
       result.push(
-        <strong key={`${keyPrefix}-strong-${key}`} className="font-semibold text-neutral-900">
+        <strong key={`${keyPrefix}-strong-${key}`} className="article-strong">
           {token.slice(2, -2)}
         </strong>,
       )
       key += 1
     } else if (token.startsWith('*')) {
       result.push(
-        <em key={`${keyPrefix}-em-${key}`} className="display-serif italic text-neutral-800">
+        <em key={`${keyPrefix}-em-${key}`} className="article-emphasis">
           {token.slice(1, -1)}
         </em>,
       )
@@ -128,7 +128,7 @@ export function ArticleContent({ blocks }: ArticleContentProps) {
 
         if (block.type === 'h2') {
           return (
-            <h2 key={key} className="article-subheading article-subheading-h2 display-serif">
+            <h2 key={key} className="article-subheading article-subheading-h2">
               {renderInlineMarkdown(block.text)}
             </h2>
           )
@@ -136,7 +136,7 @@ export function ArticleContent({ blocks }: ArticleContentProps) {
 
         if (block.type === 'h3') {
           return (
-            <h3 key={key} className="article-subheading article-subheading-h3 display-serif">
+            <h3 key={key} className="article-subheading article-subheading-h3">
               {renderInlineMarkdown(block.text)}
             </h3>
           )
@@ -165,9 +165,7 @@ export function ArticleContent({ blocks }: ArticleContentProps) {
                 decoding="async"
               />
               {block.caption || block.alt ? (
-                <figcaption className="article-image-caption">
-                  {block.caption ?? block.alt}
-                </figcaption>
+                <figcaption className="article-image-caption">{block.caption ?? block.alt}</figcaption>
               ) : null}
             </figure>
           )
@@ -179,7 +177,7 @@ export function ArticleContent({ blocks }: ArticleContentProps) {
 
         if (block.type === 'ul') {
           return (
-            <ul key={key} className="article-body-list list-disc">
+            <ul key={key} className="article-body-list article-body-list-unordered">
               {block.items.map((item, itemIndex) => (
                 <li key={`${key}-item-${itemIndex}`}>{renderInlineMarkdown(item)}</li>
               ))}
@@ -189,7 +187,7 @@ export function ArticleContent({ blocks }: ArticleContentProps) {
 
         if (block.type === 'ol') {
           return (
-            <ol key={key} className="article-body-list list-decimal">
+            <ol key={key} className="article-body-list article-body-list-ordered">
               {block.items.map((item, itemIndex) => (
                 <li key={`${key}-item-${itemIndex}`}>{renderInlineMarkdown(item)}</li>
               ))}
@@ -223,8 +221,8 @@ export function ArticleContent({ blocks }: ArticleContentProps) {
 
       <footer className="end-reading-note" aria-label={t.articleContent.endOfArticle}>
         <div className="end-reading-faces" aria-hidden>
-          <Smile className="size-4" />
-          <Smile className="size-4" />
+          <Smile size={16} />
+          <Smile size={16} />
         </div>
         <p className="end-reading-copy">{t.articleContent.thanks}</p>
       </footer>

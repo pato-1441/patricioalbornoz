@@ -34,7 +34,7 @@ export function WorkSection() {
   }, [activeItem])
 
   return (
-    <section id="work" className="scroll-mt-24 space-y-7">
+    <section id="work" className="xp-section">
       <SectionHeader title={t.work.title} />
 
       <div className="showcase-grid">
@@ -43,11 +43,14 @@ export function WorkSection() {
             key={item.src}
             type="button"
             onClick={() => setActiveIndex(index)}
-            className={`content-card card-stack showcase-tile group block overflow-hidden`}
+            className="window showcase-tile"
             style={{ backgroundColor: item.bgColor }}
             aria-label={t.work.openItem(item.title)}
           >
-            <div className="showcase-media-shell">
+            <div className="title-bar">
+              <div className="title-bar-text">{item.title}</div>
+            </div>
+            <div className="window-body showcase-media-shell">
               {item.type === 'video' ? (
                 <video
                   src={item.src}
@@ -59,12 +62,7 @@ export function WorkSection() {
                   className="showcase-media"
                 />
               ) : (
-                <img
-                  src={item.src}
-                  alt={item.title}
-                  loading="lazy"
-                  className="showcase-media"
-                />
+                <img src={item.src} alt={item.title} loading="lazy" className="showcase-media" />
               )}
             </div>
           </button>
@@ -80,32 +78,32 @@ export function WorkSection() {
               aria-label={t.work.previewItem(activeItem.title)}
               onClick={() => setActiveIndex(null)}
             >
-              <div className="showcase-lightbox-frame" onClick={(event) => event.stopPropagation()}>
-                <button
-                  type="button"
-                  className="showcase-close"
-                  onClick={() => setActiveIndex(null)}
-                  aria-label={t.work.closePreview}
-                >
-                  {t.work.close}
-                </button>
+              <div className="window showcase-lightbox-frame" onClick={(event) => event.stopPropagation()}>
+                <div className="title-bar">
+                  <div className="title-bar-text">{activeItem.title}</div>
+                  <div className="title-bar-controls">
+                    <button
+                      type="button"
+                      aria-label="Close"
+                      onClick={() => setActiveIndex(null)}
+                    />
+                  </div>
+                </div>
 
-                {activeItem.type === 'video' ? (
-                  <video
-                    src={activeItem.src}
-                    controls
-                    autoPlay
-                    playsInline
-                    preload="metadata"
-                    className="showcase-lightbox-media"
-                  />
-                ) : (
-                  <img
-                    src={activeItem.src}
-                    alt={activeItem.title}
-                    className="showcase-lightbox-media"
-                  />
-                )}
+                <div className="window-body">
+                  {activeItem.type === 'video' ? (
+                    <video
+                      src={activeItem.src}
+                      controls
+                      autoPlay
+                      playsInline
+                      preload="metadata"
+                      className="showcase-lightbox-media"
+                    />
+                  ) : (
+                    <img src={activeItem.src} alt={activeItem.title} className="showcase-lightbox-media" />
+                  )}
+                </div>
               </div>
             </div>,
             document.body,
