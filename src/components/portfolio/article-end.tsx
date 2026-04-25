@@ -39,8 +39,10 @@ export function ArticleEndNote({
             className="end-reading-next"
             aria-label={`${t.articleContent.readNext}: ${nextArticle.title}`}
           >
-            <span className="end-reading-next-kicker">{t.articleContent.readNext}</span>
-            <span className="end-reading-next-title">{nextArticle.title}</span>
+            <span className="end-reading-next-main">
+              <span className="end-reading-next-kicker">{t.articleContent.readNext}</span>
+              <span className="end-reading-next-title">{nextArticle.title}</span>
+            </span>
             <ArrowRight
               className="end-reading-next-chevron"
               strokeWidth={2}

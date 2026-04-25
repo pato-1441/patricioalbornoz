@@ -45,17 +45,19 @@ export function HomeSection() {
           <div className="space-y-4 p-6 md:p-8">
             <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-xs uppercase tracking-[0.18em] text-neutral-500">
               <span>{leadArticle.pinned ? t.home.pinnedArticle : t.home.latestArticle}</span>
-              <span aria-hidden className="h-1 w-1 rounded-full bg-[var(--line-strong)]" />
+              <span aria-hidden className="h-1 w-1 rounded-full bg-(--line-strong)" />
               <span>{formatArticleDate(leadArticle.publishedAt, locale)}</span>
-              <span aria-hidden className="h-1 w-1 rounded-full bg-[var(--line-strong)]" />
+              <span aria-hidden className="h-1 w-1 rounded-full bg-(--line-strong)" />
               <span>{formatReadTime(leadArticle.readTimeMinutes, locale)}</span>
             </div>
-            <h3 className="article-title text-4xl leading-[0.96] text-neutral-900 md:text-5xl">
-              {leadArticle.title}
-            </h3>
-            <p className="max-w-3xl text-base leading-relaxed text-neutral-700">
-              {leadArticle.excerpt}
-            </p>
+            <div className="space-y-6">
+              <h3 className="article-title text-4xl leading-[0.96] text-neutral-900 md:text-5xl">
+                {leadArticle.title}
+              </h3>
+              <p className="max-w-3xl text-base leading-relaxed text-neutral-700">
+                {leadArticle.excerpt}
+              </p>
+            </div>
             <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-neutral-600 transition-colors group-hover:text-neutral-900">
               {t.home.readArticle}
               <ArrowUpRight className="size-3 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
@@ -86,13 +88,15 @@ export function HomeSection() {
               <div className="space-y-3 p-5">
                 <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-[0.7rem] uppercase tracking-[0.17em] text-neutral-500">
                   <span>{article.pinned ? t.home.pinned : t.home.recent}</span>
-                  <span aria-hidden className="h-1 w-1 rounded-full bg-[var(--line-strong)]" />
+                  <span aria-hidden className="h-1 w-1 rounded-full bg-(--line-strong)" />
                   <span>{formatArticleDate(article.publishedAt, locale)}</span>
                 </div>
-                <h3 className="text-[1.7rem] font-semibold leading-[0.96] tracking-[-0.03em] text-neutral-900">
-                  {article.title}
-                </h3>
-                <p className="text-sm leading-relaxed text-neutral-700">{article.excerpt}</p>
+                <div className="space-y-5">
+                  <h3 className="text-[1.7rem] font-semibold leading-[0.96] tracking-[-0.03em] text-neutral-900">
+                    {article.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-neutral-700">{article.excerpt}</p>
+                </div>
               </div>
             </Link>
           ))}

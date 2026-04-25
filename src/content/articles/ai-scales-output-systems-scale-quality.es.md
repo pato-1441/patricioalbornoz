@@ -8,7 +8,7 @@ coverAlt: AI scales output. Systems scale quality.
 published: true
 ---
 
-Hubo un momento en el que algo empezó a sentirse… raro, incluso cuando, en papel, todo parecía ir bien.
+Hubo un momento en el que algo empezó a sentirse raro, incluso cuando, en papel, todo parecía ir bien.
 
 Estábamos shippeando más rápido que nunca. Nuevas features salían constantemente, a veces todos los días, y el equipo se movía con una velocidad que, desde afuera, se veía como progreso.
 
@@ -20,7 +20,7 @@ No estaba roto.
 
 Pero tampoco estaba cohesivo.
 
-Y detrás de eso, había un proceso que se estaba formando en silencio — uno que nunca diseñamos explícitamente, pero que igual terminó definiendo cómo trabajábamos.
+Y detrás de eso, había un proceso que se estaba formando en silencio, uno que nunca diseñamos explícitamente, pero que igual terminó definiendo cómo trabajábamos.
 
 &nbsp;
 
@@ -141,7 +141,7 @@ Autonoma v0 se sentía familiar. Estructurado. Predecible. Algo que podría enca
 
 Pero lo que estábamos construyendo después no era eso.
 
-Nos estábamos moviendo hacia un sistema de agents — algo más opinionated, más agresivo, más vivo. Un producto que explora tu codebase, encuentra cosas que no pediste explícitamente y actúa con cierto nivel de autonomía.
+Nos estábamos moviendo hacia un sistema de agents, algo más opinionated, más agresivo, más vivo. Un producto que explora tu codebase, encuentra cosas que no pediste explícitamente y actúa con cierto nivel de autonomía.
 
 En ese punto, la diferencia ya no era solo visual.
 
@@ -185,7 +185,7 @@ El sistema se fue formando en diálogo.
 
 No en prescripción.
 
-Las herramientas reflejaban lo mismo. Papel, Jitter, DaVinci Resolve, referencias de otros productos — lo que sirviera para avanzar, se usaba.
+Las herramientas reflejaban lo mismo. Papel, Jitter, DaVinci Resolve, referencias de otros productos, cualquiera que sirviera para avanzar, se usaba.
 
 No había una forma “correcta”.
 
@@ -197,7 +197,7 @@ Había iteración.
 
 En algún momento, necesitaba un nombre.
 
-Nacho mencionó la idea de una blacklight — una luz que permite ver lo que no es visible a simple vista.
+Nacho mencionó la idea de una blacklight, una luz que permite ver lo que no es visible a simple vista.
 
 Resonó inmediatamente.
 
@@ -263,7 +263,7 @@ En algún momento hicimos algo simple.
 
 Lo escribimos.
 
-No solo componentes, sino principios, reglas e intenciones — en un formato que pudiera ser consumido no solo por developers, sino también por agentes.
+No solo componentes, sino principios, reglas e intenciones, en un formato que pudiera ser consumido no solo por developers, sino también por agentes.
 
 Eso cambió todo.
 
@@ -289,18 +289,13 @@ Y eso llevó a una realización medio irónica.
 
 &nbsp;
 
-> En cierto punto… cavé mi propia tumba.
+> En cierto punto cavé mi propia tumba.
 
 &nbsp;
 
-Porque lo que antes hacía manualmente…
-
-Ya no era necesario.
-
+Porque lo que antes hacía manualmente, ahora no era necesario.
 Y ese es el punto.
-
 Un buen sistema no te hace más rápido.
-
 Te hace innecesario en los lugares donde no deberías ser necesario.
 
 &nbsp;
@@ -308,13 +303,10 @@ Te hace innecesario en los lugares donde no deberías ser necesario.
 ## Pensamiento final
 
 Los design systems muchas veces se entienden como UI kits o librerías de componentes.
-
 Pero su valor real está en otro lado.
-
 Codifican decisiones.  
 Generan alineación.  
 Permiten escalar.
-
 Y en un mundo donde la AI está cada vez más presente en cómo se construyen productos, se vuelven todavía más críticos.
 
 &nbsp;

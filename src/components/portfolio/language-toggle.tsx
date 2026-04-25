@@ -20,7 +20,6 @@ export function LanguageToggle() {
   })
 
   const search = typeof window === 'undefined' ? '' : window.location.search
-  const hash = typeof window === 'undefined' ? '' : window.location.hash
 
   function handleChange(nextLocale: Locale) {
     if (nextLocale === locale) {
@@ -28,7 +27,8 @@ export function LanguageToggle() {
     }
 
     persistLocalePreference(nextLocale)
-    window.location.assign(`${buildLocalizedPath(nextLocale, pathname)}${search}${hash}`)
+    // Do not carry over the hash — it would scroll to #articles, #work, etc. on the new locale.
+    window.location.assign(`${buildLocalizedPath(nextLocale, pathname)}${search}`)
   }
 
   return (

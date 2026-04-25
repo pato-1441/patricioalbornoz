@@ -7,7 +7,7 @@ coverImage: /two-leaps-into-the-unknown.png
 coverAlt: Imagen de cabecera de Dos saltos al vacío.
 ogImage: /og-two.webp
 ogImageAlt: Open Graph image for Dos saltos al vacío.
-pinned: true
+pinned: false
 published: true
 ---
 Mudarse de ciudad y unirse a un founding team son dos saltos al vacío que se parecen más de lo que uno cree.

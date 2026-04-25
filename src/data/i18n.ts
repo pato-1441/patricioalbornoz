@@ -163,7 +163,7 @@ export const copy: Record<Locale, LocaleCopy> = {
     },
     articleContent: {
       endOfArticle: 'End of article',
-      thanks: 'Thanks for reading—hope it was worth your time.',
+      thanks: 'Thanks for reading.',
       readNext: 'Up next',
     },
     articleShare: {
@@ -260,7 +260,7 @@ export const copy: Record<Locale, LocaleCopy> = {
     },
     articleContent: {
       endOfArticle: 'Fin del artículo',
-      thanks: 'Gracias por leer—espero que haya merecido la pena.',
+      thanks: 'Gracias por leer.',
       readNext: 'Sigue con',
     },
     articleShare: {
