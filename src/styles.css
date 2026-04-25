@@ -2,6 +2,7 @@
 @import "tailwindcss";
 
 :root {
+  --site-ui-scale: 0.85;
   color-scheme: light;
   --bg: oklch(0.972 0.014 84);
   --bg-soft: oklch(0.958 0.018 84);
@@ -22,6 +23,7 @@
 html {
   scroll-behavior: smooth;
   background: var(--bg);
+  zoom: var(--site-ui-scale);
 }
 
 body {
