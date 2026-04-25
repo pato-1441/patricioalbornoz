@@ -61,12 +61,25 @@ type LocaleCopy = {
     byAuthor: string
     featured: string
     article: string
-    comingSoonTitle: string
-    comingSoonDescription: string
+    readingProgress: string
   }
   articleContent: {
     endOfArticle: string
     thanks: string
+  }
+  articleShare: {
+    openButton: string
+    title: string
+    copyLink: string
+    copied: string
+    x: string
+    instagram: string
+    linkedin: string
+    close: string
+    ariaCopyLink: string
+    ariaShareX: string
+    ariaShareInstagram: string
+    ariaShareLinkedin: string
   }
   seo: {
     homeTitle: string
@@ -90,7 +103,7 @@ export const copy: Record<Locale, LocaleCopy> = {
       spanish: 'ES',
     },
     sidebar: {
-      role: 'Doer',
+      role: 'Design Engineer',
       introLead: 'Currently building autonomous testing agents at',
       introCurrent: 'Autonoma',
       introCurrentTail:
@@ -119,10 +132,9 @@ export const copy: Record<Locale, LocaleCopy> = {
       readArticle: 'Read article',
       pinned: 'Pinned',
       recent: 'Recent',
-      archiveLabel: 'More soon',
-      archiveTitle: 'More articles are on the way.',
-      archiveDescription:
-        "For now, this is the one to read first. I'll be publishing more writing here soon.",
+      archiveLabel: 'Archive',
+      archiveTitle: 'All published writing',
+      archiveDescription: 'The complete list of essays and notes on this site.',
       openArchive: 'Open articles',
     },
     work: {
@@ -141,13 +153,25 @@ export const copy: Record<Locale, LocaleCopy> = {
       byAuthor: 'By',
       featured: 'Featured',
       article: 'Article',
-      comingSoonTitle: 'More articles are coming soon.',
-      comingSoonDescription:
-        "For now, this is the only published piece in the archive. More writing will land here over time.",
+      readingProgress: 'Reading progress',
     },
     articleContent: {
       endOfArticle: 'End of article',
       thanks: 'Thanks for reading. You made it to the end!',
+    },
+    articleShare: {
+      openButton: 'Share',
+      title: 'Share this article',
+      copyLink: 'Link',
+      copied: 'Copied',
+      x: 'X',
+      instagram: 'Instagram',
+      linkedin: 'LinkedIn',
+      close: 'Close',
+      ariaCopyLink: 'Copy article link to clipboard',
+      ariaShareX: 'Share on X (Twitter)',
+      ariaShareInstagram: 'Share to Instagram (or copy link)',
+      ariaShareLinkedin: 'Share on LinkedIn',
     },
     seo: {
       homeTitle: 'Patricio Albornoz',
@@ -171,7 +195,7 @@ export const copy: Record<Locale, LocaleCopy> = {
       spanish: 'ES',
     },
     sidebar: {
-      role: 'Doer',
+      role: 'Design Engineer',
       introLead: 'Actualmente construyendo agentes autónomos de testing en',
       introCurrent: 'Autonoma',
       introCurrentTail:
@@ -200,10 +224,9 @@ export const copy: Record<Locale, LocaleCopy> = {
       readArticle: 'Leer artículo',
       pinned: 'Destacado',
       recent: 'Reciente',
-      archiveLabel: 'Próximamente',
-      archiveTitle: 'Van a venir más artículos.',
-      archiveDescription:
-        'Por ahora, este es el texto que quiero que leas primero. Voy a ir publicando más acá con el tiempo.',
+      archiveLabel: 'Archivo',
+      archiveTitle: 'Todas las publicaciones',
+      archiveDescription: 'Listado de ensayos y notas en un solo lugar.',
       openArchive: 'Abrir artículos',
     },
     work: {
@@ -222,13 +245,25 @@ export const copy: Record<Locale, LocaleCopy> = {
       byAuthor: 'Por',
       featured: 'Destacado',
       article: 'Artículo',
-      comingSoonTitle: 'Van a venir más artículos.',
-      comingSoonDescription:
-        'Por ahora, este es el único texto publicado en el archivo. Más escritos van a aparecer acá con el tiempo.',
+      readingProgress: 'Progreso de lectura',
     },
     articleContent: {
       endOfArticle: 'Fin del artículo',
       thanks: 'Gracias por leer. Llegaste hasta el final.',
+    },
+    articleShare: {
+      openButton: 'Compartir',
+      title: 'Compartir este artículo',
+      copyLink: 'Enlace',
+      copied: 'Listo',
+      x: 'X',
+      instagram: 'Instagram',
+      linkedin: 'LinkedIn',
+      close: 'Cerrar',
+      ariaCopyLink: 'Copiar enlace del artículo al portapapeles',
+      ariaShareX: 'Compartir en X (Twitter)',
+      ariaShareInstagram: 'Compartir en Instagram o copiar enlace',
+      ariaShareLinkedin: 'Compartir en LinkedIn',
     },
     seo: {
       homeTitle: 'Patricio Albornoz',

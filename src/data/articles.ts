@@ -337,6 +337,7 @@ const legacyArticleSlugMap: Record<string, string> = {
 for (const [filePath, raw] of Object.entries(articleFiles)) {
   const { slug, locale } = parseArticleIdentity(filePath)
   const { meta, body } = parseFrontmatter(raw)
+  const generatedOgPath = `/og/articles/${slug}-${locale}.png`
   const article: Article = {
     slug,
     locale,
@@ -346,7 +347,7 @@ for (const [filePath, raw] of Object.entries(articleFiles)) {
     excerpt: meta.excerpt,
     coverImage: meta.coverImage,
     coverAlt: meta.coverAlt,
-    ogImage: meta.ogImage,
+    ogImage: meta.ogImage ?? generatedOgPath,
     ogImageAlt: meta.ogImageAlt,
     pinned: meta.pinned,
     published: meta.published,

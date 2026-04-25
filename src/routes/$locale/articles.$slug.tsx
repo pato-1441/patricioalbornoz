@@ -1,6 +1,8 @@
 import { Link, createFileRoute, notFound, redirect } from '@tanstack/react-router'
 import { ArrowLeft } from 'lucide-react'
 import { ArticleContent } from '@/components/portfolio/article-content'
+import { ArticleReadingProgress } from '@/components/portfolio/article-reading-progress'
+import { ArticleShare } from '@/components/portfolio/article-share'
 import { copy } from '@/data/i18n'
 import {
   getArticleSlugRedirect,
@@ -113,16 +115,26 @@ function ArticlePage() {
 
   return (
     <main className="article-page relative min-h-screen selection:bg-amber-200/60 selection:text-neutral-900">
+      <ArticleReadingProgress label={t.articles.readingProgress} />
       <div className="article-page-wrap">
         <article className="article-shell">
-          <Link
-            to="/$locale/articles"
-            params={{ locale }}
-            className="article-backlink"
-          >
-            <ArrowLeft className="size-3" />
-            {t.articles.backToAll}
-          </Link>
+          <div className="article-top-bar">
+            <Link
+              to="/$locale/articles"
+              params={{ locale }}
+              className="article-backlink"
+            >
+              <ArrowLeft className="size-3" />
+              {t.articles.backToAll}
+            </Link>
+            <ArticleShare
+              locale={locale}
+              slug={article.slug}
+              title={article.title}
+              coverImage={article.coverImage}
+              ogImage={article.ogImage}
+            />
+          </div>
 
           {article.coverImage ? (
             <div className="article-cover">

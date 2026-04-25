@@ -11,5 +11,7 @@
 
 ## Articles
 
+- [AI scales output. Systems scale quality.](https://patricioalbornoz.com/en/articles/ai-scales-output-systems-scale-quality): How a hidden process, a joke called “la pateada”, and a failed design system led to Blacklight — and why design systems matter even more in the age of AI. (EN)
+- [La AI escala el output. Los sistemas escalan la calidad.](https://patricioalbornoz.com/es/articles/ai-scales-output-systems-scale-quality): Cómo un proceso invisible, un chiste llamado “la pateada” y un design system fallido nos llevaron a Blacklight — y por qué los sistemas son más importantes que nunca en la era de la AI. (ES)
 - [Two leaps into the unknown](https://patricioalbornoz.com/en/articles/two-leaps-into-the-unknown): A year of difficult calls, double leaps into the unknown, and starting over from inside Autonoma. (EN)
 - [Dos saltos al vacío](https://patricioalbornoz.com/es/articles/two-leaps-into-the-unknown): Un año de decisiones difíciles, saltos al vacío y volver a empezar desde adentro de Autonoma. (ES)

@@ -30,12 +30,6 @@ export function ArticlesPreviewSection() {
           <ArticleCard key={article.slug} article={article} />
         ))}
       </div>
-
-      <div className="articles-soon-note">
-        <p className="articles-soon-label">{t.home.archiveLabel}</p>
-        <h3 className="articles-soon-title">{t.articles.comingSoonTitle}</h3>
-        <p className="articles-soon-description">{t.articles.comingSoonDescription}</p>
-      </div>
     </section>
   )
 }

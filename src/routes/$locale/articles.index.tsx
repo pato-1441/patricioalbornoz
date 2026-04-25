@@ -87,12 +87,6 @@ function ArticlesPage() {
                 <ArticleCard key={article.slug} article={article} />
               ))}
             </section>
-
-            <section className="articles-soon-note">
-              <p className="articles-soon-label">{t.home.archiveLabel}</p>
-              <h3 className="articles-soon-title">{t.articles.comingSoonTitle}</h3>
-              <p className="articles-soon-description">{t.articles.comingSoonDescription}</p>
-            </section>
           </div>
         </div>
       </div>

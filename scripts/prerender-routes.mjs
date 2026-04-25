@@ -186,7 +186,9 @@ function renderMetaTags({
 
 function renderArticleHtml({ routePath, locale, fullTitle, meta, alternateLocales, assets }) {
   const canonicalUrl = buildAbsoluteUrl(routePath)
-  const imagePath = meta.ogImage || meta.coverImage || defaultOgImage
+  const slug = routePath.replace(/^\/[^/]+\/articles\//, '')
+  const generatedOg = `/og/articles/${slug}-${locale}.png`
+  const imagePath = meta.ogImage || generatedOg || meta.coverImage || defaultOgImage
   const imageAlt = meta.ogImageAlt || meta.coverAlt || meta.title
   const imageUrl = buildAbsoluteUrl(imagePath)
   const ogLocale = getOgLocale(locale)

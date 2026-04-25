@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@300..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@300..800&family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap");
 @import "tailwindcss";
 
 :root {
@@ -40,7 +40,7 @@ body {
 
 .display-serif,
 .article-title {
-  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-family: 'Spectral', Georgia, serif;
 }
 
 .noise-overlay {
@@ -227,44 +227,6 @@ body {
   box-shadow: 0 20px 40px -28px oklch(0.27 0.04 60 / 0.34);
 }
 
-.articles-soon-note {
-  border: 1px solid var(--line);
-  border-radius: 1rem;
-  background:
-    radial-gradient(
-      circle at top left,
-      color-mix(in oklch, var(--accent-soft), white 16%),
-      transparent 44%
-    ),
-    var(--paper-soft);
-  padding: 1.35rem 1.5rem;
-}
-
-.articles-soon-label {
-  margin: 0;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
-.articles-soon-title {
-  margin: 0.7rem 0 0;
-  font-size: 1.5rem;
-  line-height: 1.04;
-  letter-spacing: -0.03em;
-  color: var(--text);
-}
-
-.articles-soon-description {
-  margin: 0.7rem 0 0;
-  max-width: 62ch;
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: color-mix(in oklch, var(--text), oklch(0.45 0.03 66) 18%);
-}
-
 .home-note {
   border: 1px solid var(--line);
   border-radius: 1rem;
@@ -437,6 +399,29 @@ body {
   border-color: color-mix(in oklch, var(--line), var(--line-strong) 35%);
 }
 
+.article-reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 60;
+  height: 3px;
+  pointer-events: none;
+  background: color-mix(in oklch, var(--line), transparent 50%);
+}
+
+.article-reading-progress-bar {
+  height: 100%;
+  width: 100%;
+  transform-origin: left;
+  will-change: transform;
+  background: linear-gradient(
+    90deg,
+    color-mix(in oklch, var(--accent), oklch(0.67 0.14 48) 22%),
+    color-mix(in oklch, var(--accent), white 8%)
+  );
+}
+
 .article-page {
   background:
     linear-gradient(180deg, color-mix(in oklch, var(--bg-soft), white 16%) 0%, var(--bg) 100%);
@@ -453,12 +438,305 @@ body {
   max-width: 54rem;
 }
 
+.article-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.article-share-open {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  border: 1px solid color-mix(in oklch, var(--line), white 12%);
+  border-radius: 999px;
+  padding: 0.42rem 0.9rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: color-mix(in oklch, var(--paper-soft), white 28%);
+  cursor: pointer;
+  transition:
+    color 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease;
+}
+
+.article-share-open:hover {
+  color: var(--text);
+  border-color: color-mix(in oklch, var(--line-strong), var(--text) 12%);
+  background: color-mix(in oklch, var(--paper), white 20%);
+}
+
+.article-share-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  background: oklch(0.22 0.02 68 / 0.48);
+  backdrop-filter: blur(7px);
+}
+
+.article-share-dialog {
+  width: min(24rem, 100%);
+  max-height: min(90vh, 38rem);
+  overflow-y: auto;
+  border-radius: 1.75rem;
+  padding: 1.3rem 1.2rem 1.45rem;
+  background: color-mix(in oklch, var(--paper-soft), white 40%);
+  border: 1px solid color-mix(in oklch, var(--line), white 14%);
+  box-shadow: 0 32px 68px -44px oklch(0.18 0.03 58 / 0.5);
+}
+
+.article-share-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.article-share-title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  color: color-mix(in oklch, var(--text), black 6%);
+}
+
+.article-share-close {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 2.35rem;
+  height: 2.35rem;
+  margin: -0.15rem -0.2rem 0 0;
+  border: none;
+  border-radius: 999px;
+  color: var(--muted);
+  background: transparent;
+  cursor: pointer;
+  transition:
+    color 150ms ease,
+    background 150ms ease;
+}
+
+.article-share-close:hover {
+  color: var(--text);
+  background: color-mix(in oklch, var(--line), white 6%);
+}
+
+.article-share-preview {
+  margin-top: 1.05rem;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  border: 1px solid color-mix(in oklch, var(--line), white 10%);
+  box-shadow: 0 16px 36px -28px oklch(0.22 0.03 60 / 0.4);
+}
+
+.article-share-preview-media {
+  aspect-ratio: 16 / 9;
+  background: color-mix(in oklch, var(--accent-soft), white 36%);
+}
+
+.article-share-preview-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.article-share-preview-fallback {
+  display: flex;
+  min-height: 7.5rem;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    155deg,
+    color-mix(in oklch, var(--accent-soft), white 22%),
+    color-mix(in oklch, var(--bg-soft), white 8%)
+  );
+}
+
+.article-share-preview-fallback-letter {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 2.75rem;
+  font-weight: 600;
+  color: color-mix(in oklch, var(--accent), white 4%);
+}
+
+.article-share-preview-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1rem;
+  background: #5c4b3d;
+}
+
+.article-share-preview-avatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  flex-shrink: 0;
+  border-radius: 999px;
+  border: 2px solid color-mix(in oklch, white, transparent 55%);
+  object-fit: cover;
+}
+
+.article-share-preview-text {
+  min-width: 0;
+  flex: 1;
+}
+
+.article-share-preview-name {
+  margin: 0 0 0.12rem;
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: color-mix(in oklch, white, oklch(0.78 0.02 70) 28%);
+  line-height: 1.2;
+}
+
+.article-share-preview-headline {
+  margin: 0;
+  font-size: 0.96rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.018em;
+  color: #faf7f2;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.article-share-actions {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.2rem 0.35rem;
+  align-items: start;
+  justify-items: center;
+}
+
+@media (max-width: 400px) {
+  .article-share-actions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 0.4rem;
+  }
+}
+
+.article-share-actions li {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  justify-content: center;
+}
+
+.article-share-tile {
+  display: flex;
+  width: 100%;
+  max-width: 4.2rem;
+  box-sizing: border-box;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.28rem;
+  padding: 0.2rem 0.05rem 0.1rem;
+  border: none;
+  border-radius: 0.75rem;
+  text-align: center;
+  text-decoration: none;
+  color: var(--text);
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+  transition:
+    color 0.16s ease,
+    transform 0.16s ease;
+}
+
+.article-share-tile:focus-visible {
+  outline: 2px solid color-mix(in oklch, var(--accent), transparent 35%);
+  outline-offset: 2px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .article-share-tile:hover {
+    color: color-mix(in oklch, var(--text), black 2%);
+  }
+
+  .article-share-tile:hover .article-share-tile-icon {
+    background: color-mix(in oklch, var(--paper), white 22%);
+    border-color: color-mix(in oklch, var(--line), white 4%);
+  }
+}
+
+.article-share-tile-icon {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  border: 1px solid color-mix(in oklch, var(--line), white 18%);
+  border-radius: 0.7rem;
+  background: color-mix(in oklch, var(--paper), white 10%);
+  color: var(--text);
+  transition:
+    background 0.16s ease,
+    border-color 0.16s ease;
+}
+
+.article-share-tile-x {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.article-share-tile-icon svg {
+  display: block;
+  width: 0.95rem;
+  height: 0.95rem;
+  flex-shrink: 0;
+}
+
+.article-share-tile-label {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  width: 100%;
+  max-width: 4.2rem;
+  min-height: 1.1em;
+  box-sizing: border-box;
+  padding: 0 0.05rem;
+  overflow: hidden;
+  font-size: 0.58rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  color: color-mix(in oklch, var(--text), var(--muted) 20%);
+  text-align: center;
+  word-break: break-word;
+}
+
 .article-backlink {
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
   font-size: 0.72rem;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   text-decoration: none;
@@ -493,7 +771,7 @@ body {
   align-items: center;
   gap: 0.65rem;
   font-size: 0.72rem;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--muted);
@@ -512,10 +790,10 @@ body {
 
 .article-title {
   margin: 0;
-  max-width: 11ch;
+  max-width: 100%;
   font-size: clamp(2.55rem, 3.6vw, 4.35rem);
   line-height: 0.92;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: -0.04em;
   color: color-mix(in oklch, var(--text), black 4%);
 }
@@ -523,10 +801,11 @@ body {
 .article-excerpt {
   margin: clamp(1.2rem, 2vw, 1.8rem) 0 0;
   max-width: 43rem;
-  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-family: 'Spectral', Georgia, serif;
   font-size: clamp(1.32rem, 0.65vw + 1.12rem, 1.62rem);
   line-height: 1.5;
   letter-spacing: 0.005em;
+  font-weight: 500;
   color: color-mix(in oklch, var(--text), oklch(0.6 0.02 64) 18%);
 }
 
@@ -539,10 +818,11 @@ body {
 
 .prose-flow {
   max-width: min(52rem, 100%);
-  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-family: 'Spectral', Georgia, serif;
   font-size: clamp(1.18rem, 0.56vw + 1rem, 1.42rem);
   line-height: 1.62;
   letter-spacing: 0.006em;
+  font-weight: 400;
   color: color-mix(in oklch, var(--text), oklch(0.48 0.03 63) 14%);
 }
 
@@ -581,7 +861,7 @@ body {
 .article-paragraph-lead {
   font-size: clamp(1.26rem, 0.46vw + 1.06rem, 1.5rem);
   line-height: 1.52;
-  font-weight: 600;
+  font-weight: 500;
   color: color-mix(in oklch, var(--text), black 4%);
 }
 
@@ -611,7 +891,7 @@ body {
   margin-top: clamp(3.2rem, 5vw, 4.6rem);
   font-size: clamp(1.9rem, 1.7vw + 1.4rem, 2.55rem);
   line-height: 1.02;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: -0.028em;
 }
 
@@ -619,7 +899,7 @@ body {
   margin-top: clamp(2.6rem, 4vw, 3.5rem);
   font-size: clamp(1.9rem, 1.7vw + 1.4rem, 2.55rem);
   line-height: 1.02;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: -0.028em;
 }
 
@@ -628,10 +908,11 @@ body {
   max-width: 46rem;
   border-left: 0.32rem solid color-mix(in oklch, var(--accent), oklch(0.67 0.16 43) 36%);
   padding: 0.1rem 0 0.1rem 1.1rem;
-  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-family: 'Spectral', Georgia, serif;
   font-size: clamp(1.1rem, 0.38vw + 1rem, 1.24rem);
   line-height: 1.58;
   font-style: normal;
+  font-weight: 400;
   color: color-mix(in oklch, var(--text), black 4%);
 }
 
