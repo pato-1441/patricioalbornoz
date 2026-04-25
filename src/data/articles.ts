@@ -1,5 +1,5 @@
 import type { Locale } from '@/lib/locale'
-import { defaultLocale, supportedLocales } from '@/lib/locale'
+import { defaultLocale, parseArticleDateString, supportedLocales } from '@/lib/locale'
 
 export type ArticleBlock =
   | { type: 'paragraph'; text: string }
@@ -308,7 +308,7 @@ function getSortTime(record: ArticleRecord) {
     return 0
   }
 
-  return new Date(article.publishedAt).getTime()
+  return parseArticleDateString(article.publishedAt).getTime()
 }
 
 function takeArticles(primary: Array<Article>, fallback: Array<Article>, limit: number) {
@@ -415,6 +415,12 @@ export function getArticlePreviewArticles(locale: Locale) {
     articles,
     4,
   )
+}
+
+/** Most recent other published article in the locale, for "read next" at the end of a post. */
+export function getSuggestedNextArticle(locale: Locale, currentSlug: string) {
+  const next = getArticles(locale).find((a) => a.slug !== currentSlug)
+  return next
 }
 
 export function getArticleBySlug(slug: string, locale: Locale) {

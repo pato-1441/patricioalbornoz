@@ -3,9 +3,14 @@ import type { Locale } from '@/lib/locale'
 import { useLocale } from '@/context/locale-context'
 import { buildLocalizedPath, persistLocalePreference } from '@/lib/locale'
 
-const localeOptions: Array<{ value: Locale; labelKey: 'spanish' | 'english' }> = [
-  { value: 'es', labelKey: 'spanish' },
-  { value: 'en', labelKey: 'english' },
+const localeOptions: Array<{
+  value: Locale
+  labelKey: 'spanish' | 'english'
+  nameKey: 'spanishName' | 'englishName'
+  flag: string
+}> = [
+  { value: 'es', labelKey: 'spanish', nameKey: 'spanishName', flag: '🇪🇸' },
+  { value: 'en', labelKey: 'english', nameKey: 'englishName', flag: '🇺🇸' },
 ]
 
 export function LanguageToggle() {
@@ -42,8 +47,14 @@ export function LanguageToggle() {
               onClick={() => handleChange(option.value)}
               className={`language-toggle-option ${isActive ? 'language-toggle-option-active' : ''}`}
               aria-pressed={isActive}
+              aria-label={t.locale[option.nameKey]}
             >
-              {t.locale[option.labelKey]}
+              <span className="language-toggle-option-inner">
+                <span className="language-toggle-flag" aria-hidden>
+                  {option.flag}
+                </span>
+                <span>{t.locale[option.labelKey]}</span>
+              </span>
             </button>
           )
         })}

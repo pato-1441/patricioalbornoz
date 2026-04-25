@@ -9,11 +9,18 @@ const contentDir = path.join(rootDir, 'src', 'content', 'articles')
 const publicDir = path.join(rootDir, 'public')
 
 const siteName = 'Patricio Albornoz'
-const siteUrlFallback = 'https://patricioalbornoz.com'
-const siteUrl = (process.env.VITE_SITE_URL || siteUrlFallback).replace(/\/+$/, '')
+const siteUrl = 'https://patricioalbornoz.com'
 const siteDescription =
   'Portfolio of Patricio Albornoz about product interfaces, frontend craft, autonomous testing, and design systems.'
 const supportedLocales = ['en', 'es']
+
+function parseArticleDateString(date) {
+  const iso = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(date).trim())
+  if (iso) {
+    return new Date(Number(iso[1]), Number(iso[2]) - 1, Number(iso[3]))
+  }
+  return new Date(date)
+}
 
 function buildUrl(pathname = '/') {
   const normalizedPath = pathname.startsWith('/') ? pathname : `/${pathname}`
@@ -86,7 +93,7 @@ function readArticleRecords() {
       const fallback = english ?? record.translations.es ?? publishedTranslations[0]?.[1]
       const dateValues = publishedTranslations
         .map(([, entry]) => entry)
-        .map((entry) => new Date(entry.date).getTime())
+        .map((entry) => parseArticleDateString(entry.date).getTime())
         .filter((value) => Number.isFinite(value))
       const latestTime = dateValues.length > 0 ? Math.max(...dateValues) : Date.now()
 

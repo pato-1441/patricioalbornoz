@@ -158,8 +158,20 @@ export function persistLocalePreference(locale: Locale) {
   document.cookie = `${localeCookieKey}=${locale}; Path=/; Max-Age=31536000; SameSite=Lax`
 }
 
+/** ISO YYYY-MM-DD is parsed as UTC midnight in JS, which can show the prior calendar day in western time zones. */
+export function parseArticleDateString(date: string): Date {
+  const iso = /^(\d{4})-(\d{2})-(\d{2})$/.exec(date.trim())
+  if (iso) {
+    const y = Number(iso[1])
+    const m = Number(iso[2]) - 1
+    const d = Number(iso[3])
+    return new Date(y, m, d)
+  }
+  return new Date(date)
+}
+
 export function formatArticleDate(date: string, locale: Locale) {
-  const parsed = new Date(date)
+  const parsed = parseArticleDateString(date)
 
   if (Number.isNaN(parsed.getTime())) {
     return date

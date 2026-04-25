@@ -11,6 +11,8 @@ type LocaleCopy = {
     auto: string
     english: string
     spanish: string
+    englishName: string
+    spanishName: string
   }
   sidebar: {
     role: string
@@ -66,6 +68,7 @@ type LocaleCopy = {
   articleContent: {
     endOfArticle: string
     thanks: string
+    readNext: string
   }
   articleShare: {
     openButton: string
@@ -76,6 +79,7 @@ type LocaleCopy = {
     instagram: string
     linkedin: string
     close: string
+    thanksMessage: string
     ariaCopyLink: string
     ariaShareX: string
     ariaShareInstagram: string
@@ -101,6 +105,8 @@ export const copy: Record<Locale, LocaleCopy> = {
       auto: 'Auto',
       english: 'EN',
       spanish: 'ES',
+      englishName: 'English',
+      spanishName: 'Spanish',
     },
     sidebar: {
       role: 'Design Engineer',
@@ -157,7 +163,8 @@ export const copy: Record<Locale, LocaleCopy> = {
     },
     articleContent: {
       endOfArticle: 'End of article',
-      thanks: 'Thanks for reading. You made it to the end!',
+      thanks: 'Thanks for reading—hope it was worth your time.',
+      readNext: 'Up next',
     },
     articleShare: {
       openButton: 'Share',
@@ -168,6 +175,8 @@ export const copy: Record<Locale, LocaleCopy> = {
       instagram: 'Instagram',
       linkedin: 'LinkedIn',
       close: 'Close',
+      thanksMessage:
+        'Thanks for sharing! 😁 Comments on my socials are always welcome.',
       ariaCopyLink: 'Copy article link to clipboard',
       ariaShareX: 'Share on X (Twitter)',
       ariaShareInstagram: 'Share to Instagram (or copy link)',
@@ -193,6 +202,8 @@ export const copy: Record<Locale, LocaleCopy> = {
       auto: 'Auto',
       english: 'EN',
       spanish: 'ES',
+      englishName: 'Inglés',
+      spanishName: 'Español',
     },
     sidebar: {
       role: 'Design Engineer',
@@ -249,7 +260,8 @@ export const copy: Record<Locale, LocaleCopy> = {
     },
     articleContent: {
       endOfArticle: 'Fin del artículo',
-      thanks: 'Gracias por leer. Llegaste hasta el final.',
+      thanks: 'Gracias por leer—espero que haya merecido la pena.',
+      readNext: 'Sigue con',
     },
     articleShare: {
       openButton: 'Compartir',
@@ -260,6 +272,8 @@ export const copy: Record<Locale, LocaleCopy> = {
       instagram: 'Instagram',
       linkedin: 'LinkedIn',
       close: 'Cerrar',
+      thanksMessage:
+        'Gracias por compartir 😁 Siempre son bienvenidos los comentarios en mis redes.',
       ariaCopyLink: 'Copiar enlace del artículo al portapapeles',
       ariaShareX: 'Compartir en X (Twitter)',
       ariaShareInstagram: 'Compartir en Instagram o copiar enlace',

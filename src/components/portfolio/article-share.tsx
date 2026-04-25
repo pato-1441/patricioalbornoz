@@ -3,9 +3,7 @@ import { createPortal } from 'react-dom'
 import { Instagram, Link2, Linkedin, Share2, X } from 'lucide-react'
 import type { Locale } from '@/lib/locale'
 import { copy } from '@/data/i18n'
-import { buildAbsoluteUrl, siteAuthorName } from '@/lib/site'
-
-const AUTHOR_AVATAR = '/patoalbornoz.jpg'
+import { buildAbsoluteUrl, siteAuthorAvatar, siteAuthorName } from '@/lib/site'
 
 type ArticleShareProps = {
   locale: Locale
@@ -20,6 +18,7 @@ type CopySource = 'link' | 'instagram' | null
 export function ArticleShare({ locale, slug, title, coverImage, ogImage }: ArticleShareProps) {
   const t = copy[locale].articleShare
   const [open, setOpen] = useState(false)
+  const [showThanks, setShowThanks] = useState(false)
   const [copyFrom, setCopyFrom] = useState<CopySource>(null)
   const openButtonRef = useRef<HTMLButtonElement>(null)
   const wasOpen = useRef(false)
@@ -52,6 +51,7 @@ export function ArticleShare({ locale, slug, title, coverImage, ogImage }: Artic
   useEffect(() => {
     if (open) {
       setCopyFrom(null)
+      setShowThanks(false)
       wasOpen.current = true
     } else if (wasOpen.current) {
       openButtonRef.current?.focus()
@@ -70,6 +70,7 @@ export function ArticleShare({ locale, slug, title, coverImage, ogImage }: Artic
     try {
       await navigator.clipboard.writeText(shareUrl)
       setCopied('link')
+      setShowThanks(true)
     } catch {
       setCopyFrom(null)
     }
@@ -80,6 +81,7 @@ export function ArticleShare({ locale, slug, title, coverImage, ogImage }: Artic
     if (typeof nativeShare === 'function') {
       try {
         await nativeShare.call(navigator, { title, text: title, url: shareUrl })
+        setShowThanks(true)
         return
       } catch (e) {
         if (e instanceof Error && e.name === 'AbortError') {
@@ -90,6 +92,7 @@ export function ArticleShare({ locale, slug, title, coverImage, ogImage }: Artic
     try {
       await navigator.clipboard.writeText(shareUrl)
       setCopied('instagram')
+      setShowThanks(true)
     } catch {
       setCopyFrom(null)
     }
@@ -128,104 +131,127 @@ export function ArticleShare({ locale, slug, title, coverImage, ogImage }: Artic
                 </button>
               </div>
 
-              <div className="article-share-preview">
-                <div className="article-share-preview-media">
-                  {previewImage ? (
-                    <img
-                      src={previewImage}
-                      alt=""
-                      className="article-share-preview-img"
-                      loading="eager"
-                      decoding="async"
-                    />
-                  ) : (
-                    <div className="article-share-preview-fallback" aria-hidden>
-                      <span className="article-share-preview-fallback-letter">
-                        {title.slice(0, 1).toUpperCase()}
-                      </span>
+              {showThanks ? (
+                <p
+                  className="article-share-thanks"
+                  role="status"
+                  aria-live="polite"
+                >
+                  {t.thanksMessage}
+                </p>
+              ) : (
+                <>
+                  <div className="article-share-preview">
+                    <div className="article-share-preview-media">
+                      {previewImage ? (
+                        <img
+                          src={previewImage}
+                          alt=""
+                          className="article-share-preview-img"
+                          loading="eager"
+                          decoding="async"
+                        />
+                      ) : (
+                        <div
+                          className="article-share-preview-fallback"
+                          aria-hidden
+                        >
+                          <span className="article-share-preview-fallback-letter">
+                            {title.slice(0, 1).toUpperCase()}
+                          </span>
+                        </div>
+                      )}
                     </div>
-                  )}
-                </div>
-                <div className="article-share-preview-bar">
-                  <img
-                    src={AUTHOR_AVATAR}
-                    alt=""
-                    width={40}
-                    height={40}
-                    className="article-share-preview-avatar"
-                  />
-                  <div className="article-share-preview-text">
-                    <p className="article-share-preview-name">{siteAuthorName}</p>
-                    <p className="article-share-preview-headline">{title}</p>
+                    <div className="article-share-preview-bar">
+                      <img
+                        src={siteAuthorAvatar}
+                        alt=""
+                        width={40}
+                        height={40}
+                        className="article-share-preview-avatar"
+                      />
+                      <div className="article-share-preview-text">
+                        <p className="article-share-preview-name">
+                          {siteAuthorName}
+                        </p>
+                        <p className="article-share-preview-headline">{title}</p>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
 
-              <ul className="article-share-actions">
-                <li>
-                  <button
-                    type="button"
-                    className="article-share-tile"
-                    onClick={() => {
-                      void handleCopyLink()
-                    }}
-                    aria-label={t.ariaCopyLink}
-                  >
-                    <span className="article-share-tile-icon" aria-hidden>
-                      <Link2 strokeWidth={1.75} />
-                    </span>
-                    <span className="article-share-tile-label">
-                      {copyFrom === 'link' ? t.copied : t.copyLink}
-                    </span>
-                  </button>
-                </li>
-                <li>
-                  <button
-                    type="button"
-                    className="article-share-tile"
-                    onClick={() => {
-                      openExternal(xUrl)
-                    }}
-                    aria-label={t.ariaShareX}
-                  >
-                    <span className="article-share-tile-icon" aria-hidden>
-                      <span className="article-share-tile-x">𝕏</span>
-                    </span>
-                    <span className="article-share-tile-label">{t.x}</span>
-                  </button>
-                </li>
-                <li>
-                  <button
-                    type="button"
-                    className="article-share-tile"
-                    onClick={() => {
-                      void handleInstagram()
-                    }}
-                    aria-label={t.ariaShareInstagram}
-                  >
-                    <span className="article-share-tile-icon" aria-hidden>
-                      <Instagram strokeWidth={1.6} />
-                    </span>
-                    <span className="article-share-tile-label">
-                      {copyFrom === 'instagram' ? t.copied : t.instagram}
-                    </span>
-                  </button>
-                </li>
-                <li>
-                  <a
-                    className="article-share-tile"
-                    href={linkedInUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={t.ariaShareLinkedin}
-                  >
-                    <span className="article-share-tile-icon" aria-hidden>
-                      <Linkedin strokeWidth={1.75} />
-                    </span>
-                    <span className="article-share-tile-label">{t.linkedin}</span>
-                  </a>
-                </li>
-              </ul>
+                  <ul className="article-share-actions">
+                    <li>
+                      <button
+                        type="button"
+                        className="article-share-tile"
+                        onClick={() => {
+                          void handleCopyLink()
+                        }}
+                        aria-label={t.ariaCopyLink}
+                      >
+                        <span className="article-share-tile-icon" aria-hidden>
+                          <Link2 strokeWidth={1.75} />
+                        </span>
+                        <span className="article-share-tile-label">
+                          {copyFrom === 'link' ? t.copied : t.copyLink}
+                        </span>
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        type="button"
+                        className="article-share-tile"
+                        onClick={() => {
+                          setShowThanks(true)
+                          openExternal(xUrl)
+                        }}
+                        aria-label={t.ariaShareX}
+                      >
+                        <span className="article-share-tile-icon" aria-hidden>
+                          <span className="article-share-tile-x">𝕏</span>
+                        </span>
+                        <span className="article-share-tile-label">{t.x}</span>
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        type="button"
+                        className="article-share-tile"
+                        onClick={() => {
+                          void handleInstagram()
+                        }}
+                        aria-label={t.ariaShareInstagram}
+                      >
+                        <span className="article-share-tile-icon" aria-hidden>
+                          <Instagram strokeWidth={1.6} />
+                        </span>
+                        <span className="article-share-tile-label">
+                          {copyFrom === 'instagram' ? t.copied : t.instagram}
+                        </span>
+                      </button>
+                    </li>
+                    <li>
+                      <a
+                        className="article-share-tile"
+                        href={linkedInUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={t.ariaShareLinkedin}
+                        onClick={() => {
+                          setShowThanks(true)
+                        }}
+                      >
+                        <span className="article-share-tile-icon" aria-hidden>
+                          <Linkedin strokeWidth={1.75} />
+                        </span>
+                        <span className="article-share-tile-label">
+                          {t.linkedin}
+                        </span>
+                      </a>
+                    </li>
+                  </ul>
+                </>
+              )}
             </div>
           </div>,
           document.body,

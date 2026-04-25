@@ -1,7 +1,5 @@
-import { Smile } from 'lucide-react'
 import type { CSSProperties, ReactNode } from 'react'
 import type { ArticleBlock } from '@/data/articles'
-import { useLocale } from '@/context/locale-context'
 
 type ArticleContentProps = {
   blocks: Array<ArticleBlock>
@@ -119,8 +117,6 @@ function getParagraphVariant(text: string) {
 }
 
 export function ArticleContent({ blocks }: ArticleContentProps) {
-  const { t } = useLocale()
-
   return (
     <div className="prose-flow">
       {blocks.map((block, index) => {
@@ -220,14 +216,6 @@ export function ArticleContent({ blocks }: ArticleContentProps) {
           </p>
         )
       })}
-
-      <footer className="end-reading-note" aria-label={t.articleContent.endOfArticle}>
-        <div className="end-reading-faces" aria-hidden>
-          <Smile className="size-4" />
-          <Smile className="size-4" />
-        </div>
-        <p className="end-reading-copy">{t.articleContent.thanks}</p>
-      </footer>
     </div>
   )
 }

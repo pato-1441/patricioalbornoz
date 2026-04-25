@@ -12,7 +12,7 @@ const distIndexPath = path.join(distDir, 'index.html')
 const siteName = 'Patricio Albornoz'
 const siteAuthorName = 'Patricio Albornoz'
 const siteHandle = '@patoalbornozz'
-const siteUrl = (process.env.VITE_SITE_URL || 'https://patricioalbornoz.com').replace(/\/+$/, '')
+const siteUrl = 'https://patricioalbornoz.com'
 const defaultOgImage = '/og.webp'
 
 function escapeHtml(value) {

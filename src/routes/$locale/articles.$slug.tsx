@@ -1,6 +1,7 @@
 import { Link, createFileRoute, notFound, redirect } from '@tanstack/react-router'
 import { ArrowLeft } from 'lucide-react'
 import { ArticleContent } from '@/components/portfolio/article-content'
+import { ArticleEndNote } from '@/components/portfolio/article-end'
 import { ArticleReadingProgress } from '@/components/portfolio/article-reading-progress'
 import { ArticleShare } from '@/components/portfolio/article-share'
 import { copy } from '@/data/i18n'
@@ -8,11 +9,12 @@ import {
   getArticleSlugRedirect,
   getArticleTranslationBySlug,
   getAvailableArticleLocales,
+  getSuggestedNextArticle,
   hasArticleTranslation,
 } from '@/data/articles'
 import { defaultLocale, formatArticleDate, formatReadTime, isLocale } from '@/lib/locale'
 import { createSeoHead } from '@/lib/seo'
-import { buildAbsoluteUrl, siteAuthorName, siteName } from '@/lib/site'
+import { buildAbsoluteUrl, siteAuthorAvatar, siteAuthorName, siteName } from '@/lib/site'
 
 function resolveLocale(value: string) {
   return isLocale(value) ? value : defaultLocale
@@ -113,6 +115,8 @@ function ArticlePage() {
     throw notFound()
   }
 
+  const nextArticle = getSuggestedNextArticle(locale, slug)
+
   return (
     <main className="article-page relative min-h-screen selection:bg-amber-200/60 selection:text-neutral-900">
       <ArticleReadingProgress label={t.articles.readingProgress} />
@@ -153,7 +157,17 @@ function ArticlePage() {
             <span aria-hidden className="article-meta-dot" />
             <span>{formatReadTime(article.readTimeMinutes, locale)}</span>
             <span aria-hidden className="article-meta-dot" />
-            <span>{`${t.articles.byAuthor} ${siteAuthorName}`}</span>
+            <span className="article-meta-author">
+              <img
+                src={siteAuthorAvatar}
+                alt=""
+                className="article-meta-avatar"
+                width={28}
+                height={28}
+                decoding="async"
+              />
+              <span>{`${t.articles.byAuthor} ${siteAuthorName}`}</span>
+            </span>
           </div>
           <header className="article-header">
             <h1 className="article-title">{article.title}</h1>
@@ -163,6 +177,14 @@ function ArticlePage() {
           <div className="article-divider" />
 
           <ArticleContent blocks={article.blocks} />
+          <ArticleEndNote
+            locale={locale}
+            currentSlug={article.slug}
+            title={article.title}
+            coverImage={article.coverImage}
+            ogImage={article.ogImage}
+            nextArticle={nextArticle}
+          />
         </article>
       </div>
     </main>

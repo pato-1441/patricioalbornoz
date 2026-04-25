@@ -270,11 +270,22 @@ body {
   padding: 0.24rem;
 }
 
+.language-toggle-option-inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28rem;
+}
+
+.language-toggle-flag {
+  font-size: 1.15em;
+  line-height: 1;
+}
+
 .language-toggle-option {
   border: 0;
   border-radius: 999px;
   background: transparent;
-  padding: 0.38rem 0.8rem;
+  padding: 0.38rem 0.72rem;
   font-size: 0.7rem;
   font-weight: 620;
   letter-spacing: 0.14em;
@@ -619,11 +630,11 @@ body {
 
 .article-share-actions {
   list-style: none;
-  margin: 1rem 0 0;
+  margin: 1.15rem 0 0;
   padding: 0;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 0.2rem 0.35rem;
+  gap: 0.4rem 0.55rem;
   align-items: start;
   justify-items: center;
 }
@@ -631,7 +642,7 @@ body {
 @media (max-width: 400px) {
   .article-share-actions {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    row-gap: 0.4rem;
+    row-gap: 0.5rem;
   }
 }
 
@@ -642,16 +653,36 @@ body {
   justify-content: center;
 }
 
+.article-share-thanks {
+  margin: 1.05rem 0 0;
+  min-height: 9.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 1.35rem;
+  border-radius: 1.25rem;
+  border: 1px solid color-mix(in oklch, var(--line), white 8%);
+  background: #5c4b3d;
+  box-shadow: 0 16px 36px -28px oklch(0.22 0.03 60 / 0.4);
+  font-size: 1.02rem;
+  font-weight: 600;
+  line-height: 1.45;
+  letter-spacing: -0.02em;
+  text-align: center;
+  text-wrap: balance;
+  color: #faf7f2;
+}
+
 .article-share-tile {
   display: flex;
   width: 100%;
-  max-width: 4.2rem;
+  max-width: 6.5rem;
   box-sizing: border-box;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  gap: 0.28rem;
-  padding: 0.2rem 0.05rem 0.1rem;
+  gap: 0.42rem;
+  padding: 0.2rem 0.1rem 0.1rem;
   border: none;
   border-radius: 0.75rem;
   text-align: center;
@@ -661,8 +692,8 @@ body {
   font: inherit;
   cursor: pointer;
   transition:
-    color 0.16s ease,
-    transform 0.16s ease;
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .article-share-tile:focus-visible {
@@ -672,12 +703,20 @@ body {
 
 @media (hover: hover) and (pointer: fine) {
   .article-share-tile:hover {
-    color: color-mix(in oklch, var(--text), black 2%);
+    color: var(--text);
+    transform: translateY(-2px);
   }
 
   .article-share-tile:hover .article-share-tile-icon {
-    background: color-mix(in oklch, var(--paper), white 22%);
-    border-color: color-mix(in oklch, var(--line), white 4%);
+    background: color-mix(in oklch, #5c4b3d, white 12%);
+    border-color: color-mix(in oklch, #5c4b3d, white 5%);
+    color: #faf7f2;
+    transform: scale(1.06);
+    box-shadow: 0 6px 16px -8px oklch(0.2 0.04 50 / 0.55);
+  }
+
+  .article-share-tile:hover .article-share-tile-label {
+    color: var(--text);
   }
 }
 
@@ -686,20 +725,23 @@ body {
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  width: 2.1rem;
-  height: 2.1rem;
-  border: 1px solid color-mix(in oklch, var(--line), white 18%);
-  border-radius: 0.7rem;
+  width: 2.85rem;
+  height: 2.85rem;
+  border: 1px solid color-mix(in oklch, var(--line), white 12%);
+  border-radius: 0.88rem;
   background: color-mix(in oklch, var(--paper), white 10%);
   color: var(--text);
   transition:
-    background 0.16s ease,
-    border-color 0.16s ease;
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
 }
 
 .article-share-tile-x {
   display: block;
-  font-size: 0.88rem;
+  font-size: 1.12rem;
   font-weight: 800;
   line-height: 1;
   letter-spacing: -0.04em;
@@ -707,8 +749,8 @@ body {
 
 .article-share-tile-icon svg {
   display: block;
-  width: 0.95rem;
-  height: 0.95rem;
+  width: 1.2rem;
+  height: 1.2rem;
   flex-shrink: 0;
 }
 
@@ -717,18 +759,37 @@ body {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   width: 100%;
-  max-width: 4.2rem;
-  min-height: 1.1em;
+  max-width: 6.5rem;
+  min-height: 1.2em;
   box-sizing: border-box;
-  padding: 0 0.05rem;
+  padding: 0 0.1rem;
   overflow: hidden;
-  font-size: 0.58rem;
+  font-size: 0.72rem;
   font-weight: 600;
   line-height: 1.2;
-  letter-spacing: 0.02em;
-  color: color-mix(in oklch, var(--text), var(--muted) 20%);
+  letter-spacing: 0.018em;
+  color: color-mix(in oklch, var(--text), var(--muted) 15%);
   text-align: center;
   word-break: break-word;
+  transition: color 0.2s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .article-share-tile,
+  .article-share-tile-icon,
+  .article-share-tile-label {
+    transition: none;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .article-share-tile:hover {
+      transform: none;
+    }
+
+    .article-share-tile:hover .article-share-tile-icon {
+      transform: none;
+    }
+  }
 }
 
 .article-backlink {
@@ -782,6 +843,22 @@ body {
   height: 0.24rem;
   border-radius: 999px;
   background: color-mix(in oklch, var(--line-strong), var(--text) 35%);
+}
+
+.article-meta-author {
+  display: inline-flex;
+  max-width: 100%;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.article-meta-avatar {
+  width: 1.75rem;
+  height: 1.75rem;
+  flex-shrink: 0;
+  border: 0;
+  border-radius: 999px;
+  object-fit: cover;
 }
 
 .article-header {
@@ -963,36 +1040,137 @@ body {
   margin-top: clamp(3.4rem, 5vw, 5rem);
   display: grid;
   justify-items: center;
-  gap: 0.8rem;
+  gap: 0.75rem;
   border-top: 1px solid var(--line);
   padding-top: 2rem;
   text-align: center;
 }
 
-.end-reading-faces {
+.end-reading-emoji-pill {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
+  gap: 0.35rem;
   border: 1px solid var(--line);
   border-radius: 999px;
   background: var(--paper-soft);
-  padding: 0.44rem 0.72rem;
-  color: color-mix(in oklch, var(--accent), black 28%);
+  padding: 0.36rem 0.7rem 0.4rem;
 }
 
-.end-reading-faces svg:nth-child(1) {
+.end-reading-emoji {
+  display: inline-block;
+  font-size: 1.2rem;
+  line-height: 1;
   animation: faceBob 1.4s ease-in-out infinite;
 }
 
-.end-reading-faces svg:nth-child(2) {
-  animation: faceBob 1.4s ease-in-out 160ms infinite;
+.end-reading-emoji--delay {
+  animation-delay: 160ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .end-reading-emoji {
+    animation: none;
+  }
 }
 
 .end-reading-copy {
   margin: 0;
+  max-width: 32rem;
   font-size: 0.95rem;
+  line-height: 1.5;
   letter-spacing: 0.01em;
   color: var(--muted);
+}
+
+.end-reading-actions {
+  display: flex;
+  width: 100%;
+  max-width: 40rem;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 0.35rem;
+}
+
+@media (min-width: 520px) {
+  .end-reading-actions {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.end-reading-next {
+  display: flex;
+  min-width: 0;
+  flex: 1 1 14rem;
+  align-items: center;
+  gap: 0.4rem 0.55rem;
+  border: 1px solid color-mix(in oklch, var(--line), white 10%);
+  border-radius: 999px;
+  background: color-mix(in oklch, var(--paper-soft), white 22%);
+  padding: 0.48rem 0.9rem 0.48rem 0.95rem;
+  text-align: left;
+  text-decoration: none;
+  color: var(--text);
+  transition:
+    background 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+  box-shadow: 0 10px 28px -22px oklch(0.2 0.02 60 / 0.35);
+}
+
+.end-reading-next:hover {
+  border-color: color-mix(in oklch, var(--line-strong), var(--text) 10%);
+  background: color-mix(in oklch, var(--paper), white 18%);
+}
+
+.end-reading-next-kicker {
+  flex-shrink: 0;
+  font-size: 0.64rem;
+  font-weight: 650;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.end-reading-next-title {
+  min-width: 0;
+  flex: 1 1 auto;
+  font-size: 0.88rem;
+  font-weight: 550;
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.end-reading-next-chevron {
+  flex-shrink: 0;
+  width: 0.9rem;
+  height: 0.9rem;
+  color: var(--muted);
+  transition: transform 200ms ease;
+}
+
+.end-reading-next:hover .end-reading-next-chevron {
+  transform: translateX(2px);
+  color: color-mix(in oklch, var(--text), var(--muted) 35%);
+}
+
+.end-reading-share {
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+}
+
+@media (min-width: 520px) {
+  .end-reading-share {
+    justify-content: flex-start;
+  }
 }
 
 @keyframes faceBob {
