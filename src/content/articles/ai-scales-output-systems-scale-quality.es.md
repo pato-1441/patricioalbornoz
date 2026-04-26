@@ -26,6 +26,8 @@ Y detrás de eso, había un proceso que se estaba formando en silencio, uno que 
 
 ## La “pateada”
 
+![La imagen que circulaba en el equipo cuando se venia una pateada](/pateada.jpg "max-height=28rem")
+
 Dentro del equipo, le habíamos puesto un nombre a parte de ese proceso.
 
 Le decíamos “la pateada”.
@@ -83,6 +85,8 @@ Se amplifica.
 &nbsp;
 
 ## La solución obvia (que no lo era)
+
+![Antigua Home de Autonoma hecha con Pond UI](/old-home.png "max-height=30rem")
 
 Entonces hicimos lo que hacen la mayoría de los equipos.
 
@@ -155,6 +159,8 @@ Resetear.
 
 ## El volantazo
 
+![Preview de Blacklight](/blacklight-preview.png "max-height=30rem")
+
 Cambiamos todo.
 
 Dark mode como base.  
@@ -217,7 +223,7 @@ No lo están.
 
 Evolucionan con el producto.
 
-<!-- IMAGE: Agent Status GIF -->
+![GIF de Agent Status](/agent-status.gif "max-height=28rem")
 
 Un buen ejemplo fue el componente de **Agent Status**.
 

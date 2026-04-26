@@ -261,7 +261,7 @@ export const copy: Record<Locale, LocaleCopy> = {
     articleContent: {
       endOfArticle: 'Fin del artículo',
       thanks: 'Gracias por leer.',
-      readNext: 'Sigue con',
+      readNext: 'Seguí con',
     },
     articleShare: {
       openButton: 'Compartir',

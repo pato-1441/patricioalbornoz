@@ -24,7 +24,11 @@ And behind that, there was a process quietly forming — one that we never expli
 
 &nbsp;
 
+
 ## The “pateada”
+
+![The image that circulated around the team once a pateada was happening](/pateada.jpg "max-height=28rem")
+
 
 Inside the team, we had a name for part of that process.
 
@@ -83,6 +87,8 @@ It compounds.
 &nbsp;
 
 ## The obvious solution (that wasn’t)
+
+![Old Autonoma home made with Pond UI](/old-home.png "max-height=30rem")
 
 So we did what most teams do.
 
@@ -155,6 +161,8 @@ We reset.
 
 ## The turn
 
+![Blacklight preview](/blacklight-preview.png "max-height=30rem")
+
 We changed everything.
 
 Dark mode as the foundation.  
@@ -217,7 +225,7 @@ They’re not.
 
 They evolve with the product.
 
-<!-- IMAGE: Agent Status GIF -->
+![Agent Status GIF](/agent-status.gif "max-height=28rem")
 
 A clear example of this was the Agent Status component.
 
