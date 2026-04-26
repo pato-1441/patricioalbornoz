@@ -1107,13 +1107,15 @@ body {
 .end-reading-next {
   display: flex;
   min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
   flex: 1 1 14rem;
   align-items: center;
   gap: 0.55rem;
   border: 1px solid color-mix(in oklch, var(--line), white 10%);
   border-radius: 999px;
   background: color-mix(in oklch, var(--paper-soft), white 22%);
-  padding: 0.5rem 0.9rem 0.5rem 0.9rem;
+  padding: 0.35rem 0.9rem 0.35rem 0.9rem;
   text-align: left;
   text-decoration: none;
   color: var(--text);
@@ -1122,6 +1124,12 @@ body {
     border-color 180ms ease,
     box-shadow 180ms ease;
   box-shadow: 0 10px 28px -22px oklch(0.2 0.02 60 / 0.35);
+}
+
+@media (max-width: 519px) {
+  .end-reading-next {
+    flex: 0 1 auto;
+  }
 }
 
 .end-reading-next-main {
