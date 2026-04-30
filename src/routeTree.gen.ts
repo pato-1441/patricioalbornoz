@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ArticlesRouteImport } from './routes/articles'
 import { Route as LocaleRouteImport } from './routes/$locale'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as LocaleIndexRouteImport } from './routes/$locale/index'
@@ -16,6 +17,11 @@ import { Route as LocaleArticlesRouteImport } from './routes/$locale/articles'
 import { Route as LocaleArticlesIndexRouteImport } from './routes/$locale/articles.index'
 import { Route as LocaleArticlesSlugRouteImport } from './routes/$locale/articles.$slug'
 
+const ArticlesRoute = ArticlesRouteImport.update({
+  id: '/articles',
+  path: '/articles',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LocaleRoute = LocaleRouteImport.update({
   id: '/$locale',
   path: '/$locale',
@@ -50,6 +56,7 @@ const LocaleArticlesSlugRoute = LocaleArticlesSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$locale': typeof LocaleRouteWithChildren
+  '/articles': typeof ArticlesRoute
   '/$locale/articles': typeof LocaleArticlesRouteWithChildren
   '/$locale/': typeof LocaleIndexRoute
   '/$locale/articles/$slug': typeof LocaleArticlesSlugRoute
@@ -57,6 +64,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/articles': typeof ArticlesRoute
   '/$locale': typeof LocaleIndexRoute
   '/$locale/articles/$slug': typeof LocaleArticlesSlugRoute
   '/$locale/articles': typeof LocaleArticlesIndexRoute
@@ -65,6 +73,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/$locale': typeof LocaleRouteWithChildren
+  '/articles': typeof ArticlesRoute
   '/$locale/articles': typeof LocaleArticlesRouteWithChildren
   '/$locale/': typeof LocaleIndexRoute
   '/$locale/articles/$slug': typeof LocaleArticlesSlugRoute
@@ -75,16 +84,23 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/$locale'
+    | '/articles'
     | '/$locale/articles'
     | '/$locale/'
     | '/$locale/articles/$slug'
     | '/$locale/articles/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/$locale' | '/$locale/articles/$slug' | '/$locale/articles'
+  to:
+    | '/'
+    | '/articles'
+    | '/$locale'
+    | '/$locale/articles/$slug'
+    | '/$locale/articles'
   id:
     | '__root__'
     | '/'
     | '/$locale'
+    | '/articles'
     | '/$locale/articles'
     | '/$locale/'
     | '/$locale/articles/$slug'
@@ -94,10 +110,18 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   LocaleRoute: typeof LocaleRouteWithChildren
+  ArticlesRoute: typeof ArticlesRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/articles': {
+      id: '/articles'
+      path: '/articles'
+      fullPath: '/articles'
+      preLoaderRoute: typeof ArticlesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/$locale': {
       id: '/$locale'
       path: '/$locale'
@@ -173,6 +197,7 @@ const LocaleRouteWithChildren =
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   LocaleRoute: LocaleRouteWithChildren,
+  ArticlesRoute: ArticlesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
