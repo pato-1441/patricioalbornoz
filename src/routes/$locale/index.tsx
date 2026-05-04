@@ -2,6 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import type { NavItem } from '@/components/portfolio/section-pills'
 import { ArticlesPreviewSection } from '@/components/portfolio/articles-preview-section'
 import { HomeSection } from '@/components/portfolio/home-section'
+import { ProjectsSection } from '@/components/portfolio/projects-section'
 import { SectionPills } from '@/components/portfolio/section-pills'
 import { Sidebar } from '@/components/portfolio/sidebar'
 import { WorkSection } from '@/components/portfolio/work-section'
@@ -67,6 +68,7 @@ function App() {
   const sectionNavItems: Array<NavItem> = [
     { label: t.nav.home, href: '#home' },
     { label: t.nav.work, href: '#work' },
+    { label: t.nav.projects, href: '#projects' },
     { label: t.nav.articles, href: '#articles' },
   ]
 
@@ -87,6 +89,9 @@ function App() {
             <WorkSection />
           </div>
           <div className="reveal delay-4">
+            <ProjectsSection />
+          </div>
+          <div className="reveal delay-5">
             <ArticlesPreviewSection />
           </div>
         </div>

@@ -47,6 +47,7 @@ function ArticlesPage() {
   const navItems: Array<NavItem> = [
     { label: t.nav.home, href: `/${locale}#home` },
     { label: t.nav.work, href: `/${locale}#work` },
+    { label: t.nav.projects, href: `/${locale}#projects` },
     { label: t.nav.articles, href: `/${locale}/articles` },
   ]
   const articles = getArticles(locale)

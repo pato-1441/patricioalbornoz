@@ -4,6 +4,7 @@ type LocaleCopy = {
   nav: {
     home: string
     work: string
+    projects: string
     articles: string
   }
   locale: {
@@ -54,6 +55,12 @@ type LocaleCopy = {
     closePreview: string
     close: string
   }
+  projects: {
+    title: string
+    openProject: (title: string) => string
+    sideProjectLabel: string
+    previewLabel: string
+  }
   articles: {
     title: string
     archive: string
@@ -98,6 +105,7 @@ export const copy: Record<Locale, LocaleCopy> = {
     nav: {
       home: 'Home',
       work: 'Work',
+      projects: 'Projects',
       articles: 'Articles',
     },
     locale: {
@@ -150,6 +158,12 @@ export const copy: Record<Locale, LocaleCopy> = {
       closePreview: 'Close media preview',
       close: 'Close',
     },
+    projects: {
+      title: 'Projects',
+      openProject: (title) => `Open ${title}`,
+      sideProjectLabel: 'Side project',
+      previewLabel: 'Project preview',
+    },
     articles: {
       title: 'Articles',
       archive: 'Archive',
@@ -195,6 +209,7 @@ export const copy: Record<Locale, LocaleCopy> = {
     nav: {
       home: 'Inicio',
       work: 'Trabajo',
+      projects: 'Proyectos',
       articles: 'Artículos',
     },
     locale: {
@@ -246,6 +261,12 @@ export const copy: Record<Locale, LocaleCopy> = {
       previewItem: (title) => `Vista previa de ${title}`,
       closePreview: 'Cerrar vista previa',
       close: 'Cerrar',
+    },
+    projects: {
+      title: 'Proyectos',
+      openProject: (title) => `Abrir ${title}`,
+      sideProjectLabel: 'Proyecto side',
+      previewLabel: 'Vista previa del proyecto',
     },
     articles: {
       title: 'Artículos',
