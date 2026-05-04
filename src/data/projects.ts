@@ -29,7 +29,7 @@ const projects: Array<ProjectItem> = [
       en: 'Chrome extension',
       es: 'Extensión de Chrome',
     },
-    url: 'https://chromewebstore.google.com/detail/bkkmgkechgpklnpaacfpkanjdnbpgige/preview?hl=es-419&authuser=1',
+    url: 'https://chromewebstore.google.com/detail/whatsapp-privacy-blur/bkkmgkechgpklnpaacfpkanjdnbpgige',
     icon: {
       src: '/privacy-extension-icon.png',
       alt: {
