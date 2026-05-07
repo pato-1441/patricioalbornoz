@@ -9,8 +9,8 @@ const localeOptions: Array<{
   nameKey: 'spanishName' | 'englishName'
   flag: string
 }> = [
-  { value: 'es', labelKey: 'spanish', nameKey: 'spanishName', flag: '🇪🇸' },
   { value: 'en', labelKey: 'english', nameKey: 'englishName', flag: '🇺🇸' },
+  { value: 'es', labelKey: 'spanish', nameKey: 'spanishName', flag: '🇪🇸' },
 ]
 
 export function LanguageToggle() {
@@ -28,21 +28,19 @@ export function LanguageToggle() {
 
     persistLocalePreference(nextLocale)
     // Do not carry over the hash — it would scroll to #articles, #work, etc. on the new locale.
-    window.location.assign(`${buildLocalizedPath(nextLocale, pathname)}${search}`)
+    window.location.assign(
+      `${buildLocalizedPath(nextLocale, pathname)}${search}`,
+    )
   }
 
   return (
-    <div className="space-y-2">
-      <p className="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-neutral-500">
-        {t.locale.label}
-      </p>
-      <div className="language-toggle" role="group" aria-label={t.locale.label}>
-        {localeOptions.map((option) => {
-          const isActive = locale === option.value
+    <div className="language-toggle" role="group" aria-label={t.locale.label}>
+      {localeOptions.map((option, index) => {
+        const isActive = locale === option.value
 
-          return (
+        return (
+          <span key={option.value} className="inline-flex items-center gap-2">
             <button
-              key={option.value}
               type="button"
               onClick={() => handleChange(option.value)}
               className={`language-toggle-option ${isActive ? 'language-toggle-option-active' : ''}`}
@@ -50,15 +48,18 @@ export function LanguageToggle() {
               aria-label={t.locale[option.nameKey]}
             >
               <span className="language-toggle-option-inner">
-                <span className="language-toggle-flag" aria-hidden>
-                  {option.flag}
-                </span>
+                <span aria-hidden>{option.flag}</span>
                 <span>{t.locale[option.labelKey]}</span>
               </span>
             </button>
-          )
-        })}
-      </div>
+            {index < localeOptions.length - 1 ? (
+              <span className="text-xs text-neutral-400" aria-hidden>
+                /
+              </span>
+            ) : null}
+          </span>
+        )
+      })}
     </div>
   )
 }

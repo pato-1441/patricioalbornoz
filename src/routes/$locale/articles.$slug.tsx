@@ -1,4 +1,9 @@
-import { Link, createFileRoute, notFound, redirect } from '@tanstack/react-router'
+import {
+  Link,
+  createFileRoute,
+  notFound,
+  redirect,
+} from '@tanstack/react-router'
 import { ArrowLeft } from 'lucide-react'
 import { ArticleContent } from '@/components/portfolio/article-content'
 import { ArticleEndNote } from '@/components/portfolio/article-end'
@@ -12,9 +17,19 @@ import {
   getSuggestedNextArticle,
   hasArticleTranslation,
 } from '@/data/articles'
-import { defaultLocale, formatArticleDate, formatReadTime, isLocale } from '@/lib/locale'
+import {
+  defaultLocale,
+  formatArticleDate,
+  formatReadTime,
+  isLocale,
+} from '@/lib/locale'
 import { createSeoHead } from '@/lib/seo'
-import { buildAbsoluteUrl, siteAuthorAvatar, siteAuthorName, siteName } from '@/lib/site'
+import {
+  buildAbsoluteUrl,
+  siteAuthorAvatar,
+  siteAuthorName,
+  siteName,
+} from '@/lib/site'
 
 function resolveLocale(value: string) {
   return isLocale(value) ? value : defaultLocale
@@ -55,7 +70,10 @@ export const Route = createFileRoute('/$locale/articles/$slug')({
       })
     }
 
-    const article = getArticleTranslationBySlug(loaderData.slug, loaderData.locale)
+    const article = getArticleTranslationBySlug(
+      loaderData.slug,
+      loaderData.locale,
+    )
 
     if (!article) {
       return createSeoHead({
@@ -69,7 +87,10 @@ export const Route = createFileRoute('/$locale/articles/$slug')({
 
     const availableLocales = getAvailableArticleLocales(article.slug)
     const alternates = Object.fromEntries(
-      availableLocales.map((locale) => [locale, `/${locale}/articles/${article.slug}`]),
+      availableLocales.map((locale) => [
+        locale,
+        `/${locale}/articles/${article.slug}`,
+      ]),
     )
 
     return createSeoHead({
@@ -97,8 +118,12 @@ export const Route = createFileRoute('/$locale/articles/$slug')({
           '@type': 'Person',
           name: siteAuthorName,
         },
-        image: buildAbsoluteUrl(article.ogImage ?? article.coverImage ?? '/profile.jpeg'),
-        mainEntityOfPage: buildAbsoluteUrl(`/${loaderData.locale}/articles/${article.slug}`),
+        image: buildAbsoluteUrl(
+          article.ogImage ?? article.coverImage ?? '/profile.jpeg',
+        ),
+        mainEntityOfPage: buildAbsoluteUrl(
+          `/${loaderData.locale}/articles/${article.slug}`,
+        ),
         inLanguage: loaderData.locale,
       },
     })
@@ -118,7 +143,7 @@ function ArticlePage() {
   const nextArticle = getSuggestedNextArticle(locale, slug)
 
   return (
-    <main className="article-page relative min-h-screen selection:bg-amber-200/60 selection:text-neutral-900">
+    <main className="article-page relative min-h-screen selection:bg-neutral-200 selection:text-neutral-950">
       <ArticleReadingProgress label={t.articles.readingProgress} />
       <div className="article-page-wrap">
         <article className="article-shell">
@@ -152,24 +177,24 @@ function ArticlePage() {
             </div>
           ) : null}
 
-          <div className="article-meta">
-            <span>{formatArticleDate(article.publishedAt, locale)}</span>
-            <span aria-hidden className="article-meta-dot" />
-            <span>{formatReadTime(article.readTimeMinutes, locale)}</span>
-            <span aria-hidden className="article-meta-dot" />
-            <span className="article-meta-author">
-              <img
-                src={siteAuthorAvatar}
-                alt=""
-                className="article-meta-avatar"
-                width={28}
-                height={28}
-                decoding="async"
-              />
-              <span>{`${t.articles.byAuthor} ${siteAuthorName}`}</span>
-            </span>
-          </div>
           <header className="article-header">
+            <div className="article-meta">
+              <span>{formatArticleDate(article.publishedAt, locale)}</span>
+              <span aria-hidden className="article-meta-dot" />
+              <span>{formatReadTime(article.readTimeMinutes, locale)}</span>
+              <span aria-hidden className="article-meta-dot" />
+              <span className="article-meta-author">
+                <img
+                  src={siteAuthorAvatar}
+                  alt=""
+                  className="article-meta-avatar"
+                  width={28}
+                  height={28}
+                  decoding="async"
+                />
+                <span>{`${t.articles.byAuthor} ${siteAuthorName}`}</span>
+              </span>
+            </div>
             <h1 className="article-title">{article.title}</h1>
             <p className="article-excerpt">{article.excerpt}</p>
           </header>

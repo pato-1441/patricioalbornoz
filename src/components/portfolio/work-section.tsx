@@ -34,7 +34,7 @@ export function WorkSection() {
   }, [activeItem])
 
   return (
-    <section id="work" className="scroll-mt-24 space-y-7">
+    <section id="work" className="scroll-mt-32 space-y-8">
       <SectionHeader title={t.work.title} />
 
       <div className="showcase-grid">
@@ -43,8 +43,7 @@ export function WorkSection() {
             key={item.src}
             type="button"
             onClick={() => setActiveIndex(index)}
-            className={`content-card card-stack showcase-tile group block overflow-hidden`}
-            style={{ backgroundColor: item.bgColor }}
+            className="showcase-tile group"
             aria-label={t.work.openItem(item.title)}
           >
             <div className="showcase-media-shell">
@@ -67,6 +66,10 @@ export function WorkSection() {
                 />
               )}
             </div>
+            <div className="showcase-caption">
+              <span className="showcase-title">{item.title}</span>
+              <span className="showcase-view">View</span>
+            </div>
           </button>
         ))}
       </div>
@@ -80,7 +83,10 @@ export function WorkSection() {
               aria-label={t.work.previewItem(activeItem.title)}
               onClick={() => setActiveIndex(null)}
             >
-              <div className="showcase-lightbox-frame" onClick={(event) => event.stopPropagation()}>
+              <div
+                className="showcase-lightbox-frame"
+                onClick={(event) => event.stopPropagation()}
+              >
                 <button
                   type="button"
                   className="showcase-close"

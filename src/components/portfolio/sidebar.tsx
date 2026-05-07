@@ -11,78 +11,77 @@ type SidebarProps = {
   layout?: 'default' | 'article'
 }
 
-export function Sidebar({ navItems, className, layout = 'default' }: SidebarProps) {
+export function Sidebar({
+  navItems,
+  className,
+  layout = 'default',
+}: SidebarProps) {
   const { t } = useLocale()
 
   return (
     <aside
-      className={`lg:col-span-4 xl:col-span-3 lg:sticky lg:top-16 lg:h-[calc(100vh-8rem)] lg:flex lg:flex-col lg:justify-between ${layout === 'article' ? 'lg:-translate-x-5 xl:-translate-x-10' : ''} ${className ?? ''}`}
+      className={`shrink-0 lg:w-[280px] ${layout === 'article' ? 'lg:-translate-x-5 xl:-translate-x-10' : ''} ${className ?? ''}`}
     >
-      <div className="space-y-6">
-        <div className="space-y-6">
-          <h1 className="text-4xl font-semibold leading-[0.98] tracking-[-0.02em] text-neutral-900 sm:text-5xl">
-            Patricio
-            <br />
-            Albornoz
-            <br />
-            <span className="display-serif text-[0.92em] font-medium italic text-neutral-600">
-              {t.sidebar.role}
-            </span>
+      <div className="flex flex-col gap-10 lg:sticky lg:top-32">
+        <div>
+          <h1 className="text-lg font-medium tracking-normal text-neutral-950">
+            Patricio Albornoz
           </h1>
-
-          <p className="max-w-md text-lg leading-relaxed text-neutral-700">
-            <span className="block">
-              {t.sidebar.introLead}{' '}
-              <a
-                href="https://getautonoma.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="display-serif text-[1.28em] font-bold italic text-neutral-800 link-underline"
-              >
-                {t.sidebar.introCurrent}
-              </a>
-              {t.sidebar.introCurrentTail}
-            </span>
-            <span className="mt-3 block">
-              {t.sidebar.introPrevious}{' '}
-              <a
-                href="https://www.melian.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="display-serif text-[1.28em] font-bold italic text-neutral-800 link-underline"
-              >
-                {t.sidebar.introPreviousLink}
-              </a>
-              {t.sidebar.introPreviousTail}
-            </span>
-            <span className="mt-3 block">
-              {t.sidebar.introEarlier}{' '}
-              <a
-                href="https://www.embluemail.com/producto/whatsapp-universal-inbox/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-semibold text-neutral-800 link-underline"
-              >
-                {t.sidebar.introEarlierProduct}
-              </a>{' '}
-              {t.sidebar.introEarlierMiddle}{' '}
-              <a
-                href="https://www.embluemail.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="display-serif font-semibold italic text-[1.28em] text-neutral-800 link-underline"
-              >
-                {t.sidebar.introEarlierCompany}
-              </a>
-              {t.sidebar.introEarlierTail}
-            </span>
-          </p>
+          <p className="mt-1 text-sm text-neutral-600">{t.sidebar.role}</p>
         </div>
 
-        <SectionPills items={navItems} className="hidden lg:flex lg:py-1" />
-        <LanguageToggle />
+        <SectionPills
+          items={navItems}
+          className="hidden lg:flex lg:flex-col lg:items-start lg:gap-3"
+        />
 
-        <div className="flex items-center gap-3">
+        <p className="max-w-md space-y-4 text-sm leading-relaxed text-neutral-600">
+          <span className="block">
+            {t.sidebar.introLead}{' '}
+            <a
+              href="https://getautonoma.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-neutral-950 link-underline"
+            >
+              {t.sidebar.introCurrent}
+            </a>
+            {t.sidebar.introCurrentTail}
+          </span>
+          <span className="block">
+            {t.sidebar.introPrevious}{' '}
+            <a
+              href="https://www.melian.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-neutral-950 link-underline"
+            >
+              {t.sidebar.introPreviousLink}
+            </a>
+            {t.sidebar.introPreviousTail},{' '}
+            {t.sidebar.introEarlier.toLowerCase()}{' '}
+            <a
+              href="https://www.embluemail.com/producto/whatsapp-universal-inbox/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-neutral-950 link-underline"
+            >
+              {t.sidebar.introEarlierProduct}
+            </a>{' '}
+            {t.sidebar.introEarlierMiddle}{' '}
+            <a
+              href="https://www.embluemail.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-neutral-950 link-underline"
+            >
+              {t.sidebar.introEarlierCompany}
+            </a>
+            {t.sidebar.introEarlierTail}
+          </span>
+        </p>
+
+        <div className="flex flex-wrap items-center gap-4 text-neutral-600">
           <a
             href="https://x.com/patoalbornozz"
             target="_blank"
@@ -117,15 +116,16 @@ export function Sidebar({ navItems, className, layout = 'default' }: SidebarProp
           >
             <Mail className="size-4" />
           </a>
+          <div className="h-4 w-px bg-(--line)" aria-hidden />
+          <LanguageToggle />
         </div>
-      </div>
 
-      <footer className="pt-8 text-xs leading-relaxed text-neutral-500">
-        © {new Date().getFullYear()} Patricio Albornoz.
-        <br />
-        {t.sidebar.crafted}
-        <br />
-      </footer>
+        <footer className="text-xs leading-relaxed text-neutral-400 lg:mt-8">
+          © {new Date().getFullYear()} Patricio Albornoz.
+          <br />
+          {t.sidebar.crafted}
+        </footer>
+      </div>
     </aside>
   )
 }

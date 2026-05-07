@@ -1,7 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import type { NavItem } from '@/components/portfolio/section-pills'
 import { ArticlesPreviewSection } from '@/components/portfolio/articles-preview-section'
-import { HomeSection } from '@/components/portfolio/home-section'
 import { ProjectsSection } from '@/components/portfolio/projects-section'
 import { SectionPills } from '@/components/portfolio/section-pills'
 import { Sidebar } from '@/components/portfolio/sidebar'
@@ -66,33 +65,30 @@ function App() {
   const { t } = useLocale()
 
   const sectionNavItems: Array<NavItem> = [
-    { label: t.nav.home, href: '#home' },
     { label: t.nav.work, href: '#work' },
-    { label: t.nav.projects, href: '#projects' },
     { label: t.nav.articles, href: '#articles' },
+    { label: t.nav.projects, href: '#projects' },
   ]
 
   return (
-    <main className="relative min-h-screen selection:bg-amber-200/60 selection:text-neutral-900">
-      <div aria-hidden className="noise-overlay" />
-
-      <div className="mx-auto grid max-w-[1600px] grid-cols-1 gap-12 px-6 py-10 lg:grid-cols-12 lg:gap-20 lg:px-12 lg:py-16">
-        <SectionPills items={sectionNavItems} className="reveal delay-1 mb-3 lg:hidden" />
+    <main className="relative min-h-screen selection:bg-neutral-200 selection:text-neutral-950">
+      <div className="mx-auto flex max-w-[1400px] flex-col gap-16 px-6 py-16 sm:px-12 lg:min-h-screen lg:flex-row lg:gap-24 lg:px-16 lg:py-32">
+        <SectionPills
+          items={sectionNavItems}
+          className="reveal delay-1 lg:hidden"
+        />
 
         <Sidebar navItems={sectionNavItems} className="reveal delay-1" />
 
-        <div className="space-y-14 lg:col-span-8 lg:space-y-20 xl:col-span-9">
+        <div className="flex min-w-0 flex-1 flex-col gap-32">
           <div className="reveal delay-2">
-            <HomeSection />
+            <WorkSection />
           </div>
           <div className="reveal delay-3">
-            <WorkSection />
+            <ArticlesPreviewSection />
           </div>
           <div className="reveal delay-4">
             <ProjectsSection />
-          </div>
-          <div className="reveal delay-5">
-            <ArticlesPreviewSection />
           </div>
         </div>
       </div>

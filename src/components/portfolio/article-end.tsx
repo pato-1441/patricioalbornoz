@@ -1,9 +1,9 @@
 import { Link } from '@tanstack/react-router'
 import { ArrowRight } from 'lucide-react'
-import { ArticleShare } from '@/components/portfolio/article-share'
-import { copy } from '@/data/i18n'
 import type { Article } from '@/data/articles'
 import type { Locale } from '@/lib/locale'
+import { ArticleShare } from '@/components/portfolio/article-share'
+import { copy } from '@/data/i18n'
 
 type ArticleEndNoteProps = {
   locale: Locale
@@ -25,11 +25,10 @@ export function ArticleEndNote({
   const t = copy[locale]
 
   return (
-    <footer className="end-reading-note" aria-label={t.articleContent.endOfArticle}>
-      <div className="end-reading-emoji-pill" aria-hidden>
-        <span className="end-reading-emoji">🎉</span>
-        <span className="end-reading-emoji end-reading-emoji--delay">✨</span>
-      </div>
+    <footer
+      className="end-reading-note"
+      aria-label={t.articleContent.endOfArticle}
+    >
       <p className="end-reading-copy">{t.articleContent.thanks}</p>
       <div className="end-reading-actions">
         {nextArticle ? (
@@ -40,8 +39,12 @@ export function ArticleEndNote({
             aria-label={`${t.articleContent.readNext}: ${nextArticle.title}`}
           >
             <span className="end-reading-next-main">
-              <span className="end-reading-next-kicker">{t.articleContent.readNext}</span>
-              <span className="end-reading-next-title">{nextArticle.title}</span>
+              <span className="end-reading-next-kicker">
+                {t.articleContent.readNext}
+              </span>
+              <span className="end-reading-next-title">
+                {nextArticle.title}
+              </span>
             </span>
             <ArrowRight
               className="end-reading-next-chevron"

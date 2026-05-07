@@ -10,7 +10,7 @@ export function ArticlesPreviewSection() {
   const articlePreviewArticles = getArticlePreviewArticles(locale)
 
   return (
-    <section id="articles" className="scroll-mt-24 space-y-7">
+    <section id="articles" className="scroll-mt-32 space-y-8 pb-32">
       <SectionHeader
         title={t.articles.title}
         rightContent={
