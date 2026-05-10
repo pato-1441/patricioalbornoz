@@ -8,22 +8,44 @@ export type WorkShowcaseItem = {
 
 export const workShowcase: Array<WorkShowcaseItem> = [
   {
+    title: 'Vercel Ship 26 London',
+    src: '/vercel.mov',
+    type: 'video',
+    note: 'Vercel Ship 2026 London Card',
+  },
+  {
+    title: 'Total spent on Tambo',
+    src: '/total-spent-2.mov',
+    type: 'video',
+    note: 'Total spent component (Tambo)',
+  },
+  {
+    title: 'Funny buttons',
+    src: '/experiment.mov',
+    type: 'video',
+  },
+  {
     title: 'Tambo',
     src: '/tambo.png',
     type: 'image',
     note: 'Latest Tambo product surface',
   },
   {
-    title: 'Autonoma Blacklight Dashboard',
-    src: '/agent-tw-2.png',
-    type: 'image',
-    note: 'Autonoma Blacklight dashboard preview',
+    title: 'Upgrade v0 modal',
+    src: '/upgrade-v0.mov',
+    type: 'video',
   },
   {
     title: 'Profile',
     src: '/profile.jpeg',
     type: 'image',
     note: 'Profile page',
+  },
+  {
+    title: 'Autonoma Blacklight Dashboard',
+    src: '/agent-tw-2.png',
+    type: 'image',
+    note: 'Autonoma Blacklight dashboard preview',
   },
   {
     title: 'Heatmap',
@@ -50,12 +72,6 @@ export const workShowcase: Array<WorkShowcaseItem> = [
     note: 'Documentation experience preview',
   },
   {
-    title: 'Vercel Marketplace',
-    src: '/vercel-mkt-3.png',
-    type: 'image',
-    note: 'Vercel Marketplace preview',
-  },
-  {
     title: 'Tooltip',
     src: '/tooltip.mov',
     type: 'video',
@@ -80,17 +96,6 @@ export const workShowcase: Array<WorkShowcaseItem> = [
     note: 'Navigation and secondary controls',
   },
   {
-    title: 'View plan',
-    src: '/view-plan.mov',
-    type: 'video',
-    note: 'View plan preview',
-  },
-  {
-    title: 'Review',
-    src: '/review.jpeg',
-    type: 'image',
-  },
-  {
     title: 'Multiple Choice',
     src: '/multiple-choice.jpeg',
     type: 'image',
@@ -105,11 +110,5 @@ export const workShowcase: Array<WorkShowcaseItem> = [
     title: 'Recording',
     src: '/recording.jpeg',
     type: 'image',
-  },
-  {
-    title: 'Run Sidepanel',
-    src: '/run-sidepanel.mov',
-    type: 'video',
-    note: 'Expanded panel walkthrough',
   },
 ]
