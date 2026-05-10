@@ -4,6 +4,7 @@ export type WorkShowcaseItem = {
   type: 'image' | 'video'
   note?: string
   bgColor?: string
+  featured?: boolean
 }
 
 export const workShowcase: Array<WorkShowcaseItem> = [
@@ -12,12 +13,14 @@ export const workShowcase: Array<WorkShowcaseItem> = [
     src: '/vercel.mov',
     type: 'video',
     note: 'Vercel Ship 2026 London Card',
+    featured: true
   },
   {
     title: 'Total spent on Tambo',
     src: '/total-spent-2.mov',
     type: 'video',
     note: 'Total spent component (Tambo)',
+    bgColor: '#F6F7F6'
   },
   {
     title: 'Funny buttons',
@@ -46,6 +49,7 @@ export const workShowcase: Array<WorkShowcaseItem> = [
     src: '/agent-tw-2.png',
     type: 'image',
     note: 'Autonoma Blacklight dashboard preview',
+    featured: true
   },
   {
     title: 'Heatmap',

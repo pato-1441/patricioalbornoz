@@ -43,7 +43,9 @@ export function WorkSection() {
             key={item.src}
             type="button"
             onClick={() => setActiveIndex(index)}
-            className={`content-card card-stack showcase-tile group block overflow-hidden`}
+            className={`content-card card-stack showcase-tile group block overflow-hidden ${
+              item.featured ? 'showcase-featured' : ''
+            }`}
             style={{ backgroundColor: item.bgColor }}
             aria-label={t.work.openItem(item.title)}
           >
