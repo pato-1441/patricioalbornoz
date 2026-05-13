@@ -43,6 +43,7 @@ export const workShowcase: Array<WorkShowcaseItem> = [
     src: '/profile.jpeg',
     type: 'image',
     note: 'Profile page',
+    bgColor: '#EAEAEA'
   },
   {
     title: 'Autonoma Blacklight Dashboard',
