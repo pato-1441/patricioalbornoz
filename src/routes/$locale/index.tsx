@@ -1,7 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import type { NavItem } from '@/components/portfolio/section-pills'
 import { ArticlesPreviewSection } from '@/components/portfolio/articles-preview-section'
-import { HomeSection } from '@/components/portfolio/home-section'
 import { ProjectsSection } from '@/components/portfolio/projects-section'
 import { SectionPills } from '@/components/portfolio/section-pills'
 import { Sidebar } from '@/components/portfolio/sidebar'
@@ -68,12 +67,15 @@ function App() {
   const sectionNavItems: Array<NavItem> = [
     { label: t.nav.home, href: '#home' },
     { label: t.nav.work, href: '#work' },
-    { label: t.nav.projects, href: '#projects' },
     { label: t.nav.articles, href: '#articles' },
+    { label: t.nav.projects, href: '#projects' },
   ]
 
   return (
-    <main className="relative min-h-screen selection:bg-amber-200/60 selection:text-neutral-900">
+    <main
+      id="home"
+      className="relative min-h-screen selection:bg-amber-200/60 selection:text-neutral-900"
+    >
       <div aria-hidden className="noise-overlay" />
 
       <div className="mx-auto grid max-w-[1600px] grid-cols-1 gap-12 px-6 py-10 lg:grid-cols-12 lg:gap-20 lg:px-12 lg:py-16">
@@ -83,16 +85,13 @@ function App() {
 
         <div className="space-y-14 lg:col-span-8 lg:space-y-20 xl:col-span-9">
           <div className="reveal delay-2">
-            <HomeSection />
+            <WorkSection />
           </div>
           <div className="reveal delay-3">
-            <WorkSection />
+            <ArticlesPreviewSection />
           </div>
           <div className="reveal delay-4">
             <ProjectsSection />
-          </div>
-          <div className="reveal delay-5">
-            <ArticlesPreviewSection />
           </div>
         </div>
       </div>
