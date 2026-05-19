@@ -1,6 +1,6 @@
 export const siteName = 'Patricio Albornoz'
 export const siteAuthorName = 'Patricio Albornoz'
-export const siteAuthorAvatar = '/patoalbornoz.jpg'
+export const siteAuthorAvatar = '/patoalbornoz-new.png'
 export const siteHandle = '@patoalbornozz'
 export const siteUrl = 'https://patricioalbornoz.com'
 export const defaultOgImagePath = '/profile.jpeg'

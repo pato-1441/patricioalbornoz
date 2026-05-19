@@ -13,8 +13,8 @@ export const Route = createRootRoute({
       { name: 'author', content: siteName },
     ],
     links: [
-      { rel: 'icon', href: '/patoalbornoz.jpg' },
-      { rel: 'apple-touch-icon', href: '/patoalbornoz.jpg' },
+      { rel: 'icon', href: '/patoalbornoz-new.png' },
+      { rel: 'apple-touch-icon', href: '/patoalbornoz-new.png' },
       { rel: 'manifest', href: '/manifest.json' },
     ],
     scripts: [
