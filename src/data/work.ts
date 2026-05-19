@@ -9,19 +9,30 @@ export type WorkShowcaseItem = {
 
 export const workShowcase: Array<WorkShowcaseItem> = [
   {
-    title: 'Invite friends and earn USDC',
-    src: '/invite-usdc.png',
-    type: 'image',
-    note: 'Invite friends and earn USDC',
-    bgColor: '#F6F6F6'
-  },
-  {
     title: 'Lemoncash',
     src: '/lemon-2.png',
     type: 'image',
     note: 'Lemoncash product concept',
     bgColor: '#F6F6F6',
-    featured: true
+  },
+  {
+    title: 'Exa app showcase',
+    src: '/exa-2.mov',
+    type: 'video',
+    note: 'Exa app showcase',
+  },
+  {
+    title: 'Lemon app icon',
+    src: '/lemon-3.png',
+    type: 'image',
+    note: 'Lemon app icon',
+  },
+  {
+    title: 'Invite friends and earn USDC',
+    src: '/invite-usdc.png',
+    type: 'image',
+    note: 'Invite friends and earn USDC',
+    bgColor: '#F6F6F6'
   },
   {
     title: 'Vercel Ship 26 London',
@@ -52,6 +63,7 @@ export const workShowcase: Array<WorkShowcaseItem> = [
     title: 'Upgrade v0 modal',
     src: '/upgrade-v0.mov',
     type: 'video',
+    featured: true
   },
   {
     title: 'Profile',
@@ -65,13 +77,12 @@ export const workShowcase: Array<WorkShowcaseItem> = [
     src: '/agent-tw-2.png',
     type: 'image',
     note: 'Autonoma Blacklight dashboard preview',
-    featured: true
   },
   {
     title: 'Heatmap',
     src: '/heatmap.mov',
     type: 'video',
-    bgColor: '#000000',
+    bgColor: '#070707',
   },
   {
     title: 'Session Timeout',
