@@ -9,6 +9,21 @@ export type WorkShowcaseItem = {
 
 export const workShowcase: Array<WorkShowcaseItem> = [
   {
+    title: 'Invite friends and earn USDC',
+    src: '/invite-usdc.png',
+    type: 'image',
+    note: 'Invite friends and earn USDC',
+    bgColor: '#F6F6F6'
+  },
+  {
+    title: 'Lemoncash',
+    src: '/lemon-2.png',
+    type: 'image',
+    note: 'Lemoncash product concept',
+    bgColor: '#F6F6F6',
+    featured: true
+  },
+  {
     title: 'Vercel Ship 26 London',
     src: '/vercel.mov',
     type: 'video',
