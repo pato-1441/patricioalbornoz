@@ -5,10 +5,67 @@ import { SectionPills } from '@/components/portfolio/section-pills'
 import { X } from '@/components/icons/x'
 import { useLocale } from '@/context/locale-context'
 
+type CompanyKey = 'pulso' | 'autonoma' | 'melian' | 'emblue'
+
+type CompanyMeta = {
+  name: string
+  href: string
+  logoSrc: string
+}
+
 type SidebarProps = {
   navItems: Array<NavItem>
   className?: string
   layout?: 'default' | 'article'
+}
+
+const companies: Record<CompanyKey, CompanyMeta> = {
+  pulso: {
+    name: 'Pulso',
+    href: 'https://pulso.health/',
+    logoSrc:
+      'https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://pulso.health/&size=256',
+  },
+  autonoma: {
+    name: 'Autonoma',
+    href: 'https://getautonoma.com/',
+    logoSrc:
+      'https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://getautonoma.com/&size=256',
+  },
+  melian: {
+    name: 'Melian',
+    href: 'https://www.melian.com/',
+    logoSrc:
+      'https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://melian.com/&size=256',
+  },
+  emblue: {
+    name: 'emBlue',
+    href: 'https://www.embluemail.com/',
+    logoSrc:
+      'https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://embluemail.com/&size=256',
+  },
+}
+
+type CompanyLinkProps = {
+  company: CompanyKey
+  className: string
+  label: string
+}
+
+function CompanyLink({ company, className, label }: CompanyLinkProps) {
+  const { href, logoSrc } = companies[company]
+
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`company-link link-underline ${className}`}
+    >
+      <img src={logoSrc} alt="" aria-hidden="true" className="company-link-logo" />
+      <span>{label}</span>
+    </a>
+  )
 }
 
 export function Sidebar({ navItems, className, layout = 'default' }: SidebarProps) {
@@ -33,47 +90,39 @@ export function Sidebar({ navItems, className, layout = 'default' }: SidebarProp
           <p className="max-w-md text-lg leading-relaxed text-neutral-700">
             <span className="block">
               {t.sidebar.introLead}{' '}
-              <a
-                href="https://getautonoma.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="display-serif text-[1.28em] font-bold italic text-neutral-800 link-underline"
-              >
-                {t.sidebar.introCurrent}
-              </a>
+              <CompanyLink
+                company="pulso"
+                label={t.sidebar.introCurrent}
+                className="text-[1em] font-semibold text-neutral-800"
+              />
               {t.sidebar.introCurrentTail}
             </span>
             <span className="mt-3 block">
               {t.sidebar.introPrevious}{' '}
-              <a
-                href="https://www.melian.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="display-serif text-[1.28em] font-bold italic text-neutral-800 link-underline"
-              >
-                {t.sidebar.introPreviousLink}
-              </a>
-              {t.sidebar.introPreviousTail}
+              <CompanyLink
+                company="autonoma"
+                label={t.sidebar.introPreviousLink}
+                className="text-[1em] font-semibold text-neutral-800"
+              />
+              {t.sidebar.introPreviousTail}{' '}
+              <CompanyLink
+                company="melian"
+                label={t.sidebar.introPreviousSecondLink}
+                className="text-[1em] font-semibold text-neutral-800"
+              />
+              {t.sidebar.introPreviousSecondTail}
             </span>
             <span className="mt-3 block">
               {t.sidebar.introEarlier}{' '}
-              <a
-                href="https://www.embluemail.com/producto/whatsapp-universal-inbox/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-semibold text-neutral-800 link-underline"
-              >
+              <span className="text-neutral-800">
                 {t.sidebar.introEarlierProduct}
-              </a>{' '}
+              </span>{' '}
               {t.sidebar.introEarlierMiddle}{' '}
-              <a
-                href="https://www.embluemail.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="display-serif font-semibold italic text-[1.28em] text-neutral-800 link-underline"
-              >
-                {t.sidebar.introEarlierCompany}
-              </a>
+              <CompanyLink
+                company="emblue"
+                label={t.sidebar.introEarlierCompany}
+                className="text-[1em] font-semibold text-neutral-800"
+              />
               {t.sidebar.introEarlierTail}
             </span>
           </p>

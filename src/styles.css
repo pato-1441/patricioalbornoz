@@ -420,6 +420,24 @@ body {
   background: color-mix(in oklch, var(--accent-soft), white 62%);
 }
 
+.company-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+  margin-left: 0.14em;
+  vertical-align: baseline;
+  white-space: nowrap;
+  line-height: 1.1;
+}
+
+.company-link-logo {
+  width: 0.82em;
+  height: 0.82em;
+  flex: none;
+  border-radius: 0.22rem;
+  object-fit: contain;
+}
+
 .language-toggle {
   display: inline-flex;
   width: fit-content;

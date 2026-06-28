@@ -23,6 +23,8 @@ type LocaleCopy = {
     introPrevious: string
     introPreviousLink: string
     introPreviousTail: string
+    introPreviousSecondLink: string
+    introPreviousSecondTail: string
     introEarlier: string
     introEarlierProduct: string
     introEarlierMiddle: string
@@ -117,14 +119,15 @@ export const copy: Record<Locale, LocaleCopy> = {
       spanishName: 'Spanish',
     },
     sidebar: {
-      role: 'Design Engineer',
-      introLead: 'Currently building autonomous testing agents at',
-      introCurrent: 'Autonoma',
-      introCurrentTail:
-        ', capable of understanding codebases, finding bugs, and maintaining tests independently.',
-      introPrevious: 'Previously helped reimagine product discovery at Sirvana (now',
-      introPreviousLink: 'Melian',
-      introPreviousTail: ') through an AI-driven product feed.',
+      role: 'Product Engineer',
+      introLead: 'Currently building healthcare product experiences at',
+      introCurrent: 'Pulso',
+      introCurrentTail: '.',
+      introPrevious: 'Previously built autonomous testing systems at',
+      introPreviousLink: 'Autonoma',
+      introPreviousTail: ', and earlier helped reimagine product discovery at Sirvana (now',
+      introPreviousSecondLink: 'Melian',
+      introPreviousSecondTail: ') through an AI-driven product feed.',
       introEarlier: 'Earlier led the development of',
       introEarlierProduct: 'Universal Inbox',
       introEarlierMiddle: 'at',
@@ -199,7 +202,7 @@ export const copy: Record<Locale, LocaleCopy> = {
     seo: {
       homeTitle: 'Patricio Albornoz',
       homeDescription:
-        'Portfolio of Patricio Albornoz, focused on product interfaces, frontend craft, design systems, and autonomous testing at Autonoma.',
+        'Portfolio of Patricio Albornoz, focused on product interfaces, frontend craft, design systems, and product engineering at Pulso.',
       articlesTitle: 'Articles',
       articlesDescription:
         'Essays by Patricio Albornoz on interface clarity, frontend systems, motion, and product thinking.',
@@ -221,14 +224,16 @@ export const copy: Record<Locale, LocaleCopy> = {
       spanishName: 'Español',
     },
     sidebar: {
-      role: 'Design Engineer',
-      introLead: 'Actualmente construyendo agentes autónomos de testing en',
-      introCurrent: 'Autonoma',
-      introCurrentTail:
-        ', capaces de entender codebases, encontrar bugs y mantener tests de forma independiente.',
-      introPrevious: 'Antes ayudé a reimaginar el discovery de producto en Sirvana (hoy',
-      introPreviousLink: 'Melian',
-      introPreviousTail: ') a través de un feed impulsado por IA.',
+      role: 'Product Engineer',
+      introLead: 'Actualmente construyendo experiencias de producto en salud en',
+      introCurrent: 'Pulso',
+      introCurrentTail: '.',
+      introPrevious: 'Antes construí sistemas de testing autónomo en',
+      introPreviousLink: 'Autonoma',
+      introPreviousTail:
+        ', y previamente ayudé a reimaginar el discovery de producto en Sirvana (hoy',
+      introPreviousSecondLink: 'Melian',
+      introPreviousSecondTail: ') a través de un feed impulsado por IA.',
       introEarlier: 'Antes de eso lideré el desarrollo de',
       introEarlierProduct: 'Universal Inbox',
       introEarlierMiddle: 'en',
@@ -303,7 +308,7 @@ export const copy: Record<Locale, LocaleCopy> = {
     seo: {
       homeTitle: 'Patricio Albornoz',
       homeDescription:
-        'Portfolio de Patricio Albornoz sobre interfaces de producto, frontend craft, design systems y testing autónomo en Autonoma.',
+        'Portfolio de Patricio Albornoz sobre interfaces de producto, frontend craft, design systems e ingeniería de producto en Pulso.',
       articlesTitle: 'Artículos',
       articlesDescription:
         'Ensayos de Patricio Albornoz sobre claridad de interfaz, sistemas frontend, motion y producto.',

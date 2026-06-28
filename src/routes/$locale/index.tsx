@@ -44,10 +44,10 @@ export const Route = createFileRoute('/$locale/')({
           name: siteName,
           url: buildAbsoluteUrl(`/${locale}`),
           image: buildAbsoluteUrl('/profile.jpeg'),
-          jobTitle: 'Product Design Engineer',
+          jobTitle: 'Product Engineer',
           worksFor: {
             '@type': 'Organization',
-            name: 'Autonoma',
+            name: 'Pulso',
           },
           sameAs: [
             'https://x.com/patoalbornozz',

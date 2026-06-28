@@ -49,8 +49,8 @@ const projects: Array<ProjectItem> = [
     id: 'mate',
     title: 'Mate',
     description: {
-      en: 'Do you know how many mates you take per hour? Find out now.',
-      es: 'Sabes cuantos mates tomas por hora? Averigualo ahora.',
+      en: 'A web app where I built custom model training and real-time object detection to measure how many mates you drink per hour.',
+      es: 'Una web app donde hice entrenamiento custom de modelos y detección de objetos en tiempo real para medir cuántos mates tomás por hora.',
     },
     tag: {
       en: 'Web app',
