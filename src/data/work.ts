@@ -9,6 +9,18 @@ export type WorkShowcaseItem = {
 
 export const workShowcase: Array<WorkShowcaseItem> = [
   {
+    title: 'Tambo',
+    src: '/tambo.webp',
+    type: 'image',
+    featured: true
+  },
+  {
+    title: 'Numbers',
+    src: '/numbers.mp4',
+    type: 'video',
+    bgColor: '#E5E8F5',
+  },
+  {
     title: 'Lemoncash',
     src: '/lemon-2.png',
     type: 'image',
