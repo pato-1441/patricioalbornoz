@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ResumeRouteImport } from './routes/resume'
 import { Route as ArticlesRouteImport } from './routes/articles'
 import { Route as LocaleRouteImport } from './routes/$locale'
 import { Route as IndexRouteImport } from './routes/index'
@@ -17,6 +18,11 @@ import { Route as LocaleArticlesRouteImport } from './routes/$locale/articles'
 import { Route as LocaleArticlesIndexRouteImport } from './routes/$locale/articles.index'
 import { Route as LocaleArticlesSlugRouteImport } from './routes/$locale/articles.$slug'
 
+const ResumeRoute = ResumeRouteImport.update({
+  id: '/resume',
+  path: '/resume',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ArticlesRoute = ArticlesRouteImport.update({
   id: '/articles',
   path: '/articles',
@@ -57,6 +63,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$locale': typeof LocaleRouteWithChildren
   '/articles': typeof ArticlesRoute
+  '/resume': typeof ResumeRoute
   '/$locale/articles': typeof LocaleArticlesRouteWithChildren
   '/$locale/': typeof LocaleIndexRoute
   '/$locale/articles/$slug': typeof LocaleArticlesSlugRoute
@@ -65,6 +72,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/articles': typeof ArticlesRoute
+  '/resume': typeof ResumeRoute
   '/$locale': typeof LocaleIndexRoute
   '/$locale/articles/$slug': typeof LocaleArticlesSlugRoute
   '/$locale/articles': typeof LocaleArticlesIndexRoute
@@ -74,6 +82,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/$locale': typeof LocaleRouteWithChildren
   '/articles': typeof ArticlesRoute
+  '/resume': typeof ResumeRoute
   '/$locale/articles': typeof LocaleArticlesRouteWithChildren
   '/$locale/': typeof LocaleIndexRoute
   '/$locale/articles/$slug': typeof LocaleArticlesSlugRoute
@@ -85,6 +94,7 @@ export interface FileRouteTypes {
     | '/'
     | '/$locale'
     | '/articles'
+    | '/resume'
     | '/$locale/articles'
     | '/$locale/'
     | '/$locale/articles/$slug'
@@ -93,6 +103,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/articles'
+    | '/resume'
     | '/$locale'
     | '/$locale/articles/$slug'
     | '/$locale/articles'
@@ -101,6 +112,7 @@ export interface FileRouteTypes {
     | '/'
     | '/$locale'
     | '/articles'
+    | '/resume'
     | '/$locale/articles'
     | '/$locale/'
     | '/$locale/articles/$slug'
@@ -111,10 +123,18 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   LocaleRoute: typeof LocaleRouteWithChildren
   ArticlesRoute: typeof ArticlesRoute
+  ResumeRoute: typeof ResumeRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/resume': {
+      id: '/resume'
+      path: '/resume'
+      fullPath: '/resume'
+      preLoaderRoute: typeof ResumeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/articles': {
       id: '/articles'
       path: '/articles'
@@ -198,6 +218,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   LocaleRoute: LocaleRouteWithChildren,
   ArticlesRoute: ArticlesRoute,
+  ResumeRoute: ResumeRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
