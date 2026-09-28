@@ -5,3 +5,5 @@
 .codex/
 
 .vscode/
+
+.DS_Store

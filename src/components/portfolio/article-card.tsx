@@ -1,43 +1,41 @@
 import { Link } from '@tanstack/react-router'
+import { ArrowUpRight } from 'lucide-react'
 import type { Article } from '@/data/articles'
 import { useLocale } from '@/context/locale-context'
 import { formatArticleDate, formatReadTime } from '@/lib/locale'
 
-type ArticleCardProps = {
-  article: Article
-}
-
-export function ArticleCard({ article }: ArticleCardProps) {
-  const { locale, t } = useLocale()
-
+export function ArticleCard({ article }: { article: Article }) {
+  const { locale } = useLocale()
   return (
     <Link
       to="/$locale/articles/$slug"
       params={{ locale, slug: article.slug }}
-      className={`article-row ${article.coverImage ? 'article-row-with-cover' : ''}`}
+      className="writing-card"
     >
-      {article.coverImage ? (
-        <div className="article-row-cover">
+      {article.coverImage && (
+        <div className="collection-cover">
           <img
             src={article.coverImage}
             alt={article.coverAlt ?? article.title}
-            className="article-row-cover-image"
             loading="lazy"
             decoding="async"
           />
         </div>
-      ) : null}
-
-      <div className="article-row-content">
-        <div className="article-row-kicker">
-          <span>{article.pinned ? t.articles.featured : t.articles.article}</span>
+      )}
+      <div className="collection-copy">
+        <p className="collection-meta">
+          <time dateTime={article.publishedAt}>
+            {formatArticleDate(article.publishedAt, locale)}
+          </time>
+          <span aria-hidden="true">·</span>
           <span>{formatReadTime(article.readTimeMinutes, locale)}</span>
-        </div>
-        <h3 className="article-row-title">{article.title}</h3>
-        <div className="article-row-meta">
-          <p className="article-row-subtitle">{article.excerpt}</p>
-          <p className="article-row-date">{formatArticleDate(article.publishedAt, locale)}</p>
-        </div>
+        </p>
+        <h2>{article.title}</h2>
+        <p className="collection-description">{article.excerpt}</p>
+        <span className="collection-action">
+          {locale === 'es' ? 'Leer historia' : 'Read story'}{' '}
+          <ArrowUpRight size={16} aria-hidden="true" />
+        </span>
       </div>
     </Link>
   )

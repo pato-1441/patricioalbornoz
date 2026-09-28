@@ -14,21 +14,21 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://patricioalbornoz.com/es" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://patricioalbornoz.com/" />
   </url>
+
   <url>
-    <loc>https://patricioalbornoz.com/en/articles</loc>
-    <lastmod>2026-04-25T03:00:00.000Z</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://patricioalbornoz.com/en/articles" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://patricioalbornoz.com/es/articles" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://patricioalbornoz.com/articles" />
+    <loc>https://patricioalbornoz.com/en/projects/mate</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://patricioalbornoz.com/en/projects/mate" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://patricioalbornoz.com/es/projects/mate" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://patricioalbornoz.com/en/projects/mate" />
   </url>
   <url>
-    <loc>https://patricioalbornoz.com/es/articles</loc>
-    <lastmod>2026-04-25T03:00:00.000Z</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://patricioalbornoz.com/en/articles" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://patricioalbornoz.com/es/articles" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://patricioalbornoz.com/articles" />
+    <loc>https://patricioalbornoz.com/es/projects/mate</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://patricioalbornoz.com/en/projects/mate" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://patricioalbornoz.com/es/projects/mate" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://patricioalbornoz.com/en/projects/mate" />
   </url>
-  
+  <url><loc>https://patricioalbornoz.com/resume</loc></url>
+
   <url>
     <loc>https://patricioalbornoz.com/en/articles/ai-scales-output-systems-scale-quality</loc>
     <lastmod>2026-04-25T03:00:00.000Z</lastmod>

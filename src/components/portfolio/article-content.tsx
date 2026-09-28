@@ -54,14 +54,14 @@ function renderInlineTokens(text: string, keyPrefix: string): Array<ReactNode> {
       key += 1
     } else if (token.startsWith('**')) {
       result.push(
-        <strong key={`${keyPrefix}-strong-${key}`} className="font-semibold text-neutral-900">
+        <strong key={`${keyPrefix}-strong-${key}`} className="font-semibold">
           {token.slice(2, -2)}
         </strong>,
       )
       key += 1
     } else if (token.startsWith('*')) {
       result.push(
-        <em key={`${keyPrefix}-em-${key}`} className="display-serif italic text-neutral-800">
+        <em key={`${keyPrefix}-em-${key}`} className="italic">
           {token.slice(1, -1)}
         </em>,
       )
@@ -124,7 +124,7 @@ export function ArticleContent({ blocks }: ArticleContentProps) {
 
         if (block.type === 'h2') {
           return (
-            <h2 key={key} className="article-subheading article-subheading-h2 display-serif">
+            <h2 key={key} className="article-subheading article-subheading-h2">
               {renderInlineMarkdown(block.text)}
             </h2>
           )
@@ -132,7 +132,7 @@ export function ArticleContent({ blocks }: ArticleContentProps) {
 
         if (block.type === 'h3') {
           return (
-            <h3 key={key} className="article-subheading article-subheading-h3 display-serif">
+            <h3 key={key} className="article-subheading article-subheading-h3">
               {renderInlineMarkdown(block.text)}
             </h3>
           )
@@ -152,7 +152,11 @@ export function ArticleContent({ blocks }: ArticleContentProps) {
           } as CSSProperties
 
           return (
-            <figure key={key} className="article-image-block" style={imageStyle}>
+            <figure
+              key={key}
+              className="article-image-block"
+              style={imageStyle}
+            >
               <img
                 src={block.src}
                 alt={block.alt}
@@ -177,7 +181,9 @@ export function ArticleContent({ blocks }: ArticleContentProps) {
           return (
             <ul key={key} className="article-body-list list-disc">
               {block.items.map((item, itemIndex) => (
-                <li key={`${key}-item-${itemIndex}`}>{renderInlineMarkdown(item)}</li>
+                <li key={`${key}-item-${itemIndex}`}>
+                  {renderInlineMarkdown(item)}
+                </li>
               ))}
             </ul>
           )
@@ -187,7 +193,9 @@ export function ArticleContent({ blocks }: ArticleContentProps) {
           return (
             <ol key={key} className="article-body-list list-decimal">
               {block.items.map((item, itemIndex) => (
-                <li key={`${key}-item-${itemIndex}`}>{renderInlineMarkdown(item)}</li>
+                <li key={`${key}-item-${itemIndex}`}>
+                  {renderInlineMarkdown(item)}
+                </li>
               ))}
             </ol>
           )
@@ -202,7 +210,10 @@ export function ArticleContent({ blocks }: ArticleContentProps) {
                 .split('\n')
                 .filter(Boolean)
                 .map((line, lineIndex) => (
-                  <span key={`${key}-line-${lineIndex}`} className="article-stanza-line">
+                  <span
+                    key={`${key}-line-${lineIndex}`}
+                    className="article-stanza-line"
+                  >
                     {renderInlineTokens(line, `${key}-line-${lineIndex}`)}
                   </span>
                 ))}
@@ -211,7 +222,10 @@ export function ArticleContent({ blocks }: ArticleContentProps) {
         }
 
         return (
-          <p key={key} className={`article-paragraph article-paragraph-${variant}`}>
+          <p
+            key={key}
+            className={`article-paragraph article-paragraph-${variant}`}
+          >
             {renderInlineMarkdown(block.text)}
           </p>
         )

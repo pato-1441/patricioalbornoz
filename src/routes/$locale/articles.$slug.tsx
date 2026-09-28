@@ -1,9 +1,15 @@
-import { Link, createFileRoute, notFound, redirect } from '@tanstack/react-router'
+import {
+  Link,
+  createFileRoute,
+  notFound,
+  redirect,
+} from '@tanstack/react-router'
 import { ArrowLeft } from 'lucide-react'
 import { ArticleContent } from '@/components/portfolio/article-content'
 import { ArticleEndNote } from '@/components/portfolio/article-end'
 import { ArticleReadingProgress } from '@/components/portfolio/article-reading-progress'
 import { ArticleShare } from '@/components/portfolio/article-share'
+import { PortfolioTabs } from '@/components/portfolio/portfolio-tabs'
 import { copy } from '@/data/i18n'
 import {
   getArticleSlugRedirect,
@@ -12,9 +18,14 @@ import {
   getSuggestedNextArticle,
   hasArticleTranslation,
 } from '@/data/articles'
-import { defaultLocale, formatArticleDate, formatReadTime, isLocale } from '@/lib/locale'
+import {
+  defaultLocale,
+  formatArticleDate,
+  formatReadTime,
+  isLocale,
+} from '@/lib/locale'
 import { createSeoHead } from '@/lib/seo'
-import { buildAbsoluteUrl, siteAuthorAvatar, siteAuthorName, siteName } from '@/lib/site'
+import { buildAbsoluteUrl, siteAuthorName, siteName } from '@/lib/site'
 
 function resolveLocale(value: string) {
   return isLocale(value) ? value : defaultLocale
@@ -50,26 +61,32 @@ export const Route = createFileRoute('/$locale/articles/$slug')({
         title: siteName,
         description: siteName,
         locale: defaultLocale,
-        path: '/en/articles',
+        path: '/en',
         robots: 'noindex,follow',
       })
     }
 
-    const article = getArticleTranslationBySlug(loaderData.slug, loaderData.locale)
+    const article = getArticleTranslationBySlug(
+      loaderData.slug,
+      loaderData.locale,
+    )
 
     if (!article) {
       return createSeoHead({
         title: siteName,
         description: siteName,
         locale: loaderData.locale,
-        path: `/${loaderData.locale}/articles`,
+        path: `/${loaderData.locale}`,
         robots: 'noindex,follow',
       })
     }
 
     const availableLocales = getAvailableArticleLocales(article.slug)
     const alternates = Object.fromEntries(
-      availableLocales.map((locale) => [locale, `/${locale}/articles/${article.slug}`]),
+      availableLocales.map((locale) => [
+        locale,
+        `/${locale}/articles/${article.slug}`,
+      ]),
     )
 
     return createSeoHead({
@@ -97,8 +114,12 @@ export const Route = createFileRoute('/$locale/articles/$slug')({
           '@type': 'Person',
           name: siteAuthorName,
         },
-        image: buildAbsoluteUrl(article.ogImage ?? article.coverImage ?? '/profile.jpeg'),
-        mainEntityOfPage: buildAbsoluteUrl(`/${loaderData.locale}/articles/${article.slug}`),
+        image: buildAbsoluteUrl(
+          article.ogImage ?? article.coverImage ?? '/profile.jpeg',
+        ),
+        mainEntityOfPage: buildAbsoluteUrl(
+          `/${loaderData.locale}/articles/${article.slug}`,
+        ),
         inLanguage: loaderData.locale,
       },
     })
@@ -118,27 +139,38 @@ function ArticlePage() {
   const nextArticle = getSuggestedNextArticle(locale, slug)
 
   return (
-    <main className="article-page relative min-h-screen selection:bg-amber-200/60 selection:text-neutral-900">
+    <PortfolioTabs activeTab="articles">
       <ArticleReadingProgress label={t.articles.readingProgress} />
-      <div className="article-page-wrap">
-        <article className="article-shell">
-          <div className="article-top-bar">
-            <Link
-              to="/$locale/articles"
-              params={{ locale }}
-              className="article-backlink"
-            >
-              <ArrowLeft className="size-3" />
-              {t.articles.backToAll}
-            </Link>
-            <ArticleShare
-              locale={locale}
-              slug={article.slug}
-              title={article.title}
-              coverImage={article.coverImage}
-              ogImage={article.ogImage}
-            />
+      <div className="detail-page article-detail">
+        <div className="detail-toolbar">
+          <Link
+            to="/$locale"
+            params={{ locale }}
+            hash="articles"
+            className="portfolio-backlink"
+          >
+            <ArrowLeft className="size-3" />
+            {t.articles.backToAll}
+          </Link>
+          <ArticleShare
+            locale={locale}
+            slug={article.slug}
+            title={article.title}
+            coverImage={article.coverImage}
+            ogImage={article.ogImage}
+          />
+        </div>
+
+        <article className="detail-surface article-shell">
+          <div className="article-meta">
+            <span>{formatArticleDate(article.publishedAt, locale)}</span>
+            <span aria-hidden className="article-meta-dot" />
+            <span>{formatReadTime(article.readTimeMinutes, locale)}</span>
           </div>
+          <header className="article-header">
+            <h1 className="article-title">{article.title}</h1>
+            <p className="article-excerpt">{article.excerpt}</p>
+          </header>
 
           {article.coverImage ? (
             <div className="article-cover">
@@ -151,28 +183,6 @@ function ArticlePage() {
               />
             </div>
           ) : null}
-
-          <div className="article-meta">
-            <span>{formatArticleDate(article.publishedAt, locale)}</span>
-            <span aria-hidden className="article-meta-dot" />
-            <span>{formatReadTime(article.readTimeMinutes, locale)}</span>
-            <span aria-hidden className="article-meta-dot" />
-            <span className="article-meta-author">
-              <img
-                src={siteAuthorAvatar}
-                alt=""
-                className="article-meta-avatar"
-                width={28}
-                height={28}
-                decoding="async"
-              />
-              <span>{`${t.articles.byAuthor} ${siteAuthorName}`}</span>
-            </span>
-          </div>
-          <header className="article-header">
-            <h1 className="article-title">{article.title}</h1>
-            <p className="article-excerpt">{article.excerpt}</p>
-          </header>
 
           <div className="article-divider" />
 
@@ -187,6 +197,6 @@ function ArticlePage() {
           />
         </article>
       </div>
-    </main>
+    </PortfolioTabs>
   )
 }

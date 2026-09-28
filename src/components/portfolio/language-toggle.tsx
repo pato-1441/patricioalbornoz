@@ -5,12 +5,11 @@ import { buildLocalizedPath, persistLocalePreference } from '@/lib/locale'
 
 const localeOptions: Array<{
   value: Locale
-  labelKey: 'spanish' | 'english'
-  nameKey: 'spanishName' | 'englishName'
   flag: string
+  nameKey: 'spanishName' | 'englishName'
 }> = [
-  { value: 'es', labelKey: 'spanish', nameKey: 'spanishName', flag: '🇪🇸' },
-  { value: 'en', labelKey: 'english', nameKey: 'englishName', flag: '🇺🇸' },
+  { value: 'es', flag: '🇦🇷', nameKey: 'spanishName' },
+  { value: 'en', flag: '🇺🇸', nameKey: 'englishName' },
 ]
 
 export function LanguageToggle() {
@@ -27,38 +26,30 @@ export function LanguageToggle() {
     }
 
     persistLocalePreference(nextLocale)
-    // Do not carry over the hash — it would scroll to #articles, #work, etc. on the new locale.
-    window.location.assign(`${buildLocalizedPath(nextLocale, pathname)}${search}`)
+    window.location.assign(
+      `${buildLocalizedPath(nextLocale, pathname)}${search}${window.location.hash}`,
+    )
   }
 
   return (
-    <div className="space-y-2">
-      <p className="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-neutral-500">
-        {t.locale.label}
-      </p>
-      <div className="language-toggle" role="group" aria-label={t.locale.label}>
-        {localeOptions.map((option) => {
-          const isActive = locale === option.value
+    <div className="language-toggle" role="group" aria-label={t.locale.label}>
+      {localeOptions.map((option) => {
+        const isActive = locale === option.value
 
-          return (
-            <button
-              key={option.value}
-              type="button"
-              onClick={() => handleChange(option.value)}
-              className={`language-toggle-option ${isActive ? 'language-toggle-option-active' : ''}`}
-              aria-pressed={isActive}
-              aria-label={t.locale[option.nameKey]}
-            >
-              <span className="language-toggle-option-inner">
-                <span className="language-toggle-flag" aria-hidden>
-                  {option.flag}
-                </span>
-                <span>{t.locale[option.labelKey]}</span>
-              </span>
-            </button>
-          )
-        })}
-      </div>
+        return (
+          <button
+            key={option.value}
+            type="button"
+            onClick={() => handleChange(option.value)}
+            className={`language-toggle-option ${isActive ? 'language-toggle-option-active' : ''}`}
+            aria-pressed={isActive}
+            aria-label={t.locale[option.nameKey]}
+            title={t.locale[option.nameKey]}
+          >
+            <span aria-hidden="true">{option.flag}</span>
+          </button>
+        )
+      })}
     </div>
   )
 }

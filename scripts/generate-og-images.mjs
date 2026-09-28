@@ -11,7 +11,7 @@ const rootDir = path.resolve(__dirname, '..')
 const contentDir = path.join(rootDir, 'src', 'content', 'articles')
 const publicDir = path.join(rootDir, 'public')
 const outDir = path.join(publicDir, 'og', 'articles')
-const fontDir = path.join(rootDir, 'node_modules', '@fontsource', 'inter', 'files')
+const fontDir = path.join(rootDir, 'node_modules', '@fontsource', 'manrope', 'files')
 const defaultCoverPath = path.join(publicDir, 'og.webp')
 /** Outdoor photo with clear face — matches the social-preview treatment */
 const defaultAvatarPath = path.join(publicDir, 'patoalbornoz.jpg')
@@ -126,17 +126,17 @@ function titleFontSize(title) {
   return 36
 }
 
-function loadInterFonts() {
+function loadManropeFonts() {
   const read = (name) => {
     const p = path.join(fontDir, name)
     return fs.readFileSync(p)
   }
   // Satori uses opentype.js — WOFF2 (wOF2) is not supported; use WOFF.
   return [
-    { name: 'Inter', data: read('inter-latin-400-normal.woff'), weight: 400, style: 'normal' },
-    { name: 'Inter', data: read('inter-latin-500-normal.woff'), weight: 500, style: 'normal' },
-    { name: 'Inter', data: read('inter-latin-600-normal.woff'), weight: 600, style: 'normal' },
-    { name: 'Inter', data: read('inter-latin-700-normal.woff'), weight: 700, style: 'normal' },
+    { name: 'Manrope', data: read('manrope-latin-400-normal.woff'), weight: 400, style: 'normal' },
+    { name: 'Manrope', data: read('manrope-latin-500-normal.woff'), weight: 500, style: 'normal' },
+    { name: 'Manrope', data: read('manrope-latin-600-normal.woff'), weight: 600, style: 'normal' },
+    { name: 'Manrope', data: read('manrope-latin-700-normal.woff'), weight: 700, style: 'normal' },
   ]
 }
 
@@ -222,7 +222,7 @@ function buildOgElement({ coverDataUrl, avatarDataUrl, title }) {
               color: '#ffffff',
               fontSize: 22,
               fontWeight: 500,
-              fontFamily: 'Inter',
+              fontFamily: 'Manrope',
               marginBottom: 10,
             },
           },
@@ -236,7 +236,7 @@ function buildOgElement({ coverDataUrl, avatarDataUrl, title }) {
               fontSize: titleFontSize(displayTitle),
               fontWeight: 700,
               lineHeight: 1.2,
-              fontFamily: 'Inter',
+              fontFamily: 'Manrope',
             },
           },
           displayTitle,
@@ -247,7 +247,7 @@ function buildOgElement({ coverDataUrl, avatarDataUrl, title }) {
 }
 
 async function renderPng(jsx) {
-  const fonts = loadInterFonts()
+  const fonts = loadManropeFonts()
   const svg = await satori(jsx, {
     width: WIDTH,
     height: HEIGHT,

@@ -75,13 +75,14 @@ const projects: Array<ProjectItem> = [
   {
     id: 'tambo',
     title: 'Tambo',
+    url: 'https://tambo.cc',
     description: {
       en: 'An iOS app that helps users track daily expenses in a simple and consistent way.',
       es: 'Una app para iOS que ayuda a las personas a registrar gastos diarios de forma simple y constante.',
     },
     tag: {
-      en: 'iOS app',
-      es: 'App iOS',
+      en: 'Founder · iOS app',
+      es: 'Founder · App iOS',
     },
     icon: {
       src: '/tambo-logo.png',
@@ -91,10 +92,10 @@ const projects: Array<ProjectItem> = [
       },
     },
     preview: {
-      src: '/tambo.png',
+      src: '/tambo-landing-hero.jpg',
       alt: {
-        en: 'Tambo iOS app preview',
-        es: 'Vista previa de la app iOS Tambo',
+        en: 'Tambo landing page',
+        es: 'Página de Tambo',
       },
     },
   },

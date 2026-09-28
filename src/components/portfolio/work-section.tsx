@@ -1,118 +1,57 @@
-import { useEffect, useMemo, useState } from 'react'
-import { createPortal } from 'react-dom'
-import { SectionHeader } from '@/components/portfolio/section-header'
+import { useState } from 'react'
+import { MediaDialog } from '@/components/portfolio/media-dialog'
 import { useLocale } from '@/context/locale-context'
 import { workShowcase } from '@/data/work'
 
 export function WorkSection() {
   const { t } = useLocale()
   const [activeIndex, setActiveIndex] = useState<number | null>(null)
-  const activeItem = useMemo(
-    () => (activeIndex === null ? null : workShowcase[activeIndex]),
-    [activeIndex],
-  )
-
-  useEffect(() => {
-    if (activeItem === null) {
-      return
-    }
-
-    const previousOverflow = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        setActiveIndex(null)
-      }
-    }
-
-    window.addEventListener('keydown', handleKeyDown)
-    return () => {
-      document.body.style.overflow = previousOverflow
-      window.removeEventListener('keydown', handleKeyDown)
-    }
-  }, [activeItem])
+  const activeItem = activeIndex === null ? null : workShowcase[activeIndex]
 
   return (
     <section id="work" className="scroll-mt-24 space-y-7">
-      <SectionHeader title={t.work.title} />
-
       <div className="showcase-grid">
         {workShowcase.map((item, index) => (
-          <button
+          <figure
             key={item.src}
-            type="button"
-            onClick={() => setActiveIndex(index)}
-            className={`content-card card-stack showcase-tile group block overflow-hidden ${
-              item.featured ? 'showcase-featured' : ''
-            }`}
-            style={{ backgroundColor: item.bgColor }}
-            aria-label={t.work.openItem(item.title)}
+            className={item.featured ? 'showcase-featured' : undefined}
           >
-            <div className="showcase-media-shell">
-              {item.type === 'video' ? (
-                <video
-                  src={item.src}
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="metadata"
-                  className="showcase-media"
-                />
-              ) : (
-                <img
-                  src={item.src}
-                  alt={item.title}
-                  loading="lazy"
-                  className="showcase-media"
-                />
-              )}
-            </div>
-          </button>
-        ))}
-      </div>
-
-      {activeItem && typeof document !== 'undefined'
-        ? createPortal(
-            <div
-              className="showcase-lightbox"
-              role="dialog"
-              aria-modal="true"
-              aria-label={t.work.previewItem(activeItem.title)}
-              onClick={() => setActiveIndex(null)}
+            <button
+              type="button"
+              onClick={() => setActiveIndex(index)}
+              className="showcase-tile group block overflow-hidden"
+              style={{ backgroundColor: item.bgColor }}
+              aria-label={t.work.openItem(item.title)}
             >
-              <div className="showcase-lightbox-frame" onClick={(event) => event.stopPropagation()}>
-                <button
-                  type="button"
-                  className="showcase-close"
-                  onClick={() => setActiveIndex(null)}
-                  aria-label={t.work.closePreview}
-                >
-                  {t.work.close}
-                </button>
-
-                {activeItem.type === 'video' ? (
+              <div className="showcase-media-shell">
+                {item.type === 'video' ? (
                   <video
-                    src={activeItem.src}
-                    controls
+                    src={item.src}
+                    poster={item.poster}
                     autoPlay
+                    muted
+                    loop
                     playsInline
                     preload="metadata"
-                    className="showcase-lightbox-media"
+                    className="showcase-media"
                   />
                 ) : (
                   <img
-                    src={activeItem.src}
-                    alt={activeItem.title}
-                    className="showcase-lightbox-media"
+                    src={item.src}
+                    alt={item.title}
+                    loading="lazy"
+                    className="showcase-media"
                   />
                 )}
               </div>
-            </div>,
-            document.body,
-          )
-        : null}
+            </button>
+          </figure>
+        ))}
+      </div>
+
+      {activeItem && (
+        <MediaDialog item={activeItem} onClose={() => setActiveIndex(null)} />
+      )}
     </section>
   )
 }

@@ -5,14 +5,47 @@ export type WorkShowcaseItem = {
   note?: string
   bgColor?: string
   featured?: boolean
+  poster?: string
 }
 
 export const workShowcase: Array<WorkShowcaseItem> = [
   {
+    title: 'Tambo — Landing page',
+    src: '/tambo-landing-hero.jpg',
+    type: 'image',
+  },
+  {
+    title: 'Tambo — Landing footer',
+    src: '/tambo-landing-footer.jpg',
+    type: 'image',
+  },
+  {
+    title: 'Send button',
+    src: '/send-button-study.jpg',
+    type: 'image',
+    note: 'A green send-button design study',
+  },
+  {
+    title: 'Mate — Live detection',
+    src: '/mate/live-detection.mp4',
+    poster: '/mate/demo-poster.jpg',
+    type: 'video',
+    featured: true,
+  },
+  {
+    title: 'Tambo — Analytics',
+    src: '/showcase-analytics.mp4',
+    type: 'video',
+  },
+  {
+    title: 'Tambo — Onboarding',
+    src: '/showcase-onboarding.mp4',
+    type: 'video',
+  },
+  {
     title: 'Tambo',
     src: '/tambo.webp',
     type: 'image',
-    featured: true
   },
   {
     title: 'Numbers',
@@ -44,21 +77,21 @@ export const workShowcase: Array<WorkShowcaseItem> = [
     src: '/invite-usdc.png',
     type: 'image',
     note: 'Invite friends and earn USDC',
-    bgColor: '#F6F6F6'
+    bgColor: '#F6F6F6',
   },
   {
     title: 'Vercel Ship 26 London',
     src: '/vercel.mov',
     type: 'video',
     note: 'Vercel Ship 2026 London Card',
-    featured: true
+    featured: true,
   },
   {
     title: 'Total spent on Tambo',
     src: '/total-spent-2.mov',
     type: 'video',
     note: 'Total spent component (Tambo)',
-    bgColor: '#F6F7F6'
+    bgColor: '#F6F7F6',
   },
   {
     title: 'Funny buttons',
@@ -66,23 +99,17 @@ export const workShowcase: Array<WorkShowcaseItem> = [
     type: 'video',
   },
   {
-    title: 'Tambo',
-    src: '/tambo.png',
-    type: 'image',
-    note: 'Latest Tambo product surface',
-  },
-  {
     title: 'Upgrade v0 modal',
     src: '/upgrade-v0.mov',
     type: 'video',
-    featured: true
+    featured: true,
   },
   {
     title: 'Profile',
     src: '/profile.jpeg',
     type: 'image',
     note: 'Profile page',
-    bgColor: '#EAEAEA'
+    bgColor: '#EAEAEA',
   },
   {
     title: 'Autonoma Blacklight Dashboard',
@@ -143,7 +170,7 @@ export const workShowcase: Array<WorkShowcaseItem> = [
     src: '/multiple-choice.jpeg',
     type: 'image',
   },
-  
+
   {
     title: 'Sign In',
     src: '/sign-in.jpeg',

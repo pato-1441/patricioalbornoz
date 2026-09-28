@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useEffect } from 'react'
-import { buildLocalizedPath, detectPreferredLocale } from '@/lib/locale'
+import { detectPreferredLocale } from '@/lib/locale'
 
 export const Route = createFileRoute('/articles')({
   head: () => ({
@@ -16,7 +16,7 @@ function ArticlesRedirect() {
       navigatorLanguages: navigator.languages,
     })
 
-    window.location.replace(buildLocalizedPath(locale, '/articles'))
+    window.location.replace('/' + locale + '#articles')
   }, [])
 
   return null
