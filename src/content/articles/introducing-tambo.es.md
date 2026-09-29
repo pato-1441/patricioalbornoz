@@ -47,9 +47,9 @@ Amigos, conocidos y familiares la vienen usando desde hace un tiempo y fueron el
 
 **Leandro Riviello** · [@leandroriviello](https://x.com/leandroriviello) · [Ver tweet](https://x.com/leandroriviello/status/2094870123916005690)
 
-Todavía estoy esperando que Apple y Google nos aprueben la app en la tienda, pero actualmente estoy sumando gente al grupo de prueba.
+Después de casi 3 años, tambo ya está disponible en la App Store! Si tenés iPhone, [podés descargarla acá](https://apps.apple.com/ar/app/tambo/id6760601266).
 
-Si te interesa probarla escribime y te doy acceso. Disponible tanto para iOS como para Android.
+Para Android sigo sumando gente al grupo de prueba. Si te interesa probarla escribime y te doy acceso.
 
 ### Fuentes
 
