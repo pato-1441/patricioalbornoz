@@ -1,5 +1,3 @@
 # Patricio Albornoz
 
 ## 😄
-# patricioalbornoz
-:D
