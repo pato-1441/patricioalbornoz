@@ -3,8 +3,10 @@ title: AI scales output. Systems scale quality.
 date: 2026-04-25
 readTime: 10 min read
 excerpt: How a hidden process, a joke called “la pateada”, and a failed design system led to Blacklight — and why design systems matter even more in the age of AI.
-coverImage: /ai-scales-output-systems-scale-quality.png
-coverAlt: AI scales output. Systems scale quality.
+coverImage: /articles/autonoma-identity-poster.jpg
+coverVideo: /articles/autonoma-identity.mp4
+coverPreviewVideo: /articles/autonoma-identity-preview.mp4
+coverAlt: Opening frame of the Autonoma identity design film, showing a painting on a white table.
 published: true
 ---
 

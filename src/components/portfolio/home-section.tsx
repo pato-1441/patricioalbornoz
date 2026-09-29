@@ -45,9 +45,9 @@ export function HomeSection() {
           <div className="space-y-4 p-6 md:p-8">
             <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-xs uppercase tracking-[0.18em] text-neutral-500">
               <span>{leadArticle.pinned ? t.home.pinnedArticle : t.home.latestArticle}</span>
-              <span aria-hidden className="h-1 w-1 rounded-full bg-(--line-strong)" />
+              <span aria-hidden className="h-1 w-1 bg-(--line-strong)" />
               <span>{formatArticleDate(leadArticle.publishedAt, locale)}</span>
-              <span aria-hidden className="h-1 w-1 rounded-full bg-(--line-strong)" />
+              <span aria-hidden className="h-1 w-1 bg-(--line-strong)" />
               <span>{formatReadTime(leadArticle.readTimeMinutes, locale)}</span>
             </div>
             <div className="space-y-6">
@@ -88,7 +88,7 @@ export function HomeSection() {
               <div className="space-y-3 p-5">
                 <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-[0.7rem] uppercase tracking-[0.17em] text-neutral-500">
                   <span>{article.pinned ? t.home.pinned : t.home.recent}</span>
-                  <span aria-hidden className="h-1 w-1 rounded-full bg-(--line-strong)" />
+                  <span aria-hidden className="h-1 w-1 bg-(--line-strong)" />
                   <span>{formatArticleDate(article.publishedAt, locale)}</span>
                 </div>
                 <div className="space-y-5">
@@ -101,7 +101,7 @@ export function HomeSection() {
             </Link>
           ))}
 
-          <Link to="/$locale/articles" params={{ locale }} className="home-archive-card">
+          <Link to="/$locale" params={{ locale }} hash="articles" className="home-archive-card">
             <p className="text-xs uppercase tracking-[0.18em] text-neutral-500">
               {t.home.archiveLabel}
             </p>

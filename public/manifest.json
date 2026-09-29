@@ -4,13 +4,13 @@
   "description": "Portfolio of Patricio Albornoz about product interfaces, frontend craft, and autonomous testing.",
   "icons": [
     {
-      "src": "/profile.jpeg",
-      "sizes": "2400x1350",
-      "type": "image/jpeg"
+      "src": "/patricio-paris.webp",
+      "sizes": "500x500",
+      "type": "image/webp"
     }
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#f5efe5",
-  "background_color": "#f5efe5"
+  "theme_color": "#f4ece7",
+  "background_color": "#f4ece7"
 }

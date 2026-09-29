@@ -63,7 +63,9 @@ function parseFrontmatter(rawFile) {
 }
 
 function readArticleRecords() {
-  const articleFiles = fs.readdirSync(contentDir).filter((file) => file.endsWith('.md'))
+  const articleFiles = fs
+    .readdirSync(contentDir)
+    .filter((file) => file.endsWith('.md'))
   const records = new Map()
 
   for (const filename of articleFiles) {
@@ -89,13 +91,17 @@ function readArticleRecords() {
         return null
       }
 
-      const english = record.translations.en?.published ? record.translations.en : undefined
-      const fallback = english ?? record.translations.es ?? publishedTranslations[0]?.[1]
+      const english = record.translations.en?.published
+        ? record.translations.en
+        : undefined
+      const fallback =
+        english ?? record.translations.es ?? publishedTranslations[0]?.[1]
       const dateValues = publishedTranslations
         .map(([, entry]) => entry)
         .map((entry) => parseArticleDateString(entry.date).getTime())
         .filter((value) => Number.isFinite(value))
-      const latestTime = dateValues.length > 0 ? Math.max(...dateValues) : Date.now()
+      const latestTime =
+        dateValues.length > 0 ? Math.max(...dateValues) : Date.now()
 
       return {
         slug: record.slug,
@@ -121,7 +127,11 @@ function readArticleRecords() {
 }
 
 function writeFile(filename, content) {
-  fs.writeFileSync(path.join(publicDir, filename), `${content.trim()}\n`, 'utf8')
+  fs.writeFileSync(
+    path.join(publicDir, filename),
+    `${content.trim()}\n`,
+    'utf8',
+  )
 }
 
 const articles = readArticleRecords()
@@ -157,32 +167,37 @@ const sitemapXml = `
     <lastmod>${latestArticleLastmod}</lastmod>
     ${renderAlternateLinks({ en: '/en', es: '/es' }, '/')}
   </url>
+${['tambo', 'mate']
+  .flatMap((project) =>
+    supportedLocales.map(
+      (locale) => `
   <url>
-    <loc>${buildUrl('/en/articles')}</loc>
-    <lastmod>${latestArticleLastmod}</lastmod>
-    ${renderAlternateLinks({ en: '/en/articles', es: '/es/articles' }, '/articles')}
-  </url>
-  <url>
-    <loc>${buildUrl('/es/articles')}</loc>
-    <lastmod>${latestArticleLastmod}</lastmod>
-    ${renderAlternateLinks({ en: '/en/articles', es: '/es/articles' }, '/articles')}
-  </url>
-  ${articles
-    .flatMap((article) => {
-      const alternatePaths = Object.fromEntries(
-        Object.entries(article.translations).map(([locale, translation]) => [locale, translation.path]),
-      )
+    <loc>${buildUrl(`/${locale}/projects/${project}`)}</loc>
+    ${renderAlternateLinks({ en: `/en/projects/${project}`, es: `/es/projects/${project}` }, `/en/projects/${project}`)}
+  </url>`,
+    ),
+  )
+  .join('')}
+  <url><loc>${buildUrl('/resume')}</loc></url>
+${articles
+  .flatMap((article) => {
+    const alternatePaths = Object.fromEntries(
+      Object.entries(article.translations).map(([locale, translation]) => [
+        locale,
+        translation.path,
+      ]),
+    )
 
-      return Object.values(article.translations).map(
-        (translation) => `
+    return Object.values(article.translations).map(
+      (translation) => `
   <url>
     <loc>${buildUrl(translation.path)}</loc>
     <lastmod>${article.lastmod}</lastmod>
     ${renderAlternateLinks(alternatePaths, `/articles/${article.slug}`)}
   </url>`,
-      )
-    })
-    .join('')}
+    )
+  })
+  .join('')}
 </urlset>
 `
 
@@ -202,10 +217,15 @@ const llmsTxt = `
 
 - [Home (EN)](${buildUrl('/en')}): Personal portfolio homepage with work, writing, and profile information.
 - [Inicio (ES)](${buildUrl('/es')}): Version en espanol del portfolio personal, con trabajo, escritos y perfil.
-- [Articles (EN)](${buildUrl('/en/articles')}): Writing archive covering frontend systems, product interfaces, and autonomous testing.
-- [Articulos (ES)](${buildUrl('/es/articles')}): Archivo de escritos sobre interfaces de producto, frontend y testing autonomo.
+- [Writing (EN)](${buildUrl('/en#articles')}): Writing about frontend systems, product interfaces, and autonomous testing.
+- [Escritos (ES)](${buildUrl('/es#articles')}): Escritos sobre interfaces de producto, frontend y testing autonomo.
+- [tambo. (EN)](${buildUrl('/en/projects/tambo')}): The story behind a personal expense tracker for iOS and Android, with app previews and an early prototype.
+- [tambo. (ES)](${buildUrl('/es/projects/tambo')}): La historia de una app de gastos para iOS y Android, con imágenes y un primer prototipo.
+- [Mate (EN)](${buildUrl('/en/projects/mate')}): Computer vision project with model previews and live demos.
+- [Mate (ES)](${buildUrl('/es/projects/mate')}): Proyecto de visión por computadora con pruebas del modelo y demos.
+- [Resume](${buildUrl('/resume')}): Patricio Albornoz’s résumé, available as a PDF.
 
-## Articles
+## Writing
 
 ${articles
   .flatMap((article) =>

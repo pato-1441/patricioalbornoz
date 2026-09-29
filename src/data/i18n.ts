@@ -6,6 +6,8 @@ type LocaleCopy = {
     work: string
     projects: string
     articles: string
+    resume: string
+    about: string
   }
   locale: {
     label: string
@@ -15,21 +17,44 @@ type LocaleCopy = {
     englishName: string
     spanishName: string
   }
+  profile: {
+    title: string
+    subtitle: string
+    intro: string
+    previous: string
+    and: string
+    photoAlt: string
+    location: string
+    contact: string
+    copyEmail: string
+    emailCopied: string
+    copyError: string
+    navigation: string
+  }
+  about: {
+    title: string
+    intro: string
+    maker: string
+    communities: string
+    earlyWork: string
+    interests: string
+    outsideWork: string
+    journey: string
+    readStory: string
+    portraitAlt: string
+    galleryTitle: string
+    pressLabel: string
+  }
   sidebar: {
     role: string
-    introLead: string
-    introCurrent: string
-    introCurrentTail: string
-    introPrevious: string
-    introPreviousLink: string
-    introPreviousTail: string
-    introPreviousSecondLink: string
-    introPreviousSecondTail: string
-    introEarlier: string
-    introEarlierProduct: string
-    introEarlierMiddle: string
-    introEarlierCompany: string
-    introEarlierTail: string
+    founded: string
+    previousProductEngineering: string
+    autonomousTesting: string
+    autonomousTestingDetail: string
+    frontendSearch: string
+    ssrEngineering: string
+    searchDetail: string
+    inboxDetail: string
     xLabel: string
     githubLabel: string
     linkedinLabel: string
@@ -104,11 +129,48 @@ type LocaleCopy = {
 
 export const copy: Record<Locale, LocaleCopy> = {
   en: {
+    profile: {
+      title: 'Product engineer.',
+      subtitle: 'A maker driven by curiosity.',
+      intro: 'I’m Patricio, founder of',
+      previous: 'Previously at',
+      and: 'and',
+      photoAlt: 'Patricio Albornoz in Paris',
+      location: 'Buenos Aires, Argentina',
+      contact: 'Contact me',
+      copyEmail: 'Copy email address',
+      emailCopied: 'Email copied',
+      copyError: 'Couldn’t copy. You can copy it here:',
+      navigation: 'Portfolio sections',
+    },
     nav: {
       home: 'Home',
       work: 'Work',
       projects: 'Projects',
-      articles: 'Articles',
+      articles: 'Writing',
+      resume: 'Resume',
+      about: 'About me',
+    },
+    about: {
+      title: 'A maker driven by curiosity.',
+      intro:
+        'People call me Pato or Colo, and sometimes Ducky too. I’m from Paraná, Entre Ríos, and currently live in Buenos Aires.',
+      maker:
+        'My first business, at 13, was importing fidget spinners from China. I discovered them after seeing the pros use them during the 2016 CS:GO world championship.',
+      communities:
+        'As a teenager, I was part of large Counter-Strike communities and on the staff of one of Argentina’s biggest GTA V roleplay servers.',
+      earlyWork:
+        'Before getting into tech, I worked as a freelance graphic designer. During the pandemic, I was a streamer and even went on to partner with Twitch.',
+      interests:
+        'I’m fascinated by cinema and visual effects. I’m a big fan of VFX breakdowns (shout out to',
+      outsideWork:
+        'I did theater and I’m generally a very social person. When I’m not building something, I’m running with friends, going out to eat and reviewing places, traveling, and talking to strangers.',
+      journey:
+        'I wrote a little about moving to Buenos Aires: the leap, the uncertainty, and what I learned along the way.',
+      readStory: 'Read the story',
+      portraitAlt: 'Patricio smiling at a table',
+      galleryTitle: 'A few moments along the way.',
+      pressLabel: 'In the press',
     },
     locale: {
       label: 'Language',
@@ -120,20 +182,17 @@ export const copy: Record<Locale, LocaleCopy> = {
     },
     sidebar: {
       role: 'Product Engineer',
-      introLead: 'Currently building healthcare product experiences at',
-      introCurrent: 'Pulso',
-      introCurrentTail: '.',
-      introPrevious: 'Previously built autonomous testing systems at',
-      introPreviousLink: 'Autonoma',
-      introPreviousTail: ', and earlier helped reimagine product discovery at Sirvana (now',
-      introPreviousSecondLink: 'Melian',
-      introPreviousSecondTail: ') through an AI-driven product feed.',
-      introEarlier: 'Earlier led the development of',
-      introEarlierProduct: 'Universal Inbox',
-      introEarlierMiddle: 'at',
-      introEarlierCompany: 'emBlue',
-      introEarlierTail:
-        ', a platform that unified customer conversations, WhatsApp campaigns, and CRM workflows.',
+      founded: 'I’m Pato, founder of',
+      previousProductEngineering:
+        'I previously worked as a product engineer building healthcare products at',
+      autonomousTesting: 'I also developed autonomous testing agents at',
+      autonomousTestingDetail: ' as their first engineering hire.',
+      frontendSearch:
+        'I helped bring all of Argentina’s stores together in one place at',
+      searchDetail: ', as a founding engineer.',
+      ssrEngineering: 'Earlier, I worked on the development of Universal Inbox at',
+      inboxDetail:
+        ', bringing customer conversations, WhatsApp campaigns, and CRM workflows together.',
       xLabel: 'X profile',
       githubLabel: 'GitHub profile',
       linkedinLabel: 'LinkedIn profile',
@@ -142,7 +201,7 @@ export const copy: Record<Locale, LocaleCopy> = {
     },
     home: {
       title: 'Home',
-      featuredLabel: 'Pinned Articles',
+      featuredLabel: 'Pinned Writing',
       pinnedArticle: 'Pinned article',
       latestArticle: 'Latest article',
       featuredFallback: 'Featured essay',
@@ -152,7 +211,7 @@ export const copy: Record<Locale, LocaleCopy> = {
       archiveLabel: 'Archive',
       archiveTitle: 'All published writing',
       archiveDescription: 'The complete list of essays and notes on this site.',
-      openArchive: 'Open articles',
+      openArchive: 'Open writing',
     },
     work: {
       title: 'Work',
@@ -168,11 +227,11 @@ export const copy: Record<Locale, LocaleCopy> = {
       previewLabel: 'Project preview',
     },
     articles: {
-      title: 'Articles',
+      title: 'Writing',
       archive: 'Archive',
       openArchive: 'Open archive',
       backToPortfolio: 'Back to portfolio section',
-      backToAll: 'Back to all articles',
+      backToAll: 'Back to Writing',
       byAuthor: 'By',
       featured: 'Featured',
       article: 'Article',
@@ -202,18 +261,55 @@ export const copy: Record<Locale, LocaleCopy> = {
     seo: {
       homeTitle: 'Patricio Albornoz',
       homeDescription:
-        'Portfolio of Patricio Albornoz, focused on product interfaces, frontend craft, design systems, and product engineering at Pulso.',
-      articlesTitle: 'Articles',
+        'Portfolio of Patricio Albornoz, founder of tambo. and Product Engineer at Pulso, focused on product interfaces, frontend craft, and design systems.',
+      articlesTitle: 'Writing',
       articlesDescription:
         'Essays by Patricio Albornoz on interface clarity, frontend systems, motion, and product thinking.',
     },
   },
   es: {
+    profile: {
+      title: 'Product engineer.',
+      subtitle: 'Me gusta crear.',
+      intro: 'Soy Patricio, founder de',
+      previous: 'Antes en',
+      and: 'y',
+      photoAlt: 'Patricio Albornoz en París',
+      location: 'Buenos Aires, Argentina',
+      contact: 'Escribime',
+      copyEmail: 'Copiar correo',
+      emailCopied: 'Correo copiado',
+      copyError: 'No se pudo copiar. Podés copiarlo acá:',
+      navigation: 'Secciones del portfolio',
+    },
     nav: {
       home: 'Inicio',
       work: 'Trabajo',
       projects: 'Proyectos',
-      articles: 'Artículos',
+      articles: 'Escritos',
+      resume: 'CV',
+      about: 'Sobre mí',
+    },
+    about: {
+      title: 'Un creador impulsado por la curiosidad.',
+      intro:
+        'Me dicen Pato o Colo, y en algunos casos me han llamado Ducky también. Soy de Paraná, Entre Ríos, y actualmente vivo en Buenos Aires.',
+      maker:
+        'Mi primer negocio fue a los 13 años, importando fidget spinners desde China, que descubrí luego de ver que los pros los usaban durante el mundial de CS:GO de 2016.',
+      communities:
+        'Durante mi adolescencia formé parte de grandes comunidades de Counter-Strike, así como también formé parte del staff de uno de los servidores de roleplay de GTA V más grandes de Argentina.',
+      earlyWork:
+        'Antes de meterme en tecnología, trabajé como diseñador gráfico de forma freelance. Durante la pandemia fui streamer y hasta llegué a asociarme con Twitch.',
+      interests:
+        'Me fascinan el cine y los efectos visuales. Soy muy fan de los VFX breakdowns (shout out para',
+      outsideWork:
+        'Hice teatro y soy una persona muy social por lo general. Si no estoy buildeando algo, estoy corriendo con amigos, saliendo a comer y reseñando, viajando y hablando con desconocidos.',
+      journey:
+        'Escribí un poco sobre lo que fue venirme a Buenos Aires, ese salto, la incertidumbre y lo que fui aprendiendo.',
+      readStory: 'Leer la historia',
+      portraitAlt: 'Patricio sonriendo en una mesa',
+      galleryTitle: 'Algunos momentos del camino.',
+      pressLabel: 'En la prensa',
     },
     locale: {
       label: 'Idioma',
@@ -225,21 +321,17 @@ export const copy: Record<Locale, LocaleCopy> = {
     },
     sidebar: {
       role: 'Product Engineer',
-      introLead: 'Actualmente construyendo experiencias de producto en salud en',
-      introCurrent: 'Pulso',
-      introCurrentTail: '.',
-      introPrevious: 'Antes construí sistemas de testing autónomo en',
-      introPreviousLink: 'Autonoma',
-      introPreviousTail:
-        ', y previamente ayudé a reimaginar el discovery de producto en Sirvana (hoy',
-      introPreviousSecondLink: 'Melian',
-      introPreviousSecondTail: ') a través de un feed impulsado por IA.',
-      introEarlier: 'Antes de eso lideré el desarrollo de',
-      introEarlierProduct: 'Universal Inbox',
-      introEarlierMiddle: 'en',
-      introEarlierCompany: 'emBlue',
-      introEarlierTail:
-        ', una plataforma que unificaba conversaciones con clientes, campañas de WhatsApp y flujos de CRM.',
+      founded: 'Soy Pato, fundador de',
+      previousProductEngineering:
+        'Antes estuve como product engineer construyendo productos de salud en',
+      autonomousTesting: 'También desarrollé agentes autónomos de testing en',
+      autonomousTestingDetail: ' siendo el primer engineering hire.',
+      frontendSearch:
+        'Ayudé a recopilar todas las tiendas de Argentina en un solo lugar en',
+      searchDetail: ', como founding engineer.',
+      ssrEngineering: 'Antes trabajé en el desarrollo de Universal Inbox en',
+      inboxDetail:
+        ', unificando conversaciones con clientes, campañas de WhatsApp y flujos de CRM.',
       xLabel: 'Perfil de X',
       githubLabel: 'Perfil de GitHub',
       linkedinLabel: 'Perfil de LinkedIn',
@@ -248,7 +340,7 @@ export const copy: Record<Locale, LocaleCopy> = {
     },
     home: {
       title: 'Inicio',
-      featuredLabel: 'Artículos Destacados',
+      featuredLabel: 'Escritos destacados',
       pinnedArticle: 'Artículo destacado',
       latestArticle: 'Artículo reciente',
       featuredFallback: 'Ensayo destacado',
@@ -258,7 +350,7 @@ export const copy: Record<Locale, LocaleCopy> = {
       archiveLabel: 'Archivo',
       archiveTitle: 'Todas las publicaciones',
       archiveDescription: 'Listado de ensayos y notas en un solo lugar.',
-      openArchive: 'Abrir artículos',
+      openArchive: 'Abrir escritos',
     },
     work: {
       title: 'Trabajo',
@@ -274,11 +366,11 @@ export const copy: Record<Locale, LocaleCopy> = {
       previewLabel: 'Vista previa del proyecto',
     },
     articles: {
-      title: 'Artículos',
+      title: 'Escritos',
       archive: 'Archivo',
       openArchive: 'Abrir archivo',
       backToPortfolio: 'Volver al portfolio',
-      backToAll: 'Volver a todos los artículos',
+      backToAll: 'Volver a Escritos',
       byAuthor: 'Por',
       featured: 'Destacado',
       article: 'Artículo',
@@ -308,8 +400,8 @@ export const copy: Record<Locale, LocaleCopy> = {
     seo: {
       homeTitle: 'Patricio Albornoz',
       homeDescription:
-        'Portfolio de Patricio Albornoz sobre interfaces de producto, frontend craft, design systems e ingeniería de producto en Pulso.',
-      articlesTitle: 'Artículos',
+        'Portfolio de Patricio Albornoz, founder de tambo. y Product Engineer en Pulso, sobre interfaces de producto, frontend craft y design systems.',
+      articlesTitle: 'Escritos',
       articlesDescription:
         'Ensayos de Patricio Albornoz sobre claridad de interfaz, sistemas frontend, motion y producto.',
     },

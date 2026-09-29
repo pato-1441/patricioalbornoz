@@ -3,8 +3,10 @@ title: La AI escala el output. Los sistemas escalan la calidad.
 date: 2026-04-25
 readTime: 10 min read
 excerpt: Cómo un proceso invisible, un chiste llamado “la pateada” y un design system fallido nos llevaron a Blacklight; y por qué los sistemas son más importantes que nunca en la era de la AI.
-coverImage: /ai-scales-output-systems-scale-quality.png
-coverAlt: AI scales output. Systems scale quality.
+coverImage: /articles/autonoma-identity-poster.jpg
+coverVideo: /articles/autonoma-identity.mp4
+coverPreviewVideo: /articles/autonoma-identity-preview.mp4
+coverAlt: Fotograma inicial del video sobre la identidad de Autonoma, con una pintura sobre una mesa blanca.
 published: true
 ---
 

@@ -19,29 +19,29 @@ export type ProjectItem = {
 
 const projects: Array<ProjectItem> = [
   {
-    id: 'whatsapp-privacy-blur',
-    title: 'WhatsApp Privacy Blur',
+    id: 'tambo',
+    title: 'tambo.',
+    url: 'https://tambo.cc',
     description: {
-      en: 'Blur sensitive WhatsApp Web content to keep conversations private in offices, public places, and screen shares.',
-      es: 'Difumina contenido sensible de WhatsApp Web para mantener tus conversaciones privadas.',
+      en: 'An app for iOS and Android that helps users track daily expenses in a simple and consistent way.',
+      es: 'Una app para iOS y Android que ayuda a las personas a registrar gastos diarios de forma simple y constante.',
     },
     tag: {
-      en: 'Chrome extension',
-      es: 'Extensión de Chrome',
+      en: 'Founder · iOS & Android',
+      es: 'Founder · iOS y Android',
     },
-    url: 'https://chromewebstore.google.com/detail/whatsapp-privacy-blur/bkkmgkechgpklnpaacfpkanjdnbpgige',
     icon: {
-      src: '/privacy-extension-icon.png',
+      src: '/tambo-logo.png',
       alt: {
-        en: 'WhatsApp Privacy Blur extension icon',
-        es: 'Ícono de la extensión WhatsApp Privacy Blur',
+        en: 'tambo. app logo',
+        es: 'Logo de la app tambo.',
       },
     },
     preview: {
-      src: '/privacy-extension-1.png',
+      src: '/tambo-landing-hero.jpg',
       alt: {
-        en: 'WhatsApp Privacy Blur preview',
-        es: 'Vista previa de WhatsApp Privacy Blur',
+        en: 'tambo. landing page',
+        es: 'Página de tambo.',
       },
     },
   },
@@ -73,28 +73,29 @@ const projects: Array<ProjectItem> = [
     },
   },
   {
-    id: 'tambo',
-    title: 'Tambo',
+    id: 'whatsapp-privacy-blur',
+    title: 'WhatsApp Privacy Blur',
     description: {
-      en: 'An iOS app that helps users track daily expenses in a simple and consistent way.',
-      es: 'Una app para iOS que ayuda a las personas a registrar gastos diarios de forma simple y constante.',
+      en: 'Blur sensitive WhatsApp Web content to keep conversations private in offices, public places, and screen shares.',
+      es: 'Difumina contenido sensible de WhatsApp Web para mantener tus conversaciones privadas.',
     },
     tag: {
-      en: 'iOS app',
-      es: 'App iOS',
+      en: 'Chrome extension',
+      es: 'Extensión de Chrome',
     },
+    url: 'https://chromewebstore.google.com/detail/whatsapp-privacy-blur/bkkmgkechgpklnpaacfpkanjdnbpgige',
     icon: {
-      src: '/tambo-logo.png',
+      src: '/privacy-extension-icon.png',
       alt: {
-        en: 'Tambo app logo',
-        es: 'Logo de la app Tambo',
+        en: 'WhatsApp Privacy Blur extension icon',
+        es: 'Ícono de la extensión WhatsApp Privacy Blur',
       },
     },
     preview: {
-      src: '/tambo.png',
+      src: '/privacy-extension-1.png',
       alt: {
-        en: 'Tambo iOS app preview',
-        es: 'Vista previa de la app iOS Tambo',
+        en: 'WhatsApp Privacy Blur preview',
+        es: 'Vista previa de WhatsApp Privacy Blur',
       },
     },
   },

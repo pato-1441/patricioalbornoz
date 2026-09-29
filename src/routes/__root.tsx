@@ -9,12 +9,12 @@ import { siteName } from '@/lib/site'
 export const Route = createRootRoute({
   head: () => ({
     meta: [
-      { name: 'theme-color', content: '#f5efe5' },
+      { name: 'theme-color', content: '#f4ece7' },
       { name: 'author', content: siteName },
     ],
     links: [
-      { rel: 'icon', href: '/patoalbornoz-new.png' },
-      { rel: 'apple-touch-icon', href: '/patoalbornoz-new.png' },
+      { rel: 'icon', type: 'image/png', href: '/favicon-paris.png' },
+      { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
       { rel: 'manifest', href: '/manifest.json' },
     ],
     scripts: [
