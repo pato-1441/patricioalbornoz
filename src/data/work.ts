@@ -55,6 +55,11 @@ export const workShowcase: Array<WorkShowcaseItem> = [
     bgColor: '#E5E8F5',
   },
   {
+    title: 'Autonoma Old Home',
+    src: '/old-home.png',
+    type: 'image',
+  },
+  {
     title: 'Lemoncash',
     src: '/lemon-2.png',
     type: 'image',
@@ -85,7 +90,6 @@ export const workShowcase: Array<WorkShowcaseItem> = [
     src: '/vercel.mov',
     type: 'video',
     note: 'Vercel Ship 2026 London Card',
-    featured: true,
     bgColor: '#000000',
   },
   {

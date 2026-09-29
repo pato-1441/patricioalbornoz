@@ -109,6 +109,8 @@ type LocaleCopy = {
     title: string
     copyLink: string
     copied: string
+    linkCopied: string
+    copyError: string
     x: string
     instagram: string
     linkedin: string
@@ -247,6 +249,8 @@ export const copy: Record<Locale, LocaleCopy> = {
       title: 'Share this article',
       copyLink: 'Link',
       copied: 'Copied',
+      linkCopied: 'Link copied. Ready to share.',
+      copyError: 'Couldn’t copy the link. Please try again.',
       x: 'X',
       instagram: 'Instagram',
       linkedin: 'LinkedIn',
@@ -386,6 +390,8 @@ export const copy: Record<Locale, LocaleCopy> = {
       title: 'Compartir este artículo',
       copyLink: 'Enlace',
       copied: 'Listo',
+      linkCopied: 'Enlace copiado. Listo para compartir.',
+      copyError: 'No se pudo copiar el enlace. Intentá de nuevo.',
       x: 'X',
       instagram: 'Instagram',
       linkedin: 'LinkedIn',

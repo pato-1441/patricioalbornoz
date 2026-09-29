@@ -141,75 +141,86 @@ function ArticlePage() {
   return (
     <PortfolioTabs activeTab="articles">
       <ArticleReadingProgress label={t.articles.readingProgress} />
-      <div className="detail-page article-detail">
-        <div className="detail-toolbar">
-          <Link
-            to="/$locale"
-            params={{ locale }}
-            hash="articles"
-            className="portfolio-backlink"
-          >
-            <ArrowLeft className="size-3" />
-            {t.articles.backToAll}
-          </Link>
-          <ArticleShare
-            locale={locale}
-            slug={article.slug}
-            title={article.title}
-            coverImage={article.coverImage}
-            ogImage={article.ogImage}
-          />
-        </div>
-
-        <article className="detail-surface article-shell">
-          <div className="article-meta">
-            <span>{formatArticleDate(article.publishedAt, locale)}</span>
-            <span aria-hidden className="article-meta-dot" />
-            <span>{formatReadTime(article.readTimeMinutes, locale)}</span>
+      <div className="article-layout">
+        <div className="detail-page article-detail">
+          <div className="detail-toolbar">
+            <Link
+              to="/$locale"
+              params={{ locale }}
+              hash="articles"
+              className="portfolio-backlink"
+            >
+              <ArrowLeft className="size-3" />
+              {t.articles.backToAll}
+            </Link>
+            <ArticleShare
+              locale={locale}
+              slug={article.slug}
+              title={article.title}
+              coverImage={article.coverImage}
+              ogImage={article.ogImage}
+            />
           </div>
-          <header className="article-header">
-            <h1 className="article-title">{article.title}</h1>
-            <p className="article-excerpt">{article.excerpt}</p>
-          </header>
 
-          {article.coverImage || article.coverVideo ? (
-            <div className="article-cover">
-              {article.coverVideo ? (
-                <video
-                  src={article.coverVideo}
-                  poster={article.coverImage}
-                  controls
-                  playsInline
-                  preload="none"
-                  aria-label={article.title}
-                  className="block h-auto w-full"
-                  width={1920}
-                  height={1080}
-                />
-              ) : (
-                <img
-                  src={article.coverImage}
-                  alt={article.coverAlt ?? article.title}
-                  className="article-cover-image"
-                  loading="eager"
-                  decoding="async"
-                />
-              )}
+          <article className="detail-surface article-shell">
+            <div className="article-meta">
+              <span>{formatArticleDate(article.publishedAt, locale)}</span>
+              <span aria-hidden className="article-meta-dot" />
+              <span>{formatReadTime(article.readTimeMinutes, locale)}</span>
             </div>
-          ) : null}
+            <header className="article-header">
+              <h1 className="article-title">{article.title}</h1>
+              <p className="article-excerpt">{article.excerpt}</p>
+            </header>
 
-          <div className="article-divider" />
+            {article.coverImage || article.coverVideo ? (
+              <div className="article-cover">
+                {article.coverVideo ? (
+                  <video
+                    src={article.coverVideo}
+                    poster={article.coverImage}
+                    controls
+                    playsInline
+                    preload="none"
+                    aria-label={article.title}
+                    className="block h-auto w-full"
+                    width={1920}
+                    height={1080}
+                  />
+                ) : (
+                  <img
+                    src={article.coverImage}
+                    alt={article.coverAlt ?? article.title}
+                    className="article-cover-image"
+                    loading="eager"
+                    decoding="async"
+                  />
+                )}
+              </div>
+            ) : null}
 
-          <ArticleContent blocks={article.blocks} />
-          <ArticleEndNote
-            locale={locale}
-            currentSlug={article.slug}
-            title={article.title}
-            coverImage={article.coverImage}
-            ogImage={article.ogImage}
-            nextArticle={nextArticle}
-          />
-        </article>
+            <div className="article-divider" />
+
+            <ArticleContent blocks={article.blocks} />
+            <ArticleEndNote
+              locale={locale}
+              currentSlug={article.slug}
+              title={article.title}
+              coverImage={article.coverImage}
+              ogImage={article.ogImage}
+              nextArticle={nextArticle}
+            />
+          </article>
+        </div>
+        <ArticleShare
+          key={`${locale}-${article.slug}`}
+          variant="sidebar"
+          locale={locale}
+          slug={article.slug}
+          title={article.title}
+          coverImage={article.coverImage}
+          ogImage={article.ogImage}
+        />
       </div>
     </PortfolioTabs>
   )
