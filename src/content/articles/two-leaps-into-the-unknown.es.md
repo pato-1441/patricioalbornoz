@@ -5,8 +5,6 @@ readTime: 12 min read
 excerpt: Un año de decisiones difíciles, saltos al vacío y volver a empezar desde adentro de Autonoma.
 coverImage: /two-leaps-into-the-unknown.png
 coverAlt: Imagen de cabecera de Dos saltos al vacío.
-ogImage: /og-two.webp
-ogImageAlt: Open Graph image for Dos saltos al vacío.
 pinned: false
 published: true
 ---

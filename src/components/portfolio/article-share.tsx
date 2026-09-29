@@ -11,252 +11,219 @@ type ArticleShareProps = {
   title: string
   coverImage?: string
   ogImage?: string
+  variant?: 'dialog' | 'sidebar'
 }
 
 type CopySource = 'link' | 'instagram' | null
 
-export function ArticleShare({ locale, slug, title, coverImage, ogImage }: ArticleShareProps) {
+// Keep this breakpoint in sync with the article layout in styles.css.
+const sidebarQuery = '(min-width: 1480px)'
+
+export function ArticleShare({
+  locale,
+  slug,
+  title,
+  coverImage,
+  ogImage,
+  variant = 'dialog',
+}: ArticleShareProps) {
   const t = copy[locale].articleShare
+  const [isDesktop, setIsDesktop] = useState(false)
   const [open, setOpen] = useState(false)
-  const [showThanks, setShowThanks] = useState(false)
+  const [feedback, setFeedback] = useState('')
   const [copyFrom, setCopyFrom] = useState<CopySource>(null)
+  const dialogRef = useRef<HTMLDialogElement>(null)
   const openButtonRef = useRef<HTMLButtonElement>(null)
-  const wasOpen = useRef(false)
+  const copyTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
   const titleId = useId()
   const shareUrl = buildAbsoluteUrl(`/${locale}/articles/${slug}`)
   const previewImage = coverImage ?? ogImage ?? null
+  const modalOpen = open && !isDesktop && variant === 'dialog'
 
   const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`
   const xUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(title)}`
 
   useEffect(() => {
-    if (!open) {
-      return
+    const media = window.matchMedia(sidebarQuery)
+    const update = () => {
+      setIsDesktop(media.matches)
+      setOpen(false)
     }
-    const previousOverflow = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
-
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        setOpen(false)
-      }
-    }
-    window.addEventListener('keydown', onKey)
-    return () => {
-      document.body.style.overflow = previousOverflow
-      window.removeEventListener('keydown', onKey)
-    }
-  }, [open])
+    update()
+    media.addEventListener('change', update)
+    return () => media.removeEventListener('change', update)
+  }, [])
 
   useEffect(() => {
-    if (open) {
-      setCopyFrom(null)
-      setShowThanks(false)
-      wasOpen.current = true
-    } else if (wasOpen.current) {
-      openButtonRef.current?.focus()
-      wasOpen.current = false
+    if (!modalOpen) return
+    const dialog = dialogRef.current
+    if (!dialog) return
+
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    dialog.showModal()
+    return () => {
+      dialog.close()
+      document.body.style.overflow = previousOverflow
+      openButtonRef.current?.focus({ preventScroll: true })
     }
-  }, [open])
+  }, [modalOpen])
 
-  const setCopied = (source: 'link' | 'instagram') => {
-    setCopyFrom(source)
-    window.setTimeout(() => {
-      setCopyFrom((current) => (current === source ? null : current))
-    }, 2000)
-  }
+  useEffect(() => () => clearTimeout(copyTimer.current), [])
 
-  const handleCopyLink = async () => {
+  const copyLink = async (source: Exclude<CopySource, null>) => {
+    clearTimeout(copyTimer.current)
     try {
       await navigator.clipboard.writeText(shareUrl)
-      setCopied('link')
-      setShowThanks(true)
+      setCopyFrom(source)
+      setFeedback(t.linkCopied)
+      copyTimer.current = setTimeout(() => setCopyFrom(null), 2000)
     } catch {
       setCopyFrom(null)
+      setFeedback(t.copyError)
     }
   }
 
   const handleInstagram = async () => {
-    const nativeShare: typeof navigator.share | undefined = navigator.share
-    if (typeof nativeShare === 'function') {
+    if (typeof navigator.share === 'function') {
       try {
-        await nativeShare.call(navigator, { title, text: title, url: shareUrl })
-        setShowThanks(true)
+        await navigator.share({ title, text: title, url: shareUrl })
+        setFeedback(t.thanksMessage)
         return
-      } catch (e) {
-        if (e instanceof Error && e.name === 'AbortError') {
-          return
-        }
+      } catch (error) {
+        if (error instanceof Error && error.name === 'AbortError') return
       }
     }
-    try {
-      await navigator.clipboard.writeText(shareUrl)
-      setCopied('instagram')
-      setShowThanks(true)
-    } catch {
-      setCopyFrom(null)
-    }
+    await copyLink('instagram')
   }
 
-  const openExternal = (url: string) => {
-    window.open(url, '_blank', 'noopener,noreferrer')
-  }
+  if (variant === 'sidebar' ? !isDesktop : isDesktop) return null
 
-  const panel =
-    open && typeof document !== 'undefined'
-      ? createPortal(
-          <div
-            className="article-share-backdrop"
-            role="presentation"
+  const content = (
+    <div className="article-share-card">
+      <div className="article-share-header">
+        <h2 id={titleId} className="article-share-title">
+          {t.title}
+        </h2>
+        {variant === 'dialog' && (
+          <button
+            type="button"
+            className="article-share-close"
             onClick={() => setOpen(false)}
+            aria-label={t.close}
+            autoFocus
           >
-            <div
-              className="article-share-dialog"
-              role="dialog"
-              aria-modal="true"
-              aria-labelledby={titleId}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <div className="article-share-header">
-                <h2 id={titleId} className="article-share-title">
-                  {t.title}
-                </h2>
-                <button
-                  type="button"
-                  className="article-share-close"
-                  onClick={() => setOpen(false)}
-                  aria-label={t.close}
-                >
-                  <X className="size-5" strokeWidth={1.75} />
-                </button>
-              </div>
+            <X size={18} strokeWidth={1.75} aria-hidden="true" />
+          </button>
+        )}
+      </div>
 
-              {showThanks ? (
-                <p
-                  className="article-share-thanks"
-                  role="status"
-                  aria-live="polite"
-                >
-                  {t.thanksMessage}
-                </p>
-              ) : (
-                <>
-                  <div className="article-share-preview">
-                    <div className="article-share-preview-media">
-                      {previewImage ? (
-                        <img
-                          src={previewImage}
-                          alt=""
-                          className="article-share-preview-img"
-                          loading="eager"
-                          decoding="async"
-                        />
-                      ) : (
-                        <div
-                          className="article-share-preview-fallback"
-                          aria-hidden
-                        >
-                          <span className="article-share-preview-fallback-letter">
-                            {title.slice(0, 1).toUpperCase()}
-                          </span>
-                        </div>
-                      )}
-                    </div>
-                    <div className="article-share-preview-bar">
-                      <img
-                        src={siteAuthorAvatar}
-                        alt=""
-                        width={40}
-                        height={40}
-                        className="article-share-preview-avatar"
-                      />
-                      <div className="article-share-preview-text">
-                        <p className="article-share-preview-name">
-                          {siteAuthorName}
-                        </p>
-                        <p className="article-share-preview-headline">{title}</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <ul className="article-share-actions">
-                    <li>
-                      <button
-                        type="button"
-                        className="article-share-tile"
-                        onClick={() => {
-                          void handleCopyLink()
-                        }}
-                        aria-label={t.ariaCopyLink}
-                      >
-                        <span className="article-share-tile-icon" aria-hidden>
-                          <Link2 strokeWidth={1.75} />
-                        </span>
-                        <span className="article-share-tile-label">
-                          {copyFrom === 'link' ? t.copied : t.copyLink}
-                        </span>
-                      </button>
-                    </li>
-                    <li>
-                      <button
-                        type="button"
-                        className="article-share-tile"
-                        onClick={() => {
-                          setShowThanks(true)
-                          openExternal(xUrl)
-                        }}
-                        aria-label={t.ariaShareX}
-                      >
-                        <span className="article-share-tile-icon" aria-hidden>
-                          <span className="article-share-tile-x">𝕏</span>
-                        </span>
-                        <span className="article-share-tile-label">{t.x}</span>
-                      </button>
-                    </li>
-                    <li>
-                      <button
-                        type="button"
-                        className="article-share-tile"
-                        onClick={() => {
-                          void handleInstagram()
-                        }}
-                        aria-label={t.ariaShareInstagram}
-                      >
-                        <span className="article-share-tile-icon" aria-hidden>
-                          <Instagram strokeWidth={1.6} />
-                        </span>
-                        <span className="article-share-tile-label">
-                          {copyFrom === 'instagram' ? t.copied : t.instagram}
-                        </span>
-                      </button>
-                    </li>
-                    <li>
-                      <a
-                        className="article-share-tile"
-                        href={linkedInUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={t.ariaShareLinkedin}
-                        onClick={() => {
-                          setShowThanks(true)
-                        }}
-                      >
-                        <span className="article-share-tile-icon" aria-hidden>
-                          <Linkedin strokeWidth={1.75} />
-                        </span>
-                        <span className="article-share-tile-label">
-                          {t.linkedin}
-                        </span>
-                      </a>
-                    </li>
-                  </ul>
-                </>
-              )}
+      <div className="article-share-preview">
+        <div className="article-share-preview-media">
+          {previewImage ? (
+            <img
+              src={previewImage}
+              alt=""
+              className="article-share-preview-img"
+              loading="lazy"
+              decoding="async"
+            />
+          ) : (
+            <div className="article-share-preview-fallback" aria-hidden="true">
+              <span className="article-share-preview-fallback-letter">
+                {title.slice(0, 1).toUpperCase()}
+              </span>
             </div>
-          </div>,
-          document.body,
-        )
-      : null
+          )}
+        </div>
+        <div className="article-share-preview-bar">
+          <img
+            src={siteAuthorAvatar}
+            alt=""
+            width={36}
+            height={36}
+            className="article-share-preview-avatar"
+          />
+          <div className="article-share-preview-text">
+            <p className="article-share-preview-name">{siteAuthorName}</p>
+            <p className="article-share-preview-headline">{title}</p>
+          </div>
+        </div>
+      </div>
+
+      <ul className="article-share-actions">
+        <li>
+          <button
+            type="button"
+            className="article-share-tile"
+            onClick={() => void copyLink('link')}
+            aria-label={t.ariaCopyLink}
+          >
+            <span className="article-share-tile-icon" aria-hidden="true">
+              <Link2 strokeWidth={1.75} />
+            </span>
+            <span className="article-share-tile-label">
+              {copyFrom === 'link' ? t.copied : t.copyLink}
+            </span>
+          </button>
+        </li>
+        <li>
+          <a
+            className="article-share-tile"
+            href={xUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={t.ariaShareX}
+          >
+            <span className="article-share-tile-icon" aria-hidden="true">
+              <span className="article-share-tile-x">𝕏</span>
+            </span>
+            <span className="article-share-tile-label">{t.x}</span>
+          </a>
+        </li>
+        <li>
+          <button
+            type="button"
+            className="article-share-tile"
+            onClick={() => void handleInstagram()}
+            aria-label={t.ariaShareInstagram}
+          >
+            <span className="article-share-tile-icon" aria-hidden="true">
+              <Instagram strokeWidth={1.6} />
+            </span>
+            <span className="article-share-tile-label">
+              {copyFrom === 'instagram' ? t.copied : t.instagram}
+            </span>
+          </button>
+        </li>
+        <li>
+          <a
+            className="article-share-tile"
+            href={linkedInUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={t.ariaShareLinkedin}
+          >
+            <span className="article-share-tile-icon" aria-hidden="true">
+              <Linkedin strokeWidth={1.75} />
+            </span>
+            <span className="article-share-tile-label">{t.linkedin}</span>
+          </a>
+        </li>
+      </ul>
+      <p className="article-share-feedback" role="status" aria-live="polite">
+        {feedback}
+      </p>
+    </div>
+  )
+
+  if (variant === 'sidebar') {
+    return (
+      <aside className="article-share-sidebar" aria-labelledby={titleId}>
+        {content}
+      </aside>
+    )
+  }
 
   return (
     <>
@@ -265,15 +232,32 @@ export function ArticleShare({ locale, slug, title, coverImage, ogImage }: Artic
         type="button"
         className="article-share-open"
         onClick={() => {
+          setCopyFrom(null)
+          setFeedback('')
           setOpen(true)
         }}
         aria-haspopup="dialog"
-        aria-expanded={open}
+        aria-expanded={modalOpen}
       >
-        <Share2 className="size-3.5" strokeWidth={1.9} />
+        <Share2 className="size-3.5" strokeWidth={1.9} aria-hidden="true" />
         {t.openButton}
       </button>
-      {panel}
+      {modalOpen &&
+        createPortal(
+          <dialog
+            ref={dialogRef}
+            className="article-share-dialog"
+            aria-labelledby={titleId}
+            onCancel={() => setOpen(false)}
+            onClose={() => setOpen(false)}
+            onClick={(event) => {
+              if (event.target === event.currentTarget) setOpen(false)
+            }}
+          >
+            {content}
+          </dialog>,
+          document.body,
+        )}
     </>
   )
 }

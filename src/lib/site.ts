@@ -3,7 +3,7 @@ export const siteAuthorName = 'Patricio Albornoz'
 export const siteAuthorAvatar = '/patricio-paris.webp'
 export const siteHandle = '@patoalbornozz'
 export const siteUrl = 'https://patricioalbornoz.com'
-export const defaultOgImagePath = '/profile.jpeg'
+export const defaultOgImagePath = '/og/portfolio.png'
 
 export function buildAbsoluteUrl(path = '/') {
   const normalizedPath = path.startsWith('/') ? path : `/${path}`

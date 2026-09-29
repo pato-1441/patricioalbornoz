@@ -13,7 +13,7 @@ const siteName = 'Patricio Albornoz'
 const siteAuthorName = 'Patricio Albornoz'
 const siteHandle = '@patoalbornozz'
 const siteUrl = 'https://patricioalbornoz.com'
-const defaultOgImage = '/og.webp'
+const defaultOgImage = '/og/portfolio.png'
 
 function escapeHtml(value) {
   return value
@@ -98,7 +98,9 @@ function normalizePathname(pathname) {
 
 async function readBuiltAssets() {
   const indexHtml = await fs.readFile(distIndexPath, 'utf8')
-  const scriptMatch = indexHtml.match(/<script[^>]+src="([^"]+)"[^>]*><\/script>/i)
+  const scriptMatch = indexHtml.match(
+    /<script[^>]+src="([^"]+)"[^>]*><\/script>/i,
+  )
 
   if (!scriptMatch?.[1]) {
     throw new Error('Unable to find app script in dist/index.html')
@@ -125,6 +127,8 @@ function renderMetaTags({
   locale,
   publishedTime,
   alternateLocales,
+  type = 'article',
+  robots = 'index,follow',
 }) {
   const alternates = []
 
@@ -135,7 +139,9 @@ function renderMetaTags({
   }
 
   if (alternates.length > 0) {
-    alternates.push(`<link rel="alternate" hrefLang="x-default" href="${escapeHtml(buildAbsoluteUrl('/'))}" />`)
+    alternates.push(
+      `<link rel="alternate" hrefLang="x-default" href="${escapeHtml(buildAbsoluteUrl('/'))}" />`,
+    )
   }
 
   const articlePublishedTag = publishedTime
@@ -144,7 +150,7 @@ function renderMetaTags({
 
   const structuredData = {
     '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
+    '@type': type === 'article' ? 'BlogPosting' : 'WebSite',
     headline: fullTitle,
     description,
     datePublished: publishedTime,
@@ -155,13 +161,16 @@ function renderMetaTags({
     url: canonicalUrl,
     mainEntityOfPage: canonicalUrl,
   }
-  const structuredDataJson = JSON.stringify(structuredData).replace(/</g, '\\u003c')
+  const structuredDataJson = JSON.stringify(structuredData).replace(
+    /</g,
+    '\\u003c',
+  )
 
   return `
     <meta name="description" content="${escapeHtml(description)}" />
-    <meta name="robots" content="index,follow" />
+    <meta name="robots" content="${robots}" />
     <meta name="author" content="${escapeHtml(siteAuthorName)}" />
-    <meta property="og:type" content="article" />
+    <meta property="og:type" content="${type}" />
     <meta property="og:title" content="${escapeHtml(fullTitle)}" />
     <meta property="og:description" content="${escapeHtml(description)}" />
     <meta property="og:url" content="${escapeHtml(canonicalUrl)}" />
@@ -176,7 +185,7 @@ function renderMetaTags({
     <meta name="twitter:image:alt" content="${escapeHtml(imageAlt)}" />
     <meta name="twitter:site" content="${escapeHtml(siteHandle)}" />
     <meta name="twitter:creator" content="${escapeHtml(siteHandle)}" />
-    <meta property="article:author" content="${escapeHtml(siteAuthorName)}" />
+    ${type === 'article' ? `<meta property="article:author" content="${escapeHtml(siteAuthorName)}" />` : ''}
     ${articlePublishedTag}
     <link rel="canonical" href="${escapeHtml(canonicalUrl)}" />
     ${alternates.join('\n    ')}
@@ -184,16 +193,30 @@ function renderMetaTags({
   `
 }
 
-function renderArticleHtml({ routePath, locale, fullTitle, meta, alternateLocales, assets }) {
+function renderPageHtml({
+  routePath,
+  locale,
+  fullTitle,
+  meta,
+  alternateLocales,
+  assets,
+  type = 'article',
+  robots = 'index,follow',
+}) {
   const canonicalUrl = buildAbsoluteUrl(routePath)
   const slug = routePath.replace(/^\/[^/]+\/articles\//, '')
-  const generatedOg = `/og/articles/${slug}-${locale}.png`
-  const imagePath = meta.ogImage || generatedOg || meta.coverImage || defaultOgImage
+  const generatedOg =
+    type === 'article' ? `/og/articles/${slug}-${locale}.png` : defaultOgImage
+  const imagePath =
+    meta.ogImage || generatedOg || meta.coverImage || defaultOgImage
   const imageAlt = meta.ogImageAlt || meta.coverAlt || meta.title
   const imageUrl = buildAbsoluteUrl(imagePath)
   const ogLocale = getOgLocale(locale)
   const styleTags = assets.styles
-    .map((href) => `<link rel="stylesheet" crossorigin href="${escapeHtml(href)}" />`)
+    .map(
+      (href) =>
+        `<link rel="stylesheet" crossorigin href="${escapeHtml(href)}" />`,
+    )
     .join('\n    ')
   const metaTags = renderMetaTags({
     fullTitle,
@@ -205,6 +228,8 @@ function renderArticleHtml({ routePath, locale, fullTitle, meta, alternateLocale
     locale,
     publishedTime: meta.date,
     alternateLocales,
+    type,
+    robots,
   })
 
   return `<!DOCTYPE html>
@@ -266,16 +291,19 @@ async function main() {
       if (!meta) continue
 
       const routePath = `/${locale}/articles/${slug}`
-      const fullTitle = meta.title.includes(siteName) ? meta.title : `${meta.title} | ${siteName}`
+      const fullTitle = meta.title.includes(siteName)
+        ? meta.title
+        : `${meta.title} | ${siteName}`
       const alternateLocales = {}
 
       for (const candidateLocale of ['en', 'es']) {
         if (translations[candidateLocale]) {
-          alternateLocales[candidateLocale] = `/${candidateLocale}/articles/${slug}`
+          alternateLocales[candidateLocale] =
+            `/${candidateLocale}/articles/${slug}`
         }
       }
 
-      const html = renderArticleHtml({
+      const html = renderPageHtml({
         routePath,
         locale,
         fullTitle,
@@ -289,6 +317,33 @@ async function main() {
       await fs.writeFile(outputPath, html, 'utf8')
       console.log(`Prerendered ${routePath}`)
     }
+  }
+
+  const descriptions = {
+    en: 'Portfolio of Patricio Albornoz, founder of tambo. and Product Engineer at Pulso, focused on product interfaces, frontend craft, and design systems.',
+    es: 'Portfolio de Patricio Albornoz, founder de tambo. y Product Engineer en Pulso, sobre interfaces de producto, frontend craft y design systems.',
+  }
+  for (const routePath of ['/', '/en', '/es']) {
+    const locale = routePath === '/es' ? 'es' : 'en'
+    const html = renderPageHtml({
+      routePath,
+      locale,
+      fullTitle: siteName,
+      meta: {
+        title: siteName,
+        excerpt: descriptions[locale],
+        ogImage: defaultOgImage,
+        ogImageAlt: 'Patricio Albornoz — Product Engineer, founder de tambo.',
+      },
+      alternateLocales: { en: '/en', es: '/es' },
+      assets,
+      type: 'website',
+      robots: routePath === '/' ? 'noindex,follow' : 'index,follow',
+    })
+    const outputPath = toOutputFilePath(routePath)
+    await fs.mkdir(path.dirname(outputPath), { recursive: true })
+    await fs.writeFile(outputPath, html, 'utf8')
+    console.log(`Prerendered ${routePath}`)
   }
 }
 

@@ -5,155 +5,79 @@ import { createElement as h } from 'react'
 import satori from 'satori'
 import { Resvg } from '@resvg/resvg-js'
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
-const rootDir = path.resolve(__dirname, '..')
-const contentDir = path.join(rootDir, 'src', 'content', 'articles')
+const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const publicDir = path.join(rootDir, 'public')
-const outDir = path.join(publicDir, 'og', 'articles')
-const fontDir = path.join(rootDir, 'node_modules', '@fontsource', 'manrope', 'files')
-const defaultCoverPath = path.join(publicDir, 'og.webp')
-/** Outdoor photo with clear face — matches the social-preview treatment */
-const defaultAvatarPath = path.join(publicDir, 'patoalbornoz.jpg')
-
-const siteAuthorName = 'Patricio Albornoz'
-const FOOTER_BG = '#5C4E43'
+const contentDir = path.join(rootDir, 'src/content/articles')
+const outDir = path.join(publicDir, 'og/articles')
 const WIDTH = 1200
 const HEIGHT = 630
-const TOP_H = 430
-const FOOTER_H = 200
+const colors = {
+  bg: '#f4ece7',
+  paper: '#f9f5f2',
+  text: '#142531',
+  muted: '#5c656b',
+}
+const siteAuthorName = 'Patricio Albornoz'
+const domain = 'patricioalbornoz.com'
 
 function parseFrontmatter(rawFile) {
-  const raw = rawFile.replace(/\r\n/g, '\n')
-  const match = raw.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/)
-
-  if (!match) {
-    throw new Error('Article markdown is missing frontmatter block')
-  }
-
-  const [, frontmatterText] = match
-  const map = new Map()
-
-  for (const line of frontmatterText.split('\n')) {
-    const trimmed = line.trim()
-    if (!trimmed) continue
-
-    const separator = trimmed.indexOf(':')
+  const match = rawFile.replace(/\r\n/g, '\n').match(/^---\n([\s\S]*?)\n---/)
+  if (!match) throw new Error('Article markdown is missing frontmatter block')
+  const meta = {}
+  for (const line of match[1].split('\n')) {
+    const separator = line.indexOf(':')
     if (separator < 0) continue
-
-    const key = trimmed.slice(0, separator).trim()
-    const value = trimmed
+    meta[line.slice(0, separator).trim()] = line
       .slice(separator + 1)
       .trim()
       .replace(/^(['"])(.*)\1$/, '$2')
-
-    map.set(key, value)
   }
-
-  return {
-    title: map.get('title') ?? 'Untitled',
-    coverImage: map.get('coverImage') || '',
-    published: map.get('published')?.toLowerCase() === 'true',
-    ogImage: map.get('ogImage') || '',
-  }
+  return meta
 }
 
-function parseArticleIdentity(filename) {
-  const basename = filename.replace(/\.md$/, '')
-  const m = basename.match(/^(.*)\.(en|es)$/)
-
-  if (m) {
-    return { slug: m[1], locale: m[2] }
-  }
-
-  return { slug: basename, locale: 'en' }
+function loadImage(src) {
+  const file = path.join(publicDir, src.replace(/^\//, ''))
+  const mime = {
+    '.jpg': 'image/jpeg',
+    '.jpeg': 'image/jpeg',
+    '.png': 'image/png',
+    '.webp': 'image/webp',
+  }[path.extname(file)]
+  if (!mime) throw new Error('Unsupported OG image: ' + src)
+  return 'data:' + mime + ';base64,' + fs.readFileSync(file).toString('base64')
 }
 
-function toDataUrl(buffer) {
-  return `data:image/png;base64,${buffer.toString('base64')}`
-}
+// Static TTF copies of the site's fonts, licensed under the OFL files in public/fonts.
+// Satori cannot read the WOFF2 files used by the browser.
+const fonts = [
+  {
+    name: 'Host Grotesk',
+    data: fs.readFileSync(path.join(publicDir, 'fonts/host-grotesk-600.ttf')),
+    weight: 600,
+    style: 'normal',
+  },
+  {
+    name: 'Inter',
+    data: fs.readFileSync(path.join(publicDir, 'fonts/inter-500.ttf')),
+    weight: 500,
+    style: 'normal',
+  },
+]
+// PNG export of the current site portrait; Satori does not support WebP inputs.
+const avatar = loadImage('/patricio-paris.png')
 
-function loadImageDataUrl(absolutePath) {
-  if (!fs.existsSync(absolutePath)) {
-    return null
-  }
-  const buffer = fs.readFileSync(absolutePath)
-  const ext = path.extname(absolutePath).toLowerCase()
-  if (ext === '.jpg' || ext === '.jpeg') {
-    return `data:image/jpeg;base64,${buffer.toString('base64')}`
-  }
-  if (ext === '.png') {
-    return toDataUrl(buffer)
-  }
-  if (ext === '.webp') {
-    return `data:image/webp;base64,${buffer.toString('base64')}`
-  }
-  if (ext === '.gif') {
-    return `data:image/gif;base64,${buffer.toString('base64')}`
-  }
-  return toDataUrl(buffer)
-}
-
-function resolveCoverDataUrl(coverPath) {
-  if (coverPath && coverPath.startsWith('/')) {
-    const p = path.join(publicDir, coverPath.replace(/^\//, ''))
-    const data = loadImageDataUrl(p)
-    if (data) {
-      return data
-    }
-  }
-  return loadImageDataUrl(defaultCoverPath) ?? toDataUrl(fs.readFileSync(defaultAvatarPath))
-}
-
-function truncateTitle(title, max = 120) {
-  if (title.length <= max) {
-    return title
-  }
-  return `${title.slice(0, max - 1)}…`
-}
-
-function titleFontSize(title) {
-  const len = title.length
-  if (len > 110) {
-    return 24
-  }
-  if (len > 75) {
-    return 28
-  }
-  if (len > 50) {
-    return 32
-  }
-  return 36
-}
-
-function loadManropeFonts() {
-  const read = (name) => {
-    const p = path.join(fontDir, name)
-    return fs.readFileSync(p)
-  }
-  // Satori uses opentype.js — WOFF2 (wOF2) is not supported; use WOFF.
-  return [
-    { name: 'Manrope', data: read('manrope-latin-400-normal.woff'), weight: 400, style: 'normal' },
-    { name: 'Manrope', data: read('manrope-latin-500-normal.woff'), weight: 500, style: 'normal' },
-    { name: 'Manrope', data: read('manrope-latin-600-normal.woff'), weight: 600, style: 'normal' },
-    { name: 'Manrope', data: read('manrope-latin-700-normal.woff'), weight: 700, style: 'normal' },
-  ]
-}
-
-function buildOgElement({ coverDataUrl, avatarDataUrl, title }) {
-  const displayTitle = truncateTitle(title)
-
+function frame(children, backgroundColor = colors.paper) {
   return h(
     'div',
     {
       style: {
         display: 'flex',
-        flexDirection: 'column',
         width: WIDTH,
         height: HEIGHT,
-        backgroundColor: '#0f0f0f',
-        borderRadius: 24,
-        overflow: 'hidden',
+        padding: 24,
+        backgroundColor: colors.bg,
+        fontFamily: 'Inter',
+        fontWeight: 500,
       },
     },
     h(
@@ -161,46 +85,48 @@ function buildOgElement({ coverDataUrl, avatarDataUrl, title }) {
       {
         style: {
           display: 'flex',
-          width: WIDTH,
-          height: TOP_H,
           position: 'relative',
+          width: '100%',
+          height: '100%',
+          borderRadius: 32,
+          overflow: 'hidden',
+          backgroundColor,
+          border: '1px solid rgba(255,255,255,0.9)',
+          boxShadow: '0 8px 18px rgba(20,37,49,0.08)',
         },
       },
+      ...children,
+    ),
+  )
+}
+
+function buildArticleOg(meta, locale) {
+  const fontSize =
+    meta.title.length > 75 ? 58 : meta.title.length > 45 ? 68 : 82
+  return frame(
+    [
       h('img', {
-        src: coverDataUrl,
-        width: WIDTH,
-        height: TOP_H,
+        src: loadImage(meta.coverImage || '/patricio-paris.png'),
+        width: 1152,
+        height: 582,
         style: {
-          width: WIDTH,
-          height: TOP_H,
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
           objectFit: 'cover',
         },
       }),
-    ),
-    h(
-      'div',
-      {
+      h('div', {
         style: {
-          display: 'flex',
-          flexDirection: 'row',
-          alignItems: 'center',
-          width: WIDTH,
-          height: FOOTER_H,
-          backgroundColor: FOOTER_BG,
-          padding: '0 40px',
-          boxSizing: 'border-box',
-        },
-      },
-      h('img', {
-        src: avatarDataUrl,
-        width: 88,
-        height: 88,
-        style: {
-          width: 88,
-          height: 88,
-          borderRadius: 9999,
-          border: '3px solid #ffffff',
-          objectFit: 'cover',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          backgroundImage:
+            'linear-gradient(180deg, rgba(20,37,49,0.24) 0%, rgba(20,37,49,0.02) 30%, rgba(20,37,49,0.85) 100%)',
         },
       }),
       h(
@@ -208,106 +134,190 @@ function buildOgElement({ coverDataUrl, avatarDataUrl, title }) {
         {
           style: {
             display: 'flex',
-            flexDirection: 'column',
-            marginLeft: 28,
-            flex: 1,
-            minWidth: 0,
-            justifyContent: 'center',
+            position: 'absolute',
+            top: 30,
+            left: 32,
+            right: 32,
+            alignItems: 'center',
+            justifyContent: 'space-between',
           },
         },
         h(
           'div',
           {
             style: {
-              color: '#ffffff',
-              fontSize: 22,
-              fontWeight: 500,
-              fontFamily: 'Manrope',
-              marginBottom: 10,
+              display: 'flex',
+              alignItems: 'center',
+              gap: 12,
+              padding: '7px 18px 7px 7px',
+              borderRadius: 999,
+              backgroundColor: colors.paper,
+              border: '1px solid white',
+              boxShadow: '0 2px 6px rgba(20,37,49,0.12)',
+              color: colors.text,
             },
           },
-          siteAuthorName,
+          h('img', {
+            src: avatar,
+            width: 42,
+            height: 42,
+            style: { borderRadius: 999, objectFit: 'cover' },
+          }),
+          h('span', { style: { fontSize: 20 } }, siteAuthorName),
+        ),
+        h('span', { style: { color: 'white', fontSize: 19 } }, domain),
+      ),
+      h(
+        'div',
+        {
+          style: {
+            display: 'flex',
+            flexDirection: 'column',
+            position: 'absolute',
+            left: 40,
+            right: 40,
+            bottom: 38,
+          },
+        },
+        h(
+          'span',
+          {
+            style: {
+              fontSize: 17,
+              letterSpacing: 2.5,
+              color: colors.bg,
+              marginBottom: 14,
+            },
+          },
+          locale === 'es' ? 'ESCRITOS' : 'WRITING',
         ),
         h(
           'div',
           {
             style: {
-              color: '#ffffff',
-              fontSize: titleFontSize(displayTitle),
-              fontWeight: 700,
-              lineHeight: 1.2,
-              fontFamily: 'Manrope',
+              display: 'flex',
+              color: 'white',
+              fontFamily: 'Host Grotesk',
+              fontWeight: 600,
+              fontSize,
+              lineHeight: 1.02,
+              letterSpacing: -2.8,
+              maxWidth: 1030,
             },
           },
-          displayTitle,
+          meta.title,
         ),
       ),
-    ),
+    ],
+    colors.text,
   )
 }
 
-async function renderPng(jsx) {
-  const fonts = loadManropeFonts()
-  const svg = await satori(jsx, {
-    width: WIDTH,
-    height: HEIGHT,
-    fonts,
-  })
-
-  const resvg = new Resvg(svg, {
-    fitTo: { mode: 'width', value: WIDTH },
-  })
-  const image = resvg.render()
-  return image.asPng()
+function buildPortfolioOg() {
+  return frame([
+    h('img', {
+      src: avatar,
+      width: 472,
+      height: 534,
+      style: {
+        position: 'absolute',
+        right: 24,
+        top: 24,
+        borderRadius: 24,
+        width: 472,
+        height: 534,
+        objectFit: 'cover',
+      },
+    }),
+    h(
+      'div',
+      {
+        style: {
+          display: 'flex',
+          flexDirection: 'column',
+          position: 'absolute',
+          left: 44,
+          top: 44,
+          bottom: 44,
+          width: 560,
+          color: colors.text,
+          justifyContent: 'space-between',
+        },
+      },
+      h(
+        'div',
+        {
+          style: {
+            display: 'flex',
+            alignSelf: 'flex-start',
+            padding: '12px 20px',
+            borderRadius: 999,
+            backgroundColor: colors.bg,
+            border: '1px solid white',
+            boxShadow: '0 2px 4px rgba(20,37,49,0.08)',
+            fontSize: 21,
+          },
+        },
+        'Product Engineer',
+      ),
+      h(
+        'div',
+        { style: { display: 'flex', flexDirection: 'column' } },
+        h(
+          'div',
+          {
+            style: {
+              display: 'flex',
+              flexDirection: 'column',
+              fontFamily: 'Host Grotesk',
+              fontWeight: 600,
+              fontSize: 91,
+              lineHeight: 0.98,
+              letterSpacing: -4,
+            },
+          },
+          h('span', null, 'Patricio'),
+          h('span', null, 'Albornoz'),
+        ),
+        h(
+          'span',
+          { style: { fontSize: 28, color: colors.muted, marginTop: 24 } },
+          'Founder, tambo.',
+        ),
+      ),
+      h('span', { style: { fontSize: 22, color: colors.muted } }, domain),
+    ),
+  ])
 }
 
-async function main() {
-  fs.mkdirSync(outDir, { recursive: true })
-
-  const files = fs.readdirSync(contentDir).filter((f) => f.endsWith('.md'))
-  const avatarData = loadImageDataUrl(defaultAvatarPath) ?? ''
-
-  if (!avatarData) {
-    console.error('Missing avatar at', defaultAvatarPath)
-    process.exit(1)
-  }
-
-  let count = 0
-  for (const filename of files) {
-    const raw = fs.readFileSync(path.join(contentDir, filename), 'utf8')
-    const meta = parseFrontmatter(raw)
-
-    if (!meta.published) {
-      continue
-    }
-
-    if (meta.ogImage) {
-      continue
-    }
-
-    const { slug, locale } = parseArticleIdentity(filename)
-    const coverData = resolveCoverDataUrl(meta.coverImage)
-    if (!coverData) {
-      console.warn(`Skip ${filename}: no cover image`)
-      continue
-    }
-
-    const png = await renderPng(
-      buildOgElement({
-        coverDataUrl: coverData,
-        avatarDataUrl: avatarData,
-        title: meta.title,
-      }),
-    )
-
-    const outName = `${slug}-${locale}.png`
-    const outPath = path.join(outDir, outName)
-    fs.writeFileSync(outPath, png)
-    console.log(`Wrote /og/articles/${outName}`)
-    count += 1
-  }
-
-  console.log(`Done. ${count} Open Graph image(s) generated.`)
+async function renderPng(element) {
+  const svg = await satori(element, { width: WIDTH, height: HEIGHT, fonts })
+  return new Resvg(svg, { fitTo: { mode: 'width', value: WIDTH } })
+    .render()
+    .asPng()
 }
 
-await main()
+fs.mkdirSync(outDir, { recursive: true })
+fs.writeFileSync(
+  path.join(publicDir, 'og/portfolio.png'),
+  await renderPng(buildPortfolioOg()),
+)
+console.log('Wrote /og/portfolio.png')
+
+for (const filename of fs
+  .readdirSync(contentDir)
+  .filter((file) => file.endsWith('.md'))) {
+  const meta = parseFrontmatter(
+    fs.readFileSync(path.join(contentDir, filename), 'utf8'),
+  )
+  if (meta.published !== 'true' || meta.ogImage) continue
+  const basename = filename.replace(/\.md$/, '')
+  const match = basename.match(/^(.*)\.(en|es)$/)
+  const [slug, locale] = match ? [match[1], match[2]] : [basename, 'en']
+  const outputName = slug + '-' + locale + '.png'
+  fs.writeFileSync(
+    path.join(outDir, outputName),
+    await renderPng(buildArticleOg(meta, locale)),
+  )
+  console.log('Wrote /og/articles/' + outputName)
+}

@@ -16,6 +16,8 @@
 
 ## Writing
 
+- [Introducing tambo](https://patricioalbornoz.com/en/articles/introducing-tambo): A simple, complete and intuitive app with one main goal: understanding where your money goes. (EN)
+- [Presentando tambo](https://patricioalbornoz.com/es/articles/introducing-tambo): Una app simple, completa e intuitiva con el objetivo principal de entender en que se te va la guita. (ES)
 - [AI scales output. Systems scale quality.](https://patricioalbornoz.com/en/articles/ai-scales-output-systems-scale-quality): How a hidden process, a joke called “la pateada”, and a failed design system led to Blacklight — and why design systems matter even more in the age of AI. (EN)
 - [La AI escala el output. Los sistemas escalan la calidad.](https://patricioalbornoz.com/es/articles/ai-scales-output-systems-scale-quality): Cómo un proceso invisible, un chiste llamado “la pateada” y un design system fallido nos llevaron a Blacklight; y por qué los sistemas son más importantes que nunca en la era de la AI. (ES)
 - [Two leaps into the unknown](https://patricioalbornoz.com/en/articles/two-leaps-into-the-unknown): A year of difficult calls, double leaps into the unknown, and starting over from inside Autonoma. (EN)

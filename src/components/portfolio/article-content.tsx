@@ -201,7 +201,11 @@ export function ArticleContent({ blocks }: ArticleContentProps) {
           )
         }
 
-        const variant = getParagraphVariant(block.text)
+        const variant =
+          blocks[index - 1]?.type === 'quote' &&
+          /^\*\*[^*]+\*\* · /.test(block.text)
+            ? 'attribution'
+            : getParagraphVariant(block.text)
 
         if (variant === 'stanza') {
           return (

@@ -5,8 +5,6 @@ readTime: 12 min read
 excerpt: A year of difficult calls, double leaps into the unknown, and starting over from inside Autonoma.
 coverImage: /two-leaps-into-the-unknown.png
 coverAlt: Header image for Two leaps into the unknown.
-ogImage: /og-two.webp
-ogImageAlt: Open Graph image for Two leaps into the unknown.
 pinned: false
 published: true
 ---
