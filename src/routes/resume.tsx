@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 
-const resumeUrl = '/Patricio%20Albornoz%20Resume.pdf'
+const resumeUrl = '/patricio-albornoz-resume.pdf'
 
 export const Route = createFileRoute('/resume')({
   head: () => ({

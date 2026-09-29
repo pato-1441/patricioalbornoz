@@ -62,7 +62,9 @@ export function PortfolioIntro() {
         </h1>
         <p className="profile-bio">
           {t.sidebar.founded}{' '}
-          <CompanyLink company="tambo" label="Tambo" className="font-medium" />.{' '}
+          <CompanyLink company="tambo" label="tambo." className="font-medium" />
+        </p>
+        <p className="profile-history">
           {t.sidebar.previousProductEngineering}{' '}
           <CompanyLink company="pulso" label="Pulso" className="font-medium" />.
         </p>
@@ -72,7 +74,10 @@ export function PortfolioIntro() {
             company="autonoma"
             label="Autonoma"
             className="font-medium"
-          />{' '}
+          />
+          {t.sidebar.autonomousTestingDetail}
+        </p>
+        <p className="profile-history">
           {t.sidebar.frontendSearch}{' '}
           <CompanyLink
             company="melian"
@@ -167,7 +172,7 @@ export function PortfolioFooter() {
       <div className="portfolio-footer-links">
         <div className="profile-utilities">
           <a
-            href="/Patricio%20Albornoz%20Resume.pdf"
+            href="/patricio-albornoz-resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="profile-resume-link"

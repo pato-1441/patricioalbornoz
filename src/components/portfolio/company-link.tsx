@@ -15,12 +15,12 @@ const companies: Record<
   }
 > = {
   tambo: {
-    name: 'Tambo',
+    name: 'tambo.',
     href: 'https://tambo.cc',
     logoSrc: '/tambo-logo.png',
     description: {
-      es: 'Tus gastos personales, en orden. Una app para iPhone que funciona sin conexión, sin registro y sin conectar tu banco.',
-      en: 'Your everyday expenses, organized. An iPhone app that works offline, with no sign-up or bank connection.',
+      es: 'Tus gastos personales, en orden. Una app para iOS y Android que funciona sin conexión, sin registro y sin conectar tu banco.',
+      en: 'Your everyday expenses, organized. An app for iOS and Android that works offline, with no sign-up or bank connection.',
     },
   },
   pulso: {

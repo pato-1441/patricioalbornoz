@@ -41,7 +41,7 @@ export const Route = createFileRoute('/$locale/')({
           jobTitle: 'Product Engineer',
           worksFor: {
             '@type': 'Organization',
-            name: 'Tambo',
+            name: 'tambo.',
           },
           sameAs: [
             'https://x.com/patoalbornozz',

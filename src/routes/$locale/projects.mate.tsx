@@ -92,24 +92,27 @@ function MatePage() {
           </Link>
         </div>
         <div className="detail-surface">
-          <header className="mate-header">
-            <div className="mate-identity">
+          <header className="project-detail-header">
+            <div className="project-detail-identity">
               <img src="/mate-favicon.png" alt="" width={48} height={48} />
               <span>Mate</span>
             </div>
-            <p className="mate-label">{t.label}</p>
+            <p className="project-detail-label">{t.label}</p>
             <h1>{t.title}</h1>
-            <p className="mate-description">{t.description}</p>
+            <p className="project-detail-description">{t.description}</p>
             <a
               href="https://mate.patricioalbornoz.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="mate-open"
+              className="project-detail-open"
             >
               {t.open} <ArrowUpRight size={16} aria-hidden="true" />
             </a>
           </header>
-          <section className="mate-section" aria-labelledby="mate-live">
+          <section
+            className="project-detail-section"
+            aria-labelledby="mate-live"
+          >
             <h2 id="mate-live">{t.live}</h2>
             <p>{t.liveDescription}</p>
             <figure>
@@ -127,10 +130,13 @@ function MatePage() {
               <figcaption>{t.demo}</figcaption>
             </figure>
           </section>
-          <section className="mate-section" aria-labelledby="mate-models">
+          <section
+            className="project-detail-section"
+            aria-labelledby="mate-models"
+          >
             <h2 id="mate-models">{t.models}</h2>
             <p>{t.modelsDescription}</p>
-            <div className="mate-gallery">
+            <div className="project-detail-gallery">
               {[
                 'detection-desk.jpg',
                 'detection-studio.jpg',
@@ -160,7 +166,10 @@ function MatePage() {
               ))}
             </div>
           </section>
-          <section className="mate-section" aria-labelledby="mate-experiment">
+          <section
+            className="project-detail-section"
+            aria-labelledby="mate-experiment"
+          >
             <h2 id="mate-experiment">{t.experiment}</h2>
             <figure>
               <video

@@ -167,13 +167,15 @@ const sitemapXml = `
     <lastmod>${latestArticleLastmod}</lastmod>
     ${renderAlternateLinks({ en: '/en', es: '/es' }, '/')}
   </url>
-${supportedLocales
-  .map(
-    (locale) => `
+${['tambo', 'mate']
+  .flatMap((project) =>
+    supportedLocales.map(
+      (locale) => `
   <url>
-    <loc>${buildUrl(`/${locale}/projects/mate`)}</loc>
-    ${renderAlternateLinks({ en: '/en/projects/mate', es: '/es/projects/mate' }, '/en/projects/mate')}
+    <loc>${buildUrl(`/${locale}/projects/${project}`)}</loc>
+    ${renderAlternateLinks({ en: `/en/projects/${project}`, es: `/es/projects/${project}` }, `/en/projects/${project}`)}
   </url>`,
+    ),
   )
   .join('')}
   <url><loc>${buildUrl('/resume')}</loc></url>
@@ -217,6 +219,8 @@ const llmsTxt = `
 - [Inicio (ES)](${buildUrl('/es')}): Version en espanol del portfolio personal, con trabajo, escritos y perfil.
 - [Writing (EN)](${buildUrl('/en#articles')}): Writing about frontend systems, product interfaces, and autonomous testing.
 - [Escritos (ES)](${buildUrl('/es#articles')}): Escritos sobre interfaces de producto, frontend y testing autonomo.
+- [tambo. (EN)](${buildUrl('/en/projects/tambo')}): The story behind a personal expense tracker for iOS and Android, with app previews and an early prototype.
+- [tambo. (ES)](${buildUrl('/es/projects/tambo')}): La historia de una app de gastos para iOS y Android, con imágenes y un primer prototipo.
 - [Mate (EN)](${buildUrl('/en/projects/mate')}): Computer vision project with model previews and live demos.
 - [Mate (ES)](${buildUrl('/es/projects/mate')}): Proyecto de visión por computadora con pruebas del modelo y demos.
 - [Resume](${buildUrl('/resume')}): Patricio Albornoz’s résumé, available as a PDF.

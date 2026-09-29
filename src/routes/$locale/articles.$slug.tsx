@@ -172,15 +172,29 @@ function ArticlePage() {
             <p className="article-excerpt">{article.excerpt}</p>
           </header>
 
-          {article.coverImage ? (
+          {article.coverImage || article.coverVideo ? (
             <div className="article-cover">
-              <img
-                src={article.coverImage}
-                alt={article.coverAlt ?? article.title}
-                className="article-cover-image"
-                loading="eager"
-                decoding="async"
-              />
+              {article.coverVideo ? (
+                <video
+                  src={article.coverVideo}
+                  poster={article.coverImage}
+                  controls
+                  playsInline
+                  preload="none"
+                  aria-label={article.title}
+                  className="block h-auto w-full"
+                  width={1920}
+                  height={1080}
+                />
+              ) : (
+                <img
+                  src={article.coverImage}
+                  alt={article.coverAlt ?? article.title}
+                  className="article-cover-image"
+                  loading="eager"
+                  decoding="async"
+                />
+              )}
             </div>
           ) : null}
 

@@ -37,6 +37,15 @@ const press = [
 
 const photos = [
   {
+    src: '/about/sharing-ideas.jpg',
+    width: 1280,
+    height: 959,
+    caption: {
+      en: 'Patricio sharing a presentation with a group',
+      es: 'Patricio compartiendo una presentación con un grupo',
+    },
+  },
+  {
     src: '/about/mate-at-the-desk.jpg',
     width: 1279,
     height: 847,
@@ -89,9 +98,9 @@ const photos = [
 export function AboutSection() {
   const { locale, t } = useLocale()
   const [activePhoto, setActivePhoto] = useState<WorkShowcaseItem | null>(null)
-  const talk = {
-    src: '/about/sharing-ideas.jpg',
-    title: t.about.talkAlt,
+  const portrait = {
+    src: '/about/patricio.jpg',
+    title: t.about.portraitAlt,
     type: 'image' as const,
   }
 
@@ -102,6 +111,21 @@ export function AboutSection() {
           <h2 className="about-title">{t.about.title}</h2>
           <p className="about-lead">{t.about.intro}</p>
           <p>{t.about.maker}</p>
+          <p>{t.about.communities}</p>
+          <p>{t.about.earlyWork}</p>
+          <p>
+            {t.about.interests}{' '}
+            <a
+              href="https://www.youtube.com/@CorridorCrew"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-4"
+            >
+              Corridor Crew
+            </a>
+            ).
+          </p>
+          <p>{t.about.outsideWork}</p>
           <p>{t.about.journey}</p>
           <Link
             to="/$locale/articles/$slug"
@@ -113,43 +137,19 @@ export function AboutSection() {
         </div>
         <figure className="about-photo about-feature-photo">
           <button
-            onClick={() => setActivePhoto(talk)}
+            onClick={() => setActivePhoto(portrait)}
             type="button"
-            aria-label={t.work.openItem(talk.title)}
+            aria-label={t.work.openItem(portrait.title)}
           >
             <img
-              src={talk.src}
-              alt={talk.title}
-              width={1280}
-              height={959}
+              src={portrait.src}
+              alt={portrait.title}
+              width={1618}
+              height={2748}
               loading="lazy"
             />
           </button>
-          <figcaption>{t.about.talkCaption}</figcaption>
         </figure>
-      </div>
-      <h3 className="section-title">{t.about.pressLabel}</h3>
-      <div className="about-press-grid">
-        {press.map((item) => (
-          <a
-            key={item.href}
-            href={item.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="about-press"
-          >
-            <span>
-              <small>
-                {item.source} ·{' '}
-                <time dateTime={item.date}>
-                  {formatArticleDate(item.date, locale)}
-                </time>
-              </small>
-              <strong lang="es">{item.title}</strong>
-            </span>
-            <ArrowUpRight size={24} aria-hidden="true" />
-          </a>
-        ))}
       </div>
       <h3 className="section-title">{t.about.galleryTitle}</h3>
       <div className="about-gallery">
@@ -174,8 +174,30 @@ export function AboutSection() {
                 loading="lazy"
               />
             </button>
-            <figcaption>{photo.caption[locale]}</figcaption>
           </figure>
+        ))}
+      </div>
+      <h3 className="section-title">{t.about.pressLabel}</h3>
+      <div className="about-press-grid">
+        {press.map((item) => (
+          <a
+            key={item.href}
+            href={item.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="about-press"
+          >
+            <span>
+              <small>
+                {item.source} ·{' '}
+                <time dateTime={item.date}>
+                  {formatArticleDate(item.date, locale)}
+                </time>
+              </small>
+              <strong lang="es">{item.title}</strong>
+            </span>
+            <ArrowUpRight size={24} aria-hidden="true" />
+          </a>
         ))}
       </div>
       {activePhoto && (

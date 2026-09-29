@@ -35,10 +35,13 @@ type LocaleCopy = {
     title: string
     intro: string
     maker: string
+    communities: string
+    earlyWork: string
+    interests: string
+    outsideWork: string
     journey: string
     readStory: string
-    talkAlt: string
-    talkCaption: string
+    portraitAlt: string
     galleryTitle: string
     pressLabel: string
   }
@@ -47,6 +50,7 @@ type LocaleCopy = {
     founded: string
     previousProductEngineering: string
     autonomousTesting: string
+    autonomousTestingDetail: string
     frontendSearch: string
     ssrEngineering: string
     searchDetail: string
@@ -127,13 +131,13 @@ export const copy: Record<Locale, LocaleCopy> = {
   en: {
     profile: {
       title: 'Product engineer.',
-      subtitle: 'A maker at heart.',
+      subtitle: 'A maker driven by curiosity.',
       intro: 'I’m Patricio, founder of',
       previous: 'Previously at',
       and: 'and',
       photoAlt: 'Patricio Albornoz in Paris',
       location: 'Buenos Aires, Argentina',
-      contact: 'Say hello',
+      contact: 'Contact me',
       copyEmail: 'Copy email address',
       emailCopied: 'Email copied',
       copyError: 'Couldn’t copy. You can copy it here:',
@@ -148,16 +152,23 @@ export const copy: Record<Locale, LocaleCopy> = {
       about: 'About me',
     },
     about: {
-      title: 'A maker at heart.',
+      title: 'A maker driven by curiosity.',
       intro:
-        'I’m Pato, a product engineer based in Buenos Aires. I build products from the first idea to the small details that make them feel right. No detail is too small.',
+        'People call me Pato or Colo, and sometimes Ducky too. I’m from Paraná, Entre Ríos, and currently live in Buenos Aires.',
       maker:
-        'Tambo and Mate are where I follow my own questions: from making sense of everyday expenses to seeing whether a camera can count mates.',
+        'My first business, at 13, was importing fidget spinners from China. I discovered them after seeing the pros use them during the 2016 CS:GO world championship.',
+      communities:
+        'As a teenager, I was part of large Counter-Strike communities and on the staff of one of Argentina’s biggest GTA V roleplay servers.',
+      earlyWork:
+        'Before getting into tech, I worked as a freelance graphic designer. During the pandemic, I was a streamer and even went on to partner with Twitch.',
+      interests:
+        'I’m fascinated by cinema and visual effects. I’m a big fan of VFX breakdowns (shout out to',
+      outsideWork:
+        'I did theater and I’m generally a very social person. When I’m not building something, I’m running with friends, going out to eat and reviewing places, traveling, and talking to strangers.',
       journey:
-        'Moving to Buenos Aires and joining a founding team changed how I think about building. I wrote about that leap, the uncertainty, and what I learned along the way.',
+        'I wrote a little about moving to Buenos Aires: the leap, the uncertainty, and what I learned along the way.',
       readStory: 'Read the story',
-      talkAlt: 'Patricio sharing a presentation with a group',
-      talkCaption: 'Sharing what I’m learning.',
+      portraitAlt: 'Patricio smiling at a table',
       galleryTitle: 'A few moments along the way.',
       pressLabel: 'In the press',
     },
@@ -172,11 +183,14 @@ export const copy: Record<Locale, LocaleCopy> = {
     sidebar: {
       role: 'Product Engineer',
       founded: 'I’m Pato, founder of',
-      previousProductEngineering: 'I previously built healthcare products at',
-      autonomousTesting: 'Before that, I built autonomous testing agents at',
-      frontendSearch: 'and helped reimagine product discovery at',
-      searchDetail: ', working across frontend and search.',
-      ssrEngineering: 'Earlier, I led the development of Universal Inbox at',
+      previousProductEngineering:
+        'I previously worked as a product engineer building healthcare products at',
+      autonomousTesting: 'I also developed autonomous testing agents at',
+      autonomousTestingDetail: ' as their first engineering hire.',
+      frontendSearch:
+        'I helped bring all of Argentina’s stores together in one place at',
+      searchDetail: ', as a founding engineer.',
+      ssrEngineering: 'Earlier, I worked on the development of Universal Inbox at',
       inboxDetail:
         ', bringing customer conversations, WhatsApp campaigns, and CRM workflows together.',
       xLabel: 'X profile',
@@ -247,7 +261,7 @@ export const copy: Record<Locale, LocaleCopy> = {
     seo: {
       homeTitle: 'Patricio Albornoz',
       homeDescription:
-        'Portfolio of Patricio Albornoz, founder of Tambo and Product Engineer at Pulso, focused on product interfaces, frontend craft, and design systems.',
+        'Portfolio of Patricio Albornoz, founder of tambo. and Product Engineer at Pulso, focused on product interfaces, frontend craft, and design systems.',
       articlesTitle: 'Writing',
       articlesDescription:
         'Essays by Patricio Albornoz on interface clarity, frontend systems, motion, and product thinking.',
@@ -262,7 +276,7 @@ export const copy: Record<Locale, LocaleCopy> = {
       and: 'y',
       photoAlt: 'Patricio Albornoz en París',
       location: 'Buenos Aires, Argentina',
-      contact: 'Say hello',
+      contact: 'Escribime',
       copyEmail: 'Copiar correo',
       emailCopied: 'Correo copiado',
       copyError: 'No se pudo copiar. Podés copiarlo acá:',
@@ -277,16 +291,23 @@ export const copy: Record<Locale, LocaleCopy> = {
       about: 'Sobre mí',
     },
     about: {
-      title: 'Me gusta crear.',
+      title: 'Un creador impulsado por la curiosidad.',
       intro:
-        'Soy Pato, product engineer en Buenos Aires. Construyo productos desde la primera idea hasta los pequeños detalles que hacen que se sientan bien. Ningún detalle es demasiado pequeño.',
+        'Me dicen Pato o Colo, y en algunos casos me han llamado Ducky también. Soy de Paraná, Entre Ríos, y actualmente vivo en Buenos Aires.',
       maker:
-        'Tambo y Mate son mi forma de seguir mis propias preguntas: desde entender los gastos de todos los días hasta ver si una cámara puede contar mates.',
+        'Mi primer negocio fue a los 13 años, importando fidget spinners desde China, que descubrí luego de ver que los pros los usaban durante el mundial de CS:GO de 2016.',
+      communities:
+        'Durante mi adolescencia formé parte de grandes comunidades de Counter-Strike, así como también formé parte del staff de uno de los servidores de roleplay de GTA V más grandes de Argentina.',
+      earlyWork:
+        'Antes de meterme en tecnología, trabajé como diseñador gráfico de forma freelance. Durante la pandemia fui streamer y hasta llegué a asociarme con Twitch.',
+      interests:
+        'Me fascinan el cine y los efectos visuales. Soy muy fan de los VFX breakdowns (shout out para',
+      outsideWork:
+        'Hice teatro y soy una persona muy social por lo general. Si no estoy buildeando algo, estoy corriendo con amigos, saliendo a comer y reseñando, viajando y hablando con desconocidos.',
       journey:
-        'Mudarme a Buenos Aires y sumarme a un equipo fundador cambió mi forma de pensar en lo que construyo. Escribí sobre ese salto, la incertidumbre y lo que fui aprendiendo.',
+        'Escribí un poco sobre lo que fue venirme a Buenos Aires, ese salto, la incertidumbre y lo que fui aprendiendo.',
       readStory: 'Leer la historia',
-      talkAlt: 'Patricio compartiendo una presentación con un grupo',
-      talkCaption: 'Compartiendo lo que voy aprendiendo.',
+      portraitAlt: 'Patricio sonriendo en una mesa',
       galleryTitle: 'Algunos momentos del camino.',
       pressLabel: 'En la prensa',
     },
@@ -301,11 +322,14 @@ export const copy: Record<Locale, LocaleCopy> = {
     sidebar: {
       role: 'Product Engineer',
       founded: 'Soy Pato, fundador de',
-      previousProductEngineering: 'Antes construí productos de salud en',
+      previousProductEngineering:
+        'Antes estuve como product engineer construyendo productos de salud en',
       autonomousTesting: 'También desarrollé agentes autónomos de testing en',
-      frontendSearch: 'y ayudé a repensar cómo descubrir productos en',
-      searchDetail: ', trabajando en frontend y búsqueda.',
-      ssrEngineering: 'Antes lideré el desarrollo de Universal Inbox en',
+      autonomousTestingDetail: ' siendo el primer engineering hire.',
+      frontendSearch:
+        'Ayudé a recopilar todas las tiendas de Argentina en un solo lugar en',
+      searchDetail: ', como founding engineer.',
+      ssrEngineering: 'Antes trabajé en el desarrollo de Universal Inbox en',
       inboxDetail:
         ', unificando conversaciones con clientes, campañas de WhatsApp y flujos de CRM.',
       xLabel: 'Perfil de X',
@@ -376,7 +400,7 @@ export const copy: Record<Locale, LocaleCopy> = {
     seo: {
       homeTitle: 'Patricio Albornoz',
       homeDescription:
-        'Portfolio de Patricio Albornoz, founder de Tambo y Product Engineer en Pulso, sobre interfaces de producto, frontend craft y design systems.',
+        'Portfolio de Patricio Albornoz, founder de tambo. y Product Engineer en Pulso, sobre interfaces de producto, frontend craft y design systems.',
       articlesTitle: 'Escritos',
       articlesDescription:
         'Ensayos de Patricio Albornoz sobre claridad de interfaz, sistemas frontend, motion y producto.',

@@ -16,6 +16,18 @@
   </url>
 
   <url>
+    <loc>https://patricioalbornoz.com/en/projects/tambo</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://patricioalbornoz.com/en/projects/tambo" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://patricioalbornoz.com/es/projects/tambo" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://patricioalbornoz.com/en/projects/tambo" />
+  </url>
+  <url>
+    <loc>https://patricioalbornoz.com/es/projects/tambo</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://patricioalbornoz.com/en/projects/tambo" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://patricioalbornoz.com/es/projects/tambo" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://patricioalbornoz.com/en/projects/tambo" />
+  </url>
+  <url>
     <loc>https://patricioalbornoz.com/en/projects/mate</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://patricioalbornoz.com/en/projects/mate" />
     <xhtml:link rel="alternate" hreflang="es" href="https://patricioalbornoz.com/es/projects/mate" />

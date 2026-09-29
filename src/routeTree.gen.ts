@@ -14,10 +14,12 @@ import { Route as ArticlesRouteImport } from './routes/articles'
 import { Route as LocaleRouteImport } from './routes/$locale'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as LocaleIndexRouteImport } from './routes/$locale/index'
+import { Route as ProjectsTamboRouteImport } from './routes/projects.tambo'
 import { Route as ProjectsMateRouteImport } from './routes/projects.mate'
 import { Route as LocaleMateRouteImport } from './routes/$locale/mate'
 import { Route as LocaleArticlesRouteImport } from './routes/$locale/articles'
 import { Route as LocaleArticlesIndexRouteImport } from './routes/$locale/articles.index'
+import { Route as LocaleProjectsTamboRouteImport } from './routes/$locale/projects.tambo'
 import { Route as LocaleProjectsMateRouteImport } from './routes/$locale/projects.mate'
 import { Route as LocaleArticlesSlugRouteImport } from './routes/$locale/articles.$slug'
 
@@ -46,6 +48,11 @@ const LocaleIndexRoute = LocaleIndexRouteImport.update({
   path: '/',
   getParentRoute: () => LocaleRoute,
 } as any)
+const ProjectsTamboRoute = ProjectsTamboRouteImport.update({
+  id: '/projects/tambo',
+  path: '/projects/tambo',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProjectsMateRoute = ProjectsMateRouteImport.update({
   id: '/projects/mate',
   path: '/projects/mate',
@@ -66,6 +73,11 @@ const LocaleArticlesIndexRoute = LocaleArticlesIndexRouteImport.update({
   path: '/',
   getParentRoute: () => LocaleArticlesRoute,
 } as any)
+const LocaleProjectsTamboRoute = LocaleProjectsTamboRouteImport.update({
+  id: '/projects/tambo',
+  path: '/projects/tambo',
+  getParentRoute: () => LocaleRoute,
+} as any)
 const LocaleProjectsMateRoute = LocaleProjectsMateRouteImport.update({
   id: '/projects/mate',
   path: '/projects/mate',
@@ -85,9 +97,11 @@ export interface FileRoutesByFullPath {
   '/$locale/articles': typeof LocaleArticlesRouteWithChildren
   '/$locale/mate': typeof LocaleMateRoute
   '/projects/mate': typeof ProjectsMateRoute
+  '/projects/tambo': typeof ProjectsTamboRoute
   '/$locale/': typeof LocaleIndexRoute
   '/$locale/articles/$slug': typeof LocaleArticlesSlugRoute
   '/$locale/projects/mate': typeof LocaleProjectsMateRoute
+  '/$locale/projects/tambo': typeof LocaleProjectsTamboRoute
   '/$locale/articles/': typeof LocaleArticlesIndexRoute
 }
 export interface FileRoutesByTo {
@@ -96,9 +110,11 @@ export interface FileRoutesByTo {
   '/resume': typeof ResumeRoute
   '/$locale/mate': typeof LocaleMateRoute
   '/projects/mate': typeof ProjectsMateRoute
+  '/projects/tambo': typeof ProjectsTamboRoute
   '/$locale': typeof LocaleIndexRoute
   '/$locale/articles/$slug': typeof LocaleArticlesSlugRoute
   '/$locale/projects/mate': typeof LocaleProjectsMateRoute
+  '/$locale/projects/tambo': typeof LocaleProjectsTamboRoute
   '/$locale/articles': typeof LocaleArticlesIndexRoute
 }
 export interface FileRoutesById {
@@ -110,9 +126,11 @@ export interface FileRoutesById {
   '/$locale/articles': typeof LocaleArticlesRouteWithChildren
   '/$locale/mate': typeof LocaleMateRoute
   '/projects/mate': typeof ProjectsMateRoute
+  '/projects/tambo': typeof ProjectsTamboRoute
   '/$locale/': typeof LocaleIndexRoute
   '/$locale/articles/$slug': typeof LocaleArticlesSlugRoute
   '/$locale/projects/mate': typeof LocaleProjectsMateRoute
+  '/$locale/projects/tambo': typeof LocaleProjectsTamboRoute
   '/$locale/articles/': typeof LocaleArticlesIndexRoute
 }
 export interface FileRouteTypes {
@@ -125,9 +143,11 @@ export interface FileRouteTypes {
     | '/$locale/articles'
     | '/$locale/mate'
     | '/projects/mate'
+    | '/projects/tambo'
     | '/$locale/'
     | '/$locale/articles/$slug'
     | '/$locale/projects/mate'
+    | '/$locale/projects/tambo'
     | '/$locale/articles/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -136,9 +156,11 @@ export interface FileRouteTypes {
     | '/resume'
     | '/$locale/mate'
     | '/projects/mate'
+    | '/projects/tambo'
     | '/$locale'
     | '/$locale/articles/$slug'
     | '/$locale/projects/mate'
+    | '/$locale/projects/tambo'
     | '/$locale/articles'
   id:
     | '__root__'
@@ -149,9 +171,11 @@ export interface FileRouteTypes {
     | '/$locale/articles'
     | '/$locale/mate'
     | '/projects/mate'
+    | '/projects/tambo'
     | '/$locale/'
     | '/$locale/articles/$slug'
     | '/$locale/projects/mate'
+    | '/$locale/projects/tambo'
     | '/$locale/articles/'
   fileRoutesById: FileRoutesById
 }
@@ -161,6 +185,7 @@ export interface RootRouteChildren {
   ArticlesRoute: typeof ArticlesRoute
   ResumeRoute: typeof ResumeRoute
   ProjectsMateRoute: typeof ProjectsMateRoute
+  ProjectsTamboRoute: typeof ProjectsTamboRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -200,6 +225,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LocaleIndexRouteImport
       parentRoute: typeof LocaleRoute
     }
+    '/projects/tambo': {
+      id: '/projects/tambo'
+      path: '/projects/tambo'
+      fullPath: '/projects/tambo'
+      preLoaderRoute: typeof ProjectsTamboRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/projects/mate': {
       id: '/projects/mate'
       path: '/projects/mate'
@@ -227,6 +259,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/$locale/articles/'
       preLoaderRoute: typeof LocaleArticlesIndexRouteImport
       parentRoute: typeof LocaleArticlesRoute
+    }
+    '/$locale/projects/tambo': {
+      id: '/$locale/projects/tambo'
+      path: '/projects/tambo'
+      fullPath: '/$locale/projects/tambo'
+      preLoaderRoute: typeof LocaleProjectsTamboRouteImport
+      parentRoute: typeof LocaleRoute
     }
     '/$locale/projects/mate': {
       id: '/$locale/projects/mate'
@@ -264,6 +303,7 @@ interface LocaleRouteChildren {
   LocaleMateRoute: typeof LocaleMateRoute
   LocaleIndexRoute: typeof LocaleIndexRoute
   LocaleProjectsMateRoute: typeof LocaleProjectsMateRoute
+  LocaleProjectsTamboRoute: typeof LocaleProjectsTamboRoute
 }
 
 const LocaleRouteChildren: LocaleRouteChildren = {
@@ -271,6 +311,7 @@ const LocaleRouteChildren: LocaleRouteChildren = {
   LocaleMateRoute: LocaleMateRoute,
   LocaleIndexRoute: LocaleIndexRoute,
   LocaleProjectsMateRoute: LocaleProjectsMateRoute,
+  LocaleProjectsTamboRoute: LocaleProjectsTamboRoute,
 }
 
 const LocaleRouteWithChildren =
@@ -282,6 +323,7 @@ const rootRouteChildren: RootRouteChildren = {
   ArticlesRoute: ArticlesRoute,
   ResumeRoute: ResumeRoute,
   ProjectsMateRoute: ProjectsMateRoute,
+  ProjectsTamboRoute: ProjectsTamboRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

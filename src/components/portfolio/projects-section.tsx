@@ -31,10 +31,14 @@ export function ProjectsSection() {
             </div>
           </>
         )
-        return project.id === 'mate' ? (
+        return project.id === 'mate' || project.id === 'tambo' ? (
           <Link
             key={project.id}
-            to="/$locale/projects/mate"
+            to={
+              project.id === 'tambo'
+                ? '/$locale/projects/tambo'
+                : '/$locale/projects/mate'
+            }
             params={{ locale }}
             className="project-card"
           >

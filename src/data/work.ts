@@ -10,12 +10,12 @@ export type WorkShowcaseItem = {
 
 export const workShowcase: Array<WorkShowcaseItem> = [
   {
-    title: 'Tambo — Landing page',
+    title: 'tambo. — Landing page',
     src: '/tambo-landing-hero.jpg',
     type: 'image',
   },
   {
-    title: 'Tambo — Landing footer',
+    title: 'tambo. — Landing footer',
     src: '/tambo-landing-footer.jpg',
     type: 'image',
   },
@@ -31,19 +31,20 @@ export const workShowcase: Array<WorkShowcaseItem> = [
     poster: '/mate/demo-poster.jpg',
     type: 'video',
     featured: true,
+    bgColor: '#E9E8E0',
   },
   {
-    title: 'Tambo — Analytics',
+    title: 'tambo. — Analytics',
     src: '/showcase-analytics.mp4',
     type: 'video',
   },
   {
-    title: 'Tambo — Onboarding',
+    title: 'tambo. — Onboarding',
     src: '/showcase-onboarding.mp4',
     type: 'video',
   },
   {
-    title: 'Tambo',
+    title: 'tambo.',
     src: '/tambo.webp',
     type: 'image',
   },
@@ -85,24 +86,26 @@ export const workShowcase: Array<WorkShowcaseItem> = [
     type: 'video',
     note: 'Vercel Ship 2026 London Card',
     featured: true,
-  },
-  {
-    title: 'Total spent on Tambo',
-    src: '/total-spent-2.mov',
-    type: 'video',
-    note: 'Total spent component (Tambo)',
-    bgColor: '#F6F7F6',
+    bgColor: '#000000',
   },
   {
     title: 'Funny buttons',
     src: '/experiment.mov',
     type: 'video',
+    featured: true,
+    bgColor: '#EAE9E5',
+  },
+  {
+    title: 'Total spent on tambo.',
+    src: '/total-spent-2.mov',
+    type: 'video',
+    note: 'Total spent component (tambo.)',
+    bgColor: '#F6F7F6',
   },
   {
     title: 'Upgrade v0 modal',
     src: '/upgrade-v0.mov',
     type: 'video',
-    featured: true,
   },
   {
     title: 'Profile',

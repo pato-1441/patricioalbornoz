@@ -20,10 +20,12 @@ export function WorkSection() {
               type="button"
               onClick={() => setActiveIndex(index)}
               className="showcase-tile group block overflow-hidden"
-              style={{ backgroundColor: item.bgColor }}
               aria-label={t.work.openItem(item.title)}
             >
-              <div className="showcase-media-shell">
+              <div
+                className="showcase-media-shell"
+                style={{ background: item.bgColor }}
+              >
                 {item.type === 'video' ? (
                   <video
                     src={item.src}

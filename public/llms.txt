@@ -8,6 +8,8 @@
 - [Inicio (ES)](https://patricioalbornoz.com/es): Version en espanol del portfolio personal, con trabajo, escritos y perfil.
 - [Writing (EN)](https://patricioalbornoz.com/en#articles): Writing about frontend systems, product interfaces, and autonomous testing.
 - [Escritos (ES)](https://patricioalbornoz.com/es#articles): Escritos sobre interfaces de producto, frontend y testing autonomo.
+- [tambo. (EN)](https://patricioalbornoz.com/en/projects/tambo): The story behind a personal expense tracker for iOS and Android, with app previews and an early prototype.
+- [tambo. (ES)](https://patricioalbornoz.com/es/projects/tambo): La historia de una app de gastos para iOS y Android, con imágenes y un primer prototipo.
 - [Mate (EN)](https://patricioalbornoz.com/en/projects/mate): Computer vision project with model previews and live demos.
 - [Mate (ES)](https://patricioalbornoz.com/es/projects/mate): Proyecto de visión por computadora con pruebas del modelo y demos.
 - [Resume](https://patricioalbornoz.com/resume): Patricio Albornoz’s résumé, available as a PDF.

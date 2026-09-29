@@ -19,6 +19,8 @@ export type Article = {
   title: string
   excerpt: string
   coverImage?: string
+  coverVideo?: string
+  coverPreviewVideo?: string
   coverAlt?: string
   ogImage?: string
   ogImageAlt?: string
@@ -33,6 +35,8 @@ type Frontmatter = {
   readTime: string
   excerpt: string
   coverImage?: string
+  coverVideo?: string
+  coverPreviewVideo?: string
   coverAlt?: string
   ogImage?: string
   ogImageAlt?: string
@@ -85,6 +89,8 @@ function parseFrontmatter(rawFile: string): { meta: Frontmatter; body: string } 
       readTime: map.get('readTime') ?? '5 min read',
       excerpt: map.get('excerpt') ?? '',
       coverImage: map.get('coverImage') || undefined,
+      coverVideo: map.get('coverVideo') || undefined,
+      coverPreviewVideo: map.get('coverPreviewVideo') || undefined,
       coverAlt: map.get('coverAlt') || undefined,
       ogImage: map.get('ogImage') || undefined,
       ogImageAlt: map.get('ogImageAlt') || undefined,
@@ -346,6 +352,8 @@ for (const [filePath, raw] of Object.entries(articleFiles)) {
     title: meta.title,
     excerpt: meta.excerpt,
     coverImage: meta.coverImage,
+    coverVideo: meta.coverVideo,
+    coverPreviewVideo: meta.coverPreviewVideo,
     coverAlt: meta.coverAlt,
     ogImage: meta.ogImage ?? generatedOgPath,
     ogImageAlt: meta.ogImageAlt,
