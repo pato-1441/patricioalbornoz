@@ -115,16 +115,11 @@ h3 {
   top: var(--profile-inset);
   display: flex;
   flex-direction: column;
-  height: calc(100dvh - 2 * var(--profile-inset));
-  overflow-y: auto;
-  scrollbar-width: none;
+  min-height: calc(100dvh - 2 * var(--profile-inset));
   padding: 28px;
   border: 1px solid var(--line);
   border-radius: 22px;
   background: var(--paper);
-}
-.portfolio-sidebar::-webkit-scrollbar {
-  display: none;
 }
 .portfolio-intro {
   display: flex;
@@ -199,11 +194,12 @@ h3 {
   border-radius: 18px;
   background: linear-gradient(#0870e3, #0668dc);
   color: white;
-  font-size: 12px;
+  font-size: 13px;
   line-height: 18px;
   white-space: nowrap;
   cursor: pointer;
   animation: hello-float 3.2s ease-in-out infinite;
+  font-weight: 500;
 }
 .profile-contact[data-greeted='true'],
 .profile-contact:focus-visible {
@@ -700,6 +696,36 @@ h3 {
     font-size: 30px;
   }
 }
+@media (min-width: 851px) and (max-height: 950px) {
+  .portfolio-sidebar {
+    padding: 24px;
+  }
+  .portfolio-sidebar .portfolio-intro {
+    gap: 16px;
+    margin-bottom: 0;
+  }
+  .profile-bio {
+    margin-top: 20px;
+  }
+  .profile-history {
+    margin-top: 8px;
+  }
+  .profile-portrait {
+    --portrait-size: 88px;
+  }
+  .portfolio-sidebar .portfolio-footer {
+    padding-top: 16px;
+    gap: 12px;
+  }
+  .portfolio-sidebar .portfolio-footer-links {
+    gap: 8px;
+  }
+}
+@media (min-width: 851px) and (max-height: 900px) {
+  .portfolio-sidebar {
+    position: static;
+  }
+}
 @media (max-width: 850px) {
   .portfolio-workspace {
     grid-template-columns: 1fr;
@@ -707,8 +733,7 @@ h3 {
   }
   .portfolio-sidebar {
     position: static;
-    height: auto;
-    overflow: visible;
+    min-height: 0;
   }
   .portfolio-intro {
     display: grid;
@@ -2192,29 +2217,55 @@ span:has(> .company-link:focus-visible) > .company-preview {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .reveal {
-    opacity: 0;
-    animation: fadeUp 680ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  .reveal,
+  .profile-portrait,
+  .profile-copy > *,
+  .portfolio-footer,
+  .portfolio-content {
+    animation: fadeUp 300ms cubic-bezier(0.16, 1, 0.3, 1) backwards;
   }
 
-  .delay-1 {
+  .delay-1,
+  .profile-copy > :nth-child(1) {
     animation-delay: 60ms;
   }
 
-  .delay-2 {
+  .delay-2,
+  .profile-copy > :nth-child(2),
+  .portfolio-content {
     animation-delay: 120ms;
   }
 
-  .delay-3 {
+  .delay-3,
+  .profile-copy > :nth-child(3) {
     animation-delay: 180ms;
   }
 
-  .delay-4 {
+  .delay-4,
+  .profile-copy > :nth-child(4) {
     animation-delay: 240ms;
   }
 
-  .delay-5 {
+  .delay-5,
+  .profile-copy > :nth-child(5) {
     animation-delay: 300ms;
+  }
+
+  .profile-copy > :nth-child(6) {
+    animation-delay: 360ms;
+  }
+
+  .portfolio-footer {
+    animation-delay: 420ms;
+  }
+
+  .reveal:focus-within,
+  .profile-portrait:focus-within,
+  .profile-copy > :focus-within,
+  .portfolio-footer:focus-within,
+  .portfolio-content:focus-within {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
 
