@@ -156,7 +156,7 @@ export const copy: Record<Locale, LocaleCopy> = {
     about: {
       title: 'A maker driven by curiosity.',
       intro:
-        'People call me Pato or Colo, and sometimes Ducky too. I’m from Paraná, Entre Ríos, and currently live in Buenos Aires.',
+        'People call me Pato. I’m from Paraná, Entre Ríos, and currently live in Buenos Aires.',
       maker:
         'My first business, at 13, was importing fidget spinners from China. I discovered them after seeing the pros use them during the 2016 CS:GO world championship.',
       communities:
@@ -297,7 +297,7 @@ export const copy: Record<Locale, LocaleCopy> = {
     about: {
       title: 'Un creador impulsado por la curiosidad.',
       intro:
-        'Me dicen Pato o Colo, y en algunos casos me han llamado Ducky también. Soy de Paraná, Entre Ríos, y actualmente vivo en Buenos Aires.',
+        'Me dicen Pato. Soy de Paraná, Entre Ríos, y actualmente vivo en Buenos Aires.',
       maker:
         'Mi primer negocio fue a los 13 años, importando fidget spinners desde China, que descubrí luego de ver que los pros los usaban durante el mundial de CS:GO de 2016.',
       communities:
