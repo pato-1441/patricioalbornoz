@@ -10,6 +10,23 @@ export type WorkShowcaseItem = {
 
 export const workShowcase: Array<WorkShowcaseItem> = [
   {
+    title: 'tambo. — Widgets launch',
+    src: '/tambo/widgets-launch.mp4',
+    poster: '/tambo/widgets-cover.jpg',
+    type: 'video',
+  },
+  {
+    title: 'tambo. — Widgets',
+    src: '/tambo/widgets-cover.jpg',
+    type: 'image',
+  },
+  {
+    title: 'tambo. — Landing page motion',
+    src: '/tambo/landing-motion.mp4',
+    poster: '/tambo/landing-motion-poster.jpg',
+    type: 'video',
+  },
+  {
     title: 'tambo. — Landing page',
     src: '/tambo-landing-hero.jpg',
     type: 'image',

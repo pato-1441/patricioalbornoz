@@ -186,7 +186,7 @@ export const copy: Record<Locale, LocaleCopy> = {
     sidebar: {
       role: 'Product Engineer',
       founded: 'I’m Pato. I built',
-      foundedDetail: ', an expense tracker that reached #1 on the App Store.',
+      foundedDetail: ', #1 in Finance on the App Store.',
       previousProductEngineering:
         'I previously worked as a product engineer building healthcare products at',
       autonomousTesting: 'I also developed autonomous testing agents at',
@@ -328,8 +328,8 @@ export const copy: Record<Locale, LocaleCopy> = {
     },
     sidebar: {
       role: 'Product Engineer',
-      founded: 'Soy Pato y creé',
-      foundedDetail: ', una app de gastos que llegó al #1 en la App Store.',
+      founded: 'Soy Pato. Creé',
+      foundedDetail: ', #1 en Finanzas en la App Store.',
       previousProductEngineering:
         'Antes estuve como product engineer construyendo productos de salud en',
       autonomousTesting: 'También desarrollé agentes autónomos de testing en',
