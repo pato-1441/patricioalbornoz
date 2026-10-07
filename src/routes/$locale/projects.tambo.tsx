@@ -10,10 +10,10 @@ import { createSeoHead } from '@/lib/seo'
 
 const tamboCopy = {
   en: {
-    label: 'Founder · iOS & Android',
-    title: 'A little order for your money.',
+    label: 'Creator · iOS & Android',
+    title: 'From a spreadsheet to #1 on the App Store.',
     description:
-      'tambo. is a personal expense tracker for iOS and Android. No AI, subscriptions or ads. Pay once and keep all your data on your device.',
+      'I built tambo, an expense tracker for iOS and Android that reached #1 on the App Store. No AI, subscriptions or ads. Pay once and keep all your data on your device.',
     back: 'Back to projects',
     open: 'Visit tambo.cc',
     productTitle: 'Your whole month, in one place.',
@@ -46,10 +46,10 @@ const tamboCopy = {
     postLink: 'Read the original post on LinkedIn',
   },
   es: {
-    label: 'Founder · iOS y Android',
-    title: 'Un poco de orden para tu plata.',
+    label: 'Creador · iOS y Android',
+    title: 'De una planilla al #1 en la App Store.',
     description:
-      'tambo. es una app de gastos personales para iOS y Android. Sin IA, suscripciones ni publicidad. La comprás una vez y todos tus datos quedan en tu dispositivo.',
+      'Creé tambo, una app de gastos para iOS y Android que llegó al #1 en la App Store. Sin IA, suscripciones ni publicidad. La comprás una vez y tus datos quedan en tu dispositivo.',
     back: 'Volver a proyectos',
     open: 'Visitar tambo.cc',
     productTitle: 'Todo tu mes, en un mismo lugar.',

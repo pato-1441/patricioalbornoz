@@ -282,7 +282,7 @@ function buildPortfolioOg() {
         h(
           'span',
           { style: { fontSize: 28, color: colors.muted, marginTop: 24 } },
-          'Founder, tambo.',
+          'Built tambo. · #1 App Store',
         ),
       ),
       h('span', { style: { fontSize: 22, color: colors.muted } }, domain),

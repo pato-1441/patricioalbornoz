@@ -1,6 +1,6 @@
 # Patricio Albornoz
 
-> Portfolio of Patricio Albornoz about product interfaces, frontend craft, autonomous testing, and design systems.
+> Portfolio of Patricio Albornoz, Product Engineer and creator of tambo, an expense tracker that reached #1 on the App Store.
 
 ## Primary pages
 
@@ -8,8 +8,8 @@
 - [Inicio (ES)](https://patricioalbornoz.com/es): Version en espanol del portfolio personal, con trabajo, escritos y perfil.
 - [Writing (EN)](https://patricioalbornoz.com/en#articles): Writing about frontend systems, product interfaces, and autonomous testing.
 - [Escritos (ES)](https://patricioalbornoz.com/es#articles): Escritos sobre interfaces de producto, frontend y testing autonomo.
-- [tambo. (EN)](https://patricioalbornoz.com/en/projects/tambo): The story behind a personal expense tracker for iOS and Android, with app previews and an early prototype.
-- [tambo. (ES)](https://patricioalbornoz.com/es/projects/tambo): La historia de una app de gastos para iOS y Android, con imágenes y un primer prototipo.
+- [tambo. (EN)](https://patricioalbornoz.com/en/projects/tambo): An expense tracker I built for iOS and Android that reached #1 on the App Store. From the first spreadsheet to the finished app.
+- [tambo. (ES)](https://patricioalbornoz.com/es/projects/tambo): Una app de gastos que creé para iOS y Android y llegó al #1 en la App Store. De la primera planilla a la app publicada.
 - [Mate (EN)](https://patricioalbornoz.com/en/projects/mate): Computer vision project with model previews and live demos.
 - [Mate (ES)](https://patricioalbornoz.com/es/projects/mate): Proyecto de visión por computadora con pruebas del modelo y demos.
 - [Resume](https://patricioalbornoz.com/resume): Patricio Albornoz’s résumé, available as a PDF.

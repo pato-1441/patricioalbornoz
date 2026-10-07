@@ -23,12 +23,12 @@ const projects: Array<ProjectItem> = [
     title: 'tambo.',
     url: 'https://tambo.cc',
     description: {
-      en: 'An app for iOS and Android that helps users track daily expenses in a simple and consistent way.',
-      es: 'Una app para iOS y Android que ayuda a las personas a registrar gastos diarios de forma simple y constante.',
+      en: 'I built an app that is #1 on the App Store. One purchase, no subscriptions or ads.',
+      es: 'Creé una app que está #1 en la App Store. Una sola compra, sin suscripciones ni publicidad.',
     },
     tag: {
-      en: 'Founder · iOS & Android',
-      es: 'Founder · iOS y Android',
+      en: 'Creator · iOS & Android',
+      es: 'Creador · iOS y Android',
     },
     icon: {
       src: '/tambo-logo.png',

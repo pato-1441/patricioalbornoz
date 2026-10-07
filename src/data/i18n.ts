@@ -48,6 +48,7 @@ type LocaleCopy = {
   sidebar: {
     role: string
     founded: string
+    foundedDetail: string
     previousProductEngineering: string
     autonomousTesting: string
     autonomousTestingDetail: string
@@ -184,7 +185,8 @@ export const copy: Record<Locale, LocaleCopy> = {
     },
     sidebar: {
       role: 'Product Engineer',
-      founded: 'I’m Pato, founder of',
+      founded: 'I’m Pato. I built',
+      foundedDetail: ', an expense tracker that reached #1 on the App Store.',
       previousProductEngineering:
         'I previously worked as a product engineer building healthcare products at',
       autonomousTesting: 'I also developed autonomous testing agents at',
@@ -192,7 +194,8 @@ export const copy: Record<Locale, LocaleCopy> = {
       frontendSearch:
         'I helped bring all of Argentina’s stores together in one place at',
       searchDetail: ', as a founding engineer.',
-      ssrEngineering: 'Earlier, I worked on the development of Universal Inbox at',
+      ssrEngineering:
+        'Earlier, I worked on the development of Universal Inbox at',
       inboxDetail:
         ', bringing customer conversations, WhatsApp campaigns, and CRM workflows together.',
       xLabel: 'X profile',
@@ -265,7 +268,7 @@ export const copy: Record<Locale, LocaleCopy> = {
     seo: {
       homeTitle: 'Patricio Albornoz',
       homeDescription:
-        'Portfolio of Patricio Albornoz, founder of tambo. and Product Engineer at Pulso, focused on product interfaces, frontend craft, and design systems.',
+        'Patricio Albornoz, Product Engineer and creator of tambo, an expense tracker that reached #1 on the App Store. Product interfaces, frontend, and design systems.',
       articlesTitle: 'Writing',
       articlesDescription:
         'Essays by Patricio Albornoz on interface clarity, frontend systems, motion, and product thinking.',
@@ -325,7 +328,8 @@ export const copy: Record<Locale, LocaleCopy> = {
     },
     sidebar: {
       role: 'Product Engineer',
-      founded: 'Soy Pato, fundador de',
+      founded: 'Soy Pato y creé',
+      foundedDetail: ', una app de gastos que llegó al #1 en la App Store.',
       previousProductEngineering:
         'Antes estuve como product engineer construyendo productos de salud en',
       autonomousTesting: 'También desarrollé agentes autónomos de testing en',
@@ -406,7 +410,7 @@ export const copy: Record<Locale, LocaleCopy> = {
     seo: {
       homeTitle: 'Patricio Albornoz',
       homeDescription:
-        'Portfolio de Patricio Albornoz, founder de tambo. y Product Engineer en Pulso, sobre interfaces de producto, frontend craft y design systems.',
+        'Patricio Albornoz, Product Engineer y creador de tambo, una app de gastos que llegó al #1 en la App Store. Interfaces, frontend y design systems.',
       articlesTitle: 'Escritos',
       articlesDescription:
         'Ensayos de Patricio Albornoz sobre claridad de interfaz, sistemas frontend, motion y producto.',

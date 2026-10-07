@@ -320,8 +320,8 @@ async function main() {
   }
 
   const descriptions = {
-    en: 'Portfolio of Patricio Albornoz, founder of tambo. and Product Engineer at Pulso, focused on product interfaces, frontend craft, and design systems.',
-    es: 'Portfolio de Patricio Albornoz, founder de tambo. y Product Engineer en Pulso, sobre interfaces de producto, frontend craft y design systems.',
+    en: 'Patricio Albornoz, Product Engineer and creator of tambo, an expense tracker that reached #1 on the App Store. Product interfaces, frontend, and design systems.',
+    es: 'Patricio Albornoz, Product Engineer y creador de tambo, una app de gastos que llegó al #1 en la App Store. Interfaces, frontend y design systems.',
   }
   for (const routePath of ['/', '/en', '/es']) {
     const locale = routePath === '/es' ? 'es' : 'en'
@@ -333,7 +333,8 @@ async function main() {
         title: siteName,
         excerpt: descriptions[locale],
         ogImage: defaultOgImage,
-        ogImageAlt: 'Patricio Albornoz — Product Engineer, founder de tambo.',
+        ogImageAlt:
+          'Patricio Albornoz — Product Engineer · tambo. · #1 App Store',
       },
       alternateLocales: { en: '/en', es: '/es' },
       assets,

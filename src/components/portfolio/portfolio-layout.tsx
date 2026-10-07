@@ -62,7 +62,8 @@ export function PortfolioIntro() {
         </h1>
         <p className="profile-bio">
           {t.sidebar.founded}{' '}
-          <CompanyLink company="tambo" label="tambo." className="font-medium" />
+          <CompanyLink company="tambo" label="tambo" className="font-medium" />
+          {t.sidebar.foundedDetail}
         </p>
         <p className="profile-history">
           {t.sidebar.previousProductEngineering}{' '}

@@ -11,7 +11,7 @@ const publicDir = path.join(rootDir, 'public')
 const siteName = 'Patricio Albornoz'
 const siteUrl = 'https://patricioalbornoz.com'
 const siteDescription =
-  'Portfolio of Patricio Albornoz about product interfaces, frontend craft, autonomous testing, and design systems.'
+  'Portfolio of Patricio Albornoz, Product Engineer and creator of tambo, an expense tracker that reached #1 on the App Store.'
 const supportedLocales = ['en', 'es']
 
 function parseArticleDateString(date) {
@@ -219,8 +219,8 @@ const llmsTxt = `
 - [Inicio (ES)](${buildUrl('/es')}): Version en espanol del portfolio personal, con trabajo, escritos y perfil.
 - [Writing (EN)](${buildUrl('/en#articles')}): Writing about frontend systems, product interfaces, and autonomous testing.
 - [Escritos (ES)](${buildUrl('/es#articles')}): Escritos sobre interfaces de producto, frontend y testing autonomo.
-- [tambo. (EN)](${buildUrl('/en/projects/tambo')}): The story behind a personal expense tracker for iOS and Android, with app previews and an early prototype.
-- [tambo. (ES)](${buildUrl('/es/projects/tambo')}): La historia de una app de gastos para iOS y Android, con imágenes y un primer prototipo.
+- [tambo. (EN)](${buildUrl('/en/projects/tambo')}): An expense tracker I built for iOS and Android that reached #1 on the App Store. From the first spreadsheet to the finished app.
+- [tambo. (ES)](${buildUrl('/es/projects/tambo')}): Una app de gastos que creé para iOS y Android y llegó al #1 en la App Store. De la primera planilla a la app publicada.
 - [Mate (EN)](${buildUrl('/en/projects/mate')}): Computer vision project with model previews and live demos.
 - [Mate (ES)](${buildUrl('/es/projects/mate')}): Proyecto de visión por computadora con pruebas del modelo y demos.
 - [Resume](${buildUrl('/resume')}): Patricio Albornoz’s résumé, available as a PDF.
