@@ -16,24 +16,8 @@ export const workShowcase: Array<WorkShowcaseItem> = [
     type: 'video',
   },
   {
-    title: 'tambo. — Widgets',
-    src: '/tambo/widgets-cover.jpg',
-    type: 'image',
-  },
-  {
-    title: 'tambo. — Landing page motion',
-    src: '/tambo/landing-motion.mp4',
-    poster: '/tambo/landing-motion-poster.jpg',
-    type: 'video',
-  },
-  {
-    title: 'tambo. — Landing page',
-    src: '/tambo-landing-hero.jpg',
-    type: 'image',
-  },
-  {
-    title: 'tambo. — Landing footer',
-    src: '/tambo-landing-footer.jpg',
+    title: 'Autonoma Old Home',
+    src: '/old-home.png',
     type: 'image',
   },
   {
@@ -43,12 +27,47 @@ export const workShowcase: Array<WorkShowcaseItem> = [
     note: 'A green send-button design study',
   },
   {
+    title: 'Vercel Ship 26 London',
+    src: '/vercel.mov',
+    type: 'video',
+    note: 'Vercel Ship 2026 London Card',
+    bgColor: '#000000',
+  },
+  {
+    title: 'tambo. — Landing page motion',
+    src: '/tambo/landing-motion.mp4',
+    poster: '/tambo/landing-motion-poster.jpg',
+    type: 'video',
+  },
+  {
+    title: 'Numbers',
+    src: '/numbers.mp4',
+    type: 'video',
+    bgColor: '#E5E8F5',
+  },
+  {
+    title: 'tambo. — Landing page',
+    src: '/tambo/ui-camera-loop.mp4',
+    poster: '/tambo/ui-camera-loop-poster.jpg',
+    type: 'video',
+  },
+  {
     title: 'Mate — Live detection',
     src: '/mate/live-detection.mp4',
     poster: '/mate/demo-poster.jpg',
     type: 'video',
     featured: true,
     bgColor: '#E9E8E0',
+  },
+  {
+    title: 'tambo. — Landing footer',
+    src: '/tambo-landing-footer.jpg',
+    type: 'image',
+  },
+  {
+    title: 'tambo. — Widgets',
+    src: '/tambo/widgets-cover.jpg',
+    type: 'image',
   },
   {
     title: 'tambo. — Analytics',
@@ -63,17 +82,6 @@ export const workShowcase: Array<WorkShowcaseItem> = [
   {
     title: 'tambo.',
     src: '/tambo.webp',
-    type: 'image',
-  },
-  {
-    title: 'Numbers',
-    src: '/numbers.mp4',
-    type: 'video',
-    bgColor: '#E5E8F5',
-  },
-  {
-    title: 'Autonoma Old Home',
-    src: '/old-home.png',
     type: 'image',
   },
   {
@@ -101,13 +109,6 @@ export const workShowcase: Array<WorkShowcaseItem> = [
     type: 'image',
     note: 'Invite friends and earn USDC',
     bgColor: '#F6F6F6',
-  },
-  {
-    title: 'Vercel Ship 26 London',
-    src: '/vercel.mov',
-    type: 'video',
-    note: 'Vercel Ship 2026 London Card',
-    bgColor: '#000000',
   },
   {
     title: 'Funny buttons',
