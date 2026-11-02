@@ -35,7 +35,7 @@ const companies: Record<
   },
   autonoma: {
     name: 'Autonoma',
-    href: 'https://getautonoma.com/',
+    href: 'https://www.linkedin.com/company/autonoma-ai/',
     logoSrc:
       'https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://getautonoma.com/&size=256',
     description: {
