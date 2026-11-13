@@ -4,7 +4,7 @@ import { useLocale } from '@/context/locale-context'
 import { workShowcase } from '@/data/work'
 
 export function WorkSection() {
-  const { t } = useLocale()
+  const { locale, t } = useLocale()
   const [activeIndex, setActiveIndex] = useState<number | null>(null)
   const activeItem = activeIndex === null ? null : workShowcase[activeIndex]
 
@@ -15,6 +15,7 @@ export function WorkSection() {
           <figure key={item.src}>
             <button
               type="button"
+              data-cursor-label={locale === 'es' ? 'Ver' : 'View'}
               onClick={() => setActiveIndex(index)}
               className="showcase-tile group block overflow-hidden"
               aria-label={t.work.openItem(item.title)}

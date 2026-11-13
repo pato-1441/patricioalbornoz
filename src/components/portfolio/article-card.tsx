@@ -31,6 +31,7 @@ export function ArticleCard({ article }: { article: Article }) {
         to="/$locale/articles/$slug"
         params={{ locale, slug: article.slug }}
         className="writing-card h-full"
+        data-cursor-label={locale === 'es' ? 'Leer' : 'Read'}
       >
         {(article.coverImage || article.coverPreviewVideo) && (
           <div className="collection-cover">

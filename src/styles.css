@@ -1,41 +1,17 @@
 @import 'tailwindcss';
 
 @font-face {
-  font-family: 'Inter';
+  font-family: 'Geist';
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
-  src: url('/fonts/inter-latin.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Inter';
-  font-style: italic;
-  font-weight: 100 900;
-  font-display: swap;
-  src: url('/fonts/inter-latin-italic.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Host Grotesk';
-  font-style: normal;
-  font-weight: 300 800;
-  font-display: swap;
-  src: url('/fonts/host-grotesk-latin.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Host Grotesk';
-  font-style: italic;
-  font-weight: 300 800;
-  font-display: swap;
-  src: url('/fonts/host-grotesk-latin-italic.woff2') format('woff2');
+  src: url('/fonts/geist-variable.woff2') format('woff2');
 }
 
 @theme {
-  --font-sans: 'Inter', sans-serif;
+  --font-sans: 'Geist', sans-serif;
   --font-mono: var(--font-sans);
-  --font-display: 'Host Grotesk', sans-serif;
+  --font-display: var(--font-sans);
 }
 
 :root {
@@ -50,6 +26,65 @@
   --muted: color-mix(in srgb, var(--text) 68%, var(--bg));
   --accent: var(--text);
   --accent-soft: color-mix(in srgb, var(--text) 12%, var(--bg));
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.portfolio-cursor {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+  pointer-events: none;
+  color: #173b72;
+}
+.portfolio-cursor i {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  margin: -7px;
+  background: currentColor;
+  transition: transform 120ms var(--ease-out);
+}
+.portfolio-cursor[data-interactive='true'] i {
+  transform: scale(0.57);
+}
+.portfolio-cursor[data-pressed='true'] i {
+  transform: scale(0.4);
+}
+.portfolio-cursor span {
+  position: absolute;
+  top: 0;
+  left: 18px;
+  transform: translateY(-50%);
+  white-space: nowrap;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+  padding: 6px 8px;
+  background: #000;
+  color: #fff;
+}
+.portfolio-cursor span:empty {
+  display: none;
+}
+.portfolio-cursor[data-flip='true'] span {
+  left: auto;
+  right: 18px;
+}
+@media (hover: hover) and (pointer: fine) {
+  html.custom-cursor-active,
+  html.custom-cursor-active * {
+    cursor: none !important;
+  }
+  .portfolio-cursor:not([hidden]) {
+    display: block;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-cursor i {
+    transition: none;
+  }
 }
 
 * {

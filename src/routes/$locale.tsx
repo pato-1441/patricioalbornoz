@@ -6,6 +6,7 @@ import {
 } from '@/components/portfolio/portfolio-layout'
 import { isLocale } from '@/lib/locale'
 import { PortfolioNavigation } from '@/components/portfolio/portfolio-tabs'
+import { PortfolioCursor } from '@/components/portfolio/portfolio-cursor'
 
 export const Route = createFileRoute('/$locale')({
   loader: ({ params }) => {
@@ -25,6 +26,7 @@ function LocalizedLayout() {
 
   return (
     <LocaleProvider locale={locale}>
+      <PortfolioCursor />
       <div className="portfolio-shell" id="home">
         <PortfolioNavigation />
         <main className="portfolio-workspace">

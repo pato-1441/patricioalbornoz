@@ -49,6 +49,7 @@ export function ProjectsSection() {
             }
             params={{ locale }}
             className="project-card"
+            data-cursor-label={locale === 'es' ? 'Explorar' : 'Explore'}
           >
             {content}
           </Link>
@@ -59,6 +60,7 @@ export function ProjectsSection() {
             target="_blank"
             rel="noopener noreferrer"
             className="project-card"
+            data-cursor-label={locale === 'es' ? 'Visitar' : 'Visit'}
           >
             {content}
           </a>

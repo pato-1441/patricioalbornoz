@@ -157,6 +157,7 @@ export function AboutSection() {
         <figure className="about-photo about-feature-photo">
           <button
             onClick={() => setActivePhoto(portrait)}
+            data-cursor-label={locale === 'es' ? 'Ver' : 'View'}
             type="button"
             aria-label={t.work.openItem(portrait.title)}
           >
@@ -177,6 +178,7 @@ export function AboutSection() {
             <button
               type="button"
               aria-label={t.work.openItem(photo.caption[locale])}
+              data-cursor-label={locale === 'es' ? 'Ver' : 'View'}
               onClick={() =>
                 setActivePhoto({
                   src: photo.src,
