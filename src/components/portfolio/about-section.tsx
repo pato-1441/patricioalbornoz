@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from '@tanstack/react-router'
-import { ArrowUpRight } from 'lucide-react'
+import { ArrowUpRightIcon } from '@phosphor-icons/react/dist/csr/ArrowUpRight'
 import type { WorkShowcaseItem } from '@/data/work'
 import { MediaDialog } from '@/components/portfolio/media-dialog'
 import { useLocale } from '@/context/locale-context'
@@ -37,6 +37,15 @@ const press = [
 
 const photos = [
   {
+    src: '/about/apple-event-apps.webp',
+    width: 1200,
+    height: 1600,
+    caption: {
+      en: 'tambo featured at an Apple event in Buenos Aires.',
+      es: 'tambo destacada en un evento de Apple en Buenos Aires.',
+    },
+  },
+  {
     src: '/about/sharing-ideas.jpg',
     width: 1280,
     height: 959,
@@ -68,6 +77,15 @@ const photos = [
     width: 1535,
     height: 2048,
     caption: { en: 'A visit to Apple.', es: 'De visita en Apple.' },
+  },
+  {
+    src: '/about/apple-event-buenos-aires.webp',
+    width: 1200,
+    height: 1600,
+    caption: {
+      en: 'At an Apple event in Buenos Aires.',
+      es: 'En un evento de Apple en Buenos Aires.',
+    },
   },
   {
     src: '/about/together.jpg',
@@ -132,7 +150,8 @@ export function AboutSection() {
             params={{ locale, slug: 'two-leaps-into-the-unknown' }}
             className="about-story-link"
           >
-            {t.about.readStory} <ArrowUpRight size={16} aria-hidden="true" />
+            {t.about.readStory}{' '}
+            <ArrowUpRightIcon size={16} aria-hidden="true" />
           </Link>
         </div>
         <figure className="about-photo about-feature-photo">
@@ -196,7 +215,7 @@ export function AboutSection() {
               </small>
               <strong lang="es">{item.title}</strong>
             </span>
-            <ArrowUpRight size={24} aria-hidden="true" />
+            <ArrowUpRightIcon size={24} aria-hidden="true" />
           </a>
         ))}
       </div>

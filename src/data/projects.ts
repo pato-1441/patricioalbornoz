@@ -23,8 +23,8 @@ const projects: Array<ProjectItem> = [
     title: 'tambo.',
     url: 'https://tambo.cc',
     description: {
-      en: 'I built an app that is #1 on the App Store. One purchase, no subscriptions or ads.',
-      es: 'Creé una app que está #1 en la App Store. Una sola compra, sin suscripciones ni publicidad.',
+      en: 'I built an app that is #1 on the App Store. Featured at an Apple event in Buenos Aires. One purchase, no subscriptions or ads.',
+      es: 'Creé una app que está #1 en la App Store. Destacada en un evento de Apple en Buenos Aires. Una sola compra, sin suscripciones ni publicidad.',
     },
     tag: {
       en: 'Creator · iOS & Android',
@@ -38,10 +38,10 @@ const projects: Array<ProjectItem> = [
       },
     },
     preview: {
-      src: '/tambo-landing-hero.jpg',
+      src: '/about/apple-event-apps.webp',
       alt: {
-        en: 'tambo. landing page',
-        es: 'Página de tambo.',
+        en: 'tambo featured on the app wall at an Apple event in Buenos Aires',
+        es: 'tambo en la pantalla de apps de un evento de Apple en Buenos Aires',
       },
     },
   },

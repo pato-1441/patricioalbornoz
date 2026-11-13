@@ -4,7 +4,7 @@ import {
   notFound,
   redirect,
 } from '@tanstack/react-router'
-import { ArrowLeft } from 'lucide-react'
+import { ArrowLeftIcon } from '@phosphor-icons/react/dist/csr/ArrowLeft'
 import { ArticleContent } from '@/components/portfolio/article-content'
 import { ArticleEndNote } from '@/components/portfolio/article-end'
 import { ArticleReadingProgress } from '@/components/portfolio/article-reading-progress'
@@ -150,7 +150,7 @@ function ArticlePage() {
               hash="articles"
               className="portfolio-backlink"
             >
-              <ArrowLeft className="size-3" />
+              <ArrowLeftIcon className="size-3" />
               {t.articles.backToAll}
             </Link>
             <ArticleShare

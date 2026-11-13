@@ -1,6 +1,10 @@
 import { useEffect, useId, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
-import { Instagram, Link2, Linkedin, Share2, X } from 'lucide-react'
+import { InstagramLogoIcon } from '@phosphor-icons/react/dist/csr/InstagramLogo'
+import { LinkIcon } from '@phosphor-icons/react/dist/csr/Link'
+import { LinkedinLogoIcon } from '@phosphor-icons/react/dist/csr/LinkedinLogo'
+import { ShareNetworkIcon } from '@phosphor-icons/react/dist/csr/ShareNetwork'
+import { XIcon } from '@phosphor-icons/react/dist/csr/X'
 import type { Locale } from '@/lib/locale'
 import { copy } from '@/data/i18n'
 import { buildAbsoluteUrl, siteAuthorAvatar, siteAuthorName } from '@/lib/site'
@@ -113,7 +117,7 @@ export function ArticleShare({
             aria-label={t.close}
             autoFocus
           >
-            <X size={18} strokeWidth={1.75} aria-hidden="true" />
+            <XIcon size={18} aria-hidden="true" />
           </button>
         )}
       </div>
@@ -160,7 +164,7 @@ export function ArticleShare({
             aria-label={t.ariaCopyLink}
           >
             <span className="article-share-tile-icon" aria-hidden="true">
-              <Link2 strokeWidth={1.75} />
+              <LinkIcon />
             </span>
             <span className="article-share-tile-label">
               {copyFrom === 'link' ? t.copied : t.copyLink}
@@ -189,7 +193,7 @@ export function ArticleShare({
             aria-label={t.ariaShareInstagram}
           >
             <span className="article-share-tile-icon" aria-hidden="true">
-              <Instagram strokeWidth={1.6} />
+              <InstagramLogoIcon />
             </span>
             <span className="article-share-tile-label">
               {copyFrom === 'instagram' ? t.copied : t.instagram}
@@ -205,7 +209,7 @@ export function ArticleShare({
             aria-label={t.ariaShareLinkedin}
           >
             <span className="article-share-tile-icon" aria-hidden="true">
-              <Linkedin strokeWidth={1.75} />
+              <LinkedinLogoIcon />
             </span>
             <span className="article-share-tile-label">{t.linkedin}</span>
           </a>
@@ -239,7 +243,7 @@ export function ArticleShare({
         aria-haspopup="dialog"
         aria-expanded={modalOpen}
       >
-        <Share2 className="size-3.5" strokeWidth={1.9} aria-hidden="true" />
+        <ShareNetworkIcon className="size-3.5" aria-hidden="true" />
         {t.openButton}
       </button>
       {modalOpen &&

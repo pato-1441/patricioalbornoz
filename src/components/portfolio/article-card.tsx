@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from '@tanstack/react-router'
-import { ArrowUpRight, Pause, Play } from 'lucide-react'
+import { ArrowUpRightIcon } from '@phosphor-icons/react/dist/csr/ArrowUpRight'
+import { PauseIcon } from '@phosphor-icons/react/dist/csr/Pause'
+import { PlayIcon } from '@phosphor-icons/react/dist/csr/Play'
 import type { Article } from '@/data/articles'
 import { useLocale } from '@/context/locale-context'
 import { formatArticleDate, formatReadTime } from '@/lib/locale'
@@ -67,14 +69,14 @@ export function ArticleCard({ article }: { article: Article }) {
           <p className="collection-description">{article.excerpt}</p>
           <span className="collection-action">
             {locale === 'es' ? 'Leer historia' : 'Read story'}{' '}
-            <ArrowUpRight size={16} aria-hidden="true" />
+            <ArrowUpRightIcon size={16} aria-hidden="true" />
           </span>
         </div>
       </Link>
       {article.coverPreviewVideo && (
         <button
           type="button"
-          className="absolute top-3 right-3 grid size-8 cursor-pointer place-items-center rounded-full border border-(--line) bg-(--paper) text-(--text)"
+          className="absolute top-3 right-3 grid size-8 cursor-pointer place-items-center border border-(--line) bg-(--paper) text-(--text)"
           aria-label={
             playing
               ? locale === 'es'
@@ -93,9 +95,9 @@ export function ArticleCard({ article }: { article: Article }) {
           }}
         >
           {playing ? (
-            <Pause size={14} aria-hidden="true" />
+            <PauseIcon size={14} aria-hidden="true" />
           ) : (
-            <Play size={14} aria-hidden="true" />
+            <PlayIcon size={14} aria-hidden="true" />
           )}
         </button>
       )}

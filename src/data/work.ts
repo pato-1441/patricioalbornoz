@@ -10,13 +10,15 @@ export type WorkShowcaseItem = {
 
 export const workShowcase: Array<WorkShowcaseItem> = [
   {
-    title: 'tambo. — Widgets launch',
+    title: 'tambo. Widgets launch',
+    note: 'Product launch film',
     src: '/tambo/widgets-launch.mp4',
     poster: '/tambo/widgets-cover.jpg',
     type: 'video',
   },
   {
     title: 'Autonoma Old Home',
+    note: 'AI testing workspace',
     src: '/old-home.png',
     type: 'image',
   },
@@ -34,25 +36,29 @@ export const workShowcase: Array<WorkShowcaseItem> = [
     bgColor: '#000000',
   },
   {
-    title: 'tambo. — Landing page motion',
+    title: 'tambo. Landing page motion',
+    note: 'Website motion study',
     src: '/tambo/landing-motion.mp4',
     poster: '/tambo/landing-motion-poster.jpg',
     type: 'video',
   },
   {
     title: 'Numbers',
+    note: 'Animated number transitions',
     src: '/numbers.mp4',
     type: 'video',
     bgColor: '#E5E8F5',
   },
   {
-    title: 'tambo. — Landing page',
+    title: 'tambo. Landing page',
+    note: 'Product interface showcase',
     src: '/tambo/ui-camera-loop.mp4',
     poster: '/tambo/ui-camera-loop-poster.jpg',
     type: 'video',
   },
   {
-    title: 'Mate — Live detection',
+    title: 'Mate Live detection',
+    note: 'Custom model training & live object detection',
     src: '/mate/live-detection.mp4',
     poster: '/mate/demo-poster.jpg',
     type: 'video',
@@ -60,28 +66,33 @@ export const workShowcase: Array<WorkShowcaseItem> = [
     bgColor: '#E9E8E0',
   },
   {
-    title: 'tambo. — Landing footer',
+    title: 'tambo. Landing footer',
+    note: 'Website design',
     src: '/tambo-landing-footer.jpg',
     type: 'image',
   },
   {
-    title: 'tambo. — Widgets',
+    title: 'tambo. Widgets',
+    note: 'Your finances, at a glance',
     src: '/tambo/widgets-cover.jpg',
     type: 'image',
   },
   {
-    title: 'tambo. — Analytics',
+    title: 'tambo. Analytics',
+    note: 'Spending insights & visualizations',
     src: '/showcase-analytics.mp4',
     type: 'video',
   },
   {
-    title: 'tambo. — Onboarding',
+    title: 'tambo. Onboarding',
+    note: 'First-run product experience',
     src: '/showcase-onboarding.mp4',
     type: 'video',
   },
   {
     title: 'tambo.',
-    src: '/tambo.webp',
+    note: 'Featured at an Apple event in Buenos Aires',
+    src: '/about/apple-event-apps.webp',
     type: 'image',
   },
   {
@@ -95,23 +106,24 @@ export const workShowcase: Array<WorkShowcaseItem> = [
     title: 'Exa app showcase',
     src: '/exa-2.mov',
     type: 'video',
-    note: 'Exa app showcase',
+    note: 'Product motion showcase',
   },
   {
     title: 'Lemon app icon',
     src: '/lemon-3.png',
     type: 'image',
-    note: 'Lemon app icon',
+    note: 'App icon design study',
   },
   {
     title: 'Invite friends and earn USDC',
     src: '/invite-usdc.png',
     type: 'image',
-    note: 'Invite friends and earn USDC',
+    note: 'Referral flow concept',
     bgColor: '#F6F6F6',
   },
   {
     title: 'Funny buttons',
+    note: 'Interaction experiments',
     src: '/experiment.mov',
     type: 'video',
     featured: true,
@@ -126,6 +138,7 @@ export const workShowcase: Array<WorkShowcaseItem> = [
   },
   {
     title: 'Upgrade v0 modal',
+    note: 'Upgrade flow study',
     src: '/upgrade-v0.mov',
     type: 'video',
   },
@@ -144,6 +157,7 @@ export const workShowcase: Array<WorkShowcaseItem> = [
   },
   {
     title: 'Heatmap',
+    note: 'Visual effect study',
     src: '/heatmap.mov',
     type: 'video',
     bgColor: '#070707',
@@ -192,17 +206,20 @@ export const workShowcase: Array<WorkShowcaseItem> = [
   },
   {
     title: 'Multiple Choice',
+    note: 'Selection interface study',
     src: '/multiple-choice.jpeg',
     type: 'image',
   },
 
   {
     title: 'Sign In',
+    note: 'Authentication interface',
     src: '/sign-in.jpeg',
     type: 'image',
   },
   {
     title: 'Recording',
+    note: 'Recording interface',
     src: '/recording.jpeg',
     type: 'image',
   },

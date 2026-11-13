@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, createFileRoute } from '@tanstack/react-router'
-import { ArrowLeft, ArrowUpRight } from 'lucide-react'
+import { ArrowLeftIcon } from '@phosphor-icons/react/dist/csr/ArrowLeft'
+import { ArrowUpRightIcon } from '@phosphor-icons/react/dist/csr/ArrowUpRight'
 import type { WorkShowcaseItem } from '@/data/work'
 import { MediaDialog } from '@/components/portfolio/media-dialog'
 import { PortfolioTabs } from '@/components/portfolio/portfolio-tabs'
@@ -13,7 +14,7 @@ const tamboCopy = {
     label: 'Creator · iOS & Android',
     title: 'From a spreadsheet to #1 on the App Store.',
     description:
-      'I built tambo, an expense tracker for iOS and Android that reached #1 on the App Store. No AI, subscriptions or ads. Pay once and keep all your data on your device.',
+      'I built tambo, an expense tracker for iOS and Android that reached #1 on the App Store. Featured at an Apple event in Buenos Aires. No AI, subscriptions or ads. Pay once and keep all your data on your device.',
     back: 'Back to projects',
     open: 'Visit tambo.cc',
     productTitle: 'Your whole month, in one place.',
@@ -49,7 +50,7 @@ const tamboCopy = {
     label: 'Creador · iOS y Android',
     title: 'De una planilla al #1 en la App Store.',
     description:
-      'Creé tambo, una app de gastos para iOS y Android que llegó al #1 en la App Store. Sin IA, suscripciones ni publicidad. La comprás una vez y tus datos quedan en tu dispositivo.',
+      'Creé tambo, una app de gastos para iOS y Android que llegó al #1 en la App Store. Destacada en un evento de Apple en Buenos Aires. Sin IA, suscripciones ni publicidad. La comprás una vez y tus datos quedan en tu dispositivo.',
     back: 'Volver a proyectos',
     open: 'Visitar tambo.cc',
     productTitle: 'Todo tu mes, en un mismo lugar.',
@@ -92,7 +93,7 @@ export const Route = createFileRoute('/$locale/projects/tambo')({
       description: tamboCopy[locale].description,
       locale,
       path: `/${locale}/projects/tambo`,
-      image: '/tambo-landing-hero.jpg',
+      image: '/about/apple-event-apps.webp',
       alternates: { en: '/en/projects/tambo', es: '/es/projects/tambo' },
     })
   },
@@ -115,7 +116,7 @@ function TamboPage() {
             hash="projects"
             className="portfolio-backlink"
           >
-            <ArrowLeft size={14} aria-hidden="true" /> {t.back}
+            <ArrowLeftIcon size={14} aria-hidden="true" /> {t.back}
           </Link>
         </div>
         <div className="detail-surface">
@@ -133,7 +134,7 @@ function TamboPage() {
               rel="noopener noreferrer"
               className="project-detail-open"
             >
-              {t.open} <ArrowUpRight size={16} aria-hidden="true" />
+              {t.open} <ArrowUpRightIcon size={16} aria-hidden="true" />
             </a>
           </header>
 
@@ -250,7 +251,7 @@ function TamboPage() {
                 rel="noopener noreferrer"
                 className="portfolio-backlink"
               >
-                {t.postLink} <ArrowUpRight size={16} aria-hidden="true" />
+                {t.postLink} <ArrowUpRightIcon size={16} aria-hidden="true" />
               </a>
             </div>
           </section>

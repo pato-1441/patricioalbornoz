@@ -1,5 +1,5 @@
 import { Link } from '@tanstack/react-router'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRightIcon } from '@phosphor-icons/react/dist/csr/ArrowRight'
 import { ArticleShare } from '@/components/portfolio/article-share'
 import { copy } from '@/data/i18n'
 import type { Article } from '@/data/articles'
@@ -25,7 +25,10 @@ export function ArticleEndNote({
   const t = copy[locale]
 
   return (
-    <footer className="end-reading-note" aria-label={t.articleContent.endOfArticle}>
+    <footer
+      className="end-reading-note"
+      aria-label={t.articleContent.endOfArticle}
+    >
       <div className="end-reading-emoji-pill" aria-hidden>
         <span className="end-reading-emoji">🎉</span>
         <span className="end-reading-emoji end-reading-emoji--delay">✨</span>
@@ -40,14 +43,14 @@ export function ArticleEndNote({
             aria-label={`${t.articleContent.readNext}: ${nextArticle.title}`}
           >
             <span className="end-reading-next-main">
-              <span className="end-reading-next-kicker">{t.articleContent.readNext}</span>
-              <span className="end-reading-next-title">{nextArticle.title}</span>
+              <span className="end-reading-next-kicker">
+                {t.articleContent.readNext}
+              </span>
+              <span className="end-reading-next-title">
+                {nextArticle.title}
+              </span>
             </span>
-            <ArrowRight
-              className="end-reading-next-chevron"
-              strokeWidth={2}
-              aria-hidden
-            />
+            <ArrowRightIcon className="end-reading-next-chevron" aria-hidden />
           </Link>
         ) : null}
         <div className="end-reading-share">

@@ -7,27 +7,19 @@ import { ProjectsSection } from '@/components/portfolio/projects-section'
 import { WorkSection } from '@/components/portfolio/work-section'
 import { useLocale } from '@/context/locale-context'
 
-export function PortfolioTabs({
-  activeTab,
-  children,
-}: {
-  activeTab?: 'articles' | 'projects'
-  children?: ReactNode
-}) {
+const tabIds = ['work', 'articles', 'projects', 'about'] as const
+
+export function PortfolioNavigation() {
   const { locale, t } = useLocale()
-  const hash = useLocation({ select: (location) => location.hash })
+  const { hash, pathname } = useLocation()
+  const activeTab = pathname.includes('/articles')
+    ? 'articles'
+    : pathname.includes('/projects/')
+      ? 'projects'
+      : undefined
   const navigate = useNavigate()
   const buttons = useRef<Array<HTMLButtonElement | null>>([])
-  const tabs = [
-    { id: 'work', label: t.nav.work, content: <WorkSection /> },
-    {
-      id: 'articles',
-      label: t.nav.articles,
-      content: <ArticlesPreviewSection />,
-    },
-    { id: 'projects', label: t.nav.projects, content: <ProjectsSection /> },
-    { id: 'about', label: t.nav.about, content: <AboutSection /> },
-  ]
+  const tabs = tabIds.map((id) => ({ id, label: t.nav[id] }))
   const selected = Math.max(
     0,
     tabs.findIndex((tab) => tab.id === (activeTab ?? hash)),
@@ -44,7 +36,7 @@ export function PortfolioTabs({
   }
 
   return (
-    <div className="portfolio-content" data-detail={activeTab || undefined}>
+    <header className="portfolio-navigation">
       <div
         className="portfolio-tabs"
         role="tablist"
@@ -93,16 +85,41 @@ export function PortfolioTabs({
           </button>
         ))}
       </div>
-      {tabs.map((tab, index) => (
+    </header>
+  )
+}
+
+export function PortfolioTabs({
+  activeTab,
+  children,
+}: {
+  activeTab?: 'articles' | 'projects'
+  children?: ReactNode
+}) {
+  const hash = useLocation({ select: (location) => location.hash })
+  const selected = Math.max(
+    0,
+    tabIds.findIndex((id) => id === (activeTab ?? hash)),
+  )
+  const content = [
+    <WorkSection />,
+    <ArticlesPreviewSection />,
+    <ProjectsSection />,
+    <AboutSection />,
+  ]
+
+  return (
+    <div className="portfolio-content" data-detail={activeTab || undefined}>
+      {tabIds.map((id, index) => (
         <div
-          key={tab.id}
-          id={`${tab.id}-panel`}
+          key={id}
+          id={`${id}-panel`}
           role="tabpanel"
-          aria-labelledby={`${tab.id}-tab`}
+          aria-labelledby={`${id}-tab`}
           tabIndex={0}
           hidden={index !== selected}
         >
-          {index === selected ? (children ?? tab.content) : null}
+          {index === selected ? (children ?? content[index]) : null}
         </div>
       ))}
     </div>

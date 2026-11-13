@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { X } from 'lucide-react'
+import { XIcon } from '@phosphor-icons/react/dist/csr/X'
 import type { WorkShowcaseItem } from '@/data/work'
 import { useLocale } from '@/context/locale-context'
 
@@ -42,7 +42,7 @@ export function MediaDialog({
             onClick={() => dialog.current?.close()}
             aria-label={t.work.closePreview}
           >
-            <X size={18} aria-hidden="true" />
+            <XIcon size={18} aria-hidden="true" />
           </button>
         </div>
         {item.type === 'video' ? (

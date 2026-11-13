@@ -1,4 +1,4 @@
-import { ExternalLink } from 'lucide-react'
+import { ArrowSquareOutIcon } from '@phosphor-icons/react/dist/csr/ArrowSquareOut'
 import { useEffect, useRef } from 'react'
 import type { Locale } from '@/lib/locale'
 import { useLocale } from '@/context/locale-context'
@@ -36,8 +36,7 @@ const companies: Record<
   autonoma: {
     name: 'Autonoma',
     href: 'https://www.linkedin.com/company/autonoma-ai/',
-    logoSrc:
-      'https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://getautonoma.com/&size=256',
+    logoSrc: '/autonoma-logo.png',
     description: {
       es: 'Agentes de IA que prueban aplicaciones web y móviles en navegadores y dispositivos reales, sin escribir scripts de testing.',
       en: 'AI agents that test web and mobile apps in real browsers and devices, without writing test scripts.',
@@ -146,7 +145,7 @@ export function CompanyLink({ company, className, label }: CompanyLinkProps) {
             <span>{new URL(href).hostname.replace(/^www\./, '')}</span>
             <span className="company-preview-open">
               {locale === 'es' ? 'Abrir' : 'Open'}
-              <ExternalLink size={13} aria-hidden="true" />
+              <ArrowSquareOutIcon size={13} aria-hidden="true" />
             </span>
           </span>
           <img

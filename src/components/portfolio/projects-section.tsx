@@ -1,5 +1,5 @@
 import { Link } from '@tanstack/react-router'
-import { ArrowUpRight } from 'lucide-react'
+import { ArrowUpRightIcon } from '@phosphor-icons/react/dist/csr/ArrowUpRight'
 import { useLocale } from '@/context/locale-context'
 import { getProjects } from '@/data/projects'
 
@@ -14,6 +14,14 @@ export function ProjectsSection() {
               <img
                 src={project.preview.src}
                 alt={project.preview.alt}
+                style={
+                  project.id === 'tambo'
+                    ? {
+                        objectPosition: 'center 66.5%',
+                        transform: 'scale(1.1) translateX(-2.8%)',
+                      }
+                    : undefined
+                }
                 loading="lazy"
                 decoding="async"
               />
@@ -26,7 +34,7 @@ export function ProjectsSection() {
               <p className="collection-description">{project.description}</p>
               <div className="collection-meta project-card-footer">
                 <span>{project.tag}</span>
-                <ArrowUpRight size={18} aria-hidden="true" />
+                <ArrowUpRightIcon size={18} aria-hidden="true" />
               </div>
             </div>
           </>

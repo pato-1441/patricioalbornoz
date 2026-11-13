@@ -12,10 +12,7 @@ export function WorkSection() {
     <section id="work" className="scroll-mt-24 space-y-7">
       <div className="showcase-grid">
         {workShowcase.map((item, index) => (
-          <figure
-            key={item.src}
-            className={item.featured ? 'showcase-featured' : undefined}
-          >
+          <figure key={item.src}>
             <button
               type="button"
               onClick={() => setActiveIndex(index)}
@@ -47,6 +44,12 @@ export function WorkSection() {
                 )}
               </div>
             </button>
+            <figcaption className="showcase-caption">
+              {item.title}
+              {item.note && (
+                <span className="showcase-description">{item.note}</span>
+              )}
+            </figcaption>
           </figure>
         ))}
       </div>

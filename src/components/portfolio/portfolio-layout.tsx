@@ -1,4 +1,6 @@
-import { ArrowUpRight, Github, Linkedin, Mail } from 'lucide-react'
+import { GithubLogoIcon } from '@phosphor-icons/react/dist/csr/GithubLogo'
+import { LinkedinLogoIcon } from '@phosphor-icons/react/dist/csr/LinkedinLogo'
+import { EnvelopeIcon } from '@phosphor-icons/react/dist/csr/Envelope'
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import type { CSSProperties, MouseEvent } from 'react'
@@ -166,20 +168,8 @@ export function PortfolioFooter() {
 
   return (
     <footer className="portfolio-footer">
-      <div>
-        <p>{t.sidebar.crafted}</p>
-        <p>© {new Date().getFullYear()} Patricio Albornoz</p>
-      </div>
       <div className="portfolio-footer-links">
         <div className="profile-utilities">
-          <a
-            href="/patricio-albornoz-resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="profile-resume-link"
-          >
-            {t.nav.resume} <ArrowUpRight size={14} aria-hidden="true" />
-          </a>
           <LanguageToggle />
         </div>
         <div className="portfolio-socials">
@@ -199,7 +189,7 @@ export function PortfolioFooter() {
             aria-label={t.sidebar.githubLabel}
             className="icon-link"
           >
-            <Github size={17} />
+            <GithubLogoIcon size={17} />
           </a>
           <a
             href="https://www.linkedin.com/in/patoalbornoz/"
@@ -208,14 +198,14 @@ export function PortfolioFooter() {
             aria-label={t.sidebar.linkedinLabel}
             className="icon-link"
           >
-            <Linkedin size={17} />
+            <LinkedinLogoIcon size={17} />
           </a>
           <a
             href={`mailto:${email}`}
             aria-label={t.sidebar.emailLabel}
             className="icon-link"
           >
-            <Mail size={17} />
+            <EnvelopeIcon size={17} />
           </a>
         </div>
       </div>

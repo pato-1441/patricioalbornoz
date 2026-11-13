@@ -1,5 +1,5 @@
 import { Link } from '@tanstack/react-router'
-import { ArrowUpRight } from 'lucide-react'
+import { ArrowUpRightIcon } from '@phosphor-icons/react/dist/csr/ArrowUpRight'
 import { SectionHeader } from '@/components/portfolio/section-header'
 import { useLocale } from '@/context/locale-context'
 import { getHomeFeaturedArticles } from '@/data/articles'
@@ -44,7 +44,11 @@ export function HomeSection() {
 
           <div className="space-y-4 p-6 md:p-8">
             <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-xs uppercase tracking-[0.18em] text-neutral-500">
-              <span>{leadArticle.pinned ? t.home.pinnedArticle : t.home.latestArticle}</span>
+              <span>
+                {leadArticle.pinned
+                  ? t.home.pinnedArticle
+                  : t.home.latestArticle}
+              </span>
               <span aria-hidden className="h-1 w-1 bg-(--line-strong)" />
               <span>{formatArticleDate(leadArticle.publishedAt, locale)}</span>
               <span aria-hidden className="h-1 w-1 bg-(--line-strong)" />
@@ -60,7 +64,7 @@ export function HomeSection() {
             </div>
             <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-neutral-600 transition-colors group-hover:text-neutral-900">
               {t.home.readArticle}
-              <ArrowUpRight className="size-3 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              <ArrowUpRightIcon className="size-3 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </span>
           </div>
         </Link>
@@ -95,13 +99,20 @@ export function HomeSection() {
                   <h3 className="text-[1.7rem] font-semibold leading-[0.96] tracking-[-0.03em] text-neutral-900">
                     {article.title}
                   </h3>
-                  <p className="text-sm leading-relaxed text-neutral-700">{article.excerpt}</p>
+                  <p className="text-sm leading-relaxed text-neutral-700">
+                    {article.excerpt}
+                  </p>
                 </div>
               </div>
             </Link>
           ))}
 
-          <Link to="/$locale" params={{ locale }} hash="articles" className="home-archive-card">
+          <Link
+            to="/$locale"
+            params={{ locale }}
+            hash="articles"
+            className="home-archive-card"
+          >
             <p className="text-xs uppercase tracking-[0.18em] text-neutral-500">
               {t.home.archiveLabel}
             </p>
@@ -113,7 +124,7 @@ export function HomeSection() {
             </p>
             <span className="mt-5 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-neutral-600">
               {t.home.openArchive}
-              <ArrowUpRight className="size-3" />
+              <ArrowUpRightIcon className="size-3" />
             </span>
           </Link>
         </div>

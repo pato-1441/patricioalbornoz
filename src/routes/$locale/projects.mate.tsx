@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, createFileRoute } from '@tanstack/react-router'
-import { ArrowLeft, ArrowUpRight } from 'lucide-react'
+import { ArrowLeftIcon } from '@phosphor-icons/react/dist/csr/ArrowLeft'
+import { ArrowUpRightIcon } from '@phosphor-icons/react/dist/csr/ArrowUpRight'
 import { MediaDialog } from '@/components/portfolio/media-dialog'
 import { PortfolioTabs } from '@/components/portfolio/portfolio-tabs'
 import { useLocale } from '@/context/locale-context'
@@ -88,7 +89,7 @@ function MatePage() {
             hash="projects"
             className="portfolio-backlink"
           >
-            <ArrowLeft size={14} aria-hidden="true" /> {t.back}
+            <ArrowLeftIcon size={14} aria-hidden="true" /> {t.back}
           </Link>
         </div>
         <div className="detail-surface">
@@ -106,7 +107,7 @@ function MatePage() {
               rel="noopener noreferrer"
               className="project-detail-open"
             >
-              {t.open} <ArrowUpRight size={16} aria-hidden="true" />
+              {t.open} <ArrowUpRightIcon size={16} aria-hidden="true" />
             </a>
           </header>
           <section
